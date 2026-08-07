@@ -1,0 +1,174 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_ef8fb2dcebc847c98a509f148b2033c6",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Dataflow Test CSV",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "dataflow_test.csv"
+          }
+        },
+        "refresh_seconds" : 3,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_30c6fa96241f4353804a36cbb768d943",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_5BAAE45F",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "txt",
+            "maxRows" : "10000",
+            "path" : "*"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_6e5a493b4c0b4cae83dea5a2e895551d",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_44FC7930",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Single-row CSV test harness for dataflow pipeline logging.",
+  "id" : "dash_8c4705980fe749cbae6eaf9605532899",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "Dataflow Log Test",
+  "provenance" : {
+    "imported_at" : "2026-05-11T06:15:18Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+    "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+    "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+    "intelligence"
+  ],
+  "rows" : [
+    {
+      "id" : "row_e4b1328bc20a46e6ab738dd9e47db286",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_table",
+              "viz_ids" : [
+                "viz_214b866116cb4cb48ce293b0333bf0cc"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6199c9dbbd594ce8a4089426e0cdabd0",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_ef8fb2dcebc847c98a509f148b2033c6",
+              "id" : "viz_214b866116cb4cb48ce293b0333bf0cc",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_81ec178f8986420989050a5c330a4159"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1e3c33b40c014bf5ae01e0bc16aeaf45",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 504,
+            "absolute_y" : 456,
+            "height" : 280,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "CPU Usage Gauge #1"
+              },
+              "data_source_ref" : "ds_ef8fb2dcebc847c98a509f148b2033c6",
+              "id" : "viz_81ec178f8986420989050a5c330a4159",
+              "layer" : 1,
+              "options" : {
+                "display_mode" : "basic",
+                "gauge_type" : "marker",
+                "height" : "200",
+                "thresholds" : "70:yellow,90:red"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_36565be2b3e3439585eae1fca6d3804c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_28ebf3cb0ef24423bb3e01e5782b19f4",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 1128,
+            "absolute_y" : 0,
+            "height" : 280,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "CPU Usage Radial Gauge #2"
+              },
+              "data_source_ref" : "ds_ef8fb2dcebc847c98a509f148b2033c6",
+              "id" : "viz_36565be2b3e3439585eae1fca6d3804c",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "fillRadial",
+                "thresholds" : "70:yellow,90:red"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Live CSV Data"
+    }
+  ]
+}

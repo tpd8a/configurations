@@ -1,0 +1,255 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "connector_stream" : "properties_change",
+      "id" : "ds_712f4cd1725b4085b32c9fd3657f5bdb",
+      "provider_ref" : "FA8DC381-1CD8-40BF-BFF6-BC09E1F11CE7",
+      "query" : {
+        "name" : "Recent Changes",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_5ddd40953dcb4b7f91e8bf315021fd5d",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "Wikimedia Live Changes",
+  "provenance" : {
+    "imported_at" : "2026-07-30T14:38:05Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_a90d11ab13c142faadca0827cf0ceeaa",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4d691d1bb74741338c6fe407197d0abe"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_75b34f065af8431fbb793819303bdffa",
+          "layout" : {
+            "absolute_h" : 600,
+            "absolute_w" : 840,
+            "absolute_x" : 216,
+            "absolute_y" : 144,
+            "height" : 1000,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "comment" : {
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "comment",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "timestamp" : {
+                    "color" : "#1E88E5",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "timestamp",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "title" : {
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "title",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_712f4cd1725b4085b32c9fd3657f5bdb",
+              "id" : "viz_4d691d1bb74741338c6fe407197d0abe",
+              "layer" : 1,
+              "options" : {
+                "content" : "Comment",
+                "content_field" : "title",
+                "display_mode" : "ticker",
+                "fields" : "timestamp,wiki,type,user,title,comment",
+                "font_sizing" : "manual:2.5",
+                "page_size" : "501",
+                "raw_field" : "page_title",
+                "render_mode" : "markdown",
+                "show_row_numbers" : "false",
+                "stats_field" : "database",
+                "stats_mode" : "field",
+                "striped_rows" : "false",
+                "ticker_window" : "38",
+                "time_field" : "timestamp",
+                "wrap_cells" : "false"
+              },
+              "sql_composition" : "select * from wikimedia_eventstreams.properties_change",
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Recent Changes"
+    }
+  ]
+}

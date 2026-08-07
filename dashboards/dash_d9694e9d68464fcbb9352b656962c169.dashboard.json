@@ -1,0 +1,1387 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_64269b8245f249c1b3c26a33cb26513a",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance*dispatch.stream.remote.*.duration_secs, performance*dispatch.stream.local.duration_secs | transpose | rename column as Indexer \"row 1\" as Duration | stats max(Duration)"
+        },
+        "name" : "Approximate Time Spent in Map Phase - Click on the time to see a detailed breakdown of the search costs by command for the map phase. search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_b093cd8eefe448deadc71d4e35ca5715",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields remoteSearch | rex field=remoteSearch max_match=0 \"(^(?<first>\\w+){1})|((\\| (?<command>\\w+)))\" | eval Command = mvappend(first, command) | mvexpand Command | fields Command | join Command [| search index=\"_introspection\" sourcetype=search_telemetry search_id=*$sid$* | spath path=search_commands{}.name output=command | spath path=search_commands{}.duration output=duration | eval tempField= mvzip(command, duration) | stats count by tempField | eval Command = mvindex(split(tempField,\",\"),0), Duration= mvindex(split(tempField,\",\"),1) | fields Command, Duration] | table Command, Duration\n| head limit=100 ($map_phase_drilldown|s$ = \"true\")"
+        },
+        "name" : "Map Phase Search Costs by Command - Bar chart search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_d0956bcb4dfd44328f2e6f3223ac34ed",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "eval eventsScannedPerSec=scanCount \/ exact(runDuration) | fields eventsScannedPerSec"
+        },
+        "name" : "Events Scanned Per Second - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_8d70d935f6654b4a806c7de7718ee5b5",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields runDuration"
+        },
+        "name" : "Search Duration - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_cf45c0f2c1524afb88d32092bb8c38e5",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields reduceSearch | rex field=reduceSearch max_match=0 \"(^(?<first>\\w+){1})|((\\| (?<command>\\w+)))\" | eval Command = mvappend(first, command) | mvexpand Command | fields Command | eval Command=if(like(Command, \"%stats%\"), \"stats\", Command) | eval Command=if(like(Command, \"%bin%\"), \"prebin\", Command) | join Command [| search index=\"_introspection\" sourcetype=search_telemetry search_id=*$sid$* | spath path=search_commands{}.name output=command | spath path=search_commands{}.duration output=duration | eval tempField= mvzip(command, duration) | stats count by tempField | eval Command = mvindex(split(tempField,\",\"),0), Duration= mvindex(split(tempField,\",\"),1) | fields Command, Duration] | stats sum(Duration)"
+        },
+        "name" : "Approximate Time Spent in Reduce Phase - Click on the time to see a detailed breakdown of the search costs by command for the reduce phase. search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_9726fa03753b4c90ba6c307493be2b26",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance.startup.handoff.duration_secs"
+        },
+        "name" : "Startup Handoff Time - Time between the forking of a separate search process and the beginning of useful work of the forked search processes. This is cumulative across all involved peers. A large value could indicate I_O issues with .conf files or the dispatch directory. search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_220799eecf5e4603970a28b90b2be9b1",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance*dispatch.stream.remote.*.duration_secs | transpose | rename column as Indexer \"row 1\" as \"Duration (seconds)\" | rex field=Indexer \"performance*dispatch.stream.remote.(?<Indexer>.*).duration_secs\""
+        },
+        "name" : "Time Spent Running Search Per Indexer - Click on an indexer name to see detailed metrics for that indexer. Note that more shaded duration values indicate slower indexers. search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_737d0619841b447d8d31f2796b17fa94",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields reduceSearch | eval reduceSearch=if (isnull(reduceSearch), \"N\/A\", reduceSearch)"
+        },
+        "name" : "Reduce Phase Search String - Table search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_3c18bd85709f47e299fb084dd9a7027a",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields scanCount"
+        },
+        "name" : "Total Events Scanned - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_2254f361ed0d4143bfedac4167d06e36",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields remoteSearch"
+        },
+        "name" : "Map Phase Search String - Table search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_9b5f2b99ae3444c2bbfd8ba5a9e0f1e5",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields optimizedSearch"
+        },
+        "name" : "Optimized Search String - Table search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_ff8ca8a662364128827674700c92b52f",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields search"
+        },
+        "name" : "Search String - Table search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_2caa0e9170d946abbdffe24f56da6e2c",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields eventCount"
+        },
+        "name" : "Total Events Matched - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_baseSearch",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-4h",
+            "is_scheduled" : false,
+            "namespace" : "search",
+            "owner" : "nobody"
+          },
+          "splunk_search" : "| rest \/services\/search\/jobs\/$sid$ splunk_server=local"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_795a7244b97c43c8901baf5a007ce859",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields resultCount"
+        },
+        "name" : "Result Count - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_dc82a7b85f2643549a19a7049bb67a41",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance*dispatch.stream.remote.*.duration_secs | transpose | rename column as Indexer \"row 1\" as Duration | stats count(Indexer)"
+        },
+        "name" : "Number of Indexers - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_3e9ea93bb95e4e71bac18e334b192565",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance*dispatch.stream.remote.*.duration_secs | transpose | rename column as Indexer \"row 1\" as Duration | stats avg(Duration)"
+        },
+        "name" : "Average Indexer Time - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_127a5918be1540ec88ef299081b97aac",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields performance*dispatch.stream.remote.$indexer$.* | transpose | rename column as Field \"row 1\" as Value | rex field=Field \"performance*dispatch.stream.remote.$indexer$.(?<Field>.*)$\""
+        },
+        "name" : "Drilldown Details For Indexer _indexer_ - Table search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_4843a143937b458a8c34517efa2cb5a6",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "Search Costs by Command - Bar chart search",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-4h",
+            "is_scheduled" : false,
+            "latest" : "now"
+          },
+          "splunk_search" : "index=\"_introspection\" sourcetype=search_telemetry search_id=*$sid$* | spath path=search_commands{}.name output=command | spath path=search_commands{}.duration output=duration | eval fields=mvzip(command, duration, \",\") | mvexpand fields | rex field=fields \"(?<Command>[^,]*),(?<Duration>.*)\"\n|  table fields Command Duration"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_ec55c15b993f47a4a4ede53ad8fa0da6",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields author"
+        },
+        "name" : "Search User - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_7ce8a5d902c7414d9facdf35aaab6d8e",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields dispatchState | eval dispatchState=lower(dispatchState)"
+        },
+        "name" : "Search Status - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_7179c01b80fb4f7cb051ea3b2d4c96f2",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields reduceSearch | rex field=reduceSearch max_match=0 \"(^(?<first>\\w+){1})|((\\| (?<command>\\w+)))\" | eval Command = mvappend(first, command) | mvexpand Command | fields Command | eval Command=if(like(Command, \"%stats%\"), \"stats\", Command) | eval Command=if(like(Command, \"%bin%\"), \"prebin\", Command) | join Command [| search index=\"_introspection\" sourcetype=search_telemetry source=*$sid$* | spath path=search_commands{}.name output=command | spath path=search_commands{}.duration output=duration | eval tempField= mvzip(command, duration) | stats count by tempField | eval Command = mvindex(split(tempField,\",\"),0), Duration= mvindex(split(tempField,\",\"),1) | fields Command, Duration] | table Command, Duration\n| head limit=100 ($reduce_phase_drilldown|s$ = \"true\")"
+        },
+        "name" : "Reduce Phase Search Costs by Command - Bar chart search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_3f07f6511e8245e18d4b1969bde37ec5",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "eval searchMode=if (isnull('custom.display.page.search.mode'), \"smart\", 'custom.display.page.search.mode') | fields searchMode"
+        },
+        "name" : "Search Mode - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_5abaaf0bc92547bba46f6a9cd0bb71e4",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_978ecae19d2f428fb46dc6bdb17bb6d2",
+          "query" : "fields splunk_server"
+        },
+        "name" : "Server Info - Single value search",
+        "refresh_seconds" : 60,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_936de10ac5d64b3eb5b110bf8d305da7",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "Query",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now"
+          },
+          "splunk_search" : ""
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "",
+  "id" : "dash_d9694e9d68464fcbb9352b656962c169",
+  "inputs" : [
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Search ID (SID)",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_d33051f0c68641a6a8d02bf8f697ec10",
+      "token" : "sid"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Job Details Dashboard",
+  "polling_interval_seconds" : 30,
+  "provenance" : {
+    "imported_at" : "2026-05-11T18:15:49Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d2a072a7f2a947db9a83327fc08dce1f",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_zLcDjZGY",
+              "viz_ids" : [
+                "viz_cdb34a23dd6d45f7b97632de270b6b84"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f2f7318de5b44641a3a8438857d32f75",
+          "layout" : {
+            "absolute_h" : 64,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_cdb34a23dd6d45f7b97632de270b6b84",
+              "layer" : 1,
+              "options" : {
+                "content" : "This dashboard displays properties of a search job. Use it to gain insight into search job performance and troubleshoot search efficiency issues. Provide a Search ID for a job that has not expired.\n\n[Learn more](https:\/\/docs.splunk.com\/Documentation\/Splunk\/9.1.0\/Search\/ViewsearchjobpropertieswiththeJobInspector?ref=hk)",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_h2WFQvqy",
+              "viz_ids" : [
+                "viz_2eb96c6558f642da80d20e4825f598ba"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7f9b110e159a4e0994a9b5bc7129de7f",
+          "layout" : {
+            "absolute_h" : 64,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 154,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_2eb96c6558f642da80d20e4825f598ba",
+              "layer" : 1,
+              "options" : {
+                "backgroundColor" : "#ffffff",
+                "content" : "# Summary",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_search_duration",
+              "viz_ids" : [
+                "viz_541949f90e0743d1b266d27f590ec95f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_04159bf5051447e68f861fd252f24a17",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 287,
+            "absolute_x" : 0,
+            "absolute_y" : 218,
+            "panel_width" : 12
+          },
+          "title" : "Search Duration",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search Duration"
+              },
+              "data_source_ref" : "ds_8d70d935f6654b4a806c7de7718ee5b5",
+              "id" : "viz_541949f90e0743d1b266d27f590ec95f",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_search_status",
+              "viz_ids" : [
+                "viz_508f7f68dfca416191ff6fc621f3521b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_54d987af335b4d819cdb19f107f8658d",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 480,
+            "absolute_x" : 0,
+            "absolute_y" : 468,
+            "panel_width" : 12
+          },
+          "title" : "Search Status",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search Status"
+              },
+              "data_source_ref" : "ds_7ce8a5d902c7414d9facdf35aaab6d8e",
+              "id" : "viz_508f7f68dfca416191ff6fc621f3521b",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_server_info",
+              "viz_ids" : [
+                "viz_0a8f0fc6b8d34d5eabd1f1faa3aaf004"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b278c790b67f4e0c9d75ba6761bd272f",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 718,
+            "panel_width" : 12
+          },
+          "title" : "Server Info",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server Info"
+              },
+              "data_source_ref" : "ds_5abaaf0bc92547bba46f6a9cd0bb71e4",
+              "id" : "viz_0a8f0fc6b8d34d5eabd1f1faa3aaf004",
+              "layer" : 1,
+              "options" : {
+                "majorColor" : "> majorValue | rangeValue(convertedColorRange)"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_A27UCOAm",
+              "viz_ids" : [
+                "viz_319cbbc09ff242d3afc986e6b597193e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4673301ec3cf4e04899894cac55fa795",
+          "layout" : {
+            "absolute_h" : 64,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 968,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_319cbbc09ff242d3afc986e6b597193e",
+              "layer" : 1,
+              "options" : {
+                "backgroundColor" : "#ffffff",
+                "content" : "# Search Strings",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_aoH6fg9Q",
+              "viz_ids" : [
+                "viz_45b44a2f7b934d2b85b8dd0389e22efe"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_744f3d4d72f74e4284016f40bde5804a",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 1032,
+            "panel_width" : 12
+          },
+          "title" : "Search String",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search String"
+              },
+              "data_source_ref" : "ds_ff8ca8a662364128827674700c92b52f",
+              "id" : "viz_45b44a2f7b934d2b85b8dd0389e22efe",
+              "layer" : 1,
+              "options" : {
+                "count" : "20",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "showInternalFields" : "false",
+                "showRowNumbers" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_wvNj7yEc",
+              "viz_ids" : [
+                "viz_50c88236dba04f778f948630446da1ac"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d0f54d04880a4f1f83b62b550fb386ff",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 1282,
+            "panel_width" : 12
+          },
+          "title" : "Optimized Search String",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Optimized Search String"
+              },
+              "data_source_ref" : "ds_9b5f2b99ae3444c2bbfd8ba5a9e0f1e5",
+              "id" : "viz_50c88236dba04f778f948630446da1ac",
+              "layer" : 1,
+              "options" : {
+                "count" : "20",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "showInternalFields" : "false",
+                "showRowNumbers" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_SzryUuWB",
+              "viz_ids" : [
+                "viz_6dba2ca97c964a049daa9a2bc5f894cb"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_472d7fb2413048baba6374fc0123254a",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 1532,
+            "panel_width" : 12
+          },
+          "title" : "Map Phase Search String",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Map Phase Search String"
+              },
+              "data_source_ref" : "ds_2254f361ed0d4143bfedac4167d06e36",
+              "id" : "viz_6dba2ca97c964a049daa9a2bc5f894cb",
+              "layer" : 1,
+              "options" : {
+                "count" : "20",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "showInternalFields" : "false",
+                "showRowNumbers" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_7FzLK9mW",
+              "viz_ids" : [
+                "viz_9bd196e8acee4cb8971855785b8dead3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e528c0478d7e4350a1b6fd1665c36a10",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 1782,
+            "panel_width" : 12
+          },
+          "title" : "Reduce Phase Search String",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Reduce Phase Search String"
+              },
+              "data_source_ref" : "ds_737d0619841b447d8d31f2796b17fa94",
+              "id" : "viz_9bd196e8acee4cb8971855785b8dead3",
+              "layer" : 1,
+              "options" : {
+                "count" : "20",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "showInternalFields" : "false",
+                "showRowNumbers" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_JWCs3RfT",
+              "viz_ids" : [
+                "viz_4b7c05d4072143a887dc7be6a5c6c0d0"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a5ae04e6769746779c3ab31a744750d3",
+          "layout" : {
+            "absolute_h" : 80,
+            "absolute_w" : 1440,
+            "absolute_x" : 336,
+            "absolute_y" : 1920,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_936de10ac5d64b3eb5b110bf8d305da7",
+              "id" : "viz_4b7c05d4072143a887dc7be6a5c6c0d0",
+              "layer" : 1,
+              "options" : {
+                "backgroundColor" : "#ffffff",
+                "content" : "# Search Costs",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_LiP89SR7",
+              "viz_ids" : [
+                "viz_979f42a4078b49b79a43fff47fc74efd"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c74316fa80724335a79f5b66d49a1804",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 2096,
+            "panel_width" : 12
+          },
+          "title" : "Search Costs by Command",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search Costs by Command"
+              },
+              "data_source_ref" : "ds_4843a143937b458a8c34517efa2cb5a6",
+              "id" : "viz_979f42a4078b49b79a43fff47fc74efd",
+              "layer" : 1,
+              "options" : {
+                "dataValuesDisplay" : "all",
+                "legendTruncation" : "ellipsisMiddle",
+                "showRoundedY2AxisLabels" : "false",
+                "showY2MajorGridLines" : "true",
+                "xAxisTitleText" : "Command",
+                "y2AxisAbbreviation" : "off",
+                "yAxisAbbreviation" : "off",
+                "yAxisTitleText" : "Duration (s)"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_map_phase_time",
+              "viz_ids" : [
+                "viz_0f82469d9ca04215b917e6da50f03fc6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8dc83dc0ee91486c8b02ec1eb857b2d6",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 719,
+            "absolute_x" : 0,
+            "absolute_y" : 2346,
+            "panel_width" : 12
+          },
+          "title" : "Approximate Time Spent in Map Phase",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Approximate Time Spent in Map Phase"
+              },
+              "data_source_ref" : "ds_64269b8245f249c1b3c26a33cb26513a",
+              "id" : "viz_0f82469d9ca04215b917e6da50f03fc6",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_ALswRywF",
+              "viz_ids" : [
+                "viz_dcde006a0ee3461abb601d5225aebcaa"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9dafdfca29034489a34a11e93c00db62",
+          "layout" : {
+            "absolute_h" : 125,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 2596,
+            "panel_width" : 12
+          },
+          "title" : "Map Phase Search Costs by Command",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Map Phase Search Costs by Command"
+              },
+              "data_source_ref" : "ds_b093cd8eefe448deadc71d4e35ca5715",
+              "id" : "viz_dcde006a0ee3461abb601d5225aebcaa",
+              "layer" : 1,
+              "options" : {
+                "dataValuesDisplay" : "all",
+                "legendDisplay" : "off",
+                "legendTruncation" : "ellipsisMiddle",
+                "showRoundedY2AxisLabels" : "false",
+                "showSplitSeries" : "false",
+                "showY2MajorGridLines" : "true",
+                "stackMode" : "auto",
+                "xAxisTitleText" : "Command",
+                "y2AxisAbbreviation" : "off",
+                "yAxisAbbreviation" : "auto",
+                "yAxisScale" : "linear",
+                "yAxisTitleText" : "Duration (s)"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_mX1N0B5I",
+              "viz_ids" : [
+                "viz_9e1c3554e7324c1c942571bd79a5de73"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_295b4cbb62484b94b8e458a2a5b25ec1",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 2721,
+            "panel_width" : 12
+          },
+          "title" : "Reduce Phase Search Costs by Command",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Reduce Phase Search Costs by Command"
+              },
+              "data_source_ref" : "ds_7179c01b80fb4f7cb051ea3b2d4c96f2",
+              "id" : "viz_9e1c3554e7324c1c942571bd79a5de73",
+              "layer" : 1,
+              "options" : {
+                "dataValuesDisplay" : "all",
+                "legendTruncation" : "ellipsisMiddle",
+                "showRoundedY2AxisLabels" : "false",
+                "showY2MajorGridLines" : "true",
+                "xAxisTitleText" : "Command",
+                "y2AxisAbbreviation" : "off",
+                "yAxisAbbreviation" : "off",
+                "yAxisTitleText" : "Duration (s)"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_startup_handoff",
+              "viz_ids" : [
+                "viz_90e5dd1e6ad446a4bed562efc6eb6742"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_98b1482c20a340329d1a39c9f34f343d",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 2971,
+            "panel_width" : 12
+          },
+          "title" : "Startup Handoff Time",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Startup Handoff Time"
+              },
+              "data_source_ref" : "ds_9726fa03753b4c90ba6c307493be2b26",
+              "id" : "viz_90e5dd1e6ad446a4bed562efc6eb6742",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_n2IAWJgr",
+              "viz_ids" : [
+                "viz_1d9358a4d3694e1788c1f971f4072797"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_697ec9cbeb5d4f47a9e5af1dd7e59203",
+          "layout" : {
+            "absolute_h" : 64,
+            "absolute_w" : 1440,
+            "absolute_x" : 0,
+            "absolute_y" : 3221,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_1d9358a4d3694e1788c1f971f4072797",
+              "layer" : 1,
+              "options" : {
+                "backgroundColor" : "#ffffff",
+                "content" : "# Indexers",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_num_of_indexers",
+              "viz_ids" : [
+                "viz_0797d9cd792e414193be87863297f6fc"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0c0de4ab613b4ead99da43233c9e0782",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 719,
+            "absolute_x" : 0,
+            "absolute_y" : 3285,
+            "panel_width" : 12
+          },
+          "title" : "Number of Indexers",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Number of Indexers"
+              },
+              "data_source_ref" : "ds_dc82a7b85f2643549a19a7049bb67a41",
+              "id" : "viz_0797d9cd792e414193be87863297f6fc",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_time_per_indexer",
+              "viz_ids" : [
+                "viz_51d5db930d604fe2b5931cb9471dce83"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4190169db4ff4d4a8e2fabaa8509c50a",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 719,
+            "absolute_x" : 0,
+            "absolute_y" : 3535,
+            "panel_width" : 12
+          },
+          "title" : "Time Spent Running Search Per Indexer",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Time Spent Running Search Per Indexer"
+              },
+              "data_source_ref" : "ds_220799eecf5e4603970a28b90b2be9b1",
+              "id" : "viz_51d5db930d604fe2b5931cb9471dce83",
+              "layer" : 1,
+              "options" : {
+                "count" : "10",
+                "dataOverlayMode" : "heatmap",
+                "drilldown" : "cell",
+                "showInternalFields" : "false",
+                "showRowNumbers" : "true"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_events_scanned",
+              "viz_ids" : [
+                "viz_a1e8a1961afa423c97d2c4211d6729cc"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_537f2b05b18d4ebb8daa8d1c33d92eb9",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 289,
+            "absolute_x" : 287,
+            "absolute_y" : 218,
+            "panel_width" : 12
+          },
+          "title" : "Total Events Scanned",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Total Events Scanned"
+              },
+              "data_source_ref" : "ds_3c18bd85709f47e299fb084dd9a7027a",
+              "id" : "viz_a1e8a1961afa423c97d2c4211d6729cc",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_4tjuNfVM",
+              "viz_ids" : [
+                "viz_9e27047808124641beac27d2eb0579e0"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_597d17495a07464c80f160819ad8a12c",
+          "layout" : {
+            "absolute_h" : 90,
+            "absolute_w" : 960,
+            "absolute_x" : 480,
+            "absolute_y" : 64,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_9e27047808124641beac27d2eb0579e0",
+              "layer" : 1,
+              "options" : {
+                "fillColor" : "transparent",
+                "strokeColor" : "transparent"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_search_user",
+              "viz_ids" : [
+                "viz_c14f385520c74b37b97a849799b29182"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4b1634b281d94537992a673e2cdc5dc6",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 480,
+            "absolute_x" : 480,
+            "absolute_y" : 468,
+            "panel_width" : 12
+          },
+          "title" : "Search User",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search User"
+              },
+              "data_source_ref" : "ds_ec55c15b993f47a4a4ede53ad8fa0da6",
+              "id" : "viz_c14f385520c74b37b97a849799b29182",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_events_matched",
+              "viz_ids" : [
+                "viz_73d582df9f084148b36a0a8bb18ac7a0"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_52754b813c704e9caf26deb17b445d15",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 288,
+            "absolute_x" : 576,
+            "absolute_y" : 218,
+            "panel_width" : 12
+          },
+          "title" : "Total Events Matched",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Total Events Matched"
+              },
+              "data_source_ref" : "ds_2caa0e9170d946abbdffe24f56da6e2c",
+              "id" : "viz_73d582df9f084148b36a0a8bb18ac7a0",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_reduce_phase_time",
+              "viz_ids" : [
+                "viz_52b7e74d43e94532b3f6d0cc2d3c954a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d54acadbe3cf44129b2238091fb2b425",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 721,
+            "absolute_x" : 719,
+            "absolute_y" : 2346,
+            "panel_width" : 12
+          },
+          "title" : "Approximate Time Spent in Reduce Phase",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Approximate Time Spent in Reduce Phase"
+              },
+              "data_source_ref" : "ds_cf45c0f2c1524afb88d32092bb8c38e5",
+              "id" : "viz_52b7e74d43e94532b3f6d0cc2d3c954a",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_avg_indexer_time",
+              "viz_ids" : [
+                "viz_4eec2bb94280467abc44941cd746ccfb"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e8012f42ae514401adba17a5f5470dd8",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 721,
+            "absolute_x" : 719,
+            "absolute_y" : 3285,
+            "panel_width" : 12
+          },
+          "title" : "Average Indexer Time",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Average Indexer Time"
+              },
+              "data_source_ref" : "ds_3e9ea93bb95e4e71bac18e334b192565",
+              "id" : "viz_4eec2bb94280467abc44941cd746ccfb",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_2T7sZd8d",
+              "viz_ids" : [
+                "viz_67d41190a5894fa5a71c117f86f46e51"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_252b92c57a884505bb93e29337d1783a",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 721,
+            "absolute_x" : 719,
+            "absolute_y" : 3535,
+            "panel_width" : 12
+          },
+          "title" : "Drilldown Details For Indexer $indexer$",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Drilldown Details For Indexer $indexer$"
+              },
+              "data_source_ref" : "ds_127a5918be1540ec88ef299081b97aac",
+              "id" : "viz_67d41190a5894fa5a71c117f86f46e51",
+              "layer" : 1,
+              "options" : {
+                "count" : "10",
+                "drilldown" : "row",
+                "showInternalFields" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_result_count",
+              "viz_ids" : [
+                "viz_c484937710a449a48435a983df5e8749"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7770beea4a0342c4a9f288f3f32e1fe9",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 289,
+            "absolute_x" : 864,
+            "absolute_y" : 218,
+            "panel_width" : 12
+          },
+          "title" : "Result Count",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Result Count"
+              },
+              "data_source_ref" : "ds_795a7244b97c43c8901baf5a007ce859",
+              "id" : "viz_c484937710a449a48435a983df5e8749",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_search_mode",
+              "viz_ids" : [
+                "viz_1114945f7ab04384b46f038edacd0b4c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6b41b608ca6642419e9b3d60ea658cb6",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 480,
+            "absolute_x" : 960,
+            "absolute_y" : 468,
+            "panel_width" : 12
+          },
+          "title" : "Search Mode",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Search Mode"
+              },
+              "data_source_ref" : "ds_3f07f6511e8245e18d4b1969bde37ec5",
+              "id" : "viz_1114945f7ab04384b46f038edacd0b4c",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_events_scanned_per_sec",
+              "viz_ids" : [
+                "viz_12b2473225fb4dd88cbe8d3c49ec63f5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2813df23849145559024f2148bf35c5b",
+          "layout" : {
+            "absolute_h" : 250,
+            "absolute_w" : 287,
+            "absolute_x" : 1153,
+            "absolute_y" : 218,
+            "panel_width" : 12
+          },
+          "title" : "Events Scanned Per Second",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Events Scanned Per Second"
+              },
+              "data_source_ref" : "ds_d0956bcb4dfd44328f2e6f3223ac34ed",
+              "id" : "viz_12b2473225fb4dd88cbe8d3c49ec63f5",
+              "layer" : 1,
+              "options" : {
+                "precision" : "0"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Server Fleet",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "server_fleet.csv"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_fb5e24ac9b38482f97a64395afcd8a4b",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Network Connections",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "connections.csv"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_6171ee69c64e4ff6818467744a9b0b90",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Network Zones",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "zones.csv"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_fc2a530f14be44129e802a1236432d98",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Active Alerts",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "alerts.csv"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Network topology landscape driven by 4 CSV datasources — fleet, connections, zones, alerts",
+  "id" : "dash_f85b19b7f3d2442b92ed74912cf78233",
+  "inputs" : [
+
+  ],
+  "landscape" : {
+    "canvas" : {
+      "background" : {
+        "color" : "#0a0e1a"
+      },
+      "height" : 1080,
+      "width" : 1920
+    },
+    "hud" : [
+      {
+        "position" : "top_center",
+        "text" : "K8s Cluster — Live Topology",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_left",
+        "text" : "Ingress → Frontend → API → DB \/ Cache + Workers",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_right",
+        "text" : "● healthy  ● warning  ● critical",
+        "type" : "label"
+      },
+      {
+        "position" : "top_right",
+        "text" : "LIVE",
+        "type" : "label"
+      }
+    ],
+    "name" : "Fleet Topology",
+    "spriteBindings" : [
+      {
+        "datasourceId" : "ds_6171ee69c64e4ff6818467744a9b0b90",
+        "entityField" : "zone_id",
+        "id" : "zones",
+        "placement" : "fixed",
+        "properties" : {
+          "color" : {
+            "field" : "color"
+          },
+          "label" : {
+            "field" : "label"
+          },
+          "opacity" : {
+            "value" : "0.25"
+          }
+        },
+        "spriteType" : "zone",
+        "zoneGroupField" : "group_id"
+      },
+      {
+        "group" : {
+          "gates" : [
+            {
+              "connects" : [
+                "grp_dc_west",
+                "grp_dc_east"
+              ],
+              "icon" : "lock.shield",
+              "label" : "FW West",
+              "name" : "dmz_south",
+              "position" : 0.35,
+              "priority" : 1,
+              "rules" : [
+                {
+                  "field" : "protocol",
+                  "op" : "eq",
+                  "value" : "grpc"
+                }
+              ],
+              "side" : "s"
+            },
+            {
+              "connects" : [
+                "grp_dc_west",
+                "grp_dc_east"
+              ],
+              "icon" : "lock.shield",
+              "label" : "FW East",
+              "name" : "dmz_south_e",
+              "position" : 0.65,
+              "priority" : 2,
+              "side" : "s"
+            }
+          ],
+          "label" : "DMZ",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 150,
+        "id" : "grp_dmz",
+        "placement" : "static",
+        "spriteType" : "group",
+        "w" : 1760,
+        "x" : 80,
+        "y" : 25
+      },
+      {
+        "group" : {
+          "gates" : [
+            {
+              "connects" : [
+                "grp_dmz"
+              ],
+              "icon" : "network",
+              "label" : "QoS Gate",
+              "name" : "dc_west_entry",
+              "position" : 0.5,
+              "priority" : 1,
+              "rules" : [
+                {
+                  "field" : "latency_ms",
+                  "op" : "lt",
+                  "value" : "50"
+                }
+              ],
+              "side" : "n"
+            },
+            {
+              "connects" : [
+                "grp_dc_east"
+              ],
+              "icon" : "arrow.left.arrow.right",
+              "label" : "Backbone",
+              "name" : "backbone_west",
+              "position" : 0.4,
+              "priority" : 1,
+              "rules" : [
+                {
+                  "field" : "status",
+                  "op" : "neq",
+                  "value" : "degraded"
+                }
+              ],
+              "side" : "e"
+            }
+          ],
+          "label" : "DC West  ·  us-east-1a",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 665,
+        "id" : "grp_dc_west",
+        "placement" : "static",
+        "spriteType" : "group",
+        "w" : 880,
+        "x" : 75,
+        "y" : 250
+      },
+      {
+        "group" : {
+          "gates" : [
+            {
+              "connects" : [
+                "grp_dmz"
+              ],
+              "icon" : "network",
+              "label" : "QoS Gate",
+              "name" : "dc_east_entry",
+              "position" : 0.5,
+              "priority" : 1,
+              "rules" : [
+                {
+                  "field" : "latency_ms",
+                  "op" : "lt",
+                  "value" : "50"
+                }
+              ],
+              "side" : "n"
+            },
+            {
+              "connects" : [
+                "grp_dc_west"
+              ],
+              "icon" : "arrow.left.arrow.right",
+              "label" : "Backbone",
+              "name" : "backbone_east",
+              "position" : 0.4,
+              "priority" : 1,
+              "rules" : [
+                {
+                  "field" : "status",
+                  "op" : "neq",
+                  "value" : "degraded"
+                }
+              ],
+              "side" : "w"
+            }
+          ],
+          "label" : "DC East  ·  us-east-1b",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 665,
+        "id" : "grp_dc_east",
+        "placement" : "static",
+        "spriteType" : "group",
+        "w" : 880,
+        "x" : 965,
+        "y" : 250
+      },
+      {
+        "behaviorField" : "sprite_behavior",
+        "datasourceId" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+        "entityField" : "hostname",
+        "h" : 48,
+        "id" : "servers",
+        "placement" : "zone_relative",
+        "properties" : {
+          "color" : {
+            "field" : "status",
+            "map" : {
+              "critical" : "#F2495C",
+              "degraded" : "#FF9830",
+              "healthy" : "#73BF69",
+              "warning" : "#FADE2A"
+            }
+          },
+          "label" : {
+            "field" : "hostname"
+          },
+          "scale" : {
+            "field" : "cpu_percent",
+            "inputRange" : [
+              0,
+              100
+            ],
+            "range" : [
+              0.8,
+              1.4
+            ]
+          }
+        },
+        "spriteType" : "server",
+        "spriteTypeField" : "role",
+        "spriteTypeMap" : {
+          "auth" : "auth",
+          "cron" : "cron",
+          "ingress" : "gateway",
+          "mysql" : "database",
+          "nginx" : "gateway",
+          "postgres" : "database",
+          "rabbitmq" : "queue",
+          "redis" : "cache",
+          "search" : "search",
+          "worker" : "cron"
+        },
+        "w" : 48,
+        "zoneBinding" : "zones",
+        "zoneField" : "zone"
+      },
+      {
+        "anchorBinding" : "servers",
+        "connectionStyle" : "junction",
+        "datasourceId" : "ds_fb5e24ac9b38482f97a64395afcd8a4b",
+        "entityField" : "edge_id",
+        "id" : "connections",
+        "placement" : "edge",
+        "properties" : {
+          "color" : {
+            "field" : "status",
+            "map" : {
+              "active" : "#3b82f6",
+              "degraded" : "#f97316"
+            }
+          },
+          "opacity" : {
+            "field" : "latency_ms",
+            "inputRange" : [
+              0,
+              50
+            ],
+            "range" : [
+              1,
+              0.15
+            ]
+          }
+        },
+        "sourceField" : "source",
+        "spriteType" : "connection",
+        "targetField" : "target",
+        "trafficDots" : {
+          "colorField" : "status",
+          "colorMap" : {
+            "active" : "#60a5fa",
+            "degraded" : "#fb923c"
+          },
+          "count" : 2,
+          "radius" : 2.5,
+          "speedField" : "bytes_sec",
+          "speedRange" : [
+            80,
+            0.8
+          ]
+        }
+      },
+      {
+        "anchorBinding" : "servers",
+        "anchorField" : "hostname",
+        "behaviorField" : "severity",
+        "datasourceId" : "ds_fc2a530f14be44129e802a1236432d98",
+        "entityField" : "alert_id",
+        "h" : 20,
+        "id" : "alerts",
+        "placement" : "entity_relative",
+        "properties" : {
+          "color" : {
+            "field" : "severity",
+            "map" : {
+              "critical" : "#F2495C",
+              "warning" : "#FADE2A"
+            }
+          }
+        },
+        "spriteType" : "alert",
+        "w" : 20
+      },
+      {
+        "datasourceId" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+        "h" : 50,
+        "id" : "scorecard_ingress",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "tier",
+          "groupValue" : "ingress"
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 860,
+        "y" : 105
+      },
+      {
+        "datasourceId" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+        "h" : 50,
+        "id" : "scorecard_dc_west",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "DC West: {total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "dc",
+          "groupValue" : "west"
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 110,
+        "y" : 925
+      },
+      {
+        "datasourceId" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+        "h" : 50,
+        "id" : "scorecard_dc_east",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "DC East: {total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "dc",
+          "groupValue" : "east"
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 1000,
+        "y" : 925
+      }
+    ]
+  },
+  "landscape_ref" : "fleet-topology.scene.json",
+  "layout_type" : "bootstrap",
+  "name" : "Fleet Topology",
+  "polling_interval_seconds" : 10,
+  "provenance" : {
+    "imported_at" : "2026-04-25T06:58:39Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_135a32ef79864e77a5c07609b3be36b3",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_fleet",
+              "viz_ids" : [
+                "viz_848d0eb98d7241adad535d56479856db"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f2e1ce41ed6948e4ab1cea2251e43d13",
+          "layout" : {
+            "height" : 551.453125,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Server Fleet",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server Fleet"
+              },
+              "data_source_ref" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+              "id" : "viz_848d0eb98d7241adad535d56479856db",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_connections",
+              "viz_ids" : [
+                "viz_ad061bafefb04f8fbe0464970c1dfc43"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9c0d109192ea486fb6a9cad22afe34ca",
+          "layout" : {
+            "height" : 557.089844,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Network Connections",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Network Connections"
+              },
+              "data_source_ref" : "ds_fb5e24ac9b38482f97a64395afcd8a4b",
+              "id" : "viz_ad061bafefb04f8fbe0464970c1dfc43",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_707987cefd5846438223e7982340f956",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_zones",
+              "viz_ids" : [
+                "viz_072c5d0ca87d49e79e5e53d953e3f850"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_183d7b2a555243df8d538fed2c9886bf",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Network Zones",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Network Zones"
+              },
+              "data_source_ref" : "ds_6171ee69c64e4ff6818467744a9b0b90",
+              "id" : "viz_072c5d0ca87d49e79e5e53d953e3f850",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_alerts",
+              "viz_ids" : [
+                "viz_79965ec971e346e4839477976820db32"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Describes the active alerts on the platform. We know the severity, but  explain the message field base on hostname",
+          "id" : "panel_035036b2198e42d88b6eb011ab9aeaa0",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "semantic_meta" : {
+            "category" : "performance, health",
+            "signals" : [
+              "severity",
+              "message"
+            ]
+          },
+          "title" : "Active Alerts",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Active Alerts"
+              },
+              "data_source_ref" : "ds_fc2a530f14be44129e802a1236432d98",
+              "id" : "viz_79965ec971e346e4839477976820db32",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b3b5ce25d53a48d6ab691fb08e082f36"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3ad4b52cb9f642e4aa6959ef2d3ac6d7",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Server Fleet Usage Column",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server Fleet Usage Column"
+              },
+              "data_source_ref" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
+              "id" : "viz_b3b5ce25d53a48d6ab691fb08e082f36",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

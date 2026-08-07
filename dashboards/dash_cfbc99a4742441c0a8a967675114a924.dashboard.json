@@ -1,0 +1,58 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_f0e70c2a09224cabbcd8dfd5edc8b170",
+      "query" : {
+        "name" : "btc_sprd",
+        "refresh_seconds" : 60,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_4735c2e90f5e4acb9e2115f369c0232e"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_cfbc99a4742441c0a8a967675114a924",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "BTC Spread",
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_4b90ff9bb80a4be5a530f69408514b24",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1c674e0ec7bb4921ae4392576d5b36b5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_dbce719beb6d45728721efc3ad41b523",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "btc_sprd",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f0e70c2a09224cabbcd8dfd5edc8b170",
+              "id" : "viz_1c674e0ec7bb4921ae4392576d5b36b5",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

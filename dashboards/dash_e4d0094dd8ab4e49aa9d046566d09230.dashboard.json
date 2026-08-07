@@ -1,0 +1,309 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "connector_stream" : "price",
+      "id" : "ds_9fa34155402648429838253445d0d78d",
+      "provider_ref" : "CD8BCCAD-A034-4530-9446-DB1203D94E11",
+      "query" : {
+        "name" : "Live price",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "symbols" : "BTC\/USD,EUR\/USD,AAPL:NASDAQ,XAU\/USD"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_331f2372c75d45bbafeda08d6d32ae03",
+      "provider_ref" : "CD8BCCAD-A034-4530-9446-DB1203D94E11",
+      "query" : {
+        "name" : "ds_03B98540",
+        "query" : {
+          "method" : "GET",
+          "path" : ""
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_324d85ae5bba46369041168a8b3b4b63",
+      "provider_ref" : "CD8BCCAD-A034-4530-9446-DB1203D94E11",
+      "query" : {
+        "name" : "ds_6C1EDD05",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_e4d0094dd8ab4e49aa9d046566d09230",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Live Prices (WS) (copy)",
+  "provenance" : {
+    "imported_at" : "2026-07-17T07:15:13Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_16124cd4a018456ab2c309037ab01202",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_lp_t1",
+              "viz_ids" : [
+                "viz_21c945459adf4d46876055071cb2181f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9113139b87614542a57c7473a7658d32",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Live Ticker"
+              },
+              "data_source_ref" : "ds_9fa34155402648429838253445d0d78d",
+              "id" : "viz_21c945459adf4d46876055071cb2181f",
+              "layer" : 1,
+              "options" : {
+                "price_field" : "price",
+                "symbol_field" : "symbol"
+              },
+              "type" : "ticker",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Live Ticker"
+    },
+    {
+      "id" : "row_fca8f1afb6914d6a947bdbb7db168929",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_lp_d1",
+              "viz_ids" : [
+                "viz_317a233313b54b4b8ea4c97350583f88"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f9d954199dc74f81b42c61b16a6fbe36",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "2EA5FBE0-0017-491E-A0C1-1E8D89FA5303",
+                        "kind" : "pricetile",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "price-tile",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "symbol"
+                        ],
+                        "y",
+                        [
+                          "price"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+                    "symbol"
+                  ],
+                  "enabled" : true,
+                  "sharedScales" : true,
+                  "size" : "small"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Latest Price"
+              },
+              "data_source_ref" : "ds_9fa34155402648429838253445d0d78d",
+              "id" : "viz_317a233313b54b4b8ea4c97350583f88",
+              "layer" : 1,
+              "options" : {
+                "big_price" : "true",
+                "price_field" : "price",
+                "symbol_field" : "symbol"
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_lp_d2",
+              "viz_ids" : [
+                "viz_3abc6b5de0ba4087b691a84bd3daac3d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9cd81996938546cb87e40e971343273a",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "All Symbols"
+              },
+              "data_source_ref" : "ds_9fa34155402648429838253445d0d78d",
+              "id" : "viz_3abc6b5de0ba4087b691a84bd3daac3d",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Prices"
+    }
+  ]
+}

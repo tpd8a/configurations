@@ -1,0 +1,420 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "connector_stream" : "ws_ticker",
+      "id" : "ds_a041cb3279184c6cabdbf05dd3de9025",
+      "provider_ref" : "39CA3D9E-66B8-43EE-96AA-AD9FFC5CC261",
+      "query" : {
+        "name" : "Binance 24h Ticker",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "symbols" : "BTCUSDT,ETHUSDT,SOLUSDT,XRPUSDT"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_f373cf8cb7e640e884dfbbf56c614a72",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "Binance Live (WS)",
+  "provenance" : {
+    "imported_at" : "2026-07-21T10:14:20Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_b1cf643d8620408ba0965a7e4294115b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_tbl",
+              "viz_ids" : [
+                "viz_382282e86df54c729a30cf66130482f3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0de67e93ad7e4688bef8e46aefb94dcd",
+          "layout" : {
+            "absolute_h" : 312,
+            "absolute_w" : 792,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "033E3770-052A-4A1D-BE0A-F14C779CEC40",
+                        "kind" : "kpimosaic",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "kpi-mosaic",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "s"
+                        ],
+                        "y",
+                        [
+                          "c"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Live 24h Ticker — BTC\/ETH\/SOL\/XRP"
+              },
+              "data_source_ref" : "ds_a041cb3279184c6cabdbf05dd3de9025",
+              "id" : "viz_382282e86df54c729a30cf66130482f3",
+              "layer" : 1,
+              "options" : {
+                "columns" : "4",
+                "delta_pct_field" : "P",
+                "price_field" : "c",
+                "symbol_field" : "s"
+              },
+              "title" : "Live 24h Ticker — BTC\/ETH\/SOL\/XRP",
+              "type" : "kpi_mosaic",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Live 24h Ticker"
+    },
+    {
+      "id" : "row_ce2cb6bdc82e433fab6d723f6955f20d",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_tiles",
+              "viz_ids" : [
+                "viz_216bfdfecb9b4a6085027fb4028d97bd"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6079a70a0a4a4f24bcef8fafdbb7d760",
+          "layout" : {
+            "absolute_h" : 312,
+            "absolute_w" : 480,
+            "absolute_x" : 792,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AA95B043-CA4F-45BE-B127-566128F27B0E",
+                        "kind" : "pricetile",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "price-tile",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "C"
+                        ],
+                        "x",
+                        [
+                          "A"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Last Price"
+              },
+              "data_source_ref" : "ds_a041cb3279184c6cabdbf05dd3de9025",
+              "id" : "viz_216bfdfecb9b4a6085027fb4028d97bd",
+              "layer" : 1,
+              "options" : {
+                "big_price" : "true",
+                "price_field" : "c",
+                "symbol_field" : "s"
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Prices"
+    }
+  ]
+}

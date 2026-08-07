@@ -1,0 +1,99 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_18d7a1a076884b9b8f51ecd1f595d1d2",
+      "query" : {
+        "name" : "Per-Wiki Activity",
+        "refresh_seconds" : 20,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_3b2b21cde6c340348fb00cd01261590f"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5de3229eff254bbbadea2ffcc70913bd",
+      "query" : {
+        "name" : "Recent Events",
+        "refresh_seconds" : 20,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_54ac31175c984b8ca5821bc2ad9126e1"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Provider-free live Wikimedia events via Federated SQL over the virtual catalog.",
+  "id" : "dash_ee93fb197579489abbccf2932e7edf78",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Wikimedia Events (FedSQL)",
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_87eb924f5ca3477eaa444594a26fc299",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6299def08976457a8aed8b5e54e407f8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4f6c5155a1834c1da50d5862522ff0be",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_18d7a1a076884b9b8f51ecd1f595d1d2",
+              "id" : "viz_6299def08976457a8aed8b5e54e407f8",
+              "layer" : 1,
+              "options" : {
+                "title" : "Per-Wiki Activity (live FedSQL)"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f0e13507a9b1428ba34602129d2a3515"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d9c6f3e43aee460fa7c85777f6dcc679",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5de3229eff254bbbadea2ffcc70913bd",
+              "id" : "viz_f0e13507a9b1428ba34602129d2a3515",
+              "layer" : 1,
+              "options" : {
+                "title" : "Recent Events (live FedSQL)"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

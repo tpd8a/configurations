@@ -1,0 +1,97 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c7715b34a24d4bf2a55e3b1310c0ac44",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "new_row_5_wrap_true",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_* OR index=* | stats count count(eval(match(_raw,\"INFO\"))) as info  count(eval(match(_raw,\"ERROR\"))) as error count(eval(match(_raw,\"WARN\"))) as warn mode(_raw) as test by  host source\n|  head 10 | eval _time=now()\n|  timechart count by source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Check2",
+  "id" : "dash_d2b08792d96f44e4b9dc9005a4c6f3c4",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Another DB WRAP TRUE 5 minute refresh",
+  "provenance" : {
+    "imported_at" : "2026-04-19T06:44:37Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+    "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+    "intelligence",
+    "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673"
+  ],
+  "rows" : [
+    {
+      "id" : "row_15bbaba1304c4710b224a09c78aad589",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ae9e69808e9f40feb114ea9d2fd5dc4c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c22452a3f63d47a49760929eaf444380",
+          "layout" : {
+            "height" : 491.808594,
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows: new_row_5_wrap_true",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "new_row_5_wrap_true"
+              },
+              "data_source_ref" : "ds_c7715b34a24d4bf2a55e3b1310c0ac44",
+              "id" : "viz_ae9e69808e9f40feb114ea9d2fd5dc4c",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "refresh.display" : "progressbar",
+                "rowNumbers" : "false",
+                "totalsRow" : "false",
+                "wrap" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

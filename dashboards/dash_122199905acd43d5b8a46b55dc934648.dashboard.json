@@ -1,0 +1,867 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "connector_stream" : "ds_query_labels",
+      "id" : "ds_4e17f93417ec412a9d6f2e0d5fcca0f3",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Variable: Job",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "labelName" : "job"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query_labels",
+      "id" : "ds_b6fcc01445f64da7818d715b911eb956",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Variable: Nodename",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "labelName" : "nodename"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query_labels",
+      "id" : "ds_8553b2114cba4608865a022ab47aa6ce",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Variable: Instance",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "labelName" : "instance"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_4ce46097e3104e6198c841fd63da7ac7",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Pressure",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "irate(node_pressure_cpu_waiting_seconds_total{instance=\"$node$\",job=\"$job$\"}[5m])",
+            "from" : "$time.from_ms$",
+            "legendFormat" : "CPU",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"irate(node_pressure_cpu_waiting_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[5m])\",\"format\":\"time_series\",\"instant\":true,\"legendFormat\":\"CPU\",\"range\":false,\"refId\":\"A\"},{\"exemplar\":false,\"expr\":\"irate(node_pressure_memory_waiting_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[5m])\",\"format\":\"time_series\",\"instant\":true,\"legendFormat\":\"Mem\",\"range\":false,\"refId\":\"B\"},{\"exemplar\":false,\"expr\":\"irate(node_pressure_io_waiting_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[5m])\",\"format\":\"time_series\",\"instant\":true,\"legendFormat\":\"I\\\/O\",\"range\":false,\"refId\":\"C\"},{\"exemplar\":false,\"expr\":\"irate(node_pressure_irq_stalled_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[5m])\",\"format\":\"time_series\",\"instant\":true,\"legendFormat\":\"Irq\",\"range\":false,\"refId\":\"D\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_c560ffc3a122485aac80c95062914093",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "CPU Busy",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "100 * (1 - avg(rate(node_cpu_seconds_total{mode=\"idle\", instance=\"$node$\"}[5m])))",
+            "from" : "$time.from_ms$",
+            "legendFormat" : "",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"100 * (1 - avg(rate(node_cpu_seconds_total{mode=\\\"idle\\\", instance=\\\"$node$\\\"}[5m])))\",\"instant\":true,\"legendFormat\":\"\",\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_a89914c903d8409092acbb447f33bcc7",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Sys Load",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "scalar(node_load1{instance=\"$node$\",job=\"$job$\"}) * 100 \/ count(count(node_cpu_seconds_total{instance=\"$node$\",job=\"$job$\"}) by (cpu))",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"scalar(node_load1{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) * 100 \\\/ count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu))\",\"format\":\"time_series\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_dc7ec170242448b288b12526e55dea22",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "RAM Used",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "clamp_min((1 - (node_memory_MemAvailable_bytes{instance=\"$node$\", job=\"$job$\"} \/ node_memory_MemTotal_bytes{instance=\"$node$\", job=\"$job$\"})) * 100, 0)",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"clamp_min((1 - (node_memory_MemAvailable_bytes{instance=\\\"$node$\\\", job=\\\"$job$\\\"} \\\/ node_memory_MemTotal_bytes{instance=\\\"$node$\\\", job=\\\"$job$\\\"})) * 100, 0)\",\"format\":\"time_series\",\"instant\":true,\"range\":false,\"refId\":\"B\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_a6cc3b0efccf4a01b25008377f0dade4",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "SWAP Used",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "((node_memory_SwapTotal_bytes{instance=\"$node$\",job=\"$job$\"} - node_memory_SwapFree_bytes{instance=\"$node$\",job=\"$job$\"}) \/ (node_memory_SwapTotal_bytes{instance=\"$node$\",job=\"$job$\"})) * 100",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"((node_memory_SwapTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} - node_memory_SwapFree_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) \\\/ (node_memory_SwapTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"})) * 100\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_58caa01c3a82433cae59295387848a9c",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Root FS Used",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "(\n  (node_filesystem_size_bytes{instance=\"$node$\", job=\"$job$\", mountpoint=\"\/\", fstype!=\"rootfs\"}\n   - node_filesystem_avail_bytes{instance=\"$node$\", job=\"$job$\", mountpoint=\"\/\", fstype!=\"rootfs\"})\n  \/ node_filesystem_size_bytes{instance=\"$node$\", job=\"$job$\", mountpoint=\"\/\", fstype!=\"rootfs\"}\n) * 100\n",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"(\\n  (node_filesystem_size_bytes{instance=\\\"$node$\\\", job=\\\"$job$\\\", mountpoint=\\\"\\\/\\\", fstype!=\\\"rootfs\\\"}\\n   - node_filesystem_avail_bytes{instance=\\\"$node$\\\", job=\\\"$job$\\\", mountpoint=\\\"\\\/\\\", fstype!=\\\"rootfs\\\"})\\n  \\\/ node_filesystem_size_bytes{instance=\\\"$node$\\\", job=\\\"$job$\\\", mountpoint=\\\"\\\/\\\", fstype!=\\\"rootfs\\\"}\\n) * 100\\n\",\"format\":\"time_series\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_74e36e4d82244f2c84e64a73191a1fd2",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "CPU Cores",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "count(count(node_cpu_seconds_total{instance=\"$node$\",job=\"$job$\"}) by (cpu))",
+            "from" : "$time.from_ms$",
+            "legendFormat" : "__auto",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu))\",\"instant\":true,\"legendFormat\":\"__auto\",\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_b0732f4deaea4c1583c11b004c6defd2",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "RAM Total",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "node_memory_MemTotal_bytes{instance=\"$node$\",job=\"$job$\"}",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"node_memory_MemTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_f7ede45d2907407588cf76150edb18d3",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "SWAP Total",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "node_memory_SwapTotal_bytes{instance=\"$node$\",job=\"$job$\"}",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"node_memory_SwapTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_6ea8db45b21549e689ff3a39a03ebe13",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "RootFS Total",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "node_filesystem_size_bytes{instance=\"$node$\",job=\"$job$\",mountpoint=\"\/\",fstype!=\"rootfs\"}",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"node_filesystem_size_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\",mountpoint=\\\"\\\/\\\",fstype!=\\\"rootfs\\\"}\",\"format\":\"time_series\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_a59b56f5f7d54193829455c1a06f9908",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Uptime",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "node_time_seconds{instance=\"$node$\",job=\"$job$\"} - node_boot_time_seconds{instance=\"$node$\",job=\"$job$\"}",
+            "from" : "$time.from_ms$",
+            "reduction" : "lastNotNull",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"node_time_seconds{instance=\\\"$node$\\\",job=\\\"$job$\\\"} - node_boot_time_seconds{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"instant\":true,\"range\":false,\"refId\":\"A\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_1e2de2db51f84142924697ee20d0d755",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "CPU Basic",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "sum(irate(node_cpu_seconds_total{instance=\"$node$\",job=\"$job$\", mode=\"system\"}[5m])) \/ scalar(count(count(node_cpu_seconds_total{instance=\"$node$\",job=\"$job$\"}) by (cpu)))",
+            "from" : "$time.from_ms$",
+            "legendFormat" : "Busy System",
+            "targetsJson" : "[{\"exemplar\":false,\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\", mode=\\\"system\\\"}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"instant\":false,\"legendFormat\":\"Busy System\",\"range\":true,\"refId\":\"A\"},{\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\", mode=\\\"user\\\"}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"legendFormat\":\"Busy User\",\"range\":true,\"refId\":\"B\"},{\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\", mode=\\\"iowait\\\"}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"legendFormat\":\"Busy Iowait\",\"range\":true,\"refId\":\"C\"},{\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\", mode=~\\\".*irq\\\"}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"legendFormat\":\"Busy IRQs\",\"range\":true,\"refId\":\"D\"},{\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\",  mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"legendFormat\":\"Busy Other\",\"range\":true,\"refId\":\"E\"},{\"expr\":\"sum(irate(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\", mode=\\\"idle\\\"}[5m])) \\\/ scalar(count(count(node_cpu_seconds_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}) by (cpu)))\",\"format\":\"time_series\",\"legendFormat\":\"Idle\",\"range\":true,\"refId\":\"F\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "connector_stream" : "ds_query",
+      "id" : "ds_52f806370c8d4955bcbf29b456fd1801",
+      "provider_ref" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+      "query" : {
+        "name" : "Memory Basic",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dataFormat" : "time_series",
+            "dsType" : "prometheus",
+            "dsUid" : "bfeajhnfoxlogf",
+            "expr" : "node_memory_MemTotal_bytes{instance=\"$node$\",job=\"$job$\"}",
+            "from" : "$time.from_ms$",
+            "legendFormat" : "Total",
+            "targetsJson" : "[{\"expr\":\"node_memory_MemTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"format\":\"time_series\",\"legendFormat\":\"Total\",\"range\":true,\"refId\":\"A\"},{\"expr\":\"node_memory_MemTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} - node_memory_MemFree_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} - (node_memory_Cached_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} + node_memory_Buffers_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} + node_memory_SReclaimable_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"})\",\"format\":\"time_series\",\"legendFormat\":\"Used\",\"range\":true,\"refId\":\"B\"},{\"expr\":\"node_memory_Cached_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} + node_memory_Buffers_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} + node_memory_SReclaimable_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"format\":\"time_series\",\"legendFormat\":\"Cache + Buffer\",\"range\":true,\"refId\":\"C\"},{\"expr\":\"node_memory_MemFree_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"}\",\"format\":\"time_series\",\"legendFormat\":\"Free\",\"range\":true,\"refId\":\"D\"},{\"expr\":\"(node_memory_SwapTotal_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"} - node_memory_SwapFree_bytes{instance=\\\"$node$\\\",job=\\\"$job$\\\"})\",\"format\":\"time_series\",\"legendFormat\":\"Swap used\",\"range\":true,\"refId\":\"E\"}]",
+            "to" : "$time.to_ms$"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_122199905acd43d5b8a46b55dc934648",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "var_job",
+          "field_for_label" : "value",
+          "field_for_value" : "value"
+        },
+        "default" : "node",
+        "display_location" : "top",
+        "initial_value" : "node",
+        "label" : "Job",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_2dab90ef706746d6a553464edd30ee9a",
+      "token" : "job"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "var_nodename",
+          "field_for_label" : "value",
+          "field_for_value" : "value"
+        },
+        "default" : "pop-os",
+        "display_location" : "top",
+        "initial_value" : "pop-os",
+        "label" : "Nodename",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_346753a9e2794767a86f63d58cda06cb",
+      "token" : "nodename"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "var_node",
+          "field_for_label" : "value",
+          "field_for_value" : "value"
+        },
+        "default" : "localhost:9100",
+        "display_location" : "top",
+        "initial_value" : "localhost:9100",
+        "label" : "Instance",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_4b87d4d203614ea5ae68ac74235ec393",
+      "token" : "node"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time Range",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-6h",
+          "default_latest" : "now"
+        },
+        "type" : "time"
+      },
+      "id" : "input_69a96f4b7652450bbd12927e6e608061",
+      "token" : "time"
+    },
+    {
+      "config" : {
+        "default" : "5m",
+        "display_location" : "top",
+        "initial_value" : "5m",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_028b2c93580c4d5f81edd88d7b4b2bea",
+      "token" : "__rate_interval"
+    },
+    {
+      "config" : {
+        "default" : "1m",
+        "display_location" : "top",
+        "initial_value" : "1m",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_9347be03a207412a984dedf061b37d29",
+      "token" : "__interval"
+    },
+    {
+      "config" : {
+        "default" : "60000",
+        "display_location" : "top",
+        "initial_value" : "60000",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_8c28ea81208947479dcc6cfae631aed2",
+      "token" : "__interval_ms"
+    },
+    {
+      "config" : {
+        "default" : "86400",
+        "display_location" : "top",
+        "initial_value" : "86400",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_87651344fc8645609b92c47bb03574bf",
+      "token" : "__range"
+    },
+    {
+      "config" : {
+        "default" : "86400",
+        "display_location" : "top",
+        "initial_value" : "86400",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_2b688749d93045d0a3ac844914680623",
+      "token" : "__range_s"
+    },
+    {
+      "config" : {
+        "default" : "86400000",
+        "display_location" : "top",
+        "initial_value" : "86400000",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "hidden"
+      },
+      "id" : "input_0aae0bf3394b4dd5a4ee2e6243f015fc",
+      "token" : "__range_ms"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Single test",
+  "provenance" : {
+    "imported_at" : "2026-06-29T06:31:25Z",
+    "importer_version" : "2.0",
+    "origin_dashboard" : "adtnjgk",
+    "original_format" : "grafana_json",
+    "source" : "grafana"
+  },
+  "provider_refs" : [
+    "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8"
+  ],
+  "rows" : [
+    {
+      "id" : "row_08e4044fe832425ab9ad967ad1ad8ca4",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "panel_0_0_col_0",
+              "viz_ids" : [
+                "viz_ee79c9c64fb24a6ead2632b6f9ef867c",
+                "viz_64b0446e5b184b5389420a12fb7e8dd2",
+                "viz_a490e3d5996f4e9bbeaf0d6be98683b9"
+              ],
+              "width" : 3
+            },
+            {
+              "id" : "panel_0_0_col_1",
+              "viz_ids" : [
+                "viz_f02e7e9d46b84e73a80323dd5aa89310",
+                "viz_7123e8a04a444b3f91ec23c77cd73795"
+              ],
+              "width" : 3
+            }
+          ],
+          "description" : "Resource pressure via PSI",
+          "id" : "panel_e1bec3568bfc4a3db05fdf4852d25cfd",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Pressure"
+              },
+              "data_source_ref" : "ds_4ce46097e3104e6198c841fd63da7ac7",
+              "id" : "viz_ee79c9c64fb24a6ead2632b6f9ef867c",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "linear",
+                "max" : "1.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:green,70.0:dark-yellow,90.0:dark-red",
+                "thresholds_mode" : "percentage",
+                "unit" : "percentunit",
+                "value_scale" : "100"
+              },
+              "type" : "gauge",
+              "width" : 3
+            },
+            {
+              "config" : {
+                "title" : "CPU Busy"
+              },
+              "data_source_ref" : "ds_c560ffc3a122485aac80c95062914093",
+              "id" : "viz_64b0446e5b184b5389420a12fb7e8dd2",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,85.0:#ED8128,95.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "percent"
+              },
+              "type" : "gauge",
+              "width" : 3
+            },
+            {
+              "config" : {
+                "title" : "CPU Basic"
+              },
+              "data_source_ref" : "ds_1e2de2db51f84142924697ee20d0d755",
+              "id" : "viz_a490e3d5996f4e9bbeaf0d6be98683b9",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "line",
+                "draw_style" : "line",
+                "fill_opacity" : "40.0",
+                "gradient_mode" : "none",
+                "line_interpolation" : "smooth",
+                "line_width" : "1.0",
+                "min" : "0.0",
+                "overrides" : "[{\"matcher\":{\"id\":\"byName\",\"options\":\"Busy Iowait\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#890F02\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Idle\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#052B51\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Busy System\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#EAB839\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Busy User\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#0A437C\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Busy Other\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#6D1F62\",\"mode\":\"fixed\"}}]}]",
+                "show_points" : "never",
+                "span_nulls" : "0.0",
+                "stacking_mode" : "percent",
+                "thresholds" : "0.0:green",
+                "thresholds_mode" : "absolute",
+                "unit" : "percentunit",
+                "value_scale" : "100"
+              },
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : "Sys Load"
+              },
+              "data_source_ref" : "ds_a89914c903d8409092acbb447f33bcc7",
+              "id" : "viz_f02e7e9d46b84e73a80323dd5aa89310",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,85.0:#ED8128,95.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "percent"
+              },
+              "type" : "gauge",
+              "width" : 3
+            },
+            {
+              "config" : {
+                "title" : "RAM Used"
+              },
+              "data_source_ref" : "ds_dc7ec170242448b288b12526e55dea22",
+              "id" : "viz_7123e8a04a444b3f91ec23c77cd73795",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,80.0:#ED8128,90.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "percent"
+              },
+              "type" : "gauge",
+              "width" : 3
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "panel_0_1_col_0",
+              "viz_ids" : [
+                "viz_5b93b90c4778483f83869bd159df630f",
+                "viz_ae1d020c365e442abeee99dae45c1ee8",
+                "viz_bd26fb568dfa4f819b53318fceb43680",
+                "viz_ca2d4dce58f740dba9352bcb83ce97e8",
+                "viz_e273c13dbe494ff18614ccfa708bca6c"
+              ],
+              "width" : 4
+            },
+            {
+              "id" : "panel_0_1_col_1",
+              "viz_ids" : [
+                "viz_7530eec309834a8d97e86253932802d5",
+                "viz_d2d4ea6ac3334492a6a9352f25f2915c",
+                "viz_0177bd2e339047feb7f4bb984b898eaa"
+              ],
+              "width" : 2
+            }
+          ],
+          "description" : "Percentage of swap space currently used by the system",
+          "id" : "panel_8ac3add9a21b42fbb6a4bf836a5dce49",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "SWAP Used"
+              },
+              "data_source_ref" : "ds_a6cc3b0efccf4a01b25008377f0dade4",
+              "id" : "viz_5b93b90c4778483f83869bd159df630f",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,10.0:#ED8128,25.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "percent"
+              },
+              "type" : "gauge",
+              "width" : 3
+            },
+            {
+              "config" : {
+                "title" : "Root FS Used"
+              },
+              "data_source_ref" : "ds_58caa01c3a82433cae59295387848a9c",
+              "id" : "viz_ae1d020c365e442abeee99dae45c1ee8",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100.0",
+                "min" : "0.0",
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,80.0:#ED8128,90.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "percent"
+              },
+              "type" : "gauge",
+              "width" : 3
+            },
+            {
+              "config" : {
+                "title" : "CPU Cores"
+              },
+              "data_source_ref" : "ds_74e36e4d82244f2c84e64a73191a1fd2",
+              "id" : "viz_bd26fb568dfa4f819b53318fceb43680",
+              "layer" : 1,
+              "options" : {
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:green",
+                "thresholds_mode" : "absolute"
+              },
+              "type" : "single_value",
+              "width" : 2
+            },
+            {
+              "config" : {
+                "title" : "RootFS Total"
+              },
+              "data_source_ref" : "ds_6ea8db45b21549e689ff3a39a03ebe13",
+              "id" : "viz_ca2d4dce58f740dba9352bcb83ce97e8",
+              "layer" : 1,
+              "options" : {
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:#32AC2D,70.0:#ED8128,90.0:#F53636",
+                "thresholds_mode" : "absolute",
+                "unit" : "bytes"
+              },
+              "type" : "single_value",
+              "width" : 2
+            },
+            {
+              "config" : {
+                "title" : "Memory Basic"
+              },
+              "data_source_ref" : "ds_52f806370c8d4955bcbf29b456fd1801",
+              "id" : "viz_e273c13dbe494ff18614ccfa708bca6c",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "line",
+                "draw_style" : "line",
+                "fill_opacity" : "40.0",
+                "gradient_mode" : "none",
+                "line_interpolation" : "linear",
+                "line_width" : "1.0",
+                "min" : "0.0",
+                "overrides" : "[{\"matcher\":{\"id\":\"byName\",\"options\":\"Swap used\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#BF1B00\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Total\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#E0F9D7\",\"mode\":\"fixed\"}},{\"id\":\"custom.fillOpacity\",\"value\":0},{\"id\":\"custom.stacking\",\"value\":{\"group\":false,\"mode\":\"normal\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Cache + Buffer\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#052B51\",\"mode\":\"fixed\"}}]},{\"matcher\":{\"id\":\"byName\",\"options\":\"Free\"},\"properties\":[{\"id\":\"color\",\"value\":{\"fixedColor\":\"#7EB26D\",\"mode\":\"fixed\"}}]}]",
+                "show_points" : "never",
+                "span_nulls" : "0.0",
+                "stacking_mode" : "normal",
+                "thresholds" : "0.0:green",
+                "thresholds_mode" : "absolute",
+                "unit" : "bytes"
+              },
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : "RAM Total"
+              },
+              "data_source_ref" : "ds_b0732f4deaea4c1583c11b004c6defd2",
+              "id" : "viz_7530eec309834a8d97e86253932802d5",
+              "layer" : 1,
+              "options" : {
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:green,80.0:red",
+                "thresholds_mode" : "absolute",
+                "unit" : "bytes"
+              },
+              "type" : "single_value",
+              "width" : 2
+            },
+            {
+              "config" : {
+                "title" : "SWAP Total"
+              },
+              "data_source_ref" : "ds_f7ede45d2907407588cf76150edb18d3",
+              "id" : "viz_d2d4ea6ac3334492a6a9352f25f2915c",
+              "layer" : 1,
+              "options" : {
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:green,80.0:red",
+                "thresholds_mode" : "absolute",
+                "unit" : "bytes"
+              },
+              "type" : "single_value",
+              "width" : 2
+            },
+            {
+              "config" : {
+                "title" : "Uptime"
+              },
+              "data_source_ref" : "ds_a59b56f5f7d54193829455c1a06f9908",
+              "id" : "viz_0177bd2e339047feb7f4bb984b898eaa",
+              "layer" : 1,
+              "options" : {
+                "reduction" : "lastNotNull",
+                "thresholds" : "0.0:green,80.0:red",
+                "thresholds_mode" : "absolute",
+                "unit" : "s"
+              },
+              "type" : "single_value",
+              "width" : 4
+            }
+          ]
+        }
+      ],
+      "title" : "Quick CPU \/ Mem \/ Disk"
+    }
+  ]
+}

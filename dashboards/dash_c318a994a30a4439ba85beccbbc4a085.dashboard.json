@@ -1,0 +1,78 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_13dfe1d8b90a43a2973d6d564fcf1cb6",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_4D253BE4",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "end" : "now",
+            "query" : "node_load5",
+            "start" : "-1w",
+            "step" : "60"
+          },
+          "path" : "\/api\/v1\/query_range"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "test",
+  "id" : "dash_c318a994a30a4439ba85beccbbc4a085",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Peter",
+  "polling_interval_seconds" : 60,
+  "provenance" : {
+    "imported_at" : "2026-05-17T18:20:19Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_54fa7d4cc6764c7c90cebfff666dd321",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3da8b7bafe744d189598f19b829f3965"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c02c23c3b4ca405a865497203aed2f48",
+          "layout" : {
+            "height" : 500,
+            "panel_width" : 12
+          },
+          "title" : "test",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_13dfe1d8b90a43a2973d6d564fcf1cb6",
+              "id" : "viz_3da8b7bafe744d189598f19b829f3965",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "area",
+                "fields" : "timestamp,__name__,value",
+                "fill_opacity" : "50"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

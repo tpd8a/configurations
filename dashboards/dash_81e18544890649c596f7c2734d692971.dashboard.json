@@ -1,0 +1,1331 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_4D11C6B6",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "tql" : "parsetime timestamp seconds"
+          },
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "saved_search_name" : "local_saved_search"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_9886DC55",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Downloads\/splunk_local.csv",
+            "tql" : "parsetime timestamp seconds"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_81e18544890649c596f7c2734d692971",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Splunk.vs.Local",
+  "provenance" : {
+    "imported_at" : "2026-07-17T11:43:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_69aee4256ade44c4b3b28d82bddd4bbf",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4d952e8f78b44520a3ba83610bf1fba6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ac31ce6b05c34a108ae4c6ca838cc1d1",
+          "layout" : {
+            "height" : 260,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "5EE6A68F-6ABF-4ACE-86F0-A184623AD45F",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "multi-line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "timestamp"
+                        ],
+                        "group",
+                        [
+                          "index"
+                        ],
+                        "y",
+                        [
+                          "errors"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk SavedSearch"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_4d952e8f78b44520a3ba83610bf1fba6",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b30164a500e8467190963b8a973c87b6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_00755987652e4b8d95a815f83563ab9e",
+          "layout" : {
+            "height" : 260,
+            "panel_width" : 6
+          },
+          "title" : "Local CSV",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_b30164a500e8467190963b8a973c87b6",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Table Format"
+    },
+    {
+      "id" : "row_7079372f2e7f411dbf8bc4f1e06b8861",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e9c6b357f22646d78cac909e5912f009"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b33aec43ddef4016870cafd237cf157e",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Splunk · line by caller",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_line_caller",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "timestamp",
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk · events by caller"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_e9c6b357f22646d78cac909e5912f009",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\"}",
+                "fields" : "timestamp,events,caller"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8ab2f83ccfb94751a9c113bbf7af95a6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6ad25b4f985e4296a8590a26c2b6d240",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Local · line by caller",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_line_caller",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "timestamp",
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Local · events by caller"
+              },
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_8ab2f83ccfb94751a9c113bbf7af95a6",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\"}",
+                "fields" : "timestamp,events,caller"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Line — events over time, by caller (dimension)"
+    },
+    {
+      "id" : "row_65e5164ff61146dba1254ed1107ad843",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e3655002e8924199bc891dd7330b0c9e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_becd78e1ef644b719c4c4bcb973b1df4",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Splunk column by caller",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_column_caller",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "timestamp",
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk · events by caller (column)"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_e3655002e8924199bc891dd7330b0c9e",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\"}",
+                "fields" : "timestamp,events,caller"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ae5297c499a141949b8cb1b03cf88a81"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8c6b1b8af9d64a489293151a773cfd3b",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Local · column by caller",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_column_caller",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "timestamp",
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Local · events by caller (column)"
+              },
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_ae5297c499a141949b8cb1b03cf88a81",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\"}",
+                "fields" : "timestamp,events,caller"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Column — events over time, by caller (dimension)"
+    },
+    {
+      "id" : "row_eb02031eb00146e7903f67fe96f28b80",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_bef1804af7f442918fab99b09cfef058"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f5d027218b5c48a1a19e93343ecc2855",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Splunk line by caller+index",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller",
+                  "index"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_line_caller_index",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "timestamp",
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk events by caller + index"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_bef1804af7f442918fab99b09cfef058",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\", \"index\": \"dimension\"}",
+                "fields" : "timestamp,events,caller,index"
+              },
+              "title" : "Splunk events by caller + index",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ca679078dfcb4b9fa4b8ccc73ebbf0fb"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_fa07efc921aa48c8a47626d15eaf6733",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Local · line by caller+index",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller",
+                  "index"
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_line_caller_index",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "multi-line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "group",
+                        [
+                          "caller"
+                        ],
+                        "x",
+                        [
+                          "timestamp"
+                        ],
+                        "y",
+                        [
+                          "events",
+                          "errors"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+                    "x",
+                    [
+                      "timestamp"
+                    ],
+                    "y",
+                    [
+                      "events"
+                    ],
+                    "group",
+                    [
+                      "caller",
+                      "index"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "timeField" : "timestamp",
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Local · events by caller + index"
+              },
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_ca679078dfcb4b9fa4b8ccc73ebbf0fb",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"timestamp\": \"time\", \"events\": \"series\", \"caller\": \"dimension\", \"index\": \"dimension\"}",
+                "fields" : "timestamp,events,caller,index"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Line — events over time, by caller + index (composite dimension)"
+    },
+    {
+      "id" : "row_0cd76ebcfdd14dc7b161cc05a50e7e91",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0ba52001d0644c07b3d82e325e52374d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c35fc4cd088347ddb1b65f4a7ac75008",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Splunk · column by caller (no time)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_dim_caller",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk · column by caller (no time)"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_0ba52001d0644c07b3d82e325e52374d",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"caller\": \"dimension\", \"events\": \"series\"}",
+                "fields" : "caller,events"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_923a908f4159419eb75f09076da4ee32"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a8a3da1d5918468eb786d5b365304fe1",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Local · column by caller (no time)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_dim_caller",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Local · column by caller (no time)"
+              },
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_923a908f4159419eb75f09076da4ee32",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"caller\": \"dimension\", \"events\": \"series\"}",
+                "fields" : "caller,events"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Column — events by caller (dimension on X, no time)"
+    },
+    {
+      "id" : "row_f8bcd6d7fdb446aead1a1162c2e30d0b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_24ef89bb6c474272a5fa422d46d9f3e1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a3bc476620c5450184d972748cf362d5",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Splunk · column by caller × index (no time)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller",
+                  "index"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_dim_ci",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Splunk · column by caller × index (no time)"
+              },
+              "data_source_ref" : "ds_1a4a2359bdac4f218b46ee3447f892ee",
+              "id" : "viz_24ef89bb6c474272a5fa422d46d9f3e1",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"caller\": \"dimension\", \"index\": \"dimension\", \"events\": \"series\"}",
+                "fields" : "caller,index,events"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_da80fcb8916f40ccb1e9cdd337dd1c81"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_af96521aaeaa4a92aad182b11f480c4d",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "title" : "Local · column by caller × index (no time)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+                  "caller",
+                  "index"
+                ],
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "mark_dim_ci",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Local · column by caller × index (no time)"
+              },
+              "data_source_ref" : "ds_d48e38c2ef1f41268bed99ffb17760a2",
+              "id" : "viz_da80fcb8916f40ccb1e9cdd337dd1c81",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"caller\": \"dimension\", \"index\": \"dimension\", \"events\": \"series\"}",
+                "fields" : "caller,index,events"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Column — events by caller × index (composite dimension, no time)"
+    }
+  ]
+}

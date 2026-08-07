@@ -1,0 +1,50 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+
+  ],
+  "description" : "Test: SQL panel reading the live binance_spot.ws_ticker retained window (sub-project 2).",
+  "id" : "dash_91e9157ca3074ec085579948d778d2ac",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Live Window SQL Test",
+  "polling_interval_seconds" : 5,
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_12c1f2965876460caa3b2e619494747b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c66883816e17415ab2e89e0bfcbf7c00"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e526ce2898fb4e7f8de342d0fb1a5bc5",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "BTC live window (SQL over WS)",
+          "visualizations" : [
+            {
+              "id" : "viz_c66883816e17415ab2e89e0bfcbf7c00",
+              "layer" : 1,
+              "sql_composition" : "SELECT * FROM binance_spot.ws_ticker WHERE symbols = 'BTCUSDT' LIMIT 20",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

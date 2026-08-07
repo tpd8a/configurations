@@ -1,0 +1,365 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c86def2e5a75418aa23c91d0b19916d6",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Solar Nucleus",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "wiki_solar_nucleus.csv"
+          }
+        },
+        "refresh_seconds" : 30,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_c21a5bb34e9741ff8ac3dccf89574eb2",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Solar Ring",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "wiki_solar_ring.csv"
+          }
+        },
+        "refresh_seconds" : 30,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_fafc2c269d8446198ae6f2b3f9473abe",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_52231A43",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/wiki_activity.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_eed2ea338c224d65806ddfa8aedfeeda",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_C1C41EA9",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/wiki_solar_ring.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_e27e554e9d79491f81cad8984db1e29a",
+      "query" : {
+        "name" : "ds_29EBB7D9",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_68c32df4bb4e44909ef7d4fb0b257f4d",
+      "query" : {
+        "name" : "Nucleus (FedSQL)",
+        "refresh_seconds" : 20,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_2004f2ea57b84ce9901a414b0dac22d2"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c023bb735e1f476d83358017a345504e",
+      "query" : {
+        "name" : "Ring (FedSQL)",
+        "refresh_seconds" : 20,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_5713186250b643789594cb8c1e1eedb7"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_52298e7ddaf5424bbd052559c82cd39f",
+  "inputs" : [
+
+  ],
+  "landscape" : {
+    "canvas" : {
+      "background" : {
+        "color" : "#0a0e1a"
+      },
+      "height" : 1080,
+      "width" : 1920
+    },
+    "hud" : [
+      {
+        "position" : "top_center",
+        "text" : "Wiki Solar — one system",
+        "type" : "label"
+      }
+    ],
+    "name" : "Wiki Solar — one system",
+    "spriteBindings" : [
+      {
+        "datasourceId" : "ds_c86def2e5a75418aa23c91d0b19916d6",
+        "entityField" : "wiki",
+        "h" : 101.7417807579041,
+        "id" : "nucleus",
+        "placement" : "grid",
+        "properties" : {
+          "color" : {
+            "value" : "#4FC3F7"
+          },
+          "label" : {
+            "field" : "label"
+          },
+          "scale" : {
+            "field" : "edits",
+            "inputRange" : [
+              0,
+              500
+            ],
+            "range" : [
+              0.8,
+              1.8
+            ]
+          }
+        },
+        "region" : {
+          "height" : 900,
+          "width" : 1700,
+          "x" : 100,
+          "y" : 100
+        },
+        "spriteType" : "sf:cylinder.split.1x2.fill",
+        "w" : 113.0914993286133
+      },
+      {
+        "datasourceId" : "ds_c21a5bb34e9741ff8ac3dccf89574eb2",
+        "entityField" : "label",
+        "id" : "ring",
+        "placement" : "circular",
+        "properties" : {
+          "color" : {
+            "field" : "is_bot",
+            "map" : {
+              "0" : "#4FC3F7",
+              "1" : "#7C4DFF"
+            }
+          },
+          "label" : {
+            "field" : "label"
+          },
+          "scale" : {
+            "field" : "edits",
+            "inputRange" : [
+              0,
+              60
+            ],
+            "range" : [
+              0.7,
+              1.8
+            ]
+          }
+        },
+        "region" : {
+          "height" : 600,
+          "width" : 800,
+          "x" : 560,
+          "y" : 240
+        },
+        "spriteType" : "sf:circle.fill"
+      }
+    ]
+  },
+  "layout_type" : "bootstrap",
+  "name" : "Wiki Solar — Duplicate Test",
+  "provenance" : {
+    "imported_at" : "2026-08-01T16:43:55Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_acd1271a51154dde991f3ab19b01c931",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c9884809080148fb9f1c9325b4603ff8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_45d7fde0b3b4411f95386f778295ac51",
+          "layout" : {
+            "height" : 620,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_fafc2c269d8446198ae6f2b3f9473abe",
+              "id" : "viz_c9884809080148fb9f1c9325b4603ff8",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    },
+    {
+      "id" : "row_b30a7aa38b19494ead5a4bd69e947998",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_88cb218acc3e44ad8d5d26de166decff"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d9854b43db28411d83c0c82b8e452a99",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_eed2ea338c224d65806ddfa8aedfeeda",
+              "id" : "viz_88cb218acc3e44ad8d5d26de166decff",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 2"
+    },
+    {
+      "id" : "row_9c9b1011b58c4eeca7b3962815540a8c",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a05237c78af145348535f314a8ee1291"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_50bbb24e373a4dea961506593cce7e7b",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "id" : "viz_a05237c78af145348535f314a8ee1291",
+              "layer" : 1,
+              "sql_composition" : "SELECT wiki, COUNT(*) FROM wikimedia_eventstreams.recentchange GROUP BY wiki",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 3"
+    },
+    {
+      "id" : "row_b6ae31e81bde469db15f5d40f0171174",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4254468273b14c9abb19880801c70aa5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c7142e7d556e4107aa24f22f94ffd593",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "id" : "viz_4254468273b14c9abb19880801c70aa5",
+              "layer" : 1,
+              "options" : {
+                "title" : "Per-Wiki Activity (FedSQL)"
+              },
+              "sql_composition" : "SELECT wiki, COUNT(*) AS changes FROM wikimedia_eventstreams.recentchange GROUP BY wiki ORDER BY changes DESC LIMIT 25",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Per-Wiki Activity (FedSQL)"
+    },
+    {
+      "id" : "row_1421465c16c44fc1a0f5c70205585c36",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_17547382b05b4da29bff5f9b8dce0162"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1d966cf612704591b64feed222484269",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "id" : "viz_17547382b05b4da29bff5f9b8dce0162",
+              "layer" : 1,
+              "options" : {
+                "title" : "Recent Events (FedSQL)"
+              },
+              "sql_composition" : "SELECT wiki, user, bot, type, title, _time FROM wikimedia_eventstreams.recentchange LIMIT 200",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Recent Events (FedSQL)"
+    }
+  ]
+}

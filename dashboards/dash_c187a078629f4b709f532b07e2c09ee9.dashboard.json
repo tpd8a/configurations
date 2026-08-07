@@ -1,0 +1,399 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_4c30d02178b6434a9f584c018f89a2c1",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "base_new",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_* OR index=* | stats count count(eval(match(_raw,\"INFO\"))) as info  count(eval(match(_raw,\"ERROR\"))) as error count(eval(match(_raw,\"WARN\"))) as warn by source host | sort - error |  head 10 | eval _time=now()\n| head 2\n| chart min(_time) as _time sum(count) as count dc(host) by source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_3a2498cc5f7841969068d5861f664581",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "local_saved_search",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "saved_search_name" : "local_saved_search"
+          }
+        },
+        "refresh_seconds" : 600,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_7facc9732531438b906c08df75a1dd3f",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_C122DCCC",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "query" : "go_gc_gogc_percent",
+            "time" : "now"
+          },
+          "path" : "\/api\/v1\/query"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_a72532a5b0974581a1dfdf5e006ea7cb",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_C62057E7",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "query" : "node_uname_info",
+            "time" : "now"
+          },
+          "path" : "\/api\/v1\/query"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_49c79619e48645e1b85b4e7ded994408",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_D1C0F8CD",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "query" : "go_gc_gomemlimit_bytes",
+            "time" : "now"
+          },
+          "path" : "\/api\/v1\/query"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Check2",
+  "id" : "dash_c187a078629f4b709f532b07e2c09ee9",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "Another DB simple",
+  "polling_interval_seconds" : 500,
+  "provenance" : {
+    "imported_at" : "2026-07-07T08:05:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "intelligence",
+    "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+    "C3444D46-CB79-4EB4-9BE5-ED726709828F"
+  ],
+  "rows" : [
+    {
+      "id" : "row_5b37a877b8b14b2c8c7b9982ffffbfa2",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d5dffc5a77c2403ab2187272e84619b2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_15d5cf69358b45d1bab516623e8dc329",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 1200,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 409.808594,
+            "panel_width" : 12
+          },
+          "title" : "Snow Leopards",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : false
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "6BED7366-5477-433C-AF91-20F2F5ED7821",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Panel1FirstViz Column View"
+              },
+              "data_source_ref" : "ds_3a2498cc5f7841969068d5861f664581",
+              "id" : "viz_d5dffc5a77c2403ab2187272e84619b2",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1a3e01ee25f24bc0956da2432ab65a4b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f439717f08244d6d80523d982721a33a",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 504,
+            "absolute_x" : 360,
+            "absolute_y" : 432,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_a72532a5b0974581a1dfdf5e006ea7cb",
+              "id" : "viz_1a3e01ee25f24bc0956da2432ab65a4b",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "area",
+                "fields" : "index,_time,errors,events,caller",
+                "gauge_type" : "fillRadial"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "279615D0-0576-434A-BAB9-9EE4E5E72962",
+              "viz_ids" : [
+                "viz_5e308e2266af423b93df75401f8faa83"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4d04610982f748b093b8dcaf740bdf5b",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 888,
+            "absolute_y" : 432,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_a72532a5b0974581a1dfdf5e006ea7cb",
+              "id" : "viz_5e308e2266af423b93df75401f8faa83",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "area",
+                "fields" : "index,_time,errors,events,caller",
+                "gauge_type" : "fillRadial"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1efbe2a867004d16b83dbcbea6b728c7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bcc1f576a20547119e9c8ff04c7bd799",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 432,
+            "panel_width" : 12
+          },
+          "title" : "Test",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7facc9732531438b906c08df75a1dd3f",
+              "id" : "viz_1efbe2a867004d16b83dbcbea6b728c7",
+              "layer" : 1,
+              "options" : {
+                "fields" : "__name__,instance,job,Value,Timestamp",
+                "show_totals_row" : "true"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : " "
+    }
+  ]
+}

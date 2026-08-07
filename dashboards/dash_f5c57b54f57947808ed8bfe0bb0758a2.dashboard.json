@@ -1,0 +1,295 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_02f90279077d4d91ab344e4162633f3e",
+      "query" : {
+        "name" : "ds_3F16DEEB",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_a8ec554d1e54430d91acd3747eaae7f3",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_26EB191D",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv",
+            "tql" : "ta bollinger(close, 20, 3) as sma20"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_dc9bef56f4ee4e4192661a40e0998796",
+      "query" : {
+        "name" : "fs_perf_summary",
+        "refresh_seconds" : 60,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_3e73650247614a30973c2c690e5b6f9e"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_f5c57b54f57947808ed8bfe0bb0758a2",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Test Test",
+  "provenance" : {
+    "imported_at" : "2026-06-17T07:48:27Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_edd88da7299f467db1f77fe2e2258b3f",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c878e68290534c2a99c7c1e67f31c6dc"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_06fc092b93c540e4a8b506dff7ce8677",
+          "layout" : {
+            "height" : 640,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "5FD08ADD-1425-47F0-8474-F43337FF84C5",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "9913B98E-10F2-4327-BDA9-FDC5B45F78AA",
+                        "kind" : "band",
+                        "optionsJSON" : "eyJ5RW5kQ29sdW1uIjoic21hMjBfdSIsInlTdGFydENvbHVtbiI6InNtYTIwX2wiLCJmaWxsT3BhY2l0eSI6MC4xNX0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "E2628976-E843-4842-985A-C6DA0902AE62",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzaG93UG9pbnRzIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAsInNlcmllc092ZXJyaWRlcyI6eyJzbWEyMF9tIjp7ImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibmVnYXRlIjpmYWxzZSwiaGlkZGVuIjpmYWxzZSwibGluZVN0eWxlIjoiZGFzaGVkIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2V9fSwiZmllbGQiOiJzbWEyMF9tIiwiZmlsbCI6eyJwYWxldHRlIjp7fX19"
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "BAB2FEF1-16B5-4475-85DE-57640543D5E5",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnt9LCJmaWVsZCI6InNtYTIwX3UiLCJmaWxsIjp7InBhbGV0dGUiOnt9fSwic2hvd1BvaW50cyI6ZmFsc2UsImZpbGxPcGFjaXR5IjowfQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "320B1DE8-5396-40A1-A0AD-7B0CEFD096E5",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnt9LCJzaG93UG9pbnRzIjpmYWxzZSwiZmlsbCI6eyJwYWxldHRlIjp7fX0sImZpbGxPcGFjaXR5IjowLCJmaWVsZCI6InNtYTIwX2wifQ=="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_a8ec554d1e54430d91acd3747eaae7f3",
+              "id" : "viz_c878e68290534c2a99c7c1e67f31c6dc",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    },
+    {
+      "id" : "row_220e074ab275487fbe083bbea283e959",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_babce29ae69d4708ad428983b4282a69"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ccfc0cee4d4045ee866f4fc907909bce",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "fs_perf_summary",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_dc9bef56f4ee4e4192661a40e0998796",
+              "id" : "viz_babce29ae69d4708ad428983b4282a69",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

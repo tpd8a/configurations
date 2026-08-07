@@ -1,0 +1,752 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_15bc987cebca4b239258ebfe80525e58",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_1",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_internal | timechart count  span=5m by source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_4002100565f24ad2bd9fc8760ae85dce",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_2",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_internal | timechart count span=5m by source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_d40a6f88a7c74aaba67fce7ca836e79d",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_3",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_internal | timechart count span=5m by source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_d8e1e89d311b458182509b0cf96c1db2",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_4",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=\"_internal\" source=*| stats latest(_time) as _time count count(eval(match(_raw,\"INFO\"))) as info  count(eval(match(_raw,\"ERROR\"))) as error count(eval(match(_raw,\"WARN\"))) as warn by source host | sort - error |  head 100 |  eval _time=now()"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_769e4456fcfd4c57a7001eadc0b4aa8c",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_5",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "| stats count\n| eval count = 66"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_39611af40a1a446bb7638083d9b3d2cf",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_6",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_* \n|  stats count as value by source \n| head 1\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_03e874362d3341ac995f4049fedfb523",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_7",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_* \n|  stats count as value by source \n| head 3\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_e647c4b8b7314b25a512dedf06343423",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_8",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-60m@m",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "namespace" : "search",
+            "owner" : "super"
+          },
+          "splunk_search" : "index=_* \n|  stats count as value by source \n| head 3\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Check2",
+  "id" : "dash_990ab919028a4d50ae24aa1604b53d13",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Another DB new row",
+  "provenance" : {
+    "imported_at" : "2026-07-24T17:43:50Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_31a5b3be0ddc49d4840f8a38d30e7b78",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a775ccb9ecb44a76b8d2964d495e76ad"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ea6909b5d3cc4b43b1d7e91fcc007be0",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/mongod.log" : {
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/mongod.log",
+                    "fillOpacity" : 0.15000000000000002,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "dashed",
+                    "lineWidth" : 4,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "3EA3A76A-3864-4571-AA55-04A3987B1D52",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/mongod.log"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "number of events over  sources coming into the internal index on a 5 minute span"
+              },
+              "data_source_ref" : "ds_15bc987cebca4b239258ebfe80525e58",
+              "id" : "viz_a775ccb9ecb44a76b8d2964d495e76ad",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "area",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.drilldown" : "none",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisEnd",
+                "charting.legend.mode" : "standard",
+                "height" : "425",
+                "legend_position" : "bottom",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stackMode" : "stacked",
+                "stacking_mode" : "normal",
+                "trellis_enabled" : "false",
+                "trellis_size" : "large",
+                "trellis_split_by" : "source"
+              },
+              "title" : "number of events over  sources coming into the internal index on a 5 minute span",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_d4a6d62dfc674aa4b6efc0c15866dbcf",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f17fe0cc6f5b4f6881966464ca056edf"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3d749b24e9044db8b5a5a061824b6558",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_4002100565f24ad2bd9fc8760ae85dce",
+              "id" : "viz_f17fe0cc6f5b4f6881966464ca056edf",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisTitleY2.visibility" : "collapsed",
+                "charting.drilldown" : "none",
+                "height" : "425",
+                "legend_position" : "none",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "false",
+                "show_y_axis_title" : "false",
+                "stacking_mode" : "none",
+                "trellis_enabled" : "true"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8c1dc4043d7c42faa386f4aac811e713"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8d6e5930ab7a40f8bfc200e2f7c26742",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_d40a6f88a7c74aaba67fce7ca836e79d",
+              "id" : "viz_8c1dc4043d7c42faa386f4aac811e713",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.drilldown" : "none",
+                "height" : "425",
+                "legend_position" : "bottom",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_7c26e3b969dc4e13ab502e779b566646",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a85660c637b0453a9e7633411c81c58c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_fd42792e156b4a7e82cbd93f01b70a7b",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Headline",
+          "visualizations" : [
+            {
+              "config" : {
+                "formats" : [
+                  {
+                    "colorPalette" : "[#118832,#1182F3,#CBA700,#D94E17,#D41F1F]",
+                    "colorPalette_colors" : [
+                      "#118832",
+                      "#1182F3",
+                      "#CBA700",
+                      "#D94E17",
+                      "#D41F1F"
+                    ],
+                    "colorPalette_type" : "list",
+                    "field" : "error",
+                    "scale" : "0,30,70,100",
+                    "scale_type" : "threshold",
+                    "scale_values" : [
+                      0,
+                      30,
+                      70,
+                      100
+                    ],
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette" : "[#118832,#1182F3,#CBA700,#D94E17,#D41F1F]",
+                    "colorPalette_colors" : [
+                      "#118832",
+                      "#1182F3",
+                      "#CBA700",
+                      "#D94E17",
+                      "#D41F1F"
+                    ],
+                    "colorPalette_type" : "list",
+                    "field" : "count",
+                    "scale" : "0,30,70,100",
+                    "scale_type" : "threshold",
+                    "scale_values" : [
+                      0,
+                      30,
+                      70,
+                      100
+                    ],
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette_type" : "sharedList",
+                    "field" : "info",
+                    "scale_type" : "sharedCategory",
+                    "type" : "color"
+                  },
+                  {
+                    "field" : "count",
+                    "precision" : "3",
+                    "type" : "number",
+                    "unit" : "£",
+                    "unitPosition" : "before"
+                  },
+                  {
+                    "colorPalette" : "{\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log\":#D94E17,\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log\":#602CA1}",
+                    "colorPalette_mapping" : {
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log" : "#602CA1",
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log" : "#D94E17"
+                    },
+                    "colorPalette_type" : "map",
+                    "field" : "source",
+                    "type" : "color"
+                  }
+                ],
+                "title" : "total events and the amount of times I can see the term \"error\" and \"info\" distrubuted by source and host"
+              },
+              "data_source_ref" : "ds_d8e1e89d311b458182509b0cf96c1db2",
+              "id" : "viz_a85660c637b0453a9e7633411c81c58c",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "highlow",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "rowNumbers" : "true",
+                "totalsRow" : "true",
+                "wrap" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_309d57bfce744679a5a813623433a42f",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_da75e0f546014e0ead4fb38260c408dd",
+                "viz_bfdbde206ed2418086e7a30366c006d1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ff605469497440f2942403c6ecedbd93",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Money in my piggy bank must be more than 100 pounds"
+              },
+              "data_source_ref" : "ds_769e4456fcfd4c57a7001eadc0b4aa8c",
+              "id" : "viz_da75e0f546014e0ead4fb38260c408dd",
+              "layer" : 1,
+              "options" : {
+                "numberPrecision" : "0.00",
+                "rangeColors" : "[\"0x53a051\",\"0x0877a6\",\"0xf8be34\",\"0xf1813f\",\"0xdc4e41\"]",
+                "refresh.display" : "none",
+                "underLabel" : "My Piggy Bank",
+                "unit" : "£",
+                "unitPosition" : "before",
+                "useColors" : "1"
+              },
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_39611af40a1a446bb7638083d9b3d2cf",
+              "id" : "viz_bfdbde206ed2418086e7a30366c006d1",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "gauge_type" : "marker",
+                "height" : "425",
+                "legend_position" : "right",
+                "max" : "4000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x118832,30:0xcba700,70:0x1182f3,100:0xd94e17,1000:0xd41f1f"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7aac8086d20b4d4e9bcd15ad1702b113",
+                "viz_66c98fd7518d4ba0a8685946393558c2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_999d9e0dd3a14be8b83790003272b689",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "the first 3 rows of a count of events over source"
+              },
+              "data_source_ref" : "ds_03e874362d3341ac995f4049fedfb523",
+              "id" : "viz_7aac8086d20b4d4e9bcd15ad1702b113",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "gauge_type" : "radial",
+                "height" : "425",
+                "legend_position" : "bottom",
+                "max" : "1000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x118832,50:0xcba700,70:0xd94e17,100:0xd41f1f"
+              },
+              "type" : "gauge",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : "random"
+              },
+              "data_source_ref" : "ds_e647c4b8b7314b25a512dedf06343423",
+              "id" : "viz_66c98fd7518d4ba0a8685946393558c2",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.chart.nullValueMode" : "gaps",
+                "gauge_type" : "linear",
+                "height" : "425",
+                "legend_position" : "none",
+                "max" : "2000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x1182f3,303:0x118832,700:0xd94e17,1000:0xd41f1f"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

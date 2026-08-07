@@ -1,0 +1,63 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_57de968886c644ce8bc56bac00bc4272",
+      "query" : {
+        "name" : "arb_btc",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_a0313c0a3dad4b8eb13bfad3a27931fe"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live Binance vs TwelveData BTC spread via composed Federated Search",
+  "id" : "dash_e764697e44f74785805bc49f98c1458b",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "BTC Arbitrage Monitor",
+  "provenance" : {
+    "imported_at" : "2026-07-22T07:22:45Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_711c49934696440eb3435103f8883bac",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7916d77f2fbb4f228fe8766aa5b7385c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_68763f4277fa4bc78cfd1d9dc58cad3f",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Cross-venue price (composed FS)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_57de968886c644ce8bc56bac00bc4272",
+              "id" : "viz_7916d77f2fbb4f228fe8766aa5b7385c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "BTC — Binance vs TwelveData (live)"
+    }
+  ]
+}

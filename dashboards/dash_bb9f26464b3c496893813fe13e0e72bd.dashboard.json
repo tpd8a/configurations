@@ -1,0 +1,971 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Server Fleet",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "server_fleet.csv"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_566c4d2069be4c34b6a61de7b03e826d",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Network Connections",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "connections.csv"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_05af03ec82a84ef79bbb66fb34e5dea3",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Network Zones",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "zones.csv"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_0d48ab20a5e64f0d82a03adfad4af17b",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Active Alerts",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "alerts.csv",
+            "tql" : "select hostname, ttl_seconds"
+          }
+        },
+        "refresh_seconds" : 10,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_1f6a5d4a7b65494883c0079beec1534c",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Service Mesh",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "service_mesh.csv"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Blueprint-style schematic of a K8s cluster with bezier connections, traffic dots, and scorecards",
+  "id" : "dash_bb9f26464b3c496893813fe13e0e72bd",
+  "inputs" : [
+
+  ],
+  "landscape" : {
+    "canvas" : {
+      "background" : {
+        "color" : "#0a0e1a"
+      },
+      "height" : 1080,
+      "width" : 1920
+    },
+    "hud" : [
+      {
+        "position" : "top_center",
+        "text" : "K8s Cluster — Service Schematic",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_left",
+        "text" : "Ingress → Frontend → API → Data → Workers",
+        "type" : "label"
+      },
+      {
+        "position" : "top_right",
+        "text" : "LIVE",
+        "type" : "label"
+      }
+    ],
+    "name" : "K8s Schematic",
+    "spriteBindings" : [
+      {
+        "h" : 900,
+        "id" : "tier_ingress",
+        "placement" : "static",
+        "properties" : {
+          "label" : {
+            "value" : "Ingress"
+          },
+          "strokeColor" : {
+            "value" : "#1e3a5f"
+          }
+        },
+        "spriteType" : "dashed_rect",
+        "w" : 200,
+        "x" : 40,
+        "y" : 80
+      },
+      {
+        "h" : 900,
+        "id" : "tier_frontend",
+        "placement" : "static",
+        "properties" : {
+          "label" : {
+            "value" : "Frontend"
+          },
+          "strokeColor" : {
+            "value" : "#1e3a5f"
+          }
+        },
+        "spriteType" : "dashed_rect",
+        "w" : 300,
+        "x" : 728,
+        "y" : 296
+      },
+      {
+        "h" : 900,
+        "id" : "tier_services",
+        "placement" : "static",
+        "properties" : {
+          "label" : {
+            "value" : "Services"
+          },
+          "strokeColor" : {
+            "value" : "#1e3a5f"
+          }
+        },
+        "spriteType" : "dashed_rect",
+        "w" : 500,
+        "x" : 620,
+        "y" : 80
+      },
+      {
+        "h" : 900,
+        "id" : "tier_data",
+        "placement" : "static",
+        "properties" : {
+          "label" : {
+            "value" : "Data"
+          },
+          "strokeColor" : {
+            "value" : "#1e3a5f"
+          }
+        },
+        "spriteType" : "dashed_rect",
+        "w" : 400,
+        "x" : 1160,
+        "y" : 80
+      },
+      {
+        "h" : 900,
+        "id" : "tier_workers",
+        "placement" : "static",
+        "properties" : {
+          "label" : {
+            "value" : "Workers"
+          },
+          "strokeColor" : {
+            "value" : "#1e3a5f"
+          }
+        },
+        "spriteType" : "dashed_rect",
+        "w" : 280,
+        "x" : 1600,
+        "y" : 80
+      },
+      {
+        "h" : 80,
+        "id" : "box_gateway",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#06b6d4"
+          },
+          "label" : {
+            "value" : "LB"
+          }
+        },
+        "spriteType" : "gateway",
+        "w" : 80,
+        "x" : 120,
+        "y" : 420
+      },
+      {
+        "h" : 250,
+        "id" : "box_frontend",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#0f2847"
+          },
+          "label" : {
+            "value" : "Frontend \/ BFF"
+          },
+          "strokeColor" : {
+            "value" : "#2563eb"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 240,
+        "x" : 310,
+        "y" : 200
+      },
+      {
+        "h" : 280,
+        "id" : "box_api",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#0f2847"
+          },
+          "label" : {
+            "value" : "API Services"
+          },
+          "strokeColor" : {
+            "value" : "#2563eb"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 240,
+        "x" : 660,
+        "y" : 150
+      },
+      {
+        "h" : 250,
+        "id" : "box_auth",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#0f2847"
+          },
+          "label" : {
+            "value" : "Auth"
+          },
+          "strokeColor" : {
+            "value" : "#2563eb"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 240,
+        "x" : 660,
+        "y" : 530
+      },
+      {
+        "h" : 220,
+        "id" : "box_db",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#1a1408"
+          },
+          "label" : {
+            "value" : "Database"
+          },
+          "strokeColor" : {
+            "value" : "#d97706"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 200,
+        "x" : 1200,
+        "y" : 150
+      },
+      {
+        "h" : 200,
+        "id" : "box_cache",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#1a0808"
+          },
+          "label" : {
+            "value" : "Cache"
+          },
+          "strokeColor" : {
+            "value" : "#dc2626"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 200,
+        "x" : 1200,
+        "y" : 430
+      },
+      {
+        "h" : 200,
+        "id" : "box_queue",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#14081a"
+          },
+          "label" : {
+            "value" : "Queue"
+          },
+          "strokeColor" : {
+            "value" : "#9333ea"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 200,
+        "x" : 1200,
+        "y" : 690
+      },
+      {
+        "h" : 350,
+        "id" : "box_workers",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#0f2847"
+          },
+          "label" : {
+            "value" : "Workers \/ Cron"
+          },
+          "strokeColor" : {
+            "value" : "#2563eb"
+          }
+        },
+        "spriteType" : "rounded_rect",
+        "w" : 220,
+        "x" : 1630,
+        "y" : 250
+      },
+      {
+        "connectionStyle" : "junction",
+        "datasourceId" : "ds_566c4d2069be4c34b6a61de7b03e826d",
+        "entityField" : "edge_id",
+        "id" : "service_connections",
+        "placement" : "edge",
+        "properties" : {
+          "color" : {
+            "field" : "status",
+            "map" : {
+              "active" : "#3b82f6",
+              "degraded" : "#f97316"
+            }
+          },
+          "opacity" : {
+            "field" : "bytes_sec",
+            "inputRange" : [
+              0,
+              50000
+            ],
+            "range" : [
+              0.3,
+              1
+            ]
+          }
+        },
+        "sourceAnchor" : "out",
+        "sourceField" : "box_source",
+        "spriteType" : "connection",
+        "targetAnchor" : "in",
+        "targetField" : "box_target",
+        "trafficDots" : {
+          "colorField" : "status",
+          "colorMap" : {
+            "active" : "#60a5fa",
+            "degraded" : "#fb923c"
+          },
+          "count" : 2,
+          "radius" : 3,
+          "speedField" : "bytes_sec",
+          "speedRange" : [
+            80,
+            0.8
+          ]
+        }
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_ingress",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "ingress",
+          "groupValues" : [
+            "ingress",
+            "nginx"
+          ]
+        },
+        "spriteType" : "scorecard",
+        "w" : 180,
+        "x" : 60,
+        "y" : 550
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_frontend",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "frontend",
+          "groupValues" : [
+            "frontend",
+            "bff"
+          ]
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 330,
+        "y" : 470
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_api",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "api",
+          "groupValues" : [
+            "api",
+            "search"
+          ]
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 680,
+        "y" : 450
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_auth",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "auth"
+        },
+        "spriteType" : "scorecard",
+        "w" : 200,
+        "x" : 680,
+        "y" : 790
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_db",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "postgres",
+          "groupValues" : [
+            "postgres",
+            "mysql"
+          ]
+        },
+        "spriteType" : "scorecard",
+        "w" : 180,
+        "x" : 1220,
+        "y" : 390
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_cache",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "redis"
+        },
+        "spriteType" : "scorecard",
+        "w" : 180,
+        "x" : 1220,
+        "y" : 650
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_queue",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "rabbitmq"
+        },
+        "spriteType" : "scorecard",
+        "w" : 180,
+        "x" : 1220,
+        "y" : 910
+      },
+      {
+        "datasourceId" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+        "h" : 80,
+        "id" : "scorecard_workers",
+        "placement" : "static",
+        "scorecard" : {
+          "breakdownField" : "status",
+          "countField" : "hostname",
+          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "groupField" : "role",
+          "groupValue" : "worker",
+          "groupValues" : [
+            "worker",
+            "cron"
+          ]
+        },
+        "spriteType" : "scorecard",
+        "w" : 180,
+        "x" : 1650,
+        "y" : 620
+      },
+      {
+        "h" : 200,
+        "id" : "box_gateway_copy",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#06b6d4"
+          },
+          "label" : {
+            "value" : "LB"
+          }
+        },
+        "spriteType" : "gateway",
+        "w" : 216,
+        "x" : 384,
+        "y" : 808
+      },
+      {
+        "group" : {
+          "label" : "Group",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 300,
+        "id" : "binding_1",
+        "placement" : "static",
+        "spriteType" : "dashed_rect",
+        "w" : 400,
+        "x" : 960,
+        "y" : 540
+      },
+      {
+        "group" : {
+          "label" : "",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 200,
+        "id" : "binding_2",
+        "placement" : "static",
+        "spriteType" : "dashed_rect",
+        "w" : 744,
+        "x" : 256,
+        "y" : -216
+      },
+      {
+        "group" : {
+          "label" : "box_gateway_copy2",
+          "level" : 1,
+          "style" : "boundary"
+        },
+        "h" : 80,
+        "id" : "box_gateway_copy2",
+        "placement" : "static",
+        "properties" : {
+          "color" : {
+            "value" : "#06b6d4"
+          },
+          "label" : {
+            "value" : "LB"
+          }
+        },
+        "spriteType" : "gateway",
+        "w" : 80,
+        "x" : 392,
+        "y" : -168
+      }
+    ]
+  },
+  "layout_type" : "bootstrap",
+  "name" : "K8s Cluster Schematic",
+  "polling_interval_seconds" : 10,
+  "provenance" : {
+    "imported_at" : "2026-07-25T07:10:27Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_51b30f0edce14460b9d96c1c09b687db",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_fleet",
+              "viz_ids" : [
+                "viz_7bfe129e411d4ce9a9b158c8ad0f72e3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8c51414747ac4acfa4b95ffb5bc66d0f",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Server Fleet",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server Fleet"
+              },
+              "data_source_ref" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+              "id" : "viz_7bfe129e411d4ce9a9b158c8ad0f72e3",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_connections",
+              "viz_ids" : [
+                "viz_2c2bb2ac30644b9997954df321b04d49"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9add3dd5d436426fadc1fe1a9a6fed4b",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Network Connections",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Network Connections"
+              },
+              "data_source_ref" : "ds_566c4d2069be4c34b6a61de7b03e826d",
+              "id" : "viz_2c2bb2ac30644b9997954df321b04d49",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8cd0a43aed7c4c15bd182a3acb68cb56"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ca505eb706dc41f99b0b77b40ec21970",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Service Mesh",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Service Mesh"
+              },
+              "data_source_ref" : "ds_1f6a5d4a7b65494883c0079beec1534c",
+              "id" : "viz_8cd0a43aed7c4c15bd182a3acb68cb56",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Hello Kitty"
+    },
+    {
+      "id" : "row_821b4664fefc4e9caadd41753bfb1d41",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_zones",
+              "viz_ids" : [
+                "viz_f4028dadaf754f31ad3cdebf64ae4aec"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5fb18ebf646043cf942b81eebefaa97a",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Network Zones",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Network Zones"
+              },
+              "data_source_ref" : "ds_05af03ec82a84ef79bbb66fb34e5dea3",
+              "id" : "viz_f4028dadaf754f31ad3cdebf64ae4aec",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_alerts",
+              "viz_ids" : [
+                "viz_46455b986df248d78be47d9cb6c6b116"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_58119188549345d9971bbea71407527b",
+          "layout" : {
+            "height" : 300,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Active Alerts",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Active Alerts"
+              },
+              "data_source_ref" : "ds_0d48ab20a5e64f0d82a03adfad4af17b",
+              "id" : "viz_46455b986df248d78be47d9cb6c6b116",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8c3a8f0272364b868b8ef24d06b81f80"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_823c097d95ce4d8497dd63622646d44b",
+          "layout" : {
+            "height" : 400,
+            "panel_width" : 6
+          },
+          "title" : "Active Alerts",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Active Alerts"
+              },
+              "data_source_ref" : "ds_0d48ab20a5e64f0d82a03adfad4af17b",
+              "id" : "viz_8c3a8f0272364b868b8ef24d06b81f80",
+              "layer" : 1,
+              "options" : {
+                "display_mode" : "gradient",
+                "fields" : "hostname,ttl_seconds",
+                "gauge_type" : "marker"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_490e2fdfc1a74f7a8eda31c4d8e5640d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_36492af7caa048b4a3ef597f249b2cb5",
+          "layout" : {
+            "height" : 399.734375,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "top",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "09F82A3F-8A7A-49F5-B38A-8F34E6B45197",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJheGlzIjoibGVmdCIsInNlcmllc092ZXJyaWRlcyI6e30sInN0YWNrTW9kZSI6Im5vbmUiLCJmaWxsIjp7InBhbGV0dGUiOnt9fSwiY29ybmVyUmFkaXVzIjoxLjUsInNlcmllc0ZpZWxkIjoiaG9zdG5hbWUiLCJmaWVsZCI6ImNwdV9wZXJjZW50In0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "timeField" : "role",
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+                  "uptime_days",
+                  "memory_percent"
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Active Alerts by Severity Pie"
+              },
+              "data_source_ref" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+              "id" : "viz_490e2fdfc1a74f7a8eda31c4d8e5640d",
+              "layer" : 1,
+              "options" : {
+                "height" : "400.0"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f5c4777e15584559bb94f723091bd22c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bf9583cd44234626aa4b6fc089041e00",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Service Mesh Throughput",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Service Mesh Throughput"
+              },
+              "data_source_ref" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
+              "id" : "viz_f5c4777e15584559bb94f723091bd22c",
+              "layer" : 1,
+              "options" : {
+                "chartType" : "bar",
+                "groupBy" : "target",
+                "xAxis" : "source",
+                "yAxis" : "throughput"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

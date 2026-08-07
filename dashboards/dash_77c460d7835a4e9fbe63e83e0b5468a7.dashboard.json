@@ -1,0 +1,160 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_cf0e6b8ed89241778ccd67c6326d191a",
+      "query" : {
+        "name" : "ds_230B6A69",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_6161b194371c495480c5c7172e9854fe",
+      "query" : {
+        "name" : "ds_4E7EB510",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_0f3d15cabd7c47278e1027772472ea68",
+      "query" : {
+        "name" : "ds_D35A3113",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Shows the latest five performance snapshots of the Construct service.",
+  "id" : "dash_77c460d7835a4e9fbe63e83e0b5468a7",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "AI Sql Perf",
+  "provenance" : {
+    "imported_at" : "2026-07-22T19:30:38Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_17f4337c79b34753844c53f225d72d58",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "17B8EF58-99D4-4309-AA93-F32DC5014399",
+              "viz_ids" : [
+                "viz_b74463b5e78f4961a851af2140c070a8"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Shows the latest five performance snapshots of the Construct service.",
+          "id" : "panel_2edbf524f8e44ae89dd1a98c0d09973d",
+          "layout" : {
+            "absolute_h" : 240,
+            "absolute_w" : 1056,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "semantic_meta" : {
+            "category" : "performance",
+            "signals" : [
+              "error",
+              "latency"
+            ]
+          },
+          "title" : "AI query",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "AI query"
+              },
+              "id" : "viz_b74463b5e78f4961a851af2140c070a8",
+              "layer" : 1,
+              "sql_composition" : "SELECT dashboard,\n    SUM(fetches) AS total_fetches,\n    SUM(errors) AS total_errors,\n    CASE WHEN SUM(fetches)>0 THEN ROUND(100.0*SUM(errors)\/NULLIF(SUM(fetches),0),2) END AS error_rate_pct,\n    AVG(avg_ms) AS avg_latency_ms,\n    MAX(max_ms) AS max_latency_ms\nFROM construct_perf\nWHERE window_start > unixepoch('now','-1 day')\nGROUP BY dashboard\nORDER BY total_fetches DESC;",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1e373f438bb647699fd4635cb626efa4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_52641fa5971e4866af2a2db5d4a1840b",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 1080,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_cf0e6b8ed89241778ccd67c6326d191a",
+              "id" : "viz_1e373f438bb647699fd4635cb626efa4",
+              "layer" : 1,
+              "sql_composition" : "SELECT * \n  FROM binance_spot.get_api_v3_ticker_price LIMIT 5",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_68107d75c78c4899836e8c7b2a9a724e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3cd2956baafa430e95d6524044f49916"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9ab3ad7e452445758f63ff9188a382c0",
+          "layout" : {
+            "absolute_h" : 432,
+            "absolute_w" : 960,
+            "absolute_x" : 0,
+            "absolute_y" : 264,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_0f3d15cabd7c47278e1027772472ea68",
+              "id" : "viz_3cd2956baafa430e95d6524044f49916",
+              "layer" : 1,
+              "sql_composition" : "SELECT * FROM binance_spot.ws_trade WHERE symbols = 'BTCUSDT'",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 2"
+    }
+  ]
+}
