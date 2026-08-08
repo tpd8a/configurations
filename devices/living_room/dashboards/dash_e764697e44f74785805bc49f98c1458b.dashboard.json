@@ -1,0 +1,157 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_57de968886c644ce8bc56bac00bc4272",
+      "query" : {
+        "name" : "arb_btc",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e458fcaa5ae04db097a6dc68037c9b30",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_50D0BAE7",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "query" : "node_load15",
+            "time" : "now"
+          },
+          "path" : "\/api\/v1\/query"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_77e18575db404e0cb91ab331bb710dd3",
+      "provider_ref" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "query" : {
+        "name" : "ds_E73E6763",
+        "query" : {
+          "method" : "GET",
+          "query_parameters" : {
+            "earliest" : "-24h@h",
+            "is_scheduled" : false,
+            "latest" : "now",
+            "saved_search_name" : "Errors in the last hour"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_7eeb32878d034519972d32fdcccbaa2d",
+      "query" : {
+        "name" : "DS_from_saved_search",
+        "refresh_seconds" : 60,
+        "sql" : {
+          "federatedSearchRef" : "fedsearch_3587e898144a4fabb2a447c6e5e7be43"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live Binance vs TwelveData BTC spread via composed Federated Search",
+  "id" : "dash_e764697e44f74785805bc49f98c1458b",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "BTC Arbitrage Monitor",
+  "provenance" : {
+    "imported_at" : "2026-08-08T18:42:04Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_711c49934696440eb3435103f8883bac",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7916d77f2fbb4f228fe8766aa5b7385c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_68763f4277fa4bc78cfd1d9dc58cad3f",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Cross-venue price (composed FS)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7eeb32878d034519972d32fdcccbaa2d",
+              "id" : "viz_7916d77f2fbb4f228fe8766aa5b7385c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_fc6d3a95005248ffbeffa675d14830d0"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f27cf84c11464e4fbfa5f8f355b40ce7",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e458fcaa5ae04db097a6dc68037c9b30",
+              "id" : "viz_fc6d3a95005248ffbeffa675d14830d0",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4172b11714d94c51bbe2ab9c5597bc20"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_15204e7eff8f404e8619e08dbd2b2630",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_77e18575db404e0cb91ab331bb710dd3",
+              "id" : "viz_4172b11714d94c51bbe2ab9c5597bc20",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "BTC — Binance vs TwelveData (live)"
+    }
+  ]
+}
