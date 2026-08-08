@@ -1,0 +1,95 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_b6cd11b89d73445da08d2a72f9f670ab",
+      "query" : {
+        "name" : "ds_F49E4E51",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_8c352eb39f744d9fa50dca63d6f443fa",
+      "query" : {
+        "name" : "ds_69FA17F2",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_8e4b86684d264740a4fc652a03ba05b2",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Untitled Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-08-07T15:27:59Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_8aa7b01c0c2e4a5abd1ce99184caa664",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0829f2d42a5a4233a2667d7930896278"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7c1c0ae04cbf4085889730d3cc0eed20",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_b6cd11b89d73445da08d2a72f9f670ab",
+              "id" : "viz_0829f2d42a5a4233a2667d7930896278",
+              "layer" : 1,
+              "sql_composition" : "SELECT * FROM SS.Test5",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2cf3c1a70bfd42868399259653c98131"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1dd666489e3d41e99b841b53275c3c58",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8c352eb39f744d9fa50dca63d6f443fa",
+              "id" : "viz_2cf3c1a70bfd42868399259653c98131",
+              "layer" : 1,
+              "sql_composition" : "select * from SS.Test5",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Peters test version 2"
+    }
+  ]
+}
