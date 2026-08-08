@@ -170,7 +170,7 @@
   "layout_type" : "bootstrap",
   "name" : "Another DB new row",
   "provenance" : {
-    "imported_at" : "2026-07-24T17:43:50Z",
+    "imported_at" : "2026-08-08T14:19:24Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -285,7 +285,7 @@
                       {
                         "id" : "3EA3A76A-3864-4571-AA55-04A3987B1D52",
                         "kind" : "line",
-                        "optionsJSON" : "e30="
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiXC9uZnNcL25mc21vdW50XC9zcGx1bmtcL3ZhclwvbG9nXC9zcGx1bmtcL21vbmdvZC5sb2ciOnsiaGlkZGVuIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuMTUwMDAwMDAwMDAwMDAwMDIsIm5lZ2F0ZSI6ZmFsc2UsImxpbmVTdHlsZSI6ImRhc2hlZCIsImxpbmVJbnRlcnBvbGF0aW9uIjoic21vb3RoIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibGluZVdpZHRoIjo0fX19"
                       }
                     ],
                     "shapeId" : "line-over-time",
