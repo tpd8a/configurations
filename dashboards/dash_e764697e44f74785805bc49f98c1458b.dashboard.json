@@ -5,11 +5,28 @@
       "id" : "ds_57de968886c644ce8bc56bac00bc4272",
       "query" : {
         "name" : "arb_btc",
-        "refresh_seconds" : 0,
-        "sql" : {
-          "federatedSearchRef" : "fedsearch_a0313c0a3dad4b8eb13bfad3a27931fe"
+        "query" : {
+          "method" : "GET"
         },
+        "refresh_seconds" : 0,
         "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_caf15f18b66747ea9d4d6bc250dd996d",
+      "provider_ref" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "query" : {
+        "name" : "ds_50D0BAE7",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "query" : "node_load15",
+            "time" : "now"
+          },
+          "path" : "\/api\/v1\/query"
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
       }
     }
   ],
@@ -21,7 +38,7 @@
   "layout_type" : "bootstrap",
   "name" : "BTC Arbitrage Monitor",
   "provenance" : {
-    "imported_at" : "2026-07-22T07:22:45Z",
+    "imported_at" : "2026-08-08T16:30:03Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -50,6 +67,30 @@
             {
               "data_source_ref" : "ds_57de968886c644ce8bc56bac00bc4272",
               "id" : "viz_7916d77f2fbb4f228fe8766aa5b7385c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_44293f7907f749ae9385a509a18b69f7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2084aba7b4ab4f54b6f3ff38737855b7",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_caf15f18b66747ea9d4d6bc250dd996d",
+              "id" : "viz_44293f7907f749ae9385a509a18b69f7",
               "layer" : 1,
               "type" : "table",
               "width" : 12
