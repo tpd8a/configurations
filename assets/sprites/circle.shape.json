@@ -1,0 +1,9 @@
+{
+  "id": "circle",
+  "path": { "type": "circle" },
+  "defaults": {
+    "fillColor": "#00ffff",
+    "lineWidth": 0
+  },
+  "zPosition": 10
+}

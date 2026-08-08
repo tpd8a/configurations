@@ -1,0 +1,9 @@
+{"bytes_sec": 5312, "edge_id": "edge_20", "label": "20ms \u00b7 10 tps", "latency_ms": 20.4, "source": "box_business_user", "status": "active", "target": "box_financial_risk_system", "technology": "HTTPS", "tps": 10}
+{"bytes_sec": 331, "edge_id": "edge_21", "label": "43ms \u00b7 0 tps", "latency_ms": 42.6, "source": "box_configuration_user", "status": "active", "target": "box_financial_risk_system", "technology": "HTTPS", "tps": 0}
+{"bytes_sec": 236723, "edge_id": "edge_22", "label": "23ms \u00b7 473 tps", "latency_ms": 23.1, "source": "box_financial_risk_system", "status": "active", "target": "box_trade_data_system", "technology": "API", "tps": 473}
+{"bytes_sec": 111660, "edge_id": "edge_23", "label": "12ms \u00b7 223 tps", "latency_ms": 12.0, "source": "box_financial_risk_system", "status": "active", "target": "box_reference_data_system", "technology": "API", "tps": 223}
+{"bytes_sec": 2227, "edge_id": "edge_24", "label": "48ms \u00b7 4 tps", "latency_ms": 48.0, "source": "box_financial_risk_system", "status": "active", "target": "box_reference_data_system_v20", "technology": "API", "tps": 4}
+{"bytes_sec": 3586, "edge_id": "edge_25", "label": "1ms \u00b7 7 tps", "latency_ms": 1.1, "source": "box_financial_risk_system", "status": "active", "target": "box_email_system", "technology": "SMTP", "tps": 7}
+{"bytes_sec": 2686, "edge_id": "edge_26", "label": "6ms \u00b7 5 tps", "latency_ms": 6.5, "source": "box_email_system", "status": "active", "target": "box_business_user", "technology": "E-mail", "tps": 5}
+{"bytes_sec": 3617, "edge_id": "edge_27", "label": "6ms \u00b7 7 tps", "latency_ms": 6.1, "source": "box_financial_risk_system", "status": "active", "target": "box_central_monitoring_service", "technology": "SNMP", "tps": 7}
+{"bytes_sec": 73726, "edge_id": "edge_28", "label": "50ms \u00b7 147 tps", "latency_ms": 50, "source": "box_financial_risk_system", "status": "active", "target": "box_active_directory", "technology": "LDAP", "tps": 147}

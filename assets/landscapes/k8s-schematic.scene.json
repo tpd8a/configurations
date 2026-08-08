@@ -1,0 +1,293 @@
+{
+  "name": "K8s Schematic",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "background": { "color": "#0a0e1a" }
+  },
+  "hud": [
+    { "type": "label", "text": "K8s Cluster — Service Schematic", "position": "top_center" },
+    { "type": "label", "text": "Ingress → Frontend → API → Data → Workers", "position": "bottom_left" },
+    { "type": "label", "text": "LIVE", "position": "top_right" }
+  ],
+  "spriteBindings": [
+    {
+      "id": "tier_ingress",
+      "spriteType": "dashed_rect",
+      "placement": "static",
+      "x": 40, "y": 80, "w": 200, "h": 900,
+      "properties": {
+        "strokeColor": { "value": "#1e3a5f" },
+        "label": { "value": "Ingress" }
+      }
+    },
+    {
+      "id": "tier_frontend",
+      "spriteType": "dashed_rect",
+      "placement": "static",
+      "x": 280, "y": 80, "w": 300, "h": 900,
+      "properties": {
+        "strokeColor": { "value": "#1e3a5f" },
+        "label": { "value": "Frontend" }
+      }
+    },
+    {
+      "id": "tier_services",
+      "spriteType": "dashed_rect",
+      "placement": "static",
+      "x": 620, "y": 80, "w": 500, "h": 900,
+      "properties": {
+        "strokeColor": { "value": "#1e3a5f" },
+        "label": { "value": "Services" }
+      }
+    },
+    {
+      "id": "tier_data",
+      "spriteType": "dashed_rect",
+      "placement": "static",
+      "x": 1160, "y": 80, "w": 400, "h": 900,
+      "properties": {
+        "strokeColor": { "value": "#1e3a5f" },
+        "label": { "value": "Data" }
+      }
+    },
+    {
+      "id": "tier_workers",
+      "spriteType": "dashed_rect",
+      "placement": "static",
+      "x": 1600, "y": 80, "w": 280, "h": 900,
+      "properties": {
+        "strokeColor": { "value": "#1e3a5f" },
+        "label": { "value": "Workers" }
+      }
+    },
+    {
+      "id": "box_gateway",
+      "spriteType": "gateway",
+      "placement": "static",
+      "x": 120, "y": 420, "w": 80, "h": 80,
+      "properties": {
+        "color": { "value": "#06b6d4" },
+        "label": { "value": "LB" }
+      }
+    },
+    {
+      "id": "box_frontend",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 310, "y": 200, "w": 240, "h": 250,
+      "properties": {
+        "color": { "value": "#0f2847" },
+        "strokeColor": { "value": "#2563eb" },
+        "label": { "value": "Frontend / BFF" }
+      }
+    },
+    {
+      "id": "box_api",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 660, "y": 150, "w": 240, "h": 280,
+      "properties": {
+        "color": { "value": "#0f2847" },
+        "strokeColor": { "value": "#2563eb" },
+        "label": { "value": "API Services" }
+      }
+    },
+    {
+      "id": "box_auth",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 660, "y": 530, "w": 240, "h": 250,
+      "properties": {
+        "color": { "value": "#0f2847" },
+        "strokeColor": { "value": "#2563eb" },
+        "label": { "value": "Auth" }
+      }
+    },
+    {
+      "id": "box_db",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 1200, "y": 150, "w": 200, "h": 220,
+      "properties": {
+        "color": { "value": "#1a1408" },
+        "strokeColor": { "value": "#d97706" },
+        "label": { "value": "Database" }
+      }
+    },
+    {
+      "id": "box_cache",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 1200, "y": 430, "w": 200, "h": 200,
+      "properties": {
+        "color": { "value": "#1a0808" },
+        "strokeColor": { "value": "#dc2626" },
+        "label": { "value": "Cache" }
+      }
+    },
+    {
+      "id": "box_queue",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 1200, "y": 690, "w": 200, "h": 200,
+      "properties": {
+        "color": { "value": "#14081a" },
+        "strokeColor": { "value": "#9333ea" },
+        "label": { "value": "Queue" }
+      }
+    },
+    {
+      "id": "box_workers",
+      "spriteType": "rounded_rect",
+      "placement": "static",
+      "x": 1630, "y": 250, "w": 220, "h": 350,
+      "properties": {
+        "color": { "value": "#0f2847" },
+        "strokeColor": { "value": "#2563eb" },
+        "label": { "value": "Workers / Cron" }
+      }
+    },
+    {
+      "id": "service_connections",
+      "datasourceId": "ds_connections",
+      "entityField": "edge_id",
+      "spriteType": "connection",
+      "placement": "edge",
+      "sourceField": "box_source",
+      "targetField": "box_target",
+      "sourceAnchor": "out",
+      "targetAnchor": "in",
+      "connectionStyle": "junction",
+      "properties": {
+        "color": { "field": "status", "map": { "active": "#3b82f6", "degraded": "#f97316" } },
+        "opacity": { "field": "bytes_sec", "range": [0.3, 1.0], "inputRange": [0, 50000] }
+      },
+      "trafficDots": {
+        "count": 2,
+        "radius": 3,
+        "speedField": "bytes_sec",
+        "speedRange": [80.0, 0.8],
+        "colorField": "status",
+        "colorMap": { "active": "#60a5fa", "degraded": "#fb923c" }
+      }
+    },
+    {
+      "id": "scorecard_ingress",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 60, "y": 550, "w": 180, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "ingress",
+        "groupValues": ["ingress", "nginx"],
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_frontend",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 330, "y": 470, "w": 200, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "frontend",
+        "groupValues": ["frontend", "bff"],
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_api",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 680, "y": 450, "w": 200, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "api",
+        "groupValues": ["api", "search"],
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_auth",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 680, "y": 790, "w": 200, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "auth",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_db",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 1220, "y": 390, "w": 180, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "postgres",
+        "groupValues": ["postgres", "mysql"],
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_cache",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 1220, "y": 650, "w": 180, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "redis",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_queue",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 1220, "y": 910, "w": 180, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "rabbitmq",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_workers",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 1650, "y": 620, "w": 180, "h": 80,
+      "scorecard": {
+        "groupField": "role",
+        "groupValue": "worker",
+        "groupValues": ["worker", "cron"],
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    }
+  ]
+}

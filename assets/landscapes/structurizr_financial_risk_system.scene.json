@@ -1,0 +1,370 @@
+{
+  "canvas" : {
+    "background" : {
+      "color" : "#0a1628"
+    },
+    "height" : 1080,
+    "width" : 1920
+  },
+  "hud" : [
+    {
+      "position" : "top_center",
+      "text" : "Financial Risk System — Container View",
+      "type" : "label"
+    }
+  ],
+  "name" : "Financial Risk System — Container View",
+  "spriteBindings" : [
+    {
+      "h" : 616,
+      "id" : "zone_financial_risk_system",
+      "placement" : "static",
+      "properties" : {
+        "label" : {
+          "value" : "Financial Risk System"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "dashed_rect",
+      "w" : 1298,
+      "x" : 308,
+      "y" : 368
+    },
+    {
+      "h" : 200,
+      "id" : "box_business_user",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#d46a6a"
+        },
+        "label" : {
+          "value" : "Business User"
+        },
+        "strokeColor" : {
+          "value" : "#fe7f7f"
+        }
+      },
+      "spriteType" : "person",
+      "w" : 160,
+      "x" : 552,
+      "y" : 132
+    },
+    {
+      "h" : 200,
+      "id" : "box_configuration_user",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#d46a6a"
+        },
+        "label" : {
+          "value" : "Configuration User"
+        },
+        "strokeColor" : {
+          "value" : "#fe7f7f"
+        }
+      },
+      "spriteType" : "person",
+      "w" : 160,
+      "x" : 1164,
+      "y" : 132
+    },
+    {
+      "h" : 160,
+      "id" : "box_financial_risk_system",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#550000"
+        },
+        "label" : {
+          "value" : "Financial Risk System"
+        },
+        "strokeColor" : {
+          "value" : "#660000"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 858,
+      "y" : 438
+    },
+    {
+      "h" : 160,
+      "id" : "box_trade_data_system",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "Trade Data System"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 348,
+      "y" : 744
+    },
+    {
+      "h" : 160,
+      "id" : "box_reference_data_system",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "Reference Data System"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 654,
+      "y" : 744
+    },
+    {
+      "h" : 160,
+      "id" : "box_reference_data_system_v20",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "Reference Data System v2.0"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 960,
+      "y" : 744
+    },
+    {
+      "h" : 160,
+      "id" : "box_email_system",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "E-mail System"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 1266,
+      "y" : 438
+    },
+    {
+      "h" : 160,
+      "id" : "box_central_monitoring_service",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "Central Monitoring Service"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 1266,
+      "y" : 744
+    },
+    {
+      "h" : 160,
+      "id" : "box_active_directory",
+      "placement" : "static",
+      "properties" : {
+        "color" : {
+          "value" : "#801515"
+        },
+        "label" : {
+          "value" : "Active Directory"
+        },
+        "strokeColor" : {
+          "value" : "#991919"
+        }
+      },
+      "spriteType" : "rounded_rect",
+      "w" : 240,
+      "x" : 450,
+      "y" : 438
+    },
+    {
+      "connectionStyle" : "junction",
+      "datasourceId" : "ds_traffic",
+      "entityField" : "edge_id",
+      "id" : "static_connections",
+      "placement" : "edge",
+      "properties" : {
+        "color" : {
+          "field" : "status",
+          "map" : {
+            "active" : "#55aa55",
+            "degraded" : "#cc4444"
+          }
+        },
+        "label" : {
+          "field" : "label"
+        }
+      },
+      "sourceAnchor" : "out",
+      "sourceField" : "source",
+      "spriteType" : "connection",
+      "targetAnchor" : "in",
+      "targetField" : "target",
+      "trafficDots" : {
+        "count" : 3,
+        "radius" : 3,
+        "speedField" : "bytes_sec",
+        "speedRange" : [500, 100000],
+        "colorField" : "status",
+        "colorMap" : {
+          "active" : "#66dd66",
+          "degraded" : "#ff4444"
+        }
+      }
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_financial_risk_system",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\nTrades: {first:trades_processed}\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "financial_risk_system"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 868,
+      "y" : 568
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_trade_data_system",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\nTrades: {first:trades_processed}\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "trade_data_system"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 358,
+      "y" : 874
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_reference_data_system",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "reference_data_system"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 664,
+      "y" : 874
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_reference_data_system_v20",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "reference_data_system_v20"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 970,
+      "y" : 874
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_email_system",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "email_system"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 1276,
+      "y" : 568
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_central_monitoring_service",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "central_monitoring_service"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 1276,
+      "y" : 874
+    },
+    {
+      "datasourceId" : "ds_containers",
+      "h" : 50,
+      "id" : "scorecard_active_directory",
+      "placement" : "static",
+      "scorecard" : {
+        "breakdownField" : "status",
+        "countField" : "instance_count",
+        "format" : "{total} instances\nCPU {avg:cpu_pct}%\n{breakdown}",
+        "groupField" : "container_id",
+        "groupValue" : "active_directory"
+      },
+      "spriteType" : "scorecard",
+      "w" : 220,
+      "x" : 460,
+      "y" : 568
+    }
+  ]
+}

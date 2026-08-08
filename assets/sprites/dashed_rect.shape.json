@@ -1,0 +1,12 @@
+{
+  "id": "dashed_rect",
+  "path": { "type": "dashedRect", "cornerRadius": 4, "dashLengths": [8, 4] },
+  "defaults": {
+    "fillColor": "#1a1a1a",
+    "fillAlpha": 0.3,
+    "strokeColor": "#808080",
+    "lineWidth": 1.0
+  },
+  "labelPosition": "top",
+  "zPosition": 0
+}

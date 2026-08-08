@@ -1,0 +1,39 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/api.twelvedata.com",
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "twelvedata-test",
+  "name" : "Twelve Data (wizard test)",
+  "streams" : [
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "price",
+      "method" : "GET",
+      "name" : "Price",
+      "path" : "\/price",
+      "userParams" : [
+        {
+          "key" : "symbol",
+          "label" : "Symbol",
+          "location" : "query",
+          "required" : true,
+          "role" : "value"
+        },
+        {
+          "key" : "apikey",
+          "label" : "API key",
+          "location" : "query",
+          "required" : true,
+          "role" : "value"
+        }
+      ]
+    }
+  ],
+  "version" : 1
+}

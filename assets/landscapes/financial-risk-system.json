@@ -1,0 +1,69 @@
+{
+  "model": {
+    "people": [
+      { "id": "1", "name": "Business User", "description": "A regular business user.", "tags": "Element,Person" },
+      { "id": "2", "name": "Configuration User", "description": "A regular business user who can also configure the parameters used in the risk calculations.", "tags": "Element,Person" }
+    ],
+    "softwareSystems": [
+      {
+        "id": "100", "name": "Financial Risk System", "description": "Calculates the bank's exposure to risk for product X.",
+        "tags": "Element,Software System",
+        "containers": [
+          { "id": "3", "name": "Financial Risk System", "description": "Calculates the bank's exposure to risk for product X.", "technology": "Core System", "tags": "Element,Container,Financial Risk System" },
+          { "id": "4", "name": "Trade Data System", "description": "The system of record for trades of type X.", "technology": "External System", "tags": "Element,Container,Software System" },
+          { "id": "5", "name": "Reference Data System", "description": "Manages reference data for all counterparties the bank interacts with.", "technology": "External System", "tags": "Element,Container,Software System" },
+          { "id": "6", "name": "Reference Data System v2.0", "description": "Manages reference data for all counterparties the bank interacts with.", "technology": "Future State", "tags": "Element,Container,Software System,Future State" },
+          { "id": "7", "name": "E-mail System", "description": "The bank's Microsoft Exchange system.", "technology": "Microsoft Exchange", "tags": "Element,Container,Software System" },
+          { "id": "8", "name": "Central Monitoring Service", "description": "The bank's central monitoring and alerting dashboard.", "technology": "SNMP", "tags": "Element,Container,Software System" },
+          { "id": "9", "name": "Active Directory", "description": "The bank's authentication and authorisation system.", "technology": "LDAP", "tags": "Element,Container,Software System" }
+        ],
+        "relationships": [
+          { "id": "20", "sourceId": "1", "destinationId": "3", "description": "Views reports using", "technology": "HTTPS" },
+          { "id": "21", "sourceId": "2", "destinationId": "3", "description": "Configures parameters using", "technology": "HTTPS" },
+          { "id": "22", "sourceId": "3", "destinationId": "4", "description": "Gets trade data from", "technology": "API" },
+          { "id": "23", "sourceId": "3", "destinationId": "5", "description": "Gets counterparty data from", "technology": "API" },
+          { "id": "24", "sourceId": "3", "destinationId": "6", "description": "Gets counterparty data from", "technology": "API" },
+          { "id": "25", "sourceId": "3", "destinationId": "7", "description": "Sends notification that report is ready", "technology": "SMTP" },
+          { "id": "26", "sourceId": "7", "destinationId": "1", "description": "Sends notification email to", "technology": "E-mail" },
+          { "id": "27", "sourceId": "3", "destinationId": "8", "description": "Sends critical failure alerts to", "technology": "SNMP" },
+          { "id": "28", "sourceId": "3", "destinationId": "9", "description": "Uses for authentication and authorisation", "technology": "LDAP" }
+        ]
+      }
+    ]
+  },
+  "views": {
+    "containerViews": [
+      {
+        "softwareSystemId": "100",
+        "key": "FinancialRiskContext",
+        "elements": [
+          { "id": "1", "x": 300, "y": 50 },
+          { "id": "2", "x": 900, "y": 50 },
+          { "id": "3", "x": 600, "y": 350 },
+          { "id": "4", "x": 100, "y": 650 },
+          { "id": "5", "x": 400, "y": 650 },
+          { "id": "6", "x": 700, "y": 650 },
+          { "id": "7", "x": 1000, "y": 350 },
+          { "id": "8", "x": 1000, "y": 650 },
+          { "id": "9", "x": 200, "y": 350 }
+        ],
+        "relationships": [
+          { "id": "20" }, { "id": "21" }, { "id": "22" }, { "id": "23" },
+          { "id": "24" }, { "id": "25" }, { "id": "26" }, { "id": "27" }, { "id": "28" }
+        ],
+        "dimensions": { "width": 1400, "height": 900 }
+      }
+    ],
+    "styles": {
+      "elements": [
+        { "tag": "Person", "shape": "Person", "background": "#d46a6a", "color": "#ffffff" },
+        { "tag": "Software System", "background": "#801515", "color": "#ffffff" },
+        { "tag": "Financial Risk System", "background": "#550000", "color": "#ffffff" },
+        { "tag": "Future State", "background": "#801515", "color": "#ffffff" }
+      ],
+      "relationships": [
+        { "tag": "Relationship", "color": "#707070" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "diamond",
+  "path": { "type": "diamond" },
+  "defaults": {
+    "fillColor": "#ff9933",
+    "lineWidth": 0
+  },
+  "anchors": [
+    { "name": "in",  "position": "left",  "radius": 3, "fillColor": "#4a9a4a", "strokeColor": "#6abf6a" },
+    { "name": "out", "position": "right", "radius": 3, "fillColor": "#9a4a4a", "strokeColor": "#bf6a6a" }
+  ],
+  "labelPosition": "center",
+  "zPosition": 10
+}

@@ -1,0 +1,371 @@
+{
+  "name": "Fleet Topology",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "background": {
+      "color": "#0a0e1a"
+    }
+  },
+  "spriteBindings": [
+    {
+      "id": "zones",
+      "datasourceId": "ds_zones",
+      "entityField": "zone_id",
+      "spriteType": "zone",
+      "placement": "fixed",
+      "zoneGroupField": "group_id",
+      "properties": {
+        "color": {
+          "field": "color"
+        },
+        "label": {
+          "field": "label"
+        },
+        "opacity": {
+          "value": "0.25"
+        }
+      }
+    },
+    {
+      "id": "grp_dmz",
+      "spriteType": "group",
+      "placement": "static",
+      "x": 80,
+      "y": 25,
+      "w": 1760,
+      "h": 150,
+      "group": {
+        "label": "DMZ",
+        "style": "boundary",
+        "level": 1,
+        "gates": [
+          {
+            "name": "dmz_south",
+            "side": "s",
+            "position": 0.35,
+            "label": "FW West",
+            "icon": "lock.shield",
+            "priority": 1,
+            "rules": [
+              {
+                "field": "protocol",
+                "op": "eq",
+                "value": "grpc"
+              }
+            ],
+            "connects": [
+              "grp_dc_west",
+              "grp_dc_east"
+            ]
+          },
+          {
+            "name": "dmz_south_e",
+            "side": "s",
+            "position": 0.65,
+            "label": "FW East",
+            "icon": "lock.shield",
+            "priority": 2,
+            "connects": [
+              "grp_dc_west",
+              "grp_dc_east"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "grp_dc_west",
+      "spriteType": "group",
+      "placement": "static",
+      "x": 75,
+      "y": 250,
+      "w": 880,
+      "h": 665,
+      "group": {
+        "label": "DC West  ·  us-east-1a",
+        "style": "boundary",
+        "level": 1,
+        "gates": [
+          {
+            "name": "dc_west_entry",
+            "side": "n",
+            "position": 0.5,
+            "label": "QoS Gate",
+            "icon": "network",
+            "priority": 1,
+            "rules": [
+              {
+                "field": "latency_ms",
+                "op": "lt",
+                "value": "50"
+              }
+            ],
+            "connects": [
+              "grp_dmz"
+            ]
+          },
+          {
+            "name": "backbone_west",
+            "side": "e",
+            "position": 0.4,
+            "label": "Backbone",
+            "icon": "arrow.left.arrow.right",
+            "priority": 1,
+            "rules": [
+              {
+                "field": "status",
+                "op": "neq",
+                "value": "degraded"
+              }
+            ],
+            "connects": [
+              "grp_dc_east"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "grp_dc_east",
+      "spriteType": "group",
+      "placement": "static",
+      "x": 965,
+      "y": 250,
+      "w": 880,
+      "h": 665,
+      "group": {
+        "label": "DC East  ·  us-east-1b",
+        "style": "boundary",
+        "level": 1,
+        "gates": [
+          {
+            "name": "dc_east_entry",
+            "side": "n",
+            "position": 0.5,
+            "label": "QoS Gate",
+            "icon": "network",
+            "priority": 1,
+            "rules": [
+              {
+                "field": "latency_ms",
+                "op": "lt",
+                "value": "50"
+              }
+            ],
+            "connects": [
+              "grp_dmz"
+            ]
+          },
+          {
+            "name": "backbone_east",
+            "side": "w",
+            "position": 0.4,
+            "label": "Backbone",
+            "icon": "arrow.left.arrow.right",
+            "priority": 1,
+            "rules": [
+              {
+                "field": "status",
+                "op": "neq",
+                "value": "degraded"
+              }
+            ],
+            "connects": [
+              "grp_dc_west"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "servers",
+      "datasourceId": "ds_fleet",
+      "entityField": "hostname",
+      "spriteType": "server",
+      "spriteTypeField": "role",
+      "spriteTypeMap": {
+        "postgres": "database",
+        "mysql": "database",
+        "redis": "cache",
+        "rabbitmq": "queue",
+        "ingress": "gateway",
+        "nginx": "gateway",
+        "cron": "cron",
+        "worker": "cron",
+        "search": "search",
+        "auth": "auth"
+      },
+      "placement": "zone_relative",
+      "zoneField": "zone",
+      "zoneBinding": "zones",
+      "w": 48,
+      "h": 48,
+      "behaviorField": "sprite_behavior",
+      "properties": {
+        "color": {
+          "field": "status",
+          "map": {
+            "healthy": "#73BF69",
+            "warning": "#FADE2A",
+            "degraded": "#FF9830",
+            "critical": "#F2495C"
+          }
+        },
+        "label": {
+          "field": "hostname"
+        },
+        "scale": {
+          "field": "cpu_percent",
+          "range": [
+            0.8,
+            1.4
+          ],
+          "inputRange": [
+            0,
+            100
+          ]
+        }
+      }
+    },
+    {
+      "id": "connections",
+      "datasourceId": "ds_connections",
+      "entityField": "edge_id",
+      "spriteType": "connection",
+      "placement": "edge",
+      "sourceField": "source",
+      "targetField": "target",
+      "anchorBinding": "servers",
+      "connectionStyle": "junction",
+      "properties": {
+        "opacity": {
+          "field": "latency_ms",
+          "range": [
+            1.0,
+            0.15
+          ],
+          "inputRange": [
+            0,
+            50
+          ]
+        },
+        "color": {
+          "field": "status",
+          "map": {
+            "active": "#3b82f6",
+            "degraded": "#f97316"
+          }
+        }
+      },
+      "trafficDots": {
+        "count": 2,
+        "radius": 2.5,
+        "speedField": "bytes_sec",
+        "speedRange": [
+          80.0,
+          0.8
+        ],
+        "colorField": "status",
+        "colorMap": {
+          "active": "#60a5fa",
+          "degraded": "#fb923c"
+        }
+      }
+    },
+    {
+      "id": "alerts",
+      "datasourceId": "ds_alerts",
+      "entityField": "alert_id",
+      "spriteType": "alert",
+      "w": 20,
+      "h": 20,
+      "placement": "entity_relative",
+      "anchorField": "hostname",
+      "anchorBinding": "servers",
+      "behaviorField": "severity",
+      "properties": {
+        "color": {
+          "field": "severity",
+          "map": {
+            "warning": "#FADE2A",
+            "critical": "#F2495C"
+          }
+        }
+      }
+    },
+    {
+      "id": "scorecard_ingress",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 860,
+      "y": 105,
+      "w": 200,
+      "h": 50,
+      "scorecard": {
+        "groupField": "tier",
+        "groupValue": "ingress",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "{total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_dc_west",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 110,
+      "y": 925,
+      "w": 200,
+      "h": 50,
+      "scorecard": {
+        "groupField": "dc",
+        "groupValue": "west",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "DC West: {total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    },
+    {
+      "id": "scorecard_dc_east",
+      "datasourceId": "ds_fleet",
+      "spriteType": "scorecard",
+      "placement": "static",
+      "x": 1000,
+      "y": 925,
+      "w": 200,
+      "h": 50,
+      "scorecard": {
+        "groupField": "dc",
+        "groupValue": "east",
+        "countField": "hostname",
+        "breakdownField": "status",
+        "format": "DC East: {total} pods  |  CPU {avg:cpu_percent}%\n{breakdown}"
+      }
+    }
+  ],
+  "hud": [
+    {
+      "type": "label",
+      "text": "K8s Cluster — Live Topology",
+      "position": "top_center"
+    },
+    {
+      "type": "label",
+      "text": "Ingress → Frontend → API → DB / Cache + Workers",
+      "position": "bottom_left"
+    },
+    {
+      "type": "label",
+      "text": "● healthy  ● warning  ● critical",
+      "position": "bottom_right"
+    },
+    {
+      "type": "label",
+      "text": "LIVE",
+      "position": "top_right"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "base_url" : "https:\/\/pop-os.local:8089",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/services\/server\/health\/splunkd"
+    },
+    "id" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "name" : "Splunk",
+    "options" : {
+      "default_stream_mode" : "preview",
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "splunk"
+  },
+  {
+    "base_url" : "http:\/\/pop-os.local:9090",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/-\/healthy"
+    },
+    "id" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+    "name" : "Prometheus",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "prometheus"
+  },
+  {
+    "base_url" : "http:\/\/mini.local:3000",
+    "config_version" : 2,
+    "id" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+    "name" : "Grafana",
+    "specId" : "grafana",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "local:\/\/intelligence",
+    "config_version" : 2,
+    "id" : "intelligence",
+    "name" : "Intelligence",
+    "type" : "intelligence"
+  },
+  {
+    "base_url" : "file:\/\/localhost",
+    "config_version" : 2,
+    "id" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+    "name" : "Local File",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "file"
+  },
+  {
+    "base_url" : "https:\/\/api.twelvedata.com",
+    "config_version" : 2,
+    "description" : "https:\/\/twelvedata.com\/account\/api-keys",
+    "id" : "0A521DE0-DEA2-4E6C-8B9E-07F6FED760EF",
+    "name" : "TwelveData",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/finhub.io",
+    "config_version" : 2,
+    "id" : "48254239-6BFA-45B0-A478-0D599409618D",
+    "name" : "FinHub",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.github.com",
+    "config_version" : 2,
+    "id" : "44FEC2C5-A1E5-4560-9FB7-E06838408D61",
+    "name" : "GitHub",
+    "specId" : "github",
+    "specVersion" : 1,
+    "type" : "custom"
+  }
+]

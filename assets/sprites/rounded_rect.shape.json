@@ -1,0 +1,17 @@
+{
+  "id": "rounded_rect",
+  "path": { "type": "roundedRect", "cornerRadius": 8 },
+  "defaults": {
+    "fillColor": "#262626",
+    "strokeColor": "#00ffff",
+    "lineWidth": 1.5
+  },
+  "anchors": [
+    { "name": "in",  "position": "left",   "radius": 4, "fillColor": "#4a9a4a", "strokeColor": "#6abf6a" },
+    { "name": "out", "position": "right",  "radius": 4, "fillColor": "#9a4a4a", "strokeColor": "#bf6a6a" },
+    { "position": "top",    "radius": 4, "fillColor": "#666666", "strokeColor": "#999999" },
+    { "position": "bottom", "radius": 4, "fillColor": "#666666", "strokeColor": "#999999" }
+  ],
+  "labelPosition": "center",
+  "zPosition": 2
+}

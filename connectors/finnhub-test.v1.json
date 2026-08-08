@@ -1,0 +1,39 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/finnhub.io",
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "finnhub-test",
+  "name" : "Finnhub (wizard test)",
+  "streams" : [
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "quote",
+      "method" : "GET",
+      "name" : "Quote",
+      "path" : "\/api\/v1\/quote",
+      "userParams" : [
+        {
+          "key" : "symbol",
+          "label" : "Symbol",
+          "location" : "query",
+          "required" : true,
+          "role" : "value"
+        },
+        {
+          "key" : "token",
+          "label" : "API token",
+          "location" : "query",
+          "required" : true,
+          "role" : "value"
+        }
+      ]
+    }
+  ],
+  "version" : 1
+}

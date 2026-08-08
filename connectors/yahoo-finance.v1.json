@@ -1,0 +1,58 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/query1.finance.yahoo.com",
+  "headers" : {
+    "Accept" : "application\/json",
+    "User-Agent" : "Mozilla\/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/17.0 Safari\/605.1.15"
+  },
+  "icon" : "",
+  "id" : "yahoo-finance",
+  "name" : "Yahoo Finance",
+  "streams" : [
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "chart",
+      "method" : "GET",
+      "name" : "Chart (OHLCV history)",
+      "path" : "\/v8\/finance\/chart\/{{ config.symbol }}",
+      "responseTransformer" : "parallel_arrays",
+      "transforms" : [
+        {
+          "descend" : {
+            "path" : [
+              "chart",
+              "result"
+            ]
+          }
+        }
+      ],
+      "userParams" : [
+        {
+          "key" : "symbol",
+          "label" : "Symbol",
+          "location" : "path",
+          "required" : true,
+          "role" : "value"
+        },
+        {
+          "key" : "range",
+          "label" : "Range",
+          "location" : "query",
+          "required" : false,
+          "role" : "value"
+        },
+        {
+          "key" : "interval",
+          "label" : "Interval",
+          "location" : "query",
+          "required" : false,
+          "role" : "value"
+        }
+      ]
+    }
+  ],
+  "version" : 1
+}

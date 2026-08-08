@@ -1,0 +1,55 @@
+{
+  "canvas": {
+    "background": {
+      "color": "#1a1a2e"
+    },
+    "height": 1080,
+    "width": 1920
+  },
+  "hud": [
+    {
+      "position": "top_center",
+      "text": "Server Fleet Overview",
+      "type": "label"
+    },
+    {
+      "position": "bottom_left",
+      "text": "Green=Healthy  Yellow=Warning  Red=Critical",
+      "type": "label"
+    }
+  ],
+  "name": "Server Fleet",
+  "spriteBindings": [
+    {
+      "asset": "server_sprite.png",
+      "datasourceId": "ds_fleet",
+      "entityField": "hostname",
+      "id": "servers",
+      "placement": "grid",
+      "properties": {
+        "color": {
+          "field": "status",
+          "map": {
+            "critical": "#ff3344",
+            "healthy": "#00ff88",
+            "warning": "#ffaa00"
+          }
+        },
+        "label": {
+          "field": "hostname"
+        },
+        "scale": {
+          "field": "cpu_percent",
+          "range": [0.5, 2.0]
+        }
+      },
+      "region": {
+        "height": 780,
+        "width": 1720,
+        "x": 100,
+        "y": 100
+      },
+      "spriteType": "server"
+    }
+  ]
+}
