@@ -20,5 +20,9 @@
       ]
     }
   ],
+  "startup" : {
+    "id" : "ps_23C219BA-EC8",
+    "kind" : "playSet"
+  },
   "version" : 1
 }
