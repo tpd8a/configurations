@@ -1,0 +1,1 @@
+{"sql":"select * from prom.range_query where query='node_load5' AND start='-1h' AND step='5m' AND end='now' ORDER BY timestamp ASC\n","id":"fedsearch_317c776e840a4fa798941d16727125f3","description":"CPU 5 minute load average last hour","name":"node_load5","config_version":2}

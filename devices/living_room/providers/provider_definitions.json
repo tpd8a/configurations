@@ -1,0 +1,152 @@
+[
+  {
+    "base_url" : "local:\/\/intelligence",
+    "config_version" : 2,
+    "id" : "intelligence",
+    "name" : "Intelligence",
+    "type" : "intelligence"
+  },
+  {
+    "base_url" : "https:\/\/pop-os.local:8089",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/services\/server\/health\/splunkd"
+    },
+    "id" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "name" : "Splunk",
+    "options" : {
+      "default_stream_mode" : "preview",
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "splunk"
+  },
+  {
+    "base_url" : "http:\/\/pop-os.local:9090",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/-\/healthy"
+    },
+    "id" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+    "name" : "Prometheus",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "prometheus"
+  },
+  {
+    "base_url" : "https:\/\/grafana.wikimedia.org",
+    "config_version" : 2,
+    "id" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
+    "name" : "Grafans Wikimedia",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "grafana",
+    "sql_alias" : "graf",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "file:\/\/localhost",
+    "config_version" : 2,
+    "id" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+    "name" : "Local File",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "file"
+  },
+  {
+    "base_url" : "https:\/\/api.twelvedata.com",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 600,
+      "path" : "\/api_usage"
+    },
+    "id" : "CD8BCCAD-A034-4530-9446-DB1203D94E11",
+    "name" : "TwelveData",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "twelve-data-api",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/ws.twelvedata.com\/v1\/%20",
+    "config_version" : 2,
+    "id" : "2132BC0E-89A3-4CF8-9DCE-2BF62079936A",
+    "name" : "Twelve Data (WebSocket)",
+    "options" : {
+      "default_stream_mode" : "tail",
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "twelve-data-ws",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/stream.wikimedia.org",
+    "config_version" : 2,
+    "id" : "FA8DC381-1CD8-40BF-BFF6-BC09E1F11CE7",
+    "name" : "Wikimedia EventStreams",
+    "specId" : "wikimedia-eventstreams",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "http:\/\/localhost:1234",
+    "config_version" : 2,
+    "id" : "B29FC298-C000-4234-B00A-F3786F11A02A",
+    "name" : "LM Studio",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "lm-studio",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "file:\/\/localhost",
+    "config_version" : 2,
+    "id" : "prov_structurizr_static",
+    "name" : "Structurizr Static Data",
+    "type" : "file"
+  },
+  {
+    "base_url" : "https:\/\/pop-os.local:9090",
+    "config_version" : 2,
+    "id" : "7BD7208E-DC35-4448-A590-7CE8FF8F5709",
+    "name" : "Prom",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "prometheus",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.github.com",
+    "config_version" : 2,
+    "id" : "DB8CF49D-49FC-4C80-BE26-DD9CDA0B2EBD",
+    "name" : "GitHub",
+    "specId" : "github",
+    "specVersion" : 1,
+    "type" : "custom"
+  }
+]

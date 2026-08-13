@@ -1,0 +1,145 @@
+{
+  "playSets" : [
+    {
+      "id" : "ps_9655257C-41B",
+      "items" : [
+        {
+          "dashboardId" : "dash_594f27d8c0794af8b025ea4d10606a93",
+          "durationSeconds" : 60
+        },
+        {
+          "dashboardId" : "dash_e764697e44f74785805bc49f98c1458b",
+          "durationSeconds" : 60
+        }
+      ],
+      "mode" : "cycle",
+      "name" : "My First Loop",
+      "play" : "loop",
+      "slots" : [
+        {
+          "day" : 1,
+          "endMinute" : 990,
+          "id" : "slot_F09A9AA9-6D8",
+          "startMinute" : 870,
+          "target" : {
+            "id" : "dash_e764697e44f74785805bc49f98c1458b",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 1,
+          "endMinute" : 830,
+          "id" : "slot_33A5F654-64D",
+          "startMinute" : 480,
+          "target" : {
+            "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 0,
+          "endMinute" : 1420,
+          "id" : "slot_5843FEA1-EFC",
+          "startMinute" : 1360,
+          "target" : {
+            "id" : "dash_e764697e44f74785805bc49f98c1458b",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 0,
+          "endMinute" : 910,
+          "id" : "slot_661A57A3-B68",
+          "startMinute" : 750,
+          "target" : {
+            "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 2,
+          "endMinute" : 990,
+          "id" : "slot_4276EB77-491",
+          "startMinute" : 870,
+          "target" : {
+            "id" : "dash_e764697e44f74785805bc49f98c1458b",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 2,
+          "endMinute" : 870,
+          "id" : "slot_2AC9A2AE-69A",
+          "startMinute" : 750,
+          "target" : {
+            "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 3,
+          "endMinute" : 990,
+          "id" : "slot_E82ABF14-545",
+          "startMinute" : 870,
+          "target" : {
+            "id" : "dash_e764697e44f74785805bc49f98c1458b",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 3,
+          "endMinute" : 870,
+          "id" : "slot_2D427791-4F5",
+          "startMinute" : 750,
+          "target" : {
+            "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 4,
+          "endMinute" : 990,
+          "id" : "slot_909F01E4-95A",
+          "startMinute" : 870,
+          "target" : {
+            "id" : "dash_e764697e44f74785805bc49f98c1458b",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 4,
+          "endMinute" : 870,
+          "id" : "slot_F3916572-3EA",
+          "startMinute" : 750,
+          "target" : {
+            "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+            "kind" : "dashboard"
+          }
+        },
+        {
+          "day" : 4,
+          "endMinute" : 750,
+          "id" : "slot_EEC67BBF-F5D",
+          "startMinute" : 480,
+          "target" : {
+            "id" : "ps_980762E3-D2F",
+            "kind" : "cycle"
+          }
+        }
+      ]
+    },
+    {
+      "id" : "ps_980762E3-D2F",
+      "items" : [
+
+      ],
+      "mode" : "cycle",
+      "name" : "New Workspace",
+      "play" : "once",
+      "slots" : [
+
+      ]
+    }
+  ],
+  "version" : 1
+}
