@@ -1,0 +1,24 @@
+{
+  "playSets" : [
+    {
+      "id" : "ps_23C219BA-EC8",
+      "items" : [
+        {
+          "dashboardId" : "dash_594f27d8c0794af8b025ea4d10606a93",
+          "durationSeconds" : 60
+        },
+        {
+          "dashboardId" : "dash_e764697e44f74785805bc49f98c1458b",
+          "durationSeconds" : 60
+        }
+      ],
+      "mode" : "cycle",
+      "name" : "First Tv Playlist",
+      "play" : "loop",
+      "slots" : [
+
+      ]
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,257 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8a5f7384afdc49e7bc74a6682159583d",
+      "query" : {
+        "name" : "ds_F77ACAD2",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_9aeb16530d764fc2bff7e0ea3c86465f",
+      "query" : {
+        "name" : "ds_964A6EB8",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_61746d02a285475c864f9d698d00f670",
+      "query" : {
+        "name" : "node_load5",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "tql" : "ta ema(value, 20) as sma20"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_594f27d8c0794af8b025ea4d10606a93",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Node Exporter CPU",
+  "provenance" : {
+    "imported_at" : "2026-08-13T07:13:49Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_1ec540e5f08349778f8546ce8c6260e0",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d7f0f4948b6645b39ea7fc19b0457ffb"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_578d694f0f5c4d8d8e22464a9fdb9e95",
+          "layout" : {
+            "height" : 560,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : false
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "value" : {
+                    "color" : "#8E24AA",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "value",
+                    "fillOpacity" : 0.1,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "dashed",
+                    "lineWidth" : 5,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "right",
+                  "showValues" : true,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "744F1619-07BC-42BC-9CF9-4B47838C9867",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsidmFsdWUiOnsiY29sb3VyIjp7ImhleCI6eyJfMCI6IiM4RTI0QUEifX0sImZpbGxPcGFjaXR5IjowLjEwMDAwMDAwMDAwMDAwMDAxLCJuZWdhdGUiOmZhbHNlLCJsaW5lU3R5bGUiOiJkYXNoZWQiLCJoaWRkZW4iOmZhbHNlLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImxpbmVXaWR0aCI6NX0sIm5vZGVfbG9hZDUiOnsiY29sb3VyIjp7ImhleCI6eyJfMCI6IiM4RTI0QUEifX0sImZpbGxPcGFjaXR5IjowLjEwMDAwMDAwMDAwMDAwMDAxLCJuZWdhdGUiOmZhbHNlLCJsaW5lU3R5bGUiOiJkYXNoZWQiLCJoaWRkZW4iOmZhbHNlLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImxpbmVXaWR0aCI6NX19fQ=="
+                      },
+                      {
+                        "id" : "922CA2CA-2E19-475E-99C2-8EED05EA1970",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJpbmRleCI6MCwic2VyaWVzT3ZlcnJpZGVzIjp7Im5vZGVfbG9hZDUiOnsiY29sb3VyIjp7ImhleCI6eyJfMCI6IiM4RTI0QUEifX0sImZpbGxPcGFjaXR5IjowLjEwMDAwMDAwMDAwMDAwMDAxLCJuZWdhdGUiOmZhbHNlLCJsaW5lU3R5bGUiOiJkYXNoZWQiLCJoaWRkZW4iOmZhbHNlLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImxpbmVXaWR0aCI6NX0sInZhbHVlIjp7ImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjOEUyNEFBIn19LCJmaWxsT3BhY2l0eSI6MC4xMDAwMDAwMDAwMDAwMDAwMSwibmVnYXRlIjpmYWxzZSwibGluZVN0eWxlIjoiZGFzaGVkIiwiaGlkZGVuIjpmYWxzZSwibGluZUludGVycG9sYXRpb24iOiJzbW9vdGgiLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJsaW5lV2lkdGgiOjV9fSwiZGFzaGVkIjpmYWxzZSwiZmllbGQiOiJzbWEyMCJ9"
+                      }
+                    ],
+                    "shapeId" : "multi-line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "timestamp"
+                        ],
+                        "group",
+                        [
+                          "__name__"
+                        ],
+                        "y",
+                        [
+                          "value"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_61746d02a285475c864f9d698d00f670",
+              "id" : "viz_d7f0f4948b6645b39ea7fc19b0457ffb",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
+              "sql_composition" : "select * from FS.node_load5",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "15 minute cpu load"
+    }
+  ]
+}
