@@ -1,1 +1,45 @@
-{"id":"73A5E280-547F-437F-AB29-B6DFCF1DDE32","queries":[{"earliest":"-24h@h","id":"37B91077-6601-4F42-8F46-A8835E284AF4","vizConfigs":{},"queryText":"local_saved_search","providerRef":"E0083C14-3BF6-4721-8B58-DC624E092EAB","vizType":"table","streamParams":{},"latest":"now","providerType":"splunk","enabled":true,"queryMode":"saved_search","pipelineStages":"eyJzdGFnZXMiOltdfQ=="},{"earliest":"-24h@h","id":"D3D5D9AB-EDBF-4C10-9E9E-F042D6702C02","vizConfigs":{"table":{}},"queryText":"local_saved_search","providerRef":"E0083C14-3BF6-4721-8B58-DC624E092EAB","vizType":"chart","streamParams":{},"latest":"now","providerType":"splunk","enabled":true,"queryMode":"saved_search","pipelineStages":"eyJzdGFnZXMiOlt7InByb2plY3QiOnsiY29sdW1ucyI6W3siaW5jbHVkZSI6eyJfMCI6Il90aW1lIn19LHsiaW5jbHVkZSI6eyJfMCI6ImVycm9ycyJ9fSx7ImluY2x1ZGUiOnsiXzAiOiJldmVudHMifX0seyJpbmNsdWRlIjp7Il8wIjoiY2FsbGVyIn19XX19XX0="}],"name":"CleanSplunk","mergeResults":false}
+{
+  "id" : "73A5E280-547F-437F-AB29-B6DFCF1DDE32",
+  "mergeResults" : false,
+  "name" : "CleanSplunk",
+  "queries" : [
+    {
+      "earliest" : "-24h@h",
+      "enabled" : true,
+      "id" : "37B91077-6601-4F42-8F46-A8835E284AF4",
+      "latest" : "now",
+      "pipelineStages" : "eyJzdGFnZXMiOltdfQ==",
+      "providerRef" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "providerType" : "splunk",
+      "queryMode" : "saved_search",
+      "queryText" : "local_saved_search",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+
+      },
+      "vizType" : "table"
+    },
+    {
+      "earliest" : "-24h@h",
+      "enabled" : true,
+      "id" : "D3D5D9AB-EDBF-4C10-9E9E-F042D6702C02",
+      "latest" : "now",
+      "pipelineStages" : "eyJzdGFnZXMiOlt7InByb2plY3QiOnsiY29sdW1ucyI6W3siaW5jbHVkZSI6eyJfMCI6Il90aW1lIn19LHsiaW5jbHVkZSI6eyJfMCI6ImVycm9ycyJ9fSx7ImluY2x1ZGUiOnsiXzAiOiJldmVudHMifX0seyJpbmNsdWRlIjp7Il8wIjoiY2FsbGVyIn19XX19XX0=",
+      "providerRef" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+      "providerType" : "splunk",
+      "queryMode" : "saved_search",
+      "queryText" : "local_saved_search",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+        "table" : {
+
+        }
+      },
+      "vizType" : "chart"
+    }
+  ]
+}

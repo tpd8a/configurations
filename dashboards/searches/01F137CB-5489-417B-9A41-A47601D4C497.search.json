@@ -1,1 +1,30 @@
-{"name":"LM Studio Generated Prompts","mergeResults":false,"id":"01F137CB-5489-417B-9A41-A47601D4C497","queries":[{"fileState":{"path":"\/Users\/peter\/.lmstudio\/server-logs\/2026-04","lineBreaker":"([\\r\\n]+)\\[","formatRaw":"txt","tql":"match line \/Generated\/\n| head 2000\n| extract line \/Generated prediction: (?P<test>[\\v\\V]*)\/\n| select test\n| jq test\n| jq test.choices\n| select test.choices\n"},"vizConfigs":{},"latest":"now","providerType":"file","providerRef":"AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673","id":"BEDD5FED-DABB-49BB-8106-ADC13B362758","earliest":"-24h@h","streamParams":{},"enabled":true,"queryMode":"file","queryText":"*.log","vizType":"table"}]}
+{
+  "id" : "01F137CB-5489-417B-9A41-A47601D4C497",
+  "mergeResults" : false,
+  "name" : "LM Studio Generated Prompts",
+  "queries" : [
+    {
+      "earliest" : "-24h@h",
+      "enabled" : true,
+      "fileState" : {
+        "formatRaw" : "txt",
+        "lineBreaker" : "([\\r\\n]+)\\[",
+        "path" : "\/Users\/peter\/.lmstudio\/server-logs\/2026-04",
+        "tql" : "match line \/Generated\/\n| head 2000\n| extract line \/Generated prediction: (?P<test>[\\v\\V]*)\/\n| select test\n| jq test\n| jq test.choices\n| select test.choices\n"
+      },
+      "id" : "BEDD5FED-DABB-49BB-8106-ADC13B362758",
+      "latest" : "now",
+      "providerRef" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "providerType" : "file",
+      "queryMode" : "file",
+      "queryText" : "*.log",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+
+      },
+      "vizType" : "table"
+    }
+  ]
+}

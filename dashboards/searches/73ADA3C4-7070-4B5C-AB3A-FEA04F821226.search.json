@@ -1,1 +1,24 @@
-{"name":"MyNewSearch","mergeResults":true,"queries":[{"id":"96399D8F-A10E-4EAB-ABF7-572DF4AB90FF","queryText":"go_gc_gomemlimit_bytes\n","latest":"now","vizType":"table","enabled":true,"vizConfigs":{},"earliest":"-15m","providerRef":"C3444D46-CB79-4EB4-9BE5-ED726709828F","providerType":"prometheus"}],"id":"73ADA3C4-7070-4B5C-AB3A-FEA04F821226"}
+{
+  "id" : "73ADA3C4-7070-4B5C-AB3A-FEA04F821226",
+  "mergeResults" : true,
+  "name" : "MyNewSearch",
+  "queries" : [
+    {
+      "earliest" : "-15m",
+      "enabled" : true,
+      "id" : "96399D8F-A10E-4EAB-ABF7-572DF4AB90FF",
+      "latest" : "now",
+      "providerRef" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "providerType" : "prometheus",
+      "queryMode" : "",
+      "queryText" : "go_gc_gomemlimit_bytes\n",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+
+      },
+      "vizType" : "table"
+    }
+  ]
+}

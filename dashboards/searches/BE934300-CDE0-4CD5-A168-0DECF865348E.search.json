@@ -1,1 +1,24 @@
-{"name":"Test5","id":"BE934300-CDE0-4CD5-A168-0DECF865348E","queries":[{"streamParams":{},"id":"905A7AC5-C189-40D5-B39D-2A6A86378B47","vizConfigs":{},"latest":"now","providerRef":"C3444D46-CB79-4EB4-9BE5-ED726709828F","enabled":true,"providerType":"prometheus","queryText":"go_gc_gomemlimit_bytes","queryMode":"instant","vizType":"table","earliest":"-24h@h"}],"mergeResults":false}
+{
+  "id" : "BE934300-CDE0-4CD5-A168-0DECF865348E",
+  "mergeResults" : false,
+  "name" : "Test5",
+  "queries" : [
+    {
+      "earliest" : "-24h@h",
+      "enabled" : true,
+      "id" : "905A7AC5-C189-40D5-B39D-2A6A86378B47",
+      "latest" : "now",
+      "providerRef" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "providerType" : "prometheus",
+      "queryMode" : "instant",
+      "queryText" : "go_gc_gomemlimit_bytes",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+
+      },
+      "vizType" : "table"
+    }
+  ]
+}

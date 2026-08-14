@@ -1,1 +1,70 @@
-{"id":"50E5F3EC-CCC9-4124-9D74-EC8A61711DA7","mergeResults":true,"name":"Node Load all","queries":[{"vizConfigs":{"chart":{},"table":{}},"queryText":"node_load15","latest":"now","vizType":"chart","providerRef":"C3444D46-CB79-4EB4-9BE5-ED726709828F","enabled":true,"queryMode":"range","providerType":"prometheus","earliest":"-1w","id":"134E17E4-B03C-4813-8E7A-FC03EA51074A","streamParams":{},"pipelineStages":"eyJzdGFnZXMiOltdfQ=="},{"vizConfigs":{"table":{}},"queryText":"node_load5","latest":"now","vizType":"chart","providerRef":"C3444D46-CB79-4EB4-9BE5-ED726709828F","enabled":true,"queryMode":"range","providerType":"prometheus","earliest":"-1w","id":"FF710F63-DF07-414F-A92C-230ABE6659AF","streamParams":{},"pipelineStages":"eyJzdGFnZXMiOltdfQ=="},{"vizConfigs":{"table":{}},"queryText":"node_load1","latest":"now","vizType":"chart","providerRef":"C3444D46-CB79-4EB4-9BE5-ED726709828F","enabled":true,"queryMode":"range","providerType":"prometheus","earliest":"-1w","id":"3FFABB1A-195D-462D-9E23-D5B2B9AAABE0","streamParams":{},"pipelineStages":"eyJzdGFnZXMiOltdfQ=="}]}
+{
+  "id" : "50E5F3EC-CCC9-4124-9D74-EC8A61711DA7",
+  "mergeResults" : true,
+  "name" : "Node Load all",
+  "queries" : [
+    {
+      "earliest" : "-1w",
+      "enabled" : true,
+      "id" : "134E17E4-B03C-4813-8E7A-FC03EA51074A",
+      "latest" : "now",
+      "pipelineStages" : "eyJzdGFnZXMiOltdfQ==",
+      "providerRef" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "providerType" : "prometheus",
+      "queryMode" : "range",
+      "queryText" : "node_load15",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+        "chart" : {
+
+        },
+        "table" : {
+
+        }
+      },
+      "vizType" : "chart"
+    },
+    {
+      "earliest" : "-1w",
+      "enabled" : true,
+      "id" : "FF710F63-DF07-414F-A92C-230ABE6659AF",
+      "latest" : "now",
+      "pipelineStages" : "eyJzdGFnZXMiOltdfQ==",
+      "providerRef" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "providerType" : "prometheus",
+      "queryMode" : "range",
+      "queryText" : "node_load5",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+        "table" : {
+
+        }
+      },
+      "vizType" : "chart"
+    },
+    {
+      "earliest" : "-1w",
+      "enabled" : true,
+      "id" : "3FFABB1A-195D-462D-9E23-D5B2B9AAABE0",
+      "latest" : "now",
+      "pipelineStages" : "eyJzdGFnZXMiOltdfQ==",
+      "providerRef" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+      "providerType" : "prometheus",
+      "queryMode" : "range",
+      "queryText" : "node_load1",
+      "streamParams" : {
+
+      },
+      "vizConfigs" : {
+        "table" : {
+
+        }
+      },
+      "vizType" : "chart"
+    }
+  ]
+}

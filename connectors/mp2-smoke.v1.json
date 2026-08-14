@@ -1,0 +1,14 @@
+{
+  "authType" : "apiKey",
+  "baseUrl" : "https:\/\/api.example.com",
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "mp2-smoke",
+  "name" : "MP2 Smoke",
+  "streams" : [
+
+  ],
+  "version" : 1
+}
