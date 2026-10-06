@@ -1,0 +1,388 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_4cbc8ebecdc74c56b4418d6c235d6b78",
+      "query" : {
+        "name" : "ds_3",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '| tstats count by source', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c4b2731fc15440cb95dcb36de4282121",
+      "query" : {
+        "name" : "row depends:$depends_row_token$ (depends_row_token) panel rejects:$panel_rejects_token$ (panel_rejects_token)",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '|  makeresults \n| eval source=\"$filename$\"', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_dd87b4f2eb7a4bbdbe734c207436562f",
+      "query" : {
+        "name" : "VIZ rejects (viz_table_rejects_filename) $viz_table_rejects_filename$",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '|  makeresults \n| eval rejects=\"$filename$\"', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4fe491cd545b483c8446ae7ac9203f8b",
+      "query" : {
+        "name" : "$depends_row_token$",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '|  tstats count by source', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Check2",
+  "id" : "dash_1636cbb21ab14359a3c09550cb77eceb",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_4cbc8ebecdc74c56b4418d6c235d6b78",
+          "field_for_label" : "source",
+          "field_for_value" : "source"
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "all",
+            "value" : "*.log"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "File Chooser",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_b43044f6d6c849588b4ed539d685289a",
+      "token" : "filename"
+    },
+    {
+      "config" : {
+        "default" : "      ",
+        "display_location" : "top",
+        "label" : "",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_6e082ed9ea6a427f828cd5988696311e",
+      "token" : "field1"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "panel_depends_token",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_319f7a6faa8144e48b348593b5d6283b",
+      "token" : "panel_depends_token"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "panel_rejects_token",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_c585b304d9d849a894cbcd61fbdcc32f",
+      "token" : "panel_rejects_token"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "rejects_row_token",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_df09b816190f41df9ab724c051db69f4",
+      "token" : "rejects_row_token"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "depends_row_token",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_84261348b71e410d987a52feee2186dd",
+      "token" : "depends_row_token"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "vix_table_depends_token",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_e094f50efe7c4c09ae1eab75cc072118",
+      "token" : "viz_table_depends_token"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "vix_table_rejects_filename",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_907a1bd00b99432f95b51f86d3870286",
+      "token" : "viz_table_rejects_filename"
+    },
+    {
+      "config" : {
+        "default" : "      ",
+        "display_location" : "top",
+        "label" : "Proper Time Picker",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_150e3fa780794649a1f85661ab51c181",
+      "token" : "time picker"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Auto Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_733001fe3890450ab16947c31616f6ac",
+      "token" : "_fieldset_autoRun"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Another DB Input Check",
+  "provenance" : {
+    "imported_at" : "2026-09-22T03:46:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_852adf17ca4142a792ee0f1f0bf04ad2",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9ec280e6d262414195f00c7478b679d9"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_da41f6d6679e4034824b30a5722bd1e6",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "$depends_row_token$",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "row depends:$depends_row_token$ (depends_row_token) panel rejects:$panel_rejects_token$ (panel_rejects_token)"
+              },
+              "data_source_ref" : "ds_c4b2731fc15440cb95dcb36de4282121",
+              "id" : "viz_9ec280e6d262414195f00c7478b679d9",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "refresh.display" : "progressbar",
+                "rowNumbers" : "false",
+                "totalsRow" : "false",
+                "wrap" : "false"
+              },
+              "title" : "row depends:$depends_row_token$ (depends_row_token) panel rejects:$panel_rejects_token$ (panel_rejects_token)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_bb86048f6360426b9e6afb169d084ac5",
+      "layout" : {
+        "visibility" : {
+          "rejects" : [
+            "$rejects_row_token$"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c565dda52b00414c9398e77d0eda31c6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8fea607fb5f24022a5e4bebfbfe406d9",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$panel_depends_token$"
+              ],
+              "rejects" : [
+                "viz_table_rejects_filename"
+              ]
+            }
+          },
+          "title" : "row rejects:$rejects_row_token$ (rejects_row_token) panel depends:$panel_depends_token$ (panel_depends_token)",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "VIZ rejects (viz_table_rejects_filename) $viz_table_rejects_filename$"
+              },
+              "data_source_ref" : "ds_dd87b4f2eb7a4bbdbe734c207436562f",
+              "id" : "viz_c565dda52b00414c9398e77d0eda31c6",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "rejects" : [
+                    "$viz_table_rejects_filename$"
+                  ]
+                }
+              },
+              "title" : "VIZ rejects (viz_table_rejects_filename) $viz_table_rejects_filename$",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_4eef3ea3df35498fa6460705116038c7",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "$depends_row_token$"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e8446b1d5e6d44b5888aba39eee4160c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_586710d24e3c435eb2338410c76bb670",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "$depends_row_token$"
+              },
+              "data_source_ref" : "ds_4fe491cd545b483c8446ae7ac9203f8b",
+              "id" : "viz_e8446b1d5e6d44b5888aba39eee4160c",
+              "layer" : 1,
+              "title" : "$depends_row_token$",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
