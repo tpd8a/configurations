@@ -171,7 +171,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Tab Symbol Browser",
   "provenance" : {
-    "imported_at" : "2026-10-06T20:03:59Z",
+    "imported_at" : "2026-10-06T22:15:24Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -651,11 +651,6 @@
                           "destination" : "cpu",
                           "duration" : "dismiss",
                           "show_result" : true
-                        }
-                      },
-                      {
-                        "banner" : {
-                          "message" : "Close breached in $panel.title$"
                         }
                       }
                     ],
