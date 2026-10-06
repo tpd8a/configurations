@@ -171,7 +171,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Tab Symbol Browser",
   "provenance" : {
-    "imported_at" : "2026-10-06T22:15:24Z",
+    "imported_at" : "2026-10-06T22:52:31Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -638,7 +638,7 @@
                     "actions" : [
                       {
                         "toast" : {
-                          "duration" : 60
+                          "duration" : "dismiss"
                         }
                       },
                       {
@@ -661,7 +661,7 @@
                     },
                     "dedup" : {
                       "overrideOnEscalation" : true,
-                      "windowSeconds" : 30
+                      "windowSeconds" : 180
                     },
                     "enabled" : true,
                     "id" : "D3C846C7-7172-4DD6-BFDB-4501AFEEEA5A",
@@ -791,7 +791,7 @@
                       {
                         "id" : "E5DD8BD8-7821-4F3A-94E8-871B9EEF08C7",
                         "kind" : "indicator_band",
-                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCIsInNlcmllc092ZXJyaWRlcyI6eyJjbG9zZSI6eyJuZWdhdGUiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY2xvc2UiOnsibmVnYXRlIjpmYWxzZSwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwiaGlkZGVuIjpmYWxzZX19LCJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCJ9"
                       }
                     ],
                     "shapeId" : "candlestick",
