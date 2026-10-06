@@ -1,0 +1,163 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "post_order",
+  "method" : "POST",
+  "name" : "New order (TRADE)",
+  "path" : "\/api\/v3\/order",
+  "userParams" : [
+    {
+      "key" : "icebergQty",
+      "label" : "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an icebe",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "newClientOrderId",
+      "label" : "A unique id among open orders. Automatically generated if not sent.<br\/> Orders ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "newOrderRespType",
+      "label" : "`MARKET` and `LIMIT` order types default to `FULL`, all other orders default to ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "pegOffsetType",
+      "label" : "Only `PRICE_LEVEL` is supported. See Pegged Orders Info",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "pegOffsetValue",
+      "label" : "Price level to peg the price to (max: 100). See Pegged Orders Info",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "pegPriceType",
+      "label" : "See Pegged Orders Info",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "price",
+      "label" : "price",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quantity",
+      "label" : "quantity",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quoteOrderQty",
+      "label" : "quoteOrderQty",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "Supports up to three decimal places of precision (e.g., 6000.346) so that micros",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "selfTradePreventionMode",
+      "label" : "The allowed enums is dependent on what is configured on the symbol.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "side",
+      "label" : "Please see [Enums](\/products\/spot\/enums#side) for supported values.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stopPrice",
+      "label" : "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT`",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "strategyId",
+      "label" : "strategyId",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "strategyType",
+      "label" : "The value cannot be less than `1000000`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timeInForce",
+      "label" : "Please see [Enums](\/products\/spot\/enums#timeinforce) for supported values.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    },
+    {
+      "key" : "trailingDelta",
+      "label" : "See Trailing Stop order FAQ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Please see [Enums](\/products\/spot\/enums#ordertypes) for supported values.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

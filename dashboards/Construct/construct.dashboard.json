@@ -1,0 +1,87 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_1b7cf46ddc7940c791b278db42a3b31a",
+      "query" : {
+        "description" : "An audit of Constructs operations and requests ",
+        "name" : "ds_1",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := 'index=\"construct_ai\" \n| head 100\n| spath', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_40e812d574bb413699ce8373fe06fddf",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Construct",
+  "provenance" : {
+    "imported_at" : "2026-10-06T21:05:06Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_11d23782752748578adfdead261e4475",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e55342e196c04cc2878bbe7eb0336037"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f30fd8dacad246b8b0cd1a6c921c703e",
+          "layout" : {
+            "height" : 500,
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_1b7cf46ddc7940c791b278db42a3b31a",
+              "id" : "viz_e55342e196c04cc2878bbe7eb0336037",
+              "layer" : 1,
+              "options" : {
+                "count" : "20",
+                "list.drilldown" : "full",
+                "list.wrap" : "1",
+                "maxLines" : "10",
+                "raw.drilldown" : "none",
+                "refresh.display" : "progressbar",
+                "rowNumbers" : "0",
+                "table.drilldown" : "all",
+                "table.sortDirection" : "asc",
+                "table.wrap" : "1",
+                "type" : "raw"
+              },
+              "title" : "",
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

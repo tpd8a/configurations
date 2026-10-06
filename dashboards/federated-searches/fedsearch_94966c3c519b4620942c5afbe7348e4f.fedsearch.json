@@ -1,0 +1,1 @@
+{"sql":"select * from splunk_enterprise_rest_api.search_job(query:='| savedsearch local_saved_search',namespace:='search')","name":"splunk_run_saved_search","id":"fedsearch_94966c3c519b4620942c5afbe7348e4f","description":"runs a search job, polling, of a splunk savedsearch","config_version":2}

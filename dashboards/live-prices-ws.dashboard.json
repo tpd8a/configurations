@@ -1,0 +1,281 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_92728b2b8dc644848362a2adb4ca5166",
+      "query" : {
+        "name" : "ds_AAPL",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from twelve_data_api.price where symbols='AAPL'"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_6237bc9673f34f9ab1d4fd230e2c2603",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Live Prices (WS)",
+  "provenance" : {
+    "imported_at" : "2026-09-17T17:17:11Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "0A521DE0-DEA2-4E6C-8B9E-07F6FED760EF"
+  ],
+  "rows" : [
+    {
+      "id" : "row_dbb49187925b44d3a847d727bd7b52f6",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_lp_t1",
+              "viz_ids" : [
+                "viz_60407dbb06cc43098de0567cd9f3e770"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_81b36862d8e84ebca0afb2d8d512ee68",
+          "layout" : {
+            "panel_width" : 7
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "A816DFDE-864F-481C-9CD4-46FC95628B51",
+                        "kind" : "ticker",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "ticker-bloomberg",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "currency"
+                        ],
+                        "y",
+                        [
+                          "day_volume"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Live Ticker"
+              },
+              "data_source_ref" : "ds_92728b2b8dc644848362a2adb4ca5166",
+              "id" : "viz_60407dbb06cc43098de0567cd9f3e770",
+              "layer" : 1,
+              "options" : {
+                "font_scale" : "0.9",
+                "font_sizing" : "manual:0.5",
+                "price_field" : "price",
+                "style" : "bloomberg",
+                "symbol_field" : "symbol"
+              },
+              "title" : "Live Ticker",
+              "type" : "ticker",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_22db21429c064d9c90669025a9458897"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bfa9ad18640c4960a18392e9e13c978b",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_92728b2b8dc644848362a2adb4ca5166",
+              "id" : "viz_22db21429c064d9c90669025a9458897",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Live Ticker"
+    },
+    {
+      "id" : "row_47a9a76b86694890bde5b8c5e90a9dc0",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_lp_d2",
+              "viz_ids" : [
+                "viz_532655935b6b494fafd81be0e9eb9a3c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_594cf08afe764a23a603d88f6c135256",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "All Symbols"
+              },
+              "data_source_ref" : "ds_92728b2b8dc644848362a2adb4ca5166",
+              "id" : "viz_532655935b6b494fafd81be0e9eb9a3c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Prices"
+    }
+  ]
+}

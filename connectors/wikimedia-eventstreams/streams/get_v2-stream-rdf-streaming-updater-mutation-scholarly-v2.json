@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "rdf-streaming-updater.mutation-scholarly.v2 events.\n\nSchema title: mediawiki\/wikibase\/entity\/rdf_change",
+  "format" : "json",
+  "id" : "get_v2-stream-rdf-streaming-updater-mutation-scholarly-v2",
+  "method" : "GET",
+  "name" : "rdf-streaming-updater.mutation-scholarly.v2 events",
+  "path" : "\/v2\/stream\/rdf-streaming-updater.mutation-scholarly.v2",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/rdf-streaming-updater.mutation-scholarly.v2",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

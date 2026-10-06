@@ -1,0 +1,28 @@
+{
+  "destinations" : [
+    {
+      "endpoints" : [
+        {
+          "enabled" : true,
+          "fixedParams" : {
+            "limit" : "1",
+            "query" : "node_load1"
+          },
+          "id" : "0C48CACD-15D5-427C-B663-B9912B3CD486",
+          "inputMap" : {
+
+          },
+          "provider" : "4430DF34-0930-4D0D-840C-16653E27F3C4",
+          "stream" : "query"
+        }
+      ],
+      "id" : "cpu",
+      "inputs" : [
+
+      ],
+      "name" : "cpu",
+      "symbol" : "cpu"
+    }
+  ],
+  "version" : 1
+}

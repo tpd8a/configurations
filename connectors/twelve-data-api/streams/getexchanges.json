@@ -1,0 +1,100 @@
+{
+  "columns" : [
+    {
+      "name" : "code",
+      "type" : "string"
+    },
+    {
+      "name" : "country",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "timezone",
+      "type" : "string"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    }
+  ],
+  "description" : "The exchanges endpoint provides a comprehensive list of all available equity exchanges. It returns an array containing detailed information about each exchange, such as exchange code, name, country, and timezone. This data is updated daily.",
+  "format" : "json",
+  "id" : "getexchanges",
+  "method" : "GET",
+  "name" : "Exchanges",
+  "path" : "\/exchanges",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "code",
+      "label" : "Filter by market identifier code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "name",
+      "label" : "Filter by exchange name",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "show_plan",
+      "label" : "Adds info on which plan symbol is available",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "The asset class to which the instrument belongs",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

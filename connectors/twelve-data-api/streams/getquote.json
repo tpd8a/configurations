@@ -1,0 +1,214 @@
+{
+  "columns" : [
+    {
+      "name" : "average_volume",
+      "type" : "string"
+    },
+    {
+      "name" : "change",
+      "type" : "string"
+    },
+    {
+      "name" : "close",
+      "type" : "string"
+    },
+    {
+      "name" : "currency",
+      "type" : "string"
+    },
+    {
+      "name" : "datetime",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "fifty_two_week",
+      "type" : "string"
+    },
+    {
+      "name" : "high",
+      "type" : "string"
+    },
+    {
+      "name" : "is_market_open",
+      "type" : "boolean"
+    },
+    {
+      "name" : "last_quote_at",
+      "type" : "integer"
+    },
+    {
+      "name" : "low",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "open",
+      "type" : "string"
+    },
+    {
+      "name" : "percent_change",
+      "type" : "string"
+    },
+    {
+      "name" : "previous_close",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    },
+    {
+      "name" : "volume",
+      "type" : "string"
+    }
+  ],
+  "description" : "The quote endpoint provides real-time data for a selected financial instrument, returning essential information such as the latest price, open, high, low, close, volume, and price change. This endpoint is ideal for users needing up-to-date market data to track price movements and trading activity for specific stocks, ETFs, or other securities.",
+  "format" : "json",
+  "id" : "getquote",
+  "method" : "GET",
+  "name" : "Quote",
+  "path" : "\/quote",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country where instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Specify the delimiter used when downloading the CSV file",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Specifies the number of decimal places for floating values\nShould be in range [0",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "eod",
+      "label" : "If true, then return data for closed day",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "Value can be JSON or CSV\nDefault JSON",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "interval",
+      "label" : "Interval of the quote",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "prepost",
+      "label" : "Parameter is optional. Only for the `Pro` plan (individual) and `Venture` plan (",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "rolling_period",
+      "label" : "Number of hours for calculate rolling change at period. By default set to 24, it",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of the instrument",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "type",
+      "label" : "The asset class to which the instrument belongs",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "volume_time_period",
+      "label" : "Number of periods for Average Volume",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

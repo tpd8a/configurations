@@ -1,0 +1,106 @@
+{
+  "columns" : [
+    {
+      "name" : "closeTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "count",
+      "type" : "integer"
+    },
+    {
+      "name" : "firstId",
+      "type" : "integer"
+    },
+    {
+      "name" : "highPrice",
+      "type" : "string"
+    },
+    {
+      "name" : "lastId",
+      "type" : "integer"
+    },
+    {
+      "name" : "lastPrice",
+      "type" : "string"
+    },
+    {
+      "name" : "lowPrice",
+      "type" : "string"
+    },
+    {
+      "name" : "openPrice",
+      "type" : "string"
+    },
+    {
+      "name" : "openTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "priceChange",
+      "type" : "string"
+    },
+    {
+      "name" : "priceChangePercent",
+      "type" : "string"
+    },
+    {
+      "name" : "quoteVolume",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "volume",
+      "type" : "string"
+    },
+    {
+      "name" : "weightedAvgPrice",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "ticker",
+  "method" : "GET",
+  "name" : "Rolling window price change statistics",
+  "path" : "\/api\/v3\/ticker",
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "Either `symbol` or `symbols` must be provided",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbolStatus",
+      "label" : "symbolStatus",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Either `symbol` or `symbols` must be provided  Examples of accepted format for t",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "windowSize",
+      "label" : "Units cannot be combined (e.g. `1d2h` is not allowed).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

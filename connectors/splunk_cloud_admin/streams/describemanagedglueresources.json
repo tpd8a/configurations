@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Describe cloud resources managed resources ",
+  "format" : "json",
+  "id" : "describemanagedglueresources",
+  "method" : "GET",
+  "name" : "DescribeManagedGlueResources",
+  "path" : "\/{stack}\/adminconfig\/v2\/cloud-resources\/managed-glue-resources",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

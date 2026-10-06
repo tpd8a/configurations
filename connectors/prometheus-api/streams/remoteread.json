@@ -1,0 +1,15 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Prometheus remote read endpoint for federated queries. Accepts and returns Protocol Buffer encoded data.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "remoteread",
+  "method" : "POST",
+  "name" : "Remote read endpoint",
+  "path" : "\/read",
+  "userParams" : [
+
+  ]
+}

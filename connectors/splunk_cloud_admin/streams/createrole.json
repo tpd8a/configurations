@@ -1,0 +1,27 @@
+{
+  "bodyTemplate" : "{\n  \"name\": \"{{config.name}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "create a new role on the stack",
+  "format" : "json",
+  "id" : "createrole",
+  "method" : "POST",
+  "name" : "CreateRole",
+  "path" : "\/{stack}\/adminconfig\/v2\/roles",
+  "userParams" : [
+    {
+      "key" : "name",
+      "label" : "name",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

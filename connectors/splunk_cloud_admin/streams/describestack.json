@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the generic information about the stack",
+  "format" : "json",
+  "id" : "describestack",
+  "method" : "GET",
+  "name" : "DescribeStack",
+  "path" : "\/{stack}\/adminconfig\/v2\/status",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

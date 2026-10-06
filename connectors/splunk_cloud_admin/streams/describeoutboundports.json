@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the outboundports with ports and subnets",
+  "format" : "json",
+  "id" : "describeoutboundports",
+  "method" : "GET",
+  "name" : "DescribeOutboundports",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports\/{port}",
+  "userParams" : [
+    {
+      "key" : "port",
+      "label" : "the outbound port to be deleted",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "myfilters",
+  "method" : "GET",
+  "name" : "Query relevant filters (USER_DATA)",
+  "path" : "\/api\/v3\/myFilters",
+  "userParams" : [
+    {
+      "key" : "recvWindow",
+      "label" : "Supports up to three decimal places of precision (e.g., 6000.346) so that micros",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    }
+  ]
+}

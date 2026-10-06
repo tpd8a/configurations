@@ -1,0 +1,145 @@
+{
+  "columns" : [
+    {
+      "name" : "takerBuyQuoteVol",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "close",
+      "type" : "number"
+    },
+    {
+      "name" : "endTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "firstTradeD",
+      "type" : "integer"
+    },
+    {
+      "name" : "high",
+      "type" : "number"
+    },
+    {
+      "name" : "interval",
+      "type" : "string"
+    },
+    {
+      "name" : "klineClosed",
+      "type" : "boolean"
+    },
+    {
+      "name" : "lastTradeID",
+      "type" : "integer"
+    },
+    {
+      "name" : "low",
+      "type" : "number"
+    },
+    {
+      "name" : "open",
+      "type" : "number"
+    },
+    {
+      "name" : "quoteVolume",
+      "type" : "number"
+    },
+    {
+      "name" : "startTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "takerBuyBaseVol",
+      "type" : "integer"
+    },
+    {
+      "name" : "totalTrades",
+      "type" : "integer"
+    },
+    {
+      "name" : "volume",
+      "type" : "integer"
+    }
+  ],
+  "disabledCommonRenames" : [
+    "A",
+    "C",
+    "E",
+    "F",
+    "O",
+    "P",
+    "a",
+    "b",
+    "e",
+    "m",
+    "p",
+    "w",
+    "t",
+    "T",
+    "x",
+    "Q"
+  ],
+  "format" : "json",
+  "id" : "ws_kline",
+  "method" : "GET",
+  "name" : "kline",
+  "path" : "\/ws_kline",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keyCase" : "lower",
+    "keyTemplate" : "$key$@kline_$interval$",
+    "keysParam" : "symbols",
+    "rowKey" : [
+      "s"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    }
+  },
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "k"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "Q" : "takerBuyQuoteVol",
+          "T" : "endTime",
+          "V" : "takerBuyBaseVol",
+          "f" : "firstTradeD",
+          "t" : "startTime",
+          "x" : "klineClosed"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "interval",
+      "label" : "Interval",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

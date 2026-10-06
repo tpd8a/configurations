@@ -1,0 +1,119 @@
+{
+  "columns" : [
+    {
+      "name" : "__name__",
+      "type" : "string"
+    },
+    {
+      "name" : "instance",
+      "type" : "string"
+    },
+    {
+      "name" : "job",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "date"
+    },
+    {
+      "name" : "value",
+      "type" : "number"
+    }
+  ],
+  "format" : "json",
+  "id" : "query",
+  "method" : "GET",
+  "name" : "Evaluate an instant query",
+  "path" : "\/query",
+  "transforms" : [
+    {
+      "descend" : {
+        "as" : [
+          "timestamp",
+          "value"
+        ],
+        "mergeSiblings" : [
+          "metric"
+        ],
+        "path" : [
+          "data",
+          "result",
+          "[]",
+          "value"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "metric.__name__" : "__name__",
+          "metric.app" : "app",
+          "metric.instance" : "instance",
+          "metric.job" : "job"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "__name__" : "string",
+          "app" : "string",
+          "instance" : "string",
+          "job" : "string",
+          "value" : "number"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "The maximum number of metrics to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "lookback_delta",
+      "label" : "Override the lookback period for this query. Optional.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "query",
+      "label" : "The PromQL query to execute.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stats",
+      "label" : "When provided, include query statistics in the response. The special value 'all'",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "time",
+      "label" : "The evaluation timestamp (optional, defaults to current time).",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "timeout",
+      "label" : "Evaluation timeout. Optional. Defaults to and is capped by the value of the -que",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

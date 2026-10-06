@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "get default, minimum, and maximum values for limit configuration from the stack",
+  "format" : "json",
+  "id" : "getlimitsconfigdefaults",
+  "method" : "GET",
+  "name" : "GetLimitsConfigDefaults",
+  "path" : "\/{stack}\/adminconfig\/v2\/limits\/{stanza}\/defaults",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stanza",
+      "label" : "stanza name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

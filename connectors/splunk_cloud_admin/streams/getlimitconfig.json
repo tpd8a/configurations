@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "get limit configuration from the stack",
+  "format" : "json",
+  "id" : "getlimitconfig",
+  "method" : "GET",
+  "name" : "GetLimitConfig",
+  "path" : "\/{stack}\/adminconfig\/v2\/limits\/{stanza}",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stanza",
+      "label" : "stanza name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

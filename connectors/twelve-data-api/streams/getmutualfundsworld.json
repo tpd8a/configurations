@@ -1,0 +1,62 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "The mutual full data endpoint provides detailed information about global mutual funds. It returns a comprehensive dataset that includes a summary of the fund, its performance metrics, risk assessment, ratings, asset composition, purchase details, and sustainability factors. This endpoint is essential for users seeking in-depth insights into mutual funds on a global scale, allowing them to evaluate various aspects such as investment performance, risk levels, and environmental impact.",
+  "format" : "json",
+  "id" : "getmutualfundsworld",
+  "method" : "GET",
+  "name" : "MF full data",
+  "path" : "\/mutual_funds\/world",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Number of decimal places for floating values. Accepts value in range [0,11]",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of mutual fund",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

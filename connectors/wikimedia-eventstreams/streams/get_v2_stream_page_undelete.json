@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page-undelete events.\n\n(NOTE: This stream is an alias of mediawiki.page-undelete)\n\nSchema title: mediawiki\/page\/undelete",
+  "format" : "json",
+  "id" : "get_v2_stream_page_undelete",
+  "method" : "GET",
+  "name" : "page-undelete events",
+  "path" : "\/v2\/stream\/page-undelete",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-undelete",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

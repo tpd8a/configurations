@@ -1,0 +1,35 @@
+{
+  "columns" : [
+    {
+      "name" : "value",
+      "type" : "string"
+    }
+  ],
+  "description" : "The instrument type endpoint lists all available financial instrument types, such as stocks, ETFs, and cryptos. This information is essential for users to identify and categorize different financial instruments when accessing or analyzing market data.",
+  "format" : "json",
+  "id" : "getinstrumenttype",
+  "method" : "GET",
+  "name" : "Instrument type",
+  "path" : "\/instrument_type",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "result"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

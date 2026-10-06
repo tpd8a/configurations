@@ -1,0 +1,243 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_db46ebf46c7e4b13b5171dc581aaba9e",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Server Fleet",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "server_fleet.csv"
+          }
+        },
+        "refresh_seconds" : 30,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_be462d0327b94750a2e73dc60b3b11fd",
+      "provider_ref" : "intelligence",
+      "query" : {
+        "name" : "AI Health Summary",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "dashboardId" : "fleet-csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_5ac3ba71ebbb442bbfba10f172315b12",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Server Fleet CPU Usage by Host",
+        "query" : {
+          "method" : "GET",
+          "splunk_search" : ""
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Server fleet data from local CSV via file provider",
+  "id" : "dash_22995965ba6f4df0adae235c1b485570",
+  "inputs" : [
+
+  ],
+  "landscape" : {
+    "canvas" : {
+      "background" : {
+        "color" : "#1a1a2e"
+      },
+      "height" : 1080,
+      "width" : 1920
+    },
+    "hud" : [
+      {
+        "position" : "top_center",
+        "text" : "Server Fleet Overview",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_left",
+        "text" : "Green=Healthy  Yellow=Warning  Red=Critical",
+        "type" : "label"
+      }
+    ],
+    "name" : "Server Fleet",
+    "spriteBindings" : [
+      {
+        "asset" : "server_sprite.png",
+        "datasourceId" : "ds_db46ebf46c7e4b13b5171dc581aaba9e",
+        "entityField" : "hostname",
+        "id" : "servers",
+        "placement" : "grid",
+        "properties" : {
+          "color" : {
+            "field" : "status",
+            "map" : {
+              "critical" : "#ff3344",
+              "healthy" : "#00ff88",
+              "warning" : "#ffaa00"
+            }
+          },
+          "label" : {
+            "field" : "hostname"
+          },
+          "scale" : {
+            "field" : "cpu_percent",
+            "range" : [
+              0.5,
+              2
+            ]
+          }
+        },
+        "region" : {
+          "height" : 780,
+          "width" : 1720,
+          "x" : 100,
+          "y" : 100
+        },
+        "spriteType" : "server"
+      }
+    ]
+  },
+  "landscape_ref" : "fleet-csv.scene.json",
+  "layout_type" : "bootstrap",
+  "name" : "Fleet CSV",
+  "polling_interval_seconds" : 30,
+  "provenance" : {
+    "imported_at" : "2026-05-12T15:12:49Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_281615f40ea747f280d120de05812143",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_24e60318edb34d52b2dab821fed2e383"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Shows the status of our servers in each region and zone",
+          "id" : "panel_7f2b41f46f3f49e794f06240690987c1",
+          "layout" : {
+            "height" : 578.449219,
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "semantic_meta" : {
+            "category" : "performance",
+            "signals" : [
+              "cpu",
+              "memory"
+            ]
+          },
+          "title" : "Server Fleet Status",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server Fleet Status"
+              },
+              "data_source_ref" : "ds_db46ebf46c7e4b13b5171dc581aaba9e",
+              "id" : "viz_24e60318edb34d52b2dab821fed2e383",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Fleet Table"
+    },
+    {
+      "id" : "row_57cc8a8de6694fb5880b0ad60b99c62c",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2082753cee1d462e86206408a9f1ac0b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b48068a9eb4e419ab6d88bb020c262c6",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "semantic_meta" : {
+            "role" : "informational"
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_be462d0327b94750a2e73dc60b3b11fd",
+              "id" : "viz_2082753cee1d462e86206408a9f1ac0b",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b412292758cb49bfb13ca1157b104e75"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6d94af3f5c2549acbe9f14e86205473a",
+          "layout" : {
+            "height" : 279.324219,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "chart_type" : "pie",
+                "title" : "CPU & Memory Heatmap by Host"
+              },
+              "data_source_ref" : "ds_db46ebf46c7e4b13b5171dc581aaba9e",
+              "id" : "viz_b412292758cb49bfb13ca1157b104e75",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "pie",
+                "show_points" : "auto",
+                "stacking_mode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Ai Health"
+    }
+  ]
+}

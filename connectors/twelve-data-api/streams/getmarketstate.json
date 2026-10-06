@@ -1,0 +1,68 @@
+{
+  "columns" : [
+    {
+      "name" : "code",
+      "type" : "string"
+    },
+    {
+      "name" : "country",
+      "type" : "string"
+    },
+    {
+      "name" : "is_market_open",
+      "type" : "boolean"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "time_after_open",
+      "type" : "string"
+    },
+    {
+      "name" : "time_to_close",
+      "type" : "string"
+    },
+    {
+      "name" : "time_to_open",
+      "type" : "string"
+    }
+  ],
+  "description" : "The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.",
+  "format" : "json",
+  "id" : "getmarketstate",
+  "method" : "GET",
+  "name" : "Market state",
+  "path" : "\/market_state",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "code",
+      "label" : "The Market Identifier Code (MIC) of the exchange where the instrument is traded.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "The country where the exchange is located. Takes country name or alpha code.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "The exchange name where the instrument is traded.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

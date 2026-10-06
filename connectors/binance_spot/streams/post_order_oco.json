@@ -1,0 +1,170 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "post_order_oco",
+  "method" : "POST",
+  "name" : "New OCO - Deprecated (TRADE)",
+  "path" : "\/api\/v3\/order\/oco",
+  "userParams" : [
+    {
+      "key" : "limitClientOrderId",
+      "label" : "A unique Id for the limit order",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "limitIcebergQty",
+      "label" : "Used to make the `LIMIT_MAKER` leg an iceberg order.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limitStrategyId",
+      "label" : "limitStrategyId",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limitStrategyType",
+      "label" : "The value cannot be less than `1000000`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "listClientOrderId",
+      "label" : "A unique Id for the entire orderList",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "newOrderRespType",
+      "label" : "Format of the JSON response. Supported values: [Order Response Type](\/products\/s",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "price",
+      "label" : "price",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quantity",
+      "label" : "quantity",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "The value cannot be greater than `60000`. <br> Supports up to three decimal plac",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "selfTradePreventionMode",
+      "label" : "The allowed values are dependent on what is configured on the symbol. Supported ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "side",
+      "label" : "side",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stopClientOrderId",
+      "label" : "A unique Id for the stop loss\/stop loss limit leg",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopIcebergQty",
+      "label" : "Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopLimitPrice",
+      "label" : "If provided, `stopLimitTimeInForce` is required.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopLimitTimeInForce",
+      "label" : "Valid values are `GTC`\/`FOK`\/`IOC`",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopPrice",
+      "label" : "stopPrice",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopStrategyId",
+      "label" : "stopStrategyId",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stopStrategyType",
+      "label" : "The value cannot be less than `1000000`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    },
+    {
+      "key" : "trailingDelta",
+      "label" : "trailingDelta",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

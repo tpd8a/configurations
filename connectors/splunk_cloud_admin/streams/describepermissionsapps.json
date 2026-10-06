@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "get an apps permissions",
+  "format" : "json",
+  "id" : "describepermissionsapps",
+  "method" : "GET",
+  "name" : "DescribePermissionsApps",
+  "path" : "\/{stack}\/adminconfig\/v2\/permissions\/apps\/{app}",
+  "userParams" : [
+    {
+      "key" : "app",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

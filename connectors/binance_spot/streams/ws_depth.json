@@ -1,0 +1,115 @@
+{
+  "columns" : [
+    {
+      "name" : "ask",
+      "type" : "number"
+    },
+    {
+      "name" : "askQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "bid",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "lastUpdateId",
+      "type" : "integer"
+    },
+    {
+      "name" : "level",
+      "type" : "integer"
+    }
+  ],
+  "disabledCommonRenames" : [
+    "A",
+    "B",
+    "b"
+  ],
+  "format" : "json",
+  "id" : "ws_depth",
+  "method" : "GET",
+  "name" : "depth",
+  "path" : "\/ws_depth",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keyCase" : "lower",
+    "keyTemplate" : "$key$@depth$levels$",
+    "keysParam" : "symbols",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+      "lastUpdateId"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    },
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transforms" : [
+    {
+      "zip" : {
+        "arms" : [
+          {
+            "names" : [
+              "v1",
+              "v2"
+            ],
+            "path" : [
+              "asks"
+            ],
+            "prefix" : "ask"
+          },
+          {
+            "names" : [
+              "v1",
+              "v2"
+            ],
+            "path" : [
+              "bids"
+            ],
+            "prefix" : "bid"
+          }
+        ],
+        "levelAs" : "level"
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "askV1" : "ask",
+          "askV2" : "askQuantity",
+          "bidV1" : "bid",
+          "bidV2" : "bidQuantity"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "levels",
+      "label" : "Levels",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

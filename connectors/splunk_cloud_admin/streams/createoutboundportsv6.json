@@ -1,0 +1,30 @@
+{
+  "bodyTemplate" : "{\n  \"outboundPorts\": [\n    {\n      \"port\": {{config.port}},\n      \"subnets\": {}\n    }\n  ],\n  \"reason\": \"{{config.reason}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "add ipv6 subnets to the outboundports for the feature, if they don't already exist",
+  "format" : "json",
+  "id" : "createoutboundportsv6",
+  "method" : "POST",
+  "name" : "CreateOutboundPortsV6",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports-v6",
+  "reviewFields" : [
+    "outboundPorts"
+  ],
+  "userParams" : [
+    {
+      "key" : "reason",
+      "label" : "reason",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "columns" : [
+    {
+      "name" : "result",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "description" : "Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.",
+  "format" : "json",
+  "id" : "getetfsfamily",
+  "method" : "GET",
+  "name" : "ETFs families",
+  "path" : "\/etfs\/family",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fund_family",
+      "label" : "Filter by investment company that manages the fund",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

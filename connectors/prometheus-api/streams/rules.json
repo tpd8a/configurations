@@ -1,0 +1,80 @@
+{
+  "columns" : [
+    {
+      "name" : "groups",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "rules",
+  "method" : "GET",
+  "name" : "Get alerting and recording rules",
+  "path" : "\/rules",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "exclude_alerts",
+      "label" : "Exclude active alerts from response.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "file[]",
+      "label" : "Filter by file path.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "group_limit",
+      "label" : "Maximum number of rule groups to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "group_next_token",
+      "label" : "Pagination token for next page.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match[]",
+      "label" : "Label matchers to filter rules.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "rule_group[]",
+      "label" : "Filter by rule group name.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "rule_name[]",
+      "label" : "Filter by rule name.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Filter by rule type: alert or record.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

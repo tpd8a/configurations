@@ -1,0 +1,28 @@
+{
+  "bodyTemplate" : "{\n\n}",
+  "columns" : [
+
+  ],
+  "description" : "Delete index on the stack",
+  "format" : "json",
+  "id" : "deleteindex",
+  "method" : "DELETE",
+  "name" : "DeleteIndex",
+  "path" : "\/{stack}\/adminconfig\/v2\/indexes\/{index}",
+  "userParams" : [
+    {
+      "key" : "index",
+      "label" : "index name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

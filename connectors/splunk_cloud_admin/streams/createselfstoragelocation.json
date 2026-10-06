@@ -1,0 +1,57 @@
+{
+  "bodyTemplate" : "{\n  \"bucketName\": \"{{config.bucketName}}\",\n  \"description\": \"{{config.description}}\",\n  \"folder\": \"{{config.folder}}\",\n  \"storageAccountResourceId\": \"{{config.storageAccountResourceId}}\",\n  \"tenantId\": \"{{config.tenantId}}\",\n  \"title\": \"{{config.title}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "Create self storage location on the stack",
+  "format" : "json",
+  "id" : "createselfstoragelocation",
+  "method" : "POST",
+  "name" : "CreateSelfStorageLocation",
+  "path" : "\/{stack}\/adminconfig\/v2\/cloud-resources\/self-storage-locations\/buckets",
+  "userParams" : [
+    {
+      "key" : "bucketName",
+      "label" : "bucketName",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "description",
+      "label" : "description",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "folder",
+      "label" : "folder",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "storageAccountResourceId",
+      "label" : "The resource ID for the Azure storage account. Required for Azure deployments.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "tenantId",
+      "label" : "The tenant ID for Microsoft Entra ID (formerly Azure AD). Required for Azure dep",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "title",
+      "label" : "title",
+      "location" : "body",
+      "required" : true
+    }
+  ]
+}

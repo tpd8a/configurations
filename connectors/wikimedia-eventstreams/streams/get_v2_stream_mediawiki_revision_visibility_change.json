@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.revision-visibility-change events.\n\nSchema title: mediawiki\/revision\/visibility-change",
+  "format" : "json",
+  "id" : "get_v2_stream_mediawiki_revision_visibility_change",
+  "method" : "GET",
+  "name" : "mediawiki.revision-visibility-change events",
+  "path" : "\/v2\/stream\/mediawiki.revision-visibility-change",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/mediawiki.revision-visibility-change",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

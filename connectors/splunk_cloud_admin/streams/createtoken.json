@@ -1,0 +1,45 @@
+{
+  "bodyTemplate" : "{\n  \"audience\": \"{{config.audience}}\",\n  \"expiresOn\": \"{{config.expiresOn}}\",\n  \"type\": \"{{config.type}}\",\n  \"user\": \"{{config.user}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "create a token to authenticate against ACS",
+  "format" : "json",
+  "id" : "createtoken",
+  "method" : "POST",
+  "name" : "CreateToken",
+  "path" : "\/{stack}\/adminconfig\/v2\/tokens",
+  "userParams" : [
+    {
+      "key" : "audience",
+      "label" : "audience",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "expiresOn",
+      "label" : "expiresOn",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "type",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "user",
+      "label" : "user",
+      "location" : "body",
+      "required" : true
+    }
+  ]
+}

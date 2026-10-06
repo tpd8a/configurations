@@ -1,0 +1,1 @@
+{"config_version":2,"id":"fedsearch_a67902b9f80946afbdb97caa1131d08d","sql":"select name, content_search from splunk_enterprise_rest_api.saved_searches","name":"splunk_saved_searches","description":"List the name and search contrent"}

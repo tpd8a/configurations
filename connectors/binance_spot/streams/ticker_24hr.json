@@ -1,0 +1,145 @@
+{
+  "columns" : [
+    {
+      "name" : "askPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "askQty",
+      "type" : "number"
+    },
+    {
+      "name" : "bidPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQty",
+      "type" : "number"
+    },
+    {
+      "name" : "closeTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "count",
+      "type" : "string"
+    },
+    {
+      "name" : "firstId",
+      "type" : "string"
+    },
+    {
+      "name" : "highPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "lastId",
+      "type" : "string"
+    },
+    {
+      "name" : "lastPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "lastQty",
+      "type" : "number"
+    },
+    {
+      "name" : "lowPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "openPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "openTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "prevClosePrice",
+      "type" : "number"
+    },
+    {
+      "name" : "priceChange",
+      "type" : "number"
+    },
+    {
+      "name" : "priceChangePercent",
+      "type" : "number"
+    },
+    {
+      "name" : "quoteVolume",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "volume",
+      "type" : "number"
+    },
+    {
+      "name" : "weightedAvgPrice",
+      "type" : "number"
+    }
+  ],
+  "format" : "json",
+  "id" : "ticker_24hr",
+  "method" : "GET",
+  "name" : "24hr ticker price change statistics",
+  "path" : "\/api\/v3\/ticker\/24hr",
+  "transforms" : [
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "askPrice" : "number",
+          "askQty" : "number",
+          "bidPrice" : "number",
+          "bidQty" : "number",
+          "closeTime" : "integer",
+          "count" : "string",
+          "firstId" : "string",
+          "highPrice" : "number",
+          "lastId" : "string",
+          "lastPrice" : "number",
+          "lastQty" : "number",
+          "lowPrice" : "number",
+          "openPrice" : "number",
+          "openTime" : "integer",
+          "prevClosePrice" : "number",
+          "priceChange" : "number",
+          "priceChangePercent" : "number",
+          "quoteVolume" : "number",
+          "symbol" : "string",
+          "volume" : "number",
+          "weightedAvgPrice" : "number"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "symbolStatus",
+      "label" : "symbolStatus",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Either `symbol` or `symbols` must be provided  Examples of accepted format for t",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

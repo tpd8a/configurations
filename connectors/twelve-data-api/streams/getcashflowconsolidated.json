@@ -1,0 +1,104 @@
+{
+  "columns" : [
+    {
+      "name" : "cash_flow",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "description" : "The cash flow consolidated endpoint provides raw data on a company's consolidated cash flow, including the net cash and cash equivalents moving in and out of the business. It returns information on operating, investing, and financing activities, helping users track liquidity and financial health over a specified period.",
+  "format" : "json",
+  "id" : "getcashflowconsolidated",
+  "method" : "GET",
+  "name" : "Cash flow consolidated",
+  "path" : "\/cash_flow\/consolidated",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country where instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "End date for filtering cash flow statements. Only cash flow statements with fisc",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of records in response",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "period",
+      "label" : "The reporting period for the cash flow statements",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Start date for filtering cash flow statements. Only cash flow statements with fi",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of instrument.\nFor preferred stocks use dot(.) delimiter.\nE.g. `BR",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

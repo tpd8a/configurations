@@ -1,0 +1,78 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/stream.wikimedia.org",
+  "commonEnvelope" : {
+    "errorFields" : [
+
+    ],
+    "fieldsField" : [
+
+    ],
+    "metaFields" : [
+      "meta"
+    ],
+    "rowsFields" : [
+
+    ]
+  },
+  "commonInputMappings" : [
+    {
+      "paramKey" : "since",
+      "role" : "timeStart"
+    }
+  ],
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "wikimedia-eventstreams",
+  "name" : "Wikimedia EventStreams",
+  "sourceURL" : "https:\/\/stream.wikimedia.org\/?spec",
+  "streams" : [
+    "page_create",
+    "page_delete",
+    "page_links_change",
+    "page_move",
+    "properties_change",
+    "page_undelete",
+    "get_v2-stream-rdf-streaming-updater-mutation-main-v2",
+    "get_v2-stream-rdf-streaming-updater-mutation-scholarly-v2",
+    "get_v2-stream-rdf-streaming-updater-mutation-v2",
+    "recentchange",
+    "revision_create",
+    "get_v2-stream-test",
+    "get_v2-stream-streams",
+    "get_v2_stream_eventgate_main_test_event",
+    "get_v2_stream_mediainfo_streaming_updater_mutation_v2",
+    "get_v2_stream_mediawiki_page_create",
+    "get_v2_stream_mediawiki_page_delete",
+    "get_v2_stream_mediawiki_page_links_change",
+    "get_v2_stream_mediawiki_page_move",
+    "get_v2_stream_mediawiki_page_properties_change",
+    "get_v2_stream_mediawiki_page_undelete",
+    "get_v2_stream_mediawiki_page_change_v1",
+    "get_v2_stream_mediawiki_page_outlink_topic_prediction_change_v1",
+    "get_v2_stream_mediawiki_page_revert_risk_multilingual_prediction_change_v1",
+    "get_v2_stream_mediawiki_page_revert_risk_prediction_change_v1",
+    "get_v2_stream_mediawiki_page_revert_risk_wikidata_prediction_change_v1",
+    "get_v2_stream_mediawiki_recentchange",
+    "get_v2_stream_mediawiki_revision_create",
+    "get_v2_stream_mediawiki_revision_tags_change",
+    "get_v2_stream_mediawiki_revision_visibility_change",
+    "get_v2_stream_page_create",
+    "get_v2_stream_page_delete",
+    "get_v2_stream_page_links_change",
+    "get_v2_stream_page_move",
+    "get_v2_stream_page_properties_change",
+    "get_v2_stream_page_undelete",
+    "get_v2_stream_rdf_streaming_updater_mutation_main_v2",
+    "get_v2_stream_rdf_streaming_updater_mutation_scholarly_v2",
+    "get_v2_stream_rdf_streaming_updater_mutation_v2",
+    "get_v2_stream_recentchange",
+    "get_v2_stream_revision_create",
+    "get_v2_stream_test",
+    "get_v2_stream_streams"
+  ],
+  "version" : 1
+}

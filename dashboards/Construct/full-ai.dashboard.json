@@ -1,0 +1,177 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_3ed9f02f01c2fae1a61c662318bbc541",
+      "query" : {
+        "name" : "viz_8afdc36dc7654f5490a60659a94f7d9e",
+        "sql" : {
+          "query" : "SELECT * FROM construct_perf LIMIT 5"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b936e100750d489d09c2ccb30778ec1a",
+      "query" : {
+        "name" : "viz_a75e0de755d3451bb9d5be1437670bff",
+        "sql" : {
+          "query" : "SELECT dashboard,\n    SUM(fetches) AS total_fetches,\n    SUM(errors)  AS total_errors\nFROM construct_perf\nGROUP BY dashboard;"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0f35d766c8d7f82b94110d6b0c02abb2",
+      "query" : {
+        "name" : "viz_f319308ace434642820031d087219329",
+        "sql" : {
+          "query" : "SELECT\n    provider,\n    AVG(avg_ms)   AS avg_latency_ms,\n    MAX(max_ms)   AS max_latency_ms\nFROM construct_perf\nWHERE avg_ms IS NOT NULL\nGROUP BY provider;"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_7e3030acf9b020979410bc7a5ea836c8",
+      "query" : {
+        "name" : "viz_f9b8b95cc8404ca2a0e982c25edd9249",
+        "sql" : {
+          "query" : "SELECT\n    datasource,\n    SUM(rows)       AS total_rows,\n    MAX(rows)       AS max_rows_in_window\nFROM construct_perf\nGROUP BY datasource;"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_982cf97ccfbd46948222292547b7e0f8",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Full AI ",
+  "provenance" : {
+    "imported_at" : "2026-07-15T08:01:46Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_4452da3f17af4e61ac2ae8616bb75f0a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "72CB544F-7B04-49F9-8F28-430BE1E0EA06",
+              "viz_ids" : [
+                "viz_8afdc36dc7654f5490a60659a94f7d9e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ca30b1e732414bcdbb22ee61ad1bce1a",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "AI query",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "AI query"
+              },
+              "data_source_ref" : "ds_3ed9f02f01c2fae1a61c662318bbc541",
+              "id" : "viz_8afdc36dc7654f5490a60659a94f7d9e",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "BEF83AA8-4BC6-445A-BBA1-8B53CBD54FE5",
+              "viz_ids" : [
+                "viz_a75e0de755d3451bb9d5be1437670bff"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0f10aed1ebff470983aee20e9ffed056",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "AI query",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "AI query"
+              },
+              "data_source_ref" : "ds_b936e100750d489d09c2ccb30778ec1a",
+              "id" : "viz_a75e0de755d3451bb9d5be1437670bff",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "ED055636-8D50-49EF-B95B-59C63B965C7D",
+              "viz_ids" : [
+                "viz_f319308ace434642820031d087219329"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9f4730fb8c3e40458cc53dc26c488846",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "AI query",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "AI query"
+              },
+              "data_source_ref" : "ds_0f35d766c8d7f82b94110d6b0c02abb2",
+              "id" : "viz_f319308ace434642820031d087219329",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "E0AA595B-F2A9-4BBF-9A8A-6FBFE96EEB0B",
+              "viz_ids" : [
+                "viz_f9b8b95cc8404ca2a0e982c25edd9249"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_11308b606a384e59b8cdf09ccd798897",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "AI query",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "AI query"
+              },
+              "data_source_ref" : "ds_7e3030acf9b020979410bc7a5ea836c8",
+              "id" : "viz_f9b8b95cc8404ca2a0e982c25edd9249",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

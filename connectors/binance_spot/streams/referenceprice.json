@@ -1,0 +1,30 @@
+{
+  "columns" : [
+    {
+      "name" : "referencePrice",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "referenceprice",
+  "method" : "GET",
+  "name" : "Query Reference Price",
+  "path" : "\/api\/v3\/referencePrice",
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

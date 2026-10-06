@@ -1,0 +1,65 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_097cebce73524e57891d891387ea7d73",
+      "query" : {
+        "name" : "ds_environment",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'user'             AS token, '$env:user$'             AS value\n  UNION ALL SELECT 'user_realname',   '$env:user_realname$'\n  UNION ALL SELECT 'device',          '$env:device$'\n  UNION ALL SELECT 'platform',        '$env:platform$'\n  UNION ALL SELECT 'idiom',           '$env:idiom$'\n  UNION ALL SELECT 'os_version',      '$env:os_version$'\n  UNION ALL SELECT 'device_model',    '$env:device_model$'\n  UNION ALL SELECT 'app',             '$env:app$'\n  UNION ALL SELECT 'version',         '$env:version$'\n  UNION ALL SELECT 'dashboard',       '$env:dashboard$'\n  -- appearance \/ geometry (live)\n  UNION ALL SELECT 'appearance',      '$env:appearance$'\n  UNION ALL SELECT 'orientation',     '$env:orientation$'\n  UNION ALL SELECT 'window_w x h',    '$env:window_width$' || ' x ' || '$env:window_height$'\n  UNION ALL SELECT 'size_class',      '$env:size_class$'\n  UNION ALL SELECT 'scale',           '$env:scale$'\n  -- locale \/ formatting\n  UNION ALL SELECT 'locale',          '$env:locale$'\n  UNION ALL SELECT 'language',        '$env:language$'\n  UNION ALL SELECT 'region',          '$env:region$'\n  UNION ALL SELECT 'currency',        '$env:currency$' || ' (' || '$env:currency_symbol$' ||\n  ')'\n  UNION ALL SELECT 'measurement',     '$env:measurement_system$'\n  UNION ALL SELECT 'temperature',     '$env:temperature_unit$'\n  UNION ALL SELECT '24h clock',       '$env:uses_24h$'\n  UNION ALL SELECT 'first_weekday',   '$env:first_weekday$'\n  UNION ALL SELECT 'calendar',        '$env:calendar$'\n  -- time (ticks each minute)\n  UNION ALL SELECT 'date',            '$env:date$'\n  UNION ALL SELECT 'time',            '$env:time$'\n  UNION ALL SELECT 'hour',            '$env:hour$'\n  UNION ALL SELECT 'weekday',         '$env:weekday$'\n  UNION ALL SELECT 'is_weekend',      '$env:is_weekend$'\n  UNION ALL SELECT 'timezone',        '$env:timezone$';"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_0a85e6ad69da4b249d0ef7ad8065bb4f",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Global Environemnt Tokens",
+  "provenance" : {
+    "imported_at" : "2026-09-25T11:56:51Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d844cd98945645b4841d9c2d282292be",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d6ea06c46c6744cf85ffd47d9610202e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f5542a6e02484df89128adc9f8c6c241",
+          "layout" : {
+            "height" : 680,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_097cebce73524e57891d891387ea7d73",
+              "id" : "viz_d6ea06c46c6744cf85ffd47d9610202e",
+              "layer" : 1,
+              "options" : {
+                "page_size" : "30"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

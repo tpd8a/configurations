@@ -1,0 +1,76 @@
+{
+  "columns" : [
+    {
+      "name" : "insider_transactions",
+      "type" : "string"
+    },
+    {
+      "name" : "meta",
+      "type" : "string"
+    }
+  ],
+  "description" : "The insider transaction endpoint provides detailed data on trades executed by company insiders, such as executives and directors. It returns information including the insider's name, their role, the transaction type, the number of shares, the transaction date, and the price per share. This endpoint is useful for tracking insider activity and understanding potential insider sentiment towards a company's stock.",
+  "format" : "json",
+  "id" : "getinsidertransactions",
+  "method" : "GET",
+  "name" : "Insider transaction",
+  "path" : "\/insider_transactions",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country where instrument is traded, e.g., United States or US.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded, e.g., `Nasdaq`, `NSE`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested, e.g., `AAPL`, `T",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

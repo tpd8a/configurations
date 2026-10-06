@@ -1,0 +1,23 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "The countries endpoint provides a comprehensive list of countries, including their ISO codes, official names, capitals, and currencies. This data is essential for applications requiring accurate country information for tasks such as localization, currency conversion, or geographic analysis.",
+  "format" : "json",
+  "id" : "getcountries",
+  "method" : "GET",
+  "name" : "Countries",
+  "path" : "\/countries",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

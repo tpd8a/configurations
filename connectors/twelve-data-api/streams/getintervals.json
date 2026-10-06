@@ -1,0 +1,35 @@
+{
+  "columns" : [
+    {
+      "name" : "value",
+      "type" : "string"
+    }
+  ],
+  "description" : "The intervals endpoint provides a list of supported time intervals that can be used for querying financial data.",
+  "format" : "json",
+  "id" : "getintervals",
+  "method" : "GET",
+  "name" : "Intervals List",
+  "path" : "\/intervals",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "list the outboundports with ports and ipv6 subnets",
+  "format" : "json",
+  "id" : "listoutboundportsv6",
+  "method" : "GET",
+  "name" : "ListOutboundPortsV6",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports-v6",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

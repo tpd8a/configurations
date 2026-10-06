@@ -1,0 +1,55 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "fetch the app data and returns the selected contents as a tar file",
+  "format" : "json",
+  "id" : "downloadappexportvictoria",
+  "method" : "GET",
+  "name" : "DownloadAppExportVictoria",
+  "path" : "\/{stack}\/adminconfig\/v2\/apps\/victoria\/export\/download\/{app}",
+  "userParams" : [
+    {
+      "key" : "app",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "confs_only",
+      "label" : "export only the configs as per request parameters and don’t export any app data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "default",
+      "label" : "export the default configs for the app etc\/apps\/<app_id>\/default\/*",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "local",
+      "label" : "export the local configs for the app under etc\/apps\/<app_id>\/local\/*",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "users",
+      "label" : "export the configs and data under etc\/users\/*\/<app_id>\/* for the users on which ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

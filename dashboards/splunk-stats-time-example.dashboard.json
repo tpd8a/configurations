@@ -1,0 +1,278 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_f14a97aa8ec8b130ed17a943d5cd1b49",
+      "query" : {
+        "name" : "ds_eventviewer",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from splunk_enterprise_rest_api.search_job(query:='index=_internal info',earliest_time:='@h', latest_time:='now')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_139da45851a441188bbcd897ca95756a",
+      "query" : {
+        "name" : "ds_timechart",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from splunk_enterprise_rest_api.search_job(query:='index=_internal info | timechart count |fields - _span',earliest_time:='@h', latest_time:='now')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_1b00b80aa1e24dcf98ef612cc1dc2f9f",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "splunk_stats_time_example",
+  "provenance" : {
+    "imported_at" : "2026-09-15T10:52:10Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_6982724acac34f619c1f37f16b16f184",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c0df6da00f99457c862314cc1fe76e1f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b8ab5dbf8e974890b78cd1a11724eee8",
+          "layout" : {
+            "absolute_h" : 80,
+            "absolute_w" : 816,
+            "absolute_x" : 96,
+            "absolute_y" : 336,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "count" : {
+                    "color" : "#F4511E",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "count",
+                    "fillOpacity" : 0.45,
+                    "hideFromLegend" : true,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "9DF2D049-7E8E-409C-BA24-597FAD0BBBD6",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY291bnQiOnsiY29sb3VyIjp7ImhleCI6eyJfMCI6IiNGNDUxMUUifX0sImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6dHJ1ZSwiZmlsbE9wYWNpdHkiOjAuNDUwMDAwMDAwMDAwMDAwMDEsImhpZGRlbiI6ZmFsc2V9fX0="
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "count"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_139da45851a441188bbcd897ca95756a",
+              "id" : "viz_c0df6da00f99457c862314cc1fe76e1f",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_20ddc14256964a938918fc80b78caad8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7eaba6895f324f7cb6d348027acc23e4",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 1392,
+            "absolute_y" : 456,
+            "height" : 640,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f14a97aa8ec8b130ed17a943d5cd1b49",
+              "id" : "viz_20ddc14256964a938918fc80b78caad8",
+              "layer" : 1,
+              "options" : {
+                "page_size" : "50",
+                "show_row_numbers" : "true",
+                "stats_mode" : "severity",
+                "timeline_buckets" : "30",
+                "timeline_enabled" : "true"
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

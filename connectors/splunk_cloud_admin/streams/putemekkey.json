@@ -1,0 +1,27 @@
+{
+  "bodyTemplate" : "{\n  \"keyARN\": \"{{config.keyARN}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "EMEK Key upload",
+  "format" : "json",
+  "id" : "putemekkey",
+  "method" : "PUT",
+  "name" : "PutEmekKey",
+  "path" : "\/{stack}\/adminconfig\/v2\/emek\/key",
+  "userParams" : [
+    {
+      "key" : "keyARN",
+      "label" : "keyARN",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

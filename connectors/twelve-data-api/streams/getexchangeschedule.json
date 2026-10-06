@@ -1,0 +1,48 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.",
+  "format" : "json",
+  "id" : "getexchangeschedule",
+  "method" : "GET",
+  "name" : "Exchanges schedule",
+  "path" : "\/exchange_schedule",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "<p>\nIf a date is provided, the API returns the schedule for the specified date; ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Filter by market identifier code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_name",
+      "label" : "Filter by exchange name",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

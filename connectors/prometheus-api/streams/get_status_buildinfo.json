@@ -1,0 +1,45 @@
+{
+  "columns" : [
+    {
+      "name" : "branch",
+      "type" : "string"
+    },
+    {
+      "name" : "buildDate",
+      "type" : "date"
+    },
+    {
+      "name" : "buildUser",
+      "type" : "string"
+    },
+    {
+      "name" : "goVersion",
+      "type" : "string"
+    },
+    {
+      "name" : "revision",
+      "type" : "string"
+    },
+    {
+      "name" : "version",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "get_status_buildinfo",
+  "method" : "GET",
+  "name" : "Get status buildinfo",
+  "path" : "\/status\/buildinfo",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

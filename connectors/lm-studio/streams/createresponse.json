@@ -1,0 +1,70 @@
+{
+  "bodyTemplate" : "{\n  \"input\": \"{{config.input}}\",\n  \"instructions\": \"{{config.instructions}}\",\n  \"max_output_tokens\": {{config.max_output_tokens}},\n  \"model\": \"{{config.model}}\",\n  \"previous_response_id\": \"{{config.previous_response_id}}\",\n  \"store\": {{config.store}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Stateful inference with native tool-calling: input, tools, previous_response_id, store. Documented for the AI engine (SP1); not executed by the connector runner.",
+  "format" : "json",
+  "id" : "createresponse",
+  "method" : "POST",
+  "name" : "Create a model response (OpenAI Responses API)",
+  "path" : "\/v1\/responses",
+  "userParams" : [
+    {
+      "key" : "input",
+      "label" : "input",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "instructions",
+      "label" : "instructions",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "max_output_tokens",
+      "label" : "max_output_tokens",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "model",
+      "label" : "model",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "previous_response_id",
+      "label" : "previous_response_id",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "store",
+      "label" : "store",
+      "location" : "body",
+      "required" : false
+    }
+  ],
+  "userParamsMeta" : {
+    "input" : {
+
+    },
+    "instructions" : {
+
+    },
+    "max_output_tokens" : {
+
+    },
+    "model" : {
+
+    },
+    "previous_response_id" : {
+
+    },
+    "store" : {
+
+    }
+  }
+}

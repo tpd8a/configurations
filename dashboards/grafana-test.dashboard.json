@@ -1,0 +1,223 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "query" : {
+        "name" : "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM grafana_api.ds_query(dsUid := 'afylgi69fxs74f', targetsJson := '[{\"expr\": \"rate(node_cpu_seconds_total{mode=\\\"idle\\\"}[1m])\", \"refId\": \"A\", \"datasource\": {\"uid\": \"afylgi69fxs74f\"}, \"range\": true}]', \"from\" := 'now-10m', \"to\" := 'now')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_3c7ee025323a41ffb8e422baaeeb979c",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Grafana Test",
+  "provenance" : {
+    "imported_at" : "2026-09-29T10:34:21Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4",
+          "layout" : {
+            "height" : 680,
+            "panel_width" : 12
+          },
+          "title" : "Grafana chart (idle CPU per core)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "CCCE0350-F423-450A-BF44-014A1069E542",
+                        "kind" : "line",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "multi-line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "Value"
+                        ],
+                        "x",
+                        [
+                          "Time"
+                        ],
+                        "group",
+                        [
+                          "cpu"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "seriesLabelTemplate" : "cpu {{cpu}}",
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Grafana chart (idle CPU per core)"
+              },
+              "data_source_ref" : "ds_a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+              "id" : "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+              "layer" : 1,
+              "title" : "Grafana chart (idle CPU per core)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

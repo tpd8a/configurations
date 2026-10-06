@@ -1,0 +1,59 @@
+{
+  "columns" : [
+    {
+      "name" : "timestamp",
+      "timeFormat" : "custom",
+      "timePattern" : "yyyy-MM-dd HH:mm:ss",
+      "type" : "date"
+    }
+  ],
+  "description" : "The API Usage endpoint provides detailed information on your current API usage statistics. It returns data such as the number of requests made, remaining requests, and the reset time for your usage limits. This endpoint is essential for monitoring and managing your API consumption to ensure you stay within your allocated limits.",
+  "format" : "json",
+  "id" : "getapiusage",
+  "method" : "GET",
+  "name" : "API usage",
+  "path" : "\/api_usage",
+  "transforms" : [
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "current_usage" : "integer",
+          "daily_usage" : "integer",
+          "plan_category" : "string",
+          "plan_daily_limit" : "integer",
+          "plan_limit" : "integer"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Specify the delimiter used when downloading the CSV file",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "Output format",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

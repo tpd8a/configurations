@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the eligibility of stack for enabling private connectivity",
+  "format" : "json",
+  "id" : "validateprivateconnectivity",
+  "method" : "GET",
+  "name" : "ValidatePrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/private-connectivity\/eligibility",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

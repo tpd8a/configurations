@@ -1,0 +1,104 @@
+{
+  "columns" : [
+    {
+      "name" : "market_cap",
+      "type" : "string"
+    },
+    {
+      "name" : "meta",
+      "type" : "string"
+    }
+  ],
+  "description" : "The Market Capitalization History endpoint provides historical data on a company's market capitalization over a specified time period. It returns a time series of market cap values, allowing users to track changes in a company's market value.",
+  "format" : "json",
+  "id" : "getmarketcap",
+  "method" : "GET",
+  "name" : "Market capitalization",
+  "path" : "\/market_cap",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "End date for market capitalization data retrieval.\nData will be returned up to a",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Filter by exchange name",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Filter by market identifier code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of records in response",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "page",
+      "label" : "Page number",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Start date for market capitalization data retrieval.\nData will be returned from ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Filter by symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

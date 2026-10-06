@@ -1,0 +1,269 @@
+{
+  "columns" : [
+    {
+      "name" : "apo",
+      "type" : "string"
+    },
+    {
+      "name" : "datetime",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.currency",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.exchange_timezone",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.fast_period",
+      "type" : "integer"
+    },
+    {
+      "name" : "meta.indicator.ma_type",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.name",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.series_type",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.slow_period",
+      "type" : "integer"
+    },
+    {
+      "name" : "meta.interval",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.type",
+      "type" : "string"
+    }
+  ],
+  "description" : "The Absolute Price Oscillator (APO) endpoint calculates the difference between two specified moving averages of a financial instrument's price, providing data that helps users identify potential price trends and reversals. The response includes the calculated APO values over a specified time period, which can be used to track momentum changes and assess the strength of price movements.",
+  "format" : "json",
+  "id" : "gettimeseriesapo",
+  "method" : "GET",
+  "name" : "Absolute price oscillator",
+  "path" : "\/apo",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "values"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "adjust",
+      "label" : "Adjusting mode for prices",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "The country where the instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Specifies the exact date to get the data for. Could be the exact date, e.g. `202",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Specifies the number of decimal places for floating values.\nShould be in range [",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "The ending date and time for data selection, see `start_date` description for de",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fast_period",
+      "label" : "Number of periods for fast moving average. Takes values in the range from `1` to",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "figi",
+      "label" : "The FIGI of an instrument for which data is requested. This parameter is availab",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_ohlc",
+      "label" : "Specify if OHLC values should be added in the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "interval",
+      "label" : "Interval between two consecutive points in time series",
+      "location" : "query",
+      "required" : true,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "ma_type",
+      "label" : "The type of moving average used",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "order",
+      "label" : "Sorting order of the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of data points to retrieve. Supports values in the range from `1` to `500",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "prepost",
+      "label" : "Returns quotes that include pre-market and post-market data. Only for the `Pro` ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "previous_close",
+      "label" : "A boolean parameter to include the previous closing price in the time_series dat",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "series_type",
+      "label" : "Price type on which technical indicator is calculated",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "slow_period",
+      "label" : "Number of periods for slow moving average. Takes values in the range from `1` to",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Can be used separately and together with `end_date`. Format `2006-01-02` or `200",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of the instrument. E.g. `AAPL`, `EUR\/USD`, `ETH\/BTC`, ...",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "type",
+      "label" : "The asset class to which the instrument belongs",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

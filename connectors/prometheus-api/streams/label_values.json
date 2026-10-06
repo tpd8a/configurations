@@ -1,0 +1,80 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "memory",
+    "ttl" : 300
+  },
+  "columns" : [
+    {
+      "name" : "names",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "label_values",
+  "method" : "GET",
+  "name" : "Get label values",
+  "path" : "\/label\/{name}\/values",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "timings"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "value" : "names"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End timestamp for label values query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "limit",
+      "label" : "Maximum number of label values to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match[]",
+      "label" : "Series selector argument.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "name",
+      "label" : "Label name.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for label values query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

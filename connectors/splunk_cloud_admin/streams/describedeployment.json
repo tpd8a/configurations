@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the deployment status of the stack",
+  "format" : "json",
+  "id" : "describedeployment",
+  "method" : "GET",
+  "name" : "DescribeDeployment",
+  "path" : "\/{stack}\/adminconfig\/v2\/deployment\/status\/{deploymentID}",
+  "userParams" : [
+    {
+      "key" : "deploymentID",
+      "label" : "deployment ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

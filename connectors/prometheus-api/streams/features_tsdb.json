@@ -1,0 +1,50 @@
+{
+  "columns" : [
+    {
+      "name" : "delayed_compaction",
+      "type" : "boolean"
+    },
+    {
+      "name" : "exemplar_storage",
+      "type" : "boolean"
+    },
+    {
+      "name" : "isolation",
+      "type" : "boolean"
+    },
+    {
+      "name" : "native_histograms",
+      "type" : "boolean"
+    },
+    {
+      "name" : "st_storage",
+      "type" : "boolean"
+    },
+    {
+      "name" : "use_uncached_io",
+      "type" : "boolean"
+    },
+    {
+      "name" : "xor2_encoding",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_tsdb",
+  "method" : "GET",
+  "name" : "data.tsdb",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "tsdb"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

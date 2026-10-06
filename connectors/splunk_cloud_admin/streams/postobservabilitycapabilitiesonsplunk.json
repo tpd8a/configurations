@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "enables the o11y-splunk centralized RBAC integration including the addition of o11y roles and capabilities on the stack.",
+  "format" : "json",
+  "id" : "postobservabilitycapabilitiesonsplunk",
+  "method" : "POST",
+  "name" : "PostObservabilityCapabilitiesOnSplunk",
+  "path" : "\/{stack}\/adminconfig\/v2\/observability\/capabilities",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The stack name.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "columns" : [
+    {
+      "name" : "CEO",
+      "type" : "string"
+    },
+    {
+      "name" : "address",
+      "type" : "string"
+    },
+    {
+      "name" : "address2",
+      "type" : "string"
+    },
+    {
+      "name" : "city",
+      "type" : "string"
+    },
+    {
+      "name" : "country",
+      "type" : "string"
+    },
+    {
+      "name" : "description",
+      "type" : "string"
+    },
+    {
+      "name" : "employees",
+      "type" : "integer"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "industry",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "phone",
+      "type" : "string"
+    },
+    {
+      "name" : "sector",
+      "type" : "string"
+    },
+    {
+      "name" : "state",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "website",
+      "type" : "string"
+    },
+    {
+      "name" : "zip",
+      "type" : "string"
+    }
+  ],
+  "description" : "The profile endpoint provides detailed company information, including the company's name, industry, sector, CEO, and headquarters location. This data is useful for obtaining a comprehensive overview of a company's business and financial standing.",
+  "format" : "json",
+  "id" : "getprofile",
+  "method" : "GET",
+  "name" : "Profile",
+  "path" : "\/profile",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country where instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of instrument. For preferred stocks use dot(.) delimiter.\nE.g. `BR",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

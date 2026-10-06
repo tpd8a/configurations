@@ -1,0 +1,18 @@
+{
+  "authType" : "bearer",
+  "baseUrl" : "http:\/\/localhost:1234",
+  "config_version" : 2,
+  "headers" : {
+    "Authorization" : "Bearer {{ config.token }}"
+  },
+  "icon" : "network",
+  "id" : "lm-studio",
+  "name" : "LM Studio",
+  "sourceURL" : "file:\/\/\/tmp\/streambuilder-build\/Build\/Products\/Debug\/ConstructTv.app\/Contents\/Resources\/ConstructPlatform_ConstructConnectors.bundle\/Contents\/Resources\/lmstudio.openapi.json",
+  "streams" : [
+    "listmodelsnative",
+    "listmodelsopenai",
+    "createresponse"
+  ],
+  "version" : 1
+}

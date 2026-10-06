@@ -1,0 +1,1048 @@
+{
+  "conditions" : [
+    {
+      "expression" : "$symbol_tok$ = 'BTCUSDT'",
+      "id" : "cond_new_condition",
+      "name" : "myfirst"
+    }
+  ],
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_229a59d30c153253a02df42fe194698d",
+      "query" : {
+        "name" : "viz_get_ticker",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, quoteAsset FROM binance_spot.exchangeinfo(symbolStatus := 'TRADING')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_90563ccc0fe1f66d6f5af3a1c03b6d1b",
+      "query" : {
+        "name" : "viz_binance",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select time, symbol, priceChange, priceChangePercent, askPrice, askQuantity, bid, bidQuantity, open, high, low, close, volume  from binance_spot.ws_ticker"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_63334611d2648acb66bfe96184b96592",
+      "query" : {
+        "name" : "viz_a78c0825bb954e449940be2705f7f2c0",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, priceChange, priceChangePercent, close FROM binance_spot.ws_ticker WHERE symbol = '$symbol_tok$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_7da3c4410f3a042110bbe72116145dc3",
+      "query" : {
+        "name" : "viz_klines",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "tql" : "ta bollinger(close, 20, 2) as sma20"
+          }
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM binance_spot.klines(symbol:='$symbol_tok$',startTime:='$earliest$', endTime:='$latest$',interval:='5m') ORDER BY time DESC\n"
+        },
+        "time_mode" : {
+          "earliest" : "$input2.earliest$",
+          "latest" : "$input2.latest$",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_992a2f1ae09e4cee822b6a69b436f50d",
+      "query" : {
+        "name" : "viz_klines_ws",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM binance_spot.ws_kline(symbol:='$symbol_tok$',startTime:='$earliest$', endTime:='$latest$',interval:='1m')\n"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_403419dc75284e54b5837b160e63d9aa",
+      "query" : {
+        "name" : "ds_exchange_info",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, quoteAsset, status FROM binance_spot.exchangeinfo where status='TRADING'\n"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_3b486294cea74a628a8820f2d32e2ef0",
+      "query" : {
+        "name" : "ds_3FCBFF0F",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a1d24f0c0de4b7e9e2a4d1b6c3f0e24",
+      "query" : {
+        "name" : "ds_5a1d24f0c0de4b7e9e2a4d1b6c3f0e24",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "WITH t AS (SELECT * FROM ticker_24hr WHERE symbol = '$row.symbol$')\nSELECT 'Last price' AS label, printf('%.8g', lastPrice) AS value, 'tag' AS icon FROM t\nUNION ALL SELECT '24h change', printf('%+.2f%%', priceChangePercent), CASE WHEN priceChangePercent >= 0 THEN 'arrow.up.right' ELSE 'arrow.down.right' END FROM t\nUNION ALL SELECT '24h high \/ low', printf('%.8g \/ %.8g', highPrice, lowPrice), 'arrow.up.and.down' FROM t\nUNION ALL SELECT '24h volume', printf('%,d', CAST(volume AS INTEGER)), 'chart.bar' FROM t\nUNION ALL SELECT 'Trades', CAST(count AS TEXT), 'number' FROM t"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live demo: federated qualified-name SQL (binance_spot.get_api_v3_ticker_price)",
+  "id" : "dash_47715196a7984e23a74a9b135d5edd92",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_229a59d30c153253a02df42fe194698d",
+          "field_for_label" : "symbol",
+          "field_for_value" : "symbol"
+        },
+        "display_location" : "top",
+        "label" : "Select Symbol",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 1056,
+            "x" : 0,
+            "y" : 0
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "tabBar"
+      },
+      "id" : "input_bf66c6c7254144bda337c47d57b182fd",
+      "token" : "symbol_tok"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_6a423b3864bc4d06b83301be7003ca7b",
+      "token" : "input2"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Binance Tab Symbol Browser",
+  "provenance" : {
+    "imported_at" : "2026-10-06T20:03:59Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_25397ca7f88946e4bd28b07938b0e019",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a78c0825bb954e449940be2705f7f2c0"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1b00752338e3459abb67e80e69bca5ec",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 72,
+            "height" : 260,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "symbol" : {
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "symbol",
+                    "hideFromLegend" : false,
+                    "pointSize" : 40,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "7A4F6DA6-0842-49BA-A619-7A179F373CD7",
+                        "kind" : "pricetile",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsic3ltYm9sIjp7ImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsInBvaW50U2l6ZSI6NDAsImhpZGRlbiI6ZmFsc2V9fX0="
+                      }
+                    ],
+                    "shapeId" : "price-tile",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "symbol"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Price Tile: $symbol_tok$"
+              },
+              "data_source_ref" : "ds_63334611d2648acb66bfe96184b96592",
+              "id" : "viz_a78c0825bb954e449940be2705f7f2c0",
+              "layer" : 1,
+              "options" : {
+                "big_price" : "true",
+                "content_alignment" : "center",
+                "delta_field" : "priceChange",
+                "delta_pct_field" : "priceChangePercent",
+                "fills_panel" : "true",
+                "font_sizing" : "manual:1.0",
+                "price_field" : "close",
+                "style" : "marquee",
+                "symbol_field" : "symbol"
+              },
+              "title" : "Price Tile: $symbol_tok$",
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_76b6ed7db02f4560a57d4eb62f0db8c7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5661960609824174a6ae9122d9e1bc1e",
+          "layout" : {
+            "absolute_h" : 192,
+            "absolute_w" : 1056,
+            "absolute_x" : 0,
+            "absolute_y" : 600,
+            "height" : 540,
+            "panel_width" : 12
+          },
+          "title" : "Binance",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "33BD403D-5FD7-4D4A-9352-C9097BFFA1D0",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Table title"
+              },
+              "data_source_ref" : "ds_90563ccc0fe1f66d6f5af3a1c03b6d1b",
+              "id" : "viz_76b6ed7db02f4560a57d4eb62f0db8c7",
+              "layer" : 1,
+              "options" : {
+                "change_field" : "priceChange",
+                "change_pct_field" : "priceChangePercent",
+                "drilldown" : "row",
+                "height" : "100",
+                "name_field" : "symbol",
+                "page_size" : "100",
+                "show_row_numbers" : "false",
+                "style" : "bloomberg",
+                "wrap_cells" : "false"
+              },
+              "title" : "Table title",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "40C115AA-8816-4726-B731-EFA761DAB1D0",
+              "viz_ids" : [
+                "viz_bf7078df768048babadb477fbdaa34c2"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "This show the price movement over time of the choosen symbol",
+          "id" : "panel_063771678b3f41a28ab59fcf65e9db90",
+          "layout" : {
+            "absolute_h" : 360,
+            "absolute_w" : 720,
+            "absolute_x" : 336,
+            "absolute_y" : 48,
+            "panel_width" : 12
+          },
+          "semantic_meta" : {
+            "role" : "informational"
+          },
+          "visualizations" : [
+            {
+              "alerts" : {
+                "alerts" : [
+                  {
+                    "actions" : [
+                      {
+                        "toast" : {
+
+                        }
+                      },
+                      {
+                        "visualGlow" : {
+
+                        }
+                      },
+                      {
+                        "llmEnrich" : {
+                          "template" : "You are summarising a fired alert in one or two sentences.\n\nAlert: {{mark.label}}\nPanel: {{panel.title}}\nSeverity: {{severityTerm}}\nTriggering value: {{value}}\nCondition: {{condition}}\n\nRecent data points (last {{contextWindow}} intervals):\n{{recentData}}\n\nEvents within the alert window:\n{{recentEvents}}\n\nRespond with: (1) the likely cause, considering events if relevant;\n(2) one concrete next action. Keep it factual, no speculation\nbeyond the data provided."
+                        }
+                      },
+                      {
+                        "systemSound" : {
+                          "soundName" : "Glass"
+                        }
+                      }
+                    ],
+                    "condition" : {
+                      "expression" : {
+                        "_0" : "close > 100 and $symbol_tok$ == \"BTCUSD\""
+                      }
+                    },
+                    "dedup" : {
+                      "overrideOnEscalation" : true,
+                      "windowSeconds" : 300
+                    },
+                    "enabled" : true,
+                    "id" : "286A606E-B938-45A3-8243-1392973F984E",
+                    "label" : "close gt 84567.66",
+                    "severityTerm" : "Action"
+                  },
+                  {
+                    "actions" : [
+                      {
+                        "toast" : {
+                          "duration" : 60
+                        }
+                      },
+                      {
+                        "set_tokens" : {
+                          "last_alert" : "$alert.label$ — close $alert.value$"
+                        }
+                      },
+                      {
+                        "notify" : {
+                          "destination" : "cpu",
+                          "duration" : "dismiss",
+                          "show_result" : true
+                        }
+                      },
+                      {
+                        "banner" : {
+                          "message" : "Close breached in $panel.title$"
+                        }
+                      }
+                    ],
+                    "condition" : {
+                      "expression" : {
+                        "_0" : "close > 0"
+                      }
+                    },
+                    "dedup" : {
+                      "overrideOnEscalation" : true,
+                      "windowSeconds" : 30
+                    },
+                    "enabled" : true,
+                    "id" : "D3C846C7-7172-4DD6-BFDB-4501AFEEEA5A",
+                    "label" : "Demo action",
+                    "severityTerm" : "Notice"
+                  }
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                }
+              },
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "close" : {
+                    "dataLinks" : [
+                      {
+                        "actions" : [
+                          {
+                            "share" : {
+                              "subject" : "Binance $symbol_tok$",
+                              "text" : "$symbol_tok$ closed at $click.value$ ($click.time$)"
+                            }
+                          }
+                        ],
+                        "evalAssignments" : [
+
+                        ],
+                        "id" : "F6965E10-B5AD-4F63-813C-982F611C0004",
+                        "label" : "Share this candle",
+                        "setTokens" : [
+
+                        ],
+                        "unsetTokens" : [
+
+                        ]
+                      }
+                    ],
+                    "fieldId" : "close",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "267499B5-B872-4B77-B279-CBA5CD747DC8",
+                        "kind" : "candle",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY2xvc2UiOnsibmVnYXRlIjpmYWxzZSwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwiaGlkZGVuIjpmYWxzZX19fQ=="
+                      },
+                      {
+                        "id" : "E5DD8BD8-7821-4F3A-94E8-871B9EEF08C7",
+                        "kind" : "indicator_band",
+                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCIsInNlcmllc092ZXJyaWRlcyI6eyJjbG9zZSI6eyJuZWdhdGUiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "small"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Candlestick $symbol_tok$ $last_alert$"
+              },
+              "data_source_ref" : "ds_7da3c4410f3a042110bbe72116145dc3",
+              "id" : "viz_bf7078df768048babadb477fbdaa34c2",
+              "layer" : 1,
+              "options" : {
+                "change_field" : "askPrice",
+                "change_pct_field" : "priceChangePercent",
+                "name_field" : "symbol",
+                "style" : "marquee",
+                "wrap_cells" : "true"
+              },
+              "title" : "Candlestick $symbol_tok$ $last_alert$",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "5B1DDE05-9FC9-414B-90F1-6C2857698639",
+              "viz_ids" : [
+                "viz_e3b89f67d78d4835b12dc61201ebdcf9"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "This show the price movement over time of the choosen symbol",
+          "id" : "panel_46419856dde541c78400f45076366418",
+          "layout" : {
+            "absolute_h" : 336,
+            "absolute_w" : 1056,
+            "absolute_x" : 0,
+            "absolute_y" : 984,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "alerts" : {
+                "alerts" : [
+                  {
+                    "actions" : [
+                      {
+                        "toast" : {
+
+                        }
+                      },
+                      {
+                        "visualGlow" : {
+
+                        }
+                      },
+                      {
+                        "visualFlash" : {
+
+                        }
+                      },
+                      {
+                        "systemSound" : {
+                          "soundName" : "Glass"
+                        }
+                      }
+                    ],
+                    "condition" : {
+                      "expression" : {
+                        "_0" : "close > 100 and $symbol_tok$ == \"BTCUSD\""
+                      }
+                    },
+                    "dedup" : {
+                      "overrideOnEscalation" : true,
+                      "windowSeconds" : 300
+                    },
+                    "enabled" : true,
+                    "id" : "286A606E-B938-45A3-8243-1392973F984E",
+                    "label" : "close gt 84567.66",
+                    "severityTerm" : "Action"
+                  }
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                }
+              },
+              "config" : {
+                "title" : "Candlestick $symbol_tok$"
+              },
+              "data_source_ref" : "ds_992a2f1ae09e4cee822b6a69b436f50d",
+              "id" : "viz_e3b89f67d78d4835b12dc61201ebdcf9",
+              "layer" : 1,
+              "options" : {
+                "change_field" : "askPrice",
+                "change_pct_field" : "priceChangePercent",
+                "name_field" : "symbol",
+                "style" : "marquee",
+                "wrap_cells" : "true"
+              },
+              "title" : "Candlesticker $symbol_tok$",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2fa1f5d3198f4a4ba7da384a2572a470"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6397c091beed438e831ad8d7c3e34802",
+          "layout" : {
+            "absolute_h" : 792,
+            "absolute_w" : 360,
+            "absolute_x" : 1080,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_403419dc75284e54b5837b160e63d9aa",
+              "id" : "viz_2fa1f5d3198f4a4ba7da384a2572a470",
+              "layer" : 1,
+              "options" : {
+                "detail_datasource" : "ds_5a1d24f0c0de4b7e9e2a4d1b6c3f0e24",
+                "detail_height" : "190",
+                "detail_options" : "{\"title_field\": \"label\", \"trailing_field\": \"value\", \"symbol_field\": \"icon\", \"show_search\": \"false\", \"selection\": \"none\"}",
+                "expansion" : "single",
+                "group_by" : "quoteAsset",
+                "icon_rules" : "[{\"color\":\"#FF2600\",\"match\":{\"exact\":\"BTCIDR\"},\"symbol\":\"circle\"}]",
+                "preset" : "none",
+                "row_actions" : "[{\"id\": \"open_binance\", \"label\": \"Open on Binance\", \"symbol\": \"safari\", \"open_url\": {\"url\": \"https:\/\/www.binance.com\/en\/trade\/$row.baseAsset$_$row.quoteAsset$\"}}, {\"id\": \"share\", \"label\": \"Share\", \"symbol\": \"square.and.arrow.up\", \"share\": {\"text\": \"$row.symbol$ ($row.baseAsset$\/$row.quoteAsset$) is $row.status$ on Binance\"}}]",
+                "selection_field" : "symbol",
+                "show_search" : "true",
+                "subtitle_field" : "status",
+                "title_field" : "symbol"
+              },
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

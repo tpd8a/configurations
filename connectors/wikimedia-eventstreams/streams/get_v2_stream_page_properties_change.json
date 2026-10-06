@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page-properties-change events.\n\n(NOTE: This stream is an alias of mediawiki.page-properties-change)\n\nSchema title: mediawiki\/page\/properties-change",
+  "format" : "json",
+  "id" : "get_v2_stream_page_properties_change",
+  "method" : "GET",
+  "name" : "page-properties-change events",
+  "path" : "\/v2\/stream\/page-properties-change",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-properties-change",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

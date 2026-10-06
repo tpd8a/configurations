@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.revision-tags-change events.\n\nSchema title: mediawiki\/revision\/tags-change",
+  "format" : "json",
+  "id" : "get_v2_stream_mediawiki_revision_tags_change",
+  "method" : "GET",
+  "name" : "mediawiki.revision-tags-change events",
+  "path" : "\/v2\/stream\/mediawiki.revision-tags-change",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/mediawiki.revision-tags-change",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

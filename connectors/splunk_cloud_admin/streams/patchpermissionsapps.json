@@ -1,0 +1,32 @@
+{
+  "bodyTemplate" : "{\n  \"read\": [\n    {}\n  ],\n  \"write\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "Modify an app's permissions",
+  "format" : "json",
+  "id" : "patchpermissionsapps",
+  "method" : "PATCH",
+  "name" : "PatchPermissionsApps",
+  "path" : "\/{stack}\/adminconfig\/v2\/permissions\/apps\/{app}",
+  "reviewFields" : [
+    "read",
+    "write"
+  ],
+  "userParams" : [
+    {
+      "key" : "app",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

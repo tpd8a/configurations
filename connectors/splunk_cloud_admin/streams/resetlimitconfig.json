@@ -1,0 +1,31 @@
+{
+  "bodyTemplate" : "{\n  \"settings\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "reset limit configuration on the stack",
+  "format" : "json",
+  "id" : "resetlimitconfig",
+  "method" : "POST",
+  "name" : "ResetLimitConfig",
+  "path" : "\/{stack}\/adminconfig\/v2\/limits\/{stanza}\/reset",
+  "reviewFields" : [
+    "settings"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stanza",
+      "label" : "stanza name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

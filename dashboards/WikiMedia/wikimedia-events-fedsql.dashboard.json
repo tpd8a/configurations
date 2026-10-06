@@ -1,0 +1,103 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_18d7a1a076884b9b8f51ecd1f595d1d2",
+      "query" : {
+        "name" : "ds_18d7a1a076884b9b8f51ecd1f595d1d2",
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_5de3229eff254bbbadea2ffcc70913bd",
+      "query" : {
+        "name" : "ds_5de3229eff254bbbadea2ffcc70913bd",
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_9965c5e677244d7fb5242f180e04427a",
+      "query" : {
+        "name" : "ds_5de3229eff254bbbadea2ffcc70913bd copy",
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_7a303b81200541049ddec28b4e053f58",
+      "query" : {
+        "name" : "ds_18d7a1a076884b9b8f51ecd1f595d1d2 copy",
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_72325900588843cdaf8fe82255731a9a",
+      "query" : {
+        "name" : "ds_5FAFF9E4",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_9af66c871b0d4bf48b40fc746b96d576",
+      "query" : {
+        "name" : "ds_5FAFF9E4",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from wikimedia_eventstreams.get_v2_stream_mediawiki_recentchange"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Provider-free live Wikimedia events via Federated SQL over the virtual catalog.",
+  "id" : "dash_ee93fb197579489abbccf2932e7edf78",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Wikimedia Events (FedSQL)",
+  "provenance" : {
+    "imported_at" : "2026-09-14T15:53:52Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_ad4ef08176e24125957724bbd3717e2a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d0362a08bb2341f29460ee1bf996632d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e761c3548ac94af8bd929bd6d13b1e3d",
+          "layout" : {
+            "height" : 580,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_9af66c871b0d4bf48b40fc746b96d576",
+              "id" : "viz_d0362a08bb2341f29460ee1bf996632d",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

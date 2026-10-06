@@ -1,0 +1,67 @@
+{
+  "columns" : [
+    {
+      "name" : "id",
+      "type" : "integer"
+    },
+    {
+      "name" : "isBestMatch",
+      "type" : "boolean"
+    },
+    {
+      "name" : "isBuyerMaker",
+      "type" : "boolean"
+    },
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "qty",
+      "type" : "number"
+    },
+    {
+      "name" : "quoteQty",
+      "type" : "number"
+    },
+    {
+      "name" : "time",
+      "type" : "date"
+    }
+  ],
+  "format" : "json",
+  "id" : "trades",
+  "method" : "GET",
+  "name" : "Recent trades list",
+  "path" : "\/api\/v3\/trades",
+  "transforms" : [
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "id" : "integer",
+          "isBestMatch" : "boolean",
+          "isBuyerMaker" : "boolean",
+          "price" : "number",
+          "qty" : "number",
+          "quoteQty" : "number"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

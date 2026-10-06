@@ -1,0 +1,221 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_40b26659bea4475facc78181e6037d3e",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Wiki Activity",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "wiki_activity.csv"
+          }
+        },
+        "refresh_seconds" : 15,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_5b19723270a142b7a3d76d95a767fe9e",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Wiki Zones",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "path" : "wiki_zones.csv"
+          }
+        },
+        "refresh_seconds" : 0,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "File-backed live landscape of active Wikimedia wikis by project, cloned from Fleet Topology. Driven by wiki_activity.csv + wiki_zones.csv.",
+  "id" : "dash_6a2b0e4d06ef44a28811fdf9b48ee63a",
+  "inputs" : [
+
+  ],
+  "landscape" : {
+    "canvas" : {
+      "background" : {
+        "color" : "#0a0e1a"
+      },
+      "height" : 1080,
+      "width" : 1920
+    },
+    "hud" : [
+      {
+        "position" : "top_center",
+        "text" : "Wikimedia — live wikis by project",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_left",
+        "text" : "Wikipedias · Commons · Wikidata · Other",
+        "type" : "label"
+      },
+      {
+        "position" : "bottom_right",
+        "text" : "● hot  ● active  ● quiet",
+        "type" : "label"
+      },
+      {
+        "position" : "top_right",
+        "text" : "LIVE",
+        "type" : "label"
+      }
+    ],
+    "name" : "Wikimedia Wikis Live",
+    "spriteBindings" : [
+      {
+        "datasourceId" : "ds_5b19723270a142b7a3d76d95a767fe9e",
+        "entityField" : "zone_id",
+        "id" : "zones",
+        "placement" : "fixed",
+        "properties" : {
+          "color" : {
+            "field" : "color"
+          },
+          "label" : {
+            "field" : "label"
+          },
+          "opacity" : {
+            "value" : "0.25"
+          }
+        },
+        "spriteType" : "zone",
+        "zoneGroupField" : "group_id"
+      },
+      {
+        "behaviorField" : "sprite_behavior",
+        "datasourceId" : "ds_40b26659bea4475facc78181e6037d3e",
+        "entityField" : "wiki",
+        "h" : 40,
+        "id" : "wikis",
+        "placement" : "zone_relative",
+        "properties" : {
+          "color" : {
+            "field" : "status",
+            "map" : {
+              "active" : "#FADE2A",
+              "hot" : "#F2495C",
+              "quiet" : "#73BF69"
+            }
+          },
+          "label" : {
+            "field" : "label"
+          },
+          "scale" : {
+            "field" : "changes",
+            "inputRange" : [
+              0,
+              320
+            ],
+            "range" : [
+              0.7,
+              1.6
+            ]
+          }
+        },
+        "spriteType" : "circle",
+        "w" : 40,
+        "zoneBinding" : "zones",
+        "zoneField" : "zone"
+      }
+    ]
+  },
+  "layout_type" : "bootstrap",
+  "name" : "Wikimedia Wikis Live",
+  "polling_interval_seconds" : 15,
+  "provenance" : {
+    "imported_at" : "2026-07-31T17:51:06Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_84172c3593794d08b575d1e5c7f13810",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c2e7589e75c047a3acaca83fcfba7ed1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_dd954c60c317413aa955255a8194f141",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_40b26659bea4475facc78181e6037d3e",
+              "id" : "viz_c2e7589e75c047a3acaca83fcfba7ed1",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a25e31bfd04b4e41bc20dd64a507d5c5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_af32c96da311439da2f124d87da87594",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5b19723270a142b7a3d76d95a767fe9e",
+              "id" : "viz_a25e31bfd04b4e41bc20dd64a507d5c5",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6cb8b3b19c1546aeb95b47cfdef771b3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1921ae015b2b4d4284c99d0f01738b7e",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_40b26659bea4475facc78181e6037d3e",
+              "id" : "viz_6cb8b3b19c1546aeb95b47cfdef771b3",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "ws_miniticker",
+  "method" : "GET",
+  "name" : "New streaming table",
+  "path" : "\/ws_table",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keysParam" : "symbols",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+      "s"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    },
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "symbols",
+      "label" : "Symbols",
+      "location" : "query",
+      "required" : false
+    }
+  ]
+}

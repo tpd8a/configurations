@@ -1,0 +1,29 @@
+{
+  "columns" : [
+    {
+      "name" : "activeAlertmanagers",
+      "type" : "string"
+    },
+    {
+      "name" : "droppedAlertmanagers",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "alertmanagers",
+  "method" : "GET",
+  "name" : "Get Alertmanager discovery",
+  "path" : "\/alertmanagers",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

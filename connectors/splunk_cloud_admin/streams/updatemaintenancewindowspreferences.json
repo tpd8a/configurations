@@ -1,0 +1,36 @@
+{
+  "bodyTemplate" : "{\n  \"changeFreezes\": \"{{config.changeFreezes}}\",\n  \"preferredSchedule\":   {\n    \"additionalPreferences\": {},\n    \"preferredWindow\": {}\n  },\n  \"recordVersion\": {{config.recordVersion}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Update maintenance window preferences for a stack.",
+  "format" : "json",
+  "id" : "updatemaintenancewindowspreferences",
+  "method" : "PUT",
+  "name" : "UpdateMaintenanceWindowsPreferences",
+  "path" : "\/{stack}\/adminconfig\/v2\/maintenance-windows\/preferences",
+  "reviewFields" : [
+    "preferredSchedule"
+  ],
+  "userParams" : [
+    {
+      "key" : "changeFreezes",
+      "label" : "changeFreezes",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "recordVersion",
+      "label" : "Version of the record.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

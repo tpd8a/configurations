@@ -1,0 +1,258 @@
+{
+  "columns" : [
+    {
+      "name" : "correl",
+      "type" : "string"
+    },
+    {
+      "name" : "datetime",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.currency",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.exchange_timezone",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.name",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.series_type_1",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.series_type_2",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.indicator.time_period",
+      "type" : "integer"
+    },
+    {
+      "name" : "meta.interval",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.type",
+      "type" : "string"
+    }
+  ],
+  "description" : "The Correlation (CORREL) endpoint calculates the statistical relationship between two securities over a specified time period, returning a correlation coefficient. This coefficient ranges from -1 to 1, indicating the strength and direction of their linear relationship. A value close to 1 suggests a strong positive correlation, while a value near -1 indicates a strong negative correlation. This data is useful for identifying securities that move together or in opposite directions, aiding in strategies like diversification or pairs trading.",
+  "format" : "json",
+  "id" : "gettimeseriescorrel",
+  "method" : "GET",
+  "name" : "Correlation",
+  "path" : "\/correl",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "values"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "adjust",
+      "label" : "Adjusting mode for prices",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "The country where the instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Specifies the exact date to get the data for. Could be the exact date, e.g. `202",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Specifies the number of decimal places for floating values.\nShould be in range [",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "The ending date and time for data selection, see `start_date` description for de",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "The FIGI of an instrument for which data is requested. This parameter is availab",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_ohlc",
+      "label" : "Specify if OHLC values should be added in the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "interval",
+      "label" : "Interval between two consecutive points in time series",
+      "location" : "query",
+      "required" : true,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "order",
+      "label" : "Sorting order of the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of data points to retrieve. Supports values in the range from `1` to `500",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "prepost",
+      "label" : "Returns quotes that include pre-market and post-market data. Only for the `Pro` ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "previous_close",
+      "label" : "A boolean parameter to include the previous closing price in the time_series dat",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "series_type_1",
+      "label" : "Price type used as the first part of technical indicator",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "series_type_2",
+      "label" : "Price type used as the second part of technical indicator",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Can be used separately and together with `end_date`. Format `2006-01-02` or `200",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of the instrument. E.g. `AAPL`, `EUR\/USD`, `ETH\/BTC`, ...",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "time_period",
+      "label" : "Number of periods to average over. Takes values in the range from `1` to `800`",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "type",
+      "label" : "The asset class to which the instrument belongs",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "bodyTemplate" : "{\n  \"endpoints\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "remove specific egress private connectivity endpoints, or remove all endpoints and disable the feature",
+  "format" : "json",
+  "id" : "deleteegressprivateconnectivity",
+  "method" : "DELETE",
+  "name" : "DeleteEgressPrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/egress-private-connectivity\/endpoints",
+  "reviewFields" : [
+    "endpoints"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

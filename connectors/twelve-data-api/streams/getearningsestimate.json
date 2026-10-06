@@ -1,0 +1,80 @@
+{
+  "columns" : [
+    {
+      "name" : "earnings_estimate",
+      "type" : "string"
+    },
+    {
+      "name" : "meta",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "description" : "The earnings estimate endpoint provides access to analysts' projected earnings per share (EPS) for a specific company, covering both upcoming quarterly and annual periods. This data is crucial for users who need to track and compare expected financial performance across different timeframes, aiding in the evaluation of a company's future profitability.",
+  "format" : "json",
+  "id" : "getearningsestimate",
+  "method" : "GET",
+  "name" : "Earnings estimate",
+  "path" : "\/earnings_estimate",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "The country where the instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "The FIGI of an instrument for which data is requested. This parameter is availab",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "The Market Identifier Code (MIC) of the exchange where the instrument is traded,",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Filter by symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

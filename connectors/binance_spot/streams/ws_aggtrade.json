@@ -1,0 +1,101 @@
+{
+  "columns" : [
+    {
+      "name" : "ignore",
+      "type" : "boolean"
+    },
+    {
+      "name" : "aggTradeId",
+      "type" : "integer"
+    },
+    {
+      "name" : "eventType",
+      "type" : "string"
+    },
+    {
+      "name" : "f",
+      "type" : "integer"
+    },
+    {
+      "name" : "isBuyerMaker",
+      "type" : "boolean"
+    },
+    {
+      "name" : "low",
+      "type" : "integer"
+    },
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "quantity",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "time",
+      "type" : "integer"
+    },
+    {
+      "name" : "tradeTime",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "ws_aggtrade",
+  "method" : "GET",
+  "name" : "aggTrade",
+  "path" : "\/ws_aggtrade",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keyCase" : "lower",
+    "keyTemplate" : "$key$@aggTrade",
+    "keysParam" : "symbols",
+    "rowKey" : [
+      "a"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    }
+  },
+  "transforms" : [
+    {
+      "rename" : {
+        "fields" : {
+          "M" : "ignore",
+          "T" : "tradeTime",
+          "a" : "aggTradeId",
+          "m" : "isBuyerMaker",
+          "p" : "price",
+          "q" : "quantity",
+          "s" : "symbol"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "aggTradeId" : "integer",
+          "isBuyerMaker" : "boolean",
+          "price" : "number",
+          "quantity" : "number",
+          "tradeTime" : "integer"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

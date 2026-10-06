@@ -1,0 +1,174 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "disk",
+    "ttl" : 604800
+  },
+  "columns" : [
+    {
+      "name" : "cfi_code",
+      "type" : "string"
+    },
+    {
+      "name" : "country",
+      "type" : "string"
+    },
+    {
+      "name" : "currency",
+      "type" : "string"
+    },
+    {
+      "name" : "cusip",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "figi_code",
+      "type" : "string"
+    },
+    {
+      "name" : "isin",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "description" : "The ETFs endpoint provides a daily updated list of all available Exchange-Traded Funds. It returns an array containing detailed information about each ETF, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of ETFs for portfolio management, investment tracking, or financial analysis.",
+  "format" : "json",
+  "id" : "getetf",
+  "method" : "GET",
+  "name" : "ETFs",
+  "path" : "\/etfs",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cik",
+      "label" : "The CIK of an instrument for which data is requested",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Filter by exchange name",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_delisted",
+      "label" : "Include delisted identifiers",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Filter by market identifier code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Determines the number of data points returned in the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "page",
+      "label" : "Page number of the results to fetch",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "show_plan",
+      "label" : "Adds info on which plan symbol is available",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

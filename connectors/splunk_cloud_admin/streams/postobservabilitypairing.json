@@ -1,0 +1,27 @@
+{
+  "bodyTemplate" : "{\n  \"o11y-realm\": \"{{config.o11y-realm}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "Pair your Splunk Cloud stack to the Observability cloud org to use the stack as Identity Provider",
+  "format" : "json",
+  "id" : "postobservabilitypairing",
+  "method" : "POST",
+  "name" : "PostObservabilityPairing",
+  "path" : "\/{stack}\/adminconfig\/v2\/observability\/sso-pairing",
+  "userParams" : [
+    {
+      "key" : "o11y-realm",
+      "label" : "The Observability realm",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The stack name.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "uninstall the app",
+  "format" : "json",
+  "id" : "uninstallappvictoria",
+  "method" : "DELETE",
+  "name" : "UninstallAppVictoria",
+  "path" : "\/{stack}\/adminconfig\/v2\/apps\/victoria\/{app}",
+  "userParams" : [
+    {
+      "key" : "app",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "scope",
+      "label" : "set scope to local to delete app on a targeted search head group",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

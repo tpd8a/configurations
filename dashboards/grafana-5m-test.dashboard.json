@@ -1,0 +1,89 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_5fdf929d1d2041beb3bdf8d6c1289abd",
+      "query" : {
+        "name" : "ds_7C1FDC95",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.grafana_prom_network_traffic_basic"
+        },
+        "time_mode" : {
+          "earliest" : "$input1.earliest$",
+          "latest" : "$input1.latest$",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_25a33546e36d4ab29ac283a05cd139c4",
+  "inputs" : [
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "container" : {
+            "containerID" : "toolbar",
+            "type" : {
+              "toolbar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_2307f1c59f2947379e636b65b7c6b55f",
+      "token" : "input1"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Grafana 5m test",
+  "provenance" : {
+    "imported_at" : "2026-09-29T06:33:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_c90144fe6fee4c4fad4c4544c647c409",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3728fd590459459da26161378c088840"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_dd8f20de84b740d79889d9aba906480a",
+          "layout" : {
+            "height" : 400,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5fdf929d1d2041beb3bdf8d6c1289abd",
+              "id" : "viz_3728fd590459459da26161378c088840",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

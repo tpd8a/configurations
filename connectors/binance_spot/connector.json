@@ -1,0 +1,157 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/api.binance.com",
+  "commonDefaults" : {
+    "endTime" : "1787490501000",
+    "interval" : "5m",
+    "limit" : "20",
+    "startTime" : "1787480501000",
+    "symbol" : "BTCUSDT",
+    "symbolStatus" : "TRADING",
+    "symbols" : "BTCUSDT,ETHUSDT",
+    "timeZone" : "0",
+    "timestamp" : "1787490528000"
+  },
+  "commonEnvelope" : {
+    "errorFields" : [
+      "code",
+      "msg"
+    ],
+    "fieldsField" : [
+
+    ],
+    "metaFields" : [
+      "e",
+      "E"
+    ],
+    "rowsFields" : [
+
+    ]
+  },
+  "commonInputMappings" : [
+    {
+      "paramKey" : "limit",
+      "role" : "limit"
+    },
+    {
+      "paramKey" : "interval",
+      "role" : "interval"
+    },
+    {
+      "paramKey" : "timeZone",
+      "role" : "timezone"
+    }
+  ],
+  "commonRenames" : {
+    "A" : "askQuantity",
+    "B" : "bidQuantity",
+    "C" : "statsCloseTime",
+    "E" : "time",
+    "F" : "firstTradID",
+    "L" : "lastTradeID",
+    "M" : "ignore",
+    "O" : "statsOpenTime",
+    "P" : "priceChangePercent",
+    "Q" : "closeQuantity",
+    "T" : "tradeTime",
+    "a" : "askPrice",
+    "b" : "bid",
+    "c" : "close",
+    "e" : "eventType",
+    "h" : "high",
+    "i" : "interval",
+    "l" : "low",
+    "m" : "isBuyerMaker",
+    "n" : "totalTrades",
+    "o" : "open",
+    "p" : "price",
+    "q" : "quoteVolume",
+    "s" : "symbol",
+    "t" : "tradeId",
+    "v" : "volume",
+    "w" : "avgPrice",
+    "x" : "firstTradeF1"
+  },
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "binance_spot",
+  "name" : "Binance Spot",
+  "parameterIndex" : {
+    "connectorId" : "binance_spot",
+    "entries" : [
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/api\/v3\/exchangeInfo",
+            "evidence" : "Field 'symbol' on generator exactly matches consumer param key",
+            "field" : "symbol"
+          }
+        ],
+        "paramKey" : "symbol"
+      }
+    ]
+  },
+  "sourceURL" : "\/Users\/peter\/Downloads\/Binance Spot API.json",
+  "streams" : [
+    "delete_openorders",
+    "delete_order",
+    "post_order",
+    "put_order_amend_keeppriority",
+    "post_order_cancelreplace",
+    "post_order_oco",
+    "post_order_test",
+    "delete_orderlist",
+    "post_orderlist_oco",
+    "post_orderlist_opo",
+    "post_orderlist_opoco",
+    "post_orderlist_oto",
+    "post_orderlist_otoco",
+    "post_sor_order",
+    "post_sor_order_test",
+    "exchangeinfo",
+    "executionrules",
+    "ping",
+    "time",
+    "account",
+    "account_commission",
+    "allorderlist",
+    "allorders",
+    "myallocations",
+    "myfilters",
+    "mypreventedmatches",
+    "mytrades",
+    "openorderlist",
+    "openorders",
+    "order",
+    "order_amendments",
+    "orderlist",
+    "ratelimit_order",
+    "aggtrades",
+    "avgprice",
+    "depth",
+    "historicalblocktrades",
+    "historicaltrades",
+    "klines",
+    "referenceprice",
+    "referenceprice_calculation",
+    "ticker",
+    "ticker_24hr",
+    "ticker_bookticker",
+    "ticker_price",
+    "ticker_tradingday",
+    "trades",
+    "uiklines",
+    "ws_trade",
+    "ws_ticker",
+    "ws_aggtrade",
+    "ws_kline",
+    "ws_bookticker",
+    "ws_depth",
+    "ws_miniticker"
+  ],
+  "version" : 1
+}

@@ -1,0 +1,220 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_25ddbae371044814a95efa95d33d579b",
+      "query" : {
+        "name" : "ds_saved_search",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from FS.splunk_run_saved_search"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_f44b27f7aae04639bada146d9942a929",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Query_Token_Example",
+  "provenance" : {
+    "imported_at" : "2026-09-27T07:01:58Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_4005e7b6219d4d1cab9ff2962c206db8",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a237c6a2a8b84ee99a5e2d6ebc55d86e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_26f4a609cfc249c48d20e4557c2a60b2",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "result.status=done"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "4950A071-6C11-48BE-BE47-C76D504DFFDC",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table-totals",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "rows: $result.rowCount$, progress: $result.status$"
+              },
+              "data_source_ref" : "ds_25ddbae371044814a95efa95d33d579b",
+              "id" : "viz_a237c6a2a8b84ee99a5e2d6ebc55d86e",
+              "layer" : 1,
+              "options" : {
+                "show_totals_row" : "true",
+                "stackMode" : "none"
+              },
+              "title" : "rows: $result.rowCount$, progress: $result.status$",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

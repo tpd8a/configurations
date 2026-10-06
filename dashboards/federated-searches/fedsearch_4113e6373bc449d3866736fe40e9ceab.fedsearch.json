@@ -1,0 +1,1 @@
+{"sql":"select * from splunk_enterprise_rest_api.oneshot_search(query:='| rest \n  \/services\/search\/jobs')","id":"fedsearch_4113e6373bc449d3866736fe40e9ceab","name":"splunk_search_jobs","config_version":2}

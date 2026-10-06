@@ -1,0 +1,35 @@
+{
+  "bodyTemplate" : "{\n\n}",
+  "columns" : [
+
+  ],
+  "description" : "install an app for Victoria stack",
+  "format" : "json",
+  "id" : "installappvictoria",
+  "method" : "POST",
+  "name" : "InstallAppVictoria",
+  "path" : "\/{stack}\/adminconfig\/v2\/apps\/victoria",
+  "userParams" : [
+    {
+      "key" : "scope",
+      "label" : "set scope to local to install app on a targeted search head group",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "splunkbase",
+      "label" : "is the app available in splunkbase",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

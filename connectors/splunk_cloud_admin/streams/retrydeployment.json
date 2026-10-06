@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "retry a specific deployment id of a stack",
+  "format" : "json",
+  "id" : "retrydeployment",
+  "method" : "POST",
+  "name" : "RetryDeployment",
+  "path" : "\/{stack}\/adminconfig\/v2\/deployment\/retry",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

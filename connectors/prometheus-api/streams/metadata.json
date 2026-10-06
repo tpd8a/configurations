@@ -1,0 +1,63 @@
+{
+  "columns" : [
+    {
+      "name" : "help",
+      "type" : "string"
+    },
+    {
+      "name" : "key",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "unit",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "metadata",
+  "method" : "GET",
+  "name" : "Get metadata",
+  "path" : "\/metadata",
+  "transforms" : [
+    {
+      "descend" : {
+        "keyAs" : "key",
+        "path" : [
+          "data"
+        ]
+      }
+    },
+    {
+      "flatten" : {
+        "depth" : 1
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "The maximum number of metrics to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit_per_metric",
+      "label" : "The maximum number of metadata entries per metric.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "metric",
+      "label" : "A metric name to filter metadata for.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

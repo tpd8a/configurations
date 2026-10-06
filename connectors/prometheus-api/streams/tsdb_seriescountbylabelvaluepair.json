@@ -1,0 +1,36 @@
+{
+  "columns" : [
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "value",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "tsdb_seriescountbylabelvaluepair",
+  "method" : "GET",
+  "name" : "data.seriesCountByLabelValuePair",
+  "path" : "\/status\/tsdb",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "seriesCountByLabelValuePair"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "The maximum number of items to return per category.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

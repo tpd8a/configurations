@@ -1,0 +1,61 @@
+{
+  "columns" : [
+    {
+      "name" : "help",
+      "type" : "string"
+    },
+    {
+      "name" : "metric",
+      "type" : "string"
+    },
+    {
+      "name" : "target",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "unit",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "targets_metadata",
+  "method" : "GET",
+  "name" : "Get targets metadata",
+  "path" : "\/targets\/metadata",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "Maximum number of targets to match.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match_target",
+      "label" : "Label selector to filter targets.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "metric",
+      "label" : "Metric name to retrieve metadata for.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "columns" : [
+    {
+      "name" : "result",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "description" : "This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.",
+  "format" : "json",
+  "id" : "getmutualfundstype",
+  "method" : "GET",
+  "name" : "MFs types",
+  "path" : "\/mutual_funds\/type",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Filter by country name or alpha code, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fund_type",
+      "label" : "Filter by the type of fund",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

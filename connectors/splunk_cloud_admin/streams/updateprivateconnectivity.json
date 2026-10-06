@@ -1,0 +1,25 @@
+{
+  "bodyTemplate" : "{\n  \"customerAccountIds\": [\n    {}\n  ],\n  \"feature\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "updates private connectivity and patches provided customerAccountIds to the private network",
+  "format" : "json",
+  "id" : "updateprivateconnectivity",
+  "method" : "PATCH",
+  "name" : "UpdatePrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/private-connectivity\/endpoints",
+  "reviewFields" : [
+    "customerAccountIds",
+    "feature"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

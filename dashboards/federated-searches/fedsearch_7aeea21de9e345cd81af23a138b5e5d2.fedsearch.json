@@ -1,0 +1,1 @@
+{"config_version":2,"id":"fedsearch_7aeea21de9e345cd81af23a138b5e5d2","name":"splunk_stats_check","sql":"select * from splunk_enterprise_rest_api.search_job(query := '| stats count | eval peter=123 | eval john=456',earliest_time:='-180m',latest_time:='now')","description":"Test SPL for dynamic fields"}

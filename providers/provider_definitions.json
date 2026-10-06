@@ -1,31 +1,5 @@
 [
   {
-    "base_url" : "https:\/\/pop-os.local:8089",
-    "config_version" : 2,
-    "health_check" : {
-      "enabled" : true,
-      "interval_seconds" : 60,
-      "path" : "\/services\/server\/health\/splunkd"
-    },
-    "id" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
-    "name" : "Splunk",
-    "options" : {
-      "default_stream_mode" : "preview",
-      "insecure_ssl" : false,
-      "timeout_seconds" : 30,
-      "verify_certificate" : false
-    },
-    "type" : "splunk"
-  },
-  {
-    "base_url" : "http:\/\/mini.local:3000",
-    "config_version" : 2,
-    "id" : "D7962C25-D6A7-4EC8-AA4B-7D41E52ACDF8",
-    "name" : "Grafana",
-    "specId" : "grafana",
-    "type" : "custom"
-  },
-  {
     "base_url" : "local:\/\/intelligence",
     "config_version" : 2,
     "id" : "intelligence",
@@ -43,19 +17,6 @@
       "verify_certificate" : false
     },
     "type" : "file"
-  },
-  {
-    "base_url" : "https:\/\/api.twelvedata.com",
-    "config_version" : 2,
-    "description" : "https:\/\/twelvedata.com\/account\/api-keys",
-    "id" : "0A521DE0-DEA2-4E6C-8B9E-07F6FED760EF",
-    "name" : "TwelveData",
-    "options" : {
-      "insecure_ssl" : false,
-      "timeout_seconds" : 30,
-      "verify_certificate" : true
-    },
-    "type" : "custom"
   },
   {
     "base_url" : "https:\/\/finhub.io",
@@ -79,17 +40,119 @@
     "type" : "custom"
   },
   {
-    "base_url" : "https:\/\/pop-os.local:9090",
+    "base_url" : "http:\/\/pop-os.local:9090",
     "config_version" : 2,
+    "enabled" : true,
     "id" : "4430DF34-0930-4D0D-840C-16653E27F3C4",
     "name" : "Prometheus",
     "options" : {
-      "insecure_ssl" : false,
+      "insecure_ssl" : true,
       "timeout_seconds" : 30,
       "verify_certificate" : false
     },
-    "specId" : "prometheus",
+    "specId" : "prometheus-api",
+    "specVersion" : 1,
     "sql_alias" : "prom",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.binance.com",
+    "config_version" : 2,
+    "id" : "6EA80C8F-F8E3-47E3-9253-F92DA5187E94",
+    "name" : "Binance Spot",
+    "specId" : "binance_spot",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/localhost:1234",
+    "config_version" : 2,
+    "id" : "13547051-DA26-4320-B8A4-327F299EE07E",
+    "name" : "LM Studio",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "lm-studio",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/pop-os.local:8089",
+    "config" : {
+      "namespace" : "search",
+      "owner" : "super"
+    },
+    "config_version" : 2,
+    "id" : "A8D4BD62-FAD5-4EC1-AC75-87D320710163",
+    "name" : "Splunk Enterprise REST API",
+    "options" : {
+      "default_stream_mode" : "preview",
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "splunk.v3",
+    "specVersion" : 1,
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/status.claude.com",
+    "config_version" : 2,
+    "id" : "26A52A3C-504E-49EC-9838-82D1C81F72A9",
+    "name" : "Claude RSS",
+    "options" : {
+      "insecure_ssl" : true,
+      "verify_certificate" : false
+    },
+    "specId" : "claude-status",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/query1.finance.yahoo.com",
+    "config_version" : 2,
+    "id" : "5C5C0351-8C86-48E5-A0EE-27256512DE2F",
+    "name" : "Yahoo Finance",
+    "specId" : "yahoo-finance",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/stream.wikimedia.org",
+    "config_version" : 2,
+    "id" : "1472FB98-D66B-45A3-B05E-B88A9EC03CC5",
+    "name" : "Wikimedia",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "wikimedia-eventstreams",
+    "sql_alias" : "wikimedia_eventstreams",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.twelvedata.com",
+    "config_version" : 2,
+    "id" : "F70FB68E-FBBB-4A5B-BF7B-DDC543F2F0BF",
+    "name" : "Twelve Data API",
+    "options" : {
+      "insecure_ssl" : true,
+      "verify_certificate" : false
+    },
+    "specId" : "twelve-data-api",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "http:\/\/mini.local:3000",
+    "config_version" : 2,
+    "id" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
+    "name" : "Grafana API",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "grafana.v2",
+    "specVersion" : 1,
     "type" : "custom"
   }
 ]

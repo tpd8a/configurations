@@ -1,0 +1,65 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "order_amendments",
+  "method" : "GET",
+  "name" : "Query Order Amendments (USER_DATA)",
+  "path" : "\/api\/v3\/order\/amendments",
+  "userParams" : [
+    {
+      "key" : "fromExecutionId",
+      "label" : "fromExecutionId",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "limit",
+      "label" : "limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "orderId",
+      "label" : "orderId",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "Supports up to three decimal places of precision (e.g., 6000.346) so that micros",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    }
+  ]
+}

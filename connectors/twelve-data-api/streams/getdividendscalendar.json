@@ -1,0 +1,116 @@
+{
+  "columns" : [
+    {
+      "name" : "amount",
+      "type" : "number"
+    },
+    {
+      "name" : "ex_date",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "description" : "The dividends calendar endpoint provides a detailed schedule of upcoming and past dividend events for specified date ranges. By using the `start_date` and `end_date` parameters, users can retrieve a list of companies issuing dividends, including the ex-dividend date and dividend amount. This endpoint is ideal for tracking dividend payouts and planning investment strategies based on dividend schedules.",
+  "format" : "json",
+  "id" : "getdividendscalendar",
+  "method" : "GET",
+  "name" : "Dividends calendar",
+  "path" : "\/dividends_calendar",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country where instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "End date for the dividends calendar query. Only dividends with ex-dates on or be",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "Filter by financial instrument global identifier (FIGI). This parameter is avail",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market Identifier Code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of data points to retrieve.\nSupports values in the range from `1` to `500",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "page",
+      "label" : "Page number",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Start date for the dividends calendar query. Only dividends with ex-dates on or ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol ticker of instrument. For preferred stocks use dot(.) delimiter.\nE.g. `BR",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

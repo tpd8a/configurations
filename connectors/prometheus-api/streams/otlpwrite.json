@@ -1,0 +1,15 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "OpenTelemetry Protocol metrics ingestion endpoint. Accepts OTLP\/HTTP metrics in Protocol Buffer format.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "otlpwrite",
+  "method" : "POST",
+  "name" : "OTLP metrics write endpoint",
+  "path" : "\/otlp\/v1\/metrics",
+  "userParams" : [
+
+  ]
+}

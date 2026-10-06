@@ -1,0 +1,41 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Deletes data for a selection of series in a time range.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "deleteseriespost",
+  "method" : "POST",
+  "name" : "Delete series matching selectors",
+  "path" : "\/admin\/tsdb\/delete_series",
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End timestamp for deletion.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "match[]",
+      "label" : "Series selectors to identify series to delete.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for deletion.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

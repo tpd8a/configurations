@@ -1,0 +1,24 @@
+{
+  "bodyTemplate" : "{\n  \"endpoints\": [\n    {\n      \"dnsEnabled\": {{config.dnsEnabled}},\n      \"endpoint\": \"{{config.endpoint}}\",\n      \"reason\": \"{{config.reason}}\",\n      \"status\": \"{{config.status}}\"\n    }\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "add additional egress endpoints or modify DNS settings on existing endpoints",
+  "format" : "json",
+  "id" : "updateegressprivateconnectivity",
+  "method" : "PATCH",
+  "name" : "UpdateEgressPrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/egress-private-connectivity\/endpoints",
+  "reviewFields" : [
+    "endpoints"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

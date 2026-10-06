@@ -1,0 +1,26 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "parse_query",
+  "method" : "GET",
+  "name" : "Parse a PromQL query",
+  "path" : "\/parse_query",
+  "userParams" : [
+    {
+      "key" : "query",
+      "label" : "PromQL expression to parse.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

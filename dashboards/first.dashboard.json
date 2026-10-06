@@ -1,0 +1,65 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_be1f20f07d0449d492252fe07c8eae8f",
+      "query" : {
+        "name" : "ds_fs_first_test_for_queries",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.first_test_for_queries"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_9c5c36d1978b47bb9c098cf3931afc9e",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "First",
+  "provenance" : {
+    "imported_at" : "2026-10-04T11:30:21Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_844d5e8f1929460aa4ee1f059c122f35",
+      "layout" : {
+        "collapsed" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4ff371161caf48a58c9739b729e2f951"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aa50f2c9ec824caa810dc4b32f1b846a",
+          "layout" : {
+            "height" : 560,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_be1f20f07d0449d492252fe07c8eae8f",
+              "id" : "viz_4ff371161caf48a58c9739b729e2f951",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

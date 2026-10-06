@@ -1,0 +1,34 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the enablement status of an app feature",
+  "format" : "json",
+  "id" : "describeappfeatureenablement",
+  "method" : "GET",
+  "name" : "DescribeAppFeatureEnablement",
+  "path" : "\/{stack}\/adminconfig\/v2\/enablement\/{appGroup}\/{featureName}",
+  "userParams" : [
+    {
+      "key" : "appGroup",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "featureName",
+      "label" : "the feature name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

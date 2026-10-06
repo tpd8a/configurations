@@ -1,0 +1,1 @@
+{"config_version":2,"sql":"select symbol, askPrice, bidPrice, priceChange, priceChangePercent, volume from binance_spot.ticker_24hr","name":"binance_24h_ticker_all","id":"fedsearch_362eb92379fb4876b438ef9ea6b2ada2","description":"Example of Binances 24 hour ticker for all instruments"}

@@ -1,0 +1,41 @@
+{
+  "columns" : [
+    {
+      "name" : "bucketCount",
+      "type" : "integer"
+    },
+    {
+      "name" : "bucketWidthMs",
+      "type" : "integer"
+    },
+    {
+      "name" : "calculationType",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "referenceprice_calculation",
+  "method" : "GET",
+  "name" : "Query Reference Price Calculation",
+  "path" : "\/api\/v3\/referencePrice\/calculation",
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbolStatus",
+      "label" : "Supported values: `TRADING`, `HALT`, `BREAK`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

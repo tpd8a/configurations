@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "list capabilities",
+  "format" : "json",
+  "id" : "listcapabilities",
+  "method" : "GET",
+  "name" : "ListCapabilities",
+  "path" : "\/{stack}\/adminconfig\/v2\/capabilities",
+  "userParams" : [
+    {
+      "key" : "grantableOnly",
+      "label" : "only show grantable capabilities",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

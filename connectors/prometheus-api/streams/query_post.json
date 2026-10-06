@@ -1,0 +1,50 @@
+{
+  "bodyTemplate" : "{\n  \"limit\": {{config.limit}},\n  \"lookback_delta\": \"{{config.lookback_delta}}\",\n  \"query\": \"{{config.query}}\",\n  \"stats\": \"{{config.stats}}\",\n  \"time\": \"{{config.time}}\",\n  \"timeout\": \"{{config.timeout}}\"\n}",
+  "columns" : [
+
+  ],
+  "disabled" : true,
+  "format" : "json",
+  "id" : "query_post",
+  "method" : "POST",
+  "name" : "Evaluate an instant query",
+  "path" : "\/query",
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "Form field: The maximum number of metrics to return.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "lookback_delta",
+      "label" : "Form field: Override the lookback period for this query (optional).",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "query",
+      "label" : "Form field: The PromQL query to execute.",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "stats",
+      "label" : "Form field: When provided, include query statistics in the response (the special",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "time",
+      "label" : "Form field: The evaluation timestamp (optional, defaults to current time).",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "timeout",
+      "label" : "Form field: Evaluation timeout (optional, defaults to and is capped by the value",
+      "location" : "body",
+      "required" : false
+    }
+  ]
+}

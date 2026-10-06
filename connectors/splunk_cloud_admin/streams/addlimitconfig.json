@@ -1,0 +1,31 @@
+{
+  "bodyTemplate" : "{\n  \"settings\":   {}\n}",
+  "columns" : [
+
+  ],
+  "description" : "add limit configuration to the stack",
+  "format" : "json",
+  "id" : "addlimitconfig",
+  "method" : "POST",
+  "name" : "AddLimitConfig",
+  "path" : "\/{stack}\/adminconfig\/v2\/limits\/{stanza}",
+  "reviewFields" : [
+    "settings"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stanza",
+      "label" : "stanza name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "columns" : [
+    {
+      "name" : "close",
+      "type" : "string"
+    },
+    {
+      "name" : "datetime",
+      "type" : "string"
+    },
+    {
+      "name" : "high",
+      "type" : "number"
+    },
+    {
+      "name" : "low",
+      "type" : "number"
+    },
+    {
+      "name" : "meta.base_currency",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.base_exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.base_instrument",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.interval",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.quote_currency",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.quote_exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "meta.quote_instrument",
+      "type" : "string"
+    },
+    {
+      "name" : "open",
+      "type" : "number"
+    }
+  ],
+  "description" : "The Time Series Cross endpoint calculates and returns historical cross-rate data for exotic forex pairs, cryptocurrencies, or stocks (e.g., Apple Inc. price in Indian Rupees) on the fly. It provides metadata about the requested symbol and a time series array with Open, High, Low, and Close prices, sorted descending by time, enabling analysis of price history and market trends.",
+  "format" : "json",
+  "id" : "gettimeseriescross",
+  "method" : "GET",
+  "name" : "Time series cross",
+  "path" : "\/time_series\/cross",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "values"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "adjust",
+      "label" : "Specifies if there should be an adjustment",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "base",
+      "label" : "Base currency symbol",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "base_exchange",
+      "label" : "Base exchange",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "base_mic_code",
+      "label" : "Base MIC code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "base_type",
+      "label" : "Base instrument type according to the `\/instrument_type` endpoint",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Delimiter used in CSV file",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Specifies the number of decimal places for floating values.\nShould be in range [",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end_date",
+      "label" : "End date for the time series data",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "format",
+      "label" : "Format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "interval",
+      "label" : "Interval between two consecutive points in time series",
+      "location" : "query",
+      "required" : true,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of data points to retrieve. Supports values in the range from `1` to `500",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "prepost",
+      "label" : "Only for the `Pro` plan (individual) and `Venture` plan (business) and above.\nAv",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quote",
+      "label" : "Quote currency symbol",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "quote_exchange",
+      "label" : "Quote exchange",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quote_mic_code",
+      "label" : "Quote MIC code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quote_type",
+      "label" : "Quote instrument type according to the `\/instrument_type` endpoint",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start_date",
+      "label" : "Start date for the time series data",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

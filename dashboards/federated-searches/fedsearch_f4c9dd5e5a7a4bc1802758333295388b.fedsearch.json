@@ -1,0 +1,1 @@
+{"sql":"SELECT * FROM binance_spot.klines(symbol:='BTCUSDT',startTime:='-1h',endTime:='now',interval:='5m')","name":"btc_kline_1h_5m","description":"Binance  OHLC Kline test on Bitcoin","config_version":2,"id":"fedsearch_f4c9dd5e5a7a4bc1802758333295388b"}

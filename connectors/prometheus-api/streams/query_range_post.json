@@ -1,0 +1,68 @@
+{
+  "bodyTemplate" : "{\n  \"end\": \"{{config.end}}\",\n  \"limit\": {{config.limit}},\n  \"lookback_delta\": \"{{config.lookback_delta}}\",\n  \"query\": \"{{config.query}}\",\n  \"start\": \"{{config.start}}\",\n  \"stats\": \"{{config.stats}}\",\n  \"step\": \"{{config.step}}\",\n  \"timeout\": \"{{config.timeout}}\"\n}",
+  "columns" : [
+
+  ],
+  "disabled" : true,
+  "format" : "json",
+  "id" : "query_range_post",
+  "method" : "POST",
+  "name" : "Evaluate a range query",
+  "path" : "\/query_range",
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "Form field: The end time of the query.",
+      "location" : "body",
+      "required" : true,
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "limit",
+      "label" : "Form field: The maximum number of metrics to return.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "lookback_delta",
+      "label" : "Form field: Override the lookback period for this query (optional).",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "query",
+      "label" : "Form field: The query to execute.",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "start",
+      "label" : "Form field: The start time of the query.",
+      "location" : "body",
+      "required" : true,
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "stats",
+      "label" : "Form field: When provided, include query statistics in the response (the special",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "step",
+      "label" : "Form field: The step size of the query.",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "timeout",
+      "label" : "Form field: Evaluation timeout (optional, defaults to and is capped by the value",
+      "location" : "body",
+      "required" : false
+    }
+  ]
+}

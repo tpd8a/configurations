@@ -1,0 +1,79 @@
+{
+  "columns" : [
+    {
+      "name" : "askPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "askQty",
+      "type" : "number"
+    },
+    {
+      "name" : "bidPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQty",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "updateID",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "ws_bookticker",
+  "method" : "GET",
+  "name" : "bookTicker",
+  "path" : "\/ws_bookticker",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keyCase" : "lower",
+    "keyTemplate" : "$key$@bookTicker",
+    "keysParam" : "symbols",
+    "rowKey" : [
+      "s"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    }
+  },
+  "transforms" : [
+    {
+      "rename" : {
+        "fields" : {
+          "A" : "askQty",
+          "B" : "bidQty",
+          "a" : "askPrice",
+          "b" : "bidPrice",
+          "s" : "symbol",
+          "u" : "updateID"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "askPrice" : "number",
+          "askQty" : "number",
+          "bidPrice" : "number",
+          "bidQty" : "number"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

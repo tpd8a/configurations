@@ -1,0 +1,1166 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_9030462a98b74c099d7ed3890670493b",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Market Data",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "financial_market_data.csv",
+            "tql" : "rowkey symbol"
+          }
+        },
+        "refresh_seconds" : 30,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_a02bd66fb650429086e62731c7aed660",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "AAPL OHLCV",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "financial_ohlcv.csv"
+          }
+        },
+        "refresh_seconds" : 30,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_29fdb56a1a214f2c9be846d31c7b79ad",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_47CCDFE0",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_ohlcv.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_ca72da77dcac4e679549d963d423f847",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_C16E8C7F",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_market_data.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_8b2d35b4d433401da42d076b85f675d1",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_7BBFD307",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_62b3e504caba4559a3f21deb5e43fa4c",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_EA0EBC31",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv",
+            "tql" : "ta bollinger(open, 12, 3) as bb20"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Demo dashboard showcasing all new financial visualization types.",
+  "id" : "dash_9f7cf2c9b01541bebf8fed1d0e4db298",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "Financial Visualizations Showcase",
+  "provenance" : {
+    "imported_at" : "2026-10-03T20:25:43Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_252ca04cca674d21b5a2bb1bc4a2427f",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d82b8c0b98bd42a9ab2039fda89a73d5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e34ffd3b6c864540b7bcc1be013207a3",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "6EF706F0-3AD7-4D56-BC5F-7F4B631B3086",
+                        "kind" : "pricetile",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "price-tile",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "price"
+                        ],
+                        "x",
+                        [
+                          "symbol"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+                    "name"
+                  ],
+                  "enabled" : true,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_9030462a98b74c099d7ed3890670493b",
+              "id" : "viz_d82b8c0b98bd42a9ab2039fda89a73d5",
+              "layer" : 1,
+              "options" : {
+                "big_price" : "true",
+                "delta_field" : "change",
+                "delta_pct_field" : "change_pct",
+                "name_field" : "name",
+                "price_field" : "price",
+                "show_sparkline" : "true",
+                "spark_field" : "spark",
+                "symbol_field" : "symbol"
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_749a8adf0a01493c8f103e06b1652887"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9077789d022949a896fa844c0f879fb1",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "91249A61-8205-4638-BC6D-DE8AEC41A3AE",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "08E77957-A911-473B-820A-09885AEF8E87",
+                        "kind" : "band",
+                        "optionsJSON" : "eyJ5U3RhcnRDb2x1bW4iOiJzbWEyMF9sIiwiZmlsbE9wYWNpdHkiOjAuMTUsInlFbmRDb2x1bW4iOiJzbWEyMF91In0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "1A57DEF8-5BE5-484B-8384-DE701F28B26E",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJmaWVsZCI6InNtYTIwX20iLCJmaWxsT3BhY2l0eSI6MCwic2VyaWVzT3ZlcnJpZGVzIjp7InNtYTIwX20iOnsiaGlkZGVuIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJsaW5lU3R5bGUiOiJkYXNoZWQiLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZX19LCJzaG93UG9pbnRzIjpmYWxzZSwiZmlsbCI6eyJwYWxldHRlIjp7fX19"
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "B6989299-BD5F-4F1E-BA6B-271E361BA6BF",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJmaWVsZCI6InNtYTIwX3UiLCJzaG93UG9pbnRzIjpmYWxzZSwiZmlsbCI6eyJwYWxldHRlIjp7fX0sImZpbGxPcGFjaXR5IjowLCJzZXJpZXNPdmVycmlkZXMiOnt9fQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma20",
+                        "id" : "6F0954CA-36F4-44A6-BCB9-AA2B93D8B889",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJmaWVsZCI6InNtYTIwX2wiLCJmaWxsT3BhY2l0eSI6MCwic2VyaWVzT3ZlcnJpZGVzIjp7fSwic2hvd1BvaW50cyI6ZmFsc2UsImZpbGwiOnsicGFsZXR0ZSI6e319fQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "bb20",
+                        "id" : "2665145E-F296-4446-893A-AF92F9593791",
+                        "kind" : "indicator_band",
+                        "optionsJSON" : "eyJmaWVsZCI6ImJiMjAiLCJmaWxsT3BhY2l0eSI6MC4xNX0="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : true,
+                        "scale" : "linear",
+                        "showGridlines" : false
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "showAxisLabelsXOverride" : false,
+                "showGridLinesXOverride" : false,
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_62b3e504caba4559a3f21deb5e43fa4c",
+              "id" : "viz_749a8adf0a01493c8f103e06b1652887",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "OHLC - Saved v2 - v3"
+    },
+    {
+      "id" : "row_f121ac81a0d44dd5b1fed809eb94b84a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3eb0a711fd1446b1839f4a5cc4919981"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5b00a1d53bb54a92a07e81d9ac7088cd",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 408,
+            "absolute_x" : 624,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "DF0B6B64-CAAC-4DF3-829E-FE5DE0874EA3",
+                        "kind" : "kpimosaic",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "kpi-mosaic",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "symbol"
+                        ],
+                        "y",
+                        [
+                          "price"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_9030462a98b74c099d7ed3890670493b",
+              "id" : "viz_3eb0a711fd1446b1839f4a5cc4919981",
+              "layer" : 1,
+              "options" : {
+                "columns" : "6",
+                "delta_pct_field" : "change_pct",
+                "price_field" : "price",
+                "symbol_field" : "symbol"
+              },
+              "type" : "kpi_mosaic",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c65073d894a74249b5a6a7a30772b51c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_af64863503d340bba0674b114e515ef9",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 240,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "6CF35515-9743-4E04-8B60-EF42CECC4610",
+                        "kind" : "rsigauge",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "rsi-gauge",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "price"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_9030462a98b74c099d7ed3890670493b",
+              "id" : "viz_c65073d894a74249b5a6a7a30772b51c",
+              "layer" : 1,
+              "options" : {
+                "display_label" : "true",
+                "font_sizing" : "auto",
+                "gauge_type" : "radial",
+                "overbought" : "70",
+                "oversold" : "30",
+                "shape" : "auto",
+                "value_field" : "rsi"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Price Tiles & Gauges"
+    },
+    {
+      "id" : "row_2e1db4b635374bbca8c4af4b3241c956",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8b0dbe3599bd4d58aab678c401922bef"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7b6d5248d30c4e2fb3147822e1724da2",
+          "layout" : {
+            "absolute_h" : 456,
+            "absolute_w" : 312,
+            "absolute_x" : 312,
+            "absolute_y" : 240,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_9030462a98b74c099d7ed3890670493b",
+              "id" : "viz_8b0dbe3599bd4d58aab678c401922bef",
+              "layer" : 1,
+              "options" : {
+                "color_scale" : "redGreen",
+                "font_sizing" : "manual:2.5",
+                "symbol_field" : "symbol",
+                "value_field" : "change_pct",
+                "weight_field" : "market_cap"
+              },
+              "type" : "heatmap_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_175a2c83adb444e7bfbbc53241f36d1b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_616674e6ee3749a1aa88d3b97378a89e",
+          "layout" : {
+            "absolute_h" : 456,
+            "absolute_w" : 312,
+            "absolute_x" : 624,
+            "absolute_y" : 240,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "B5A00287-05C3-4B8E-8A21-AA3FC65817B3",
+                        "kind" : "ticker",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "ticker-vertical",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "symbol"
+                        ],
+                        "y",
+                        [
+                          "price"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_ca72da77dcac4e679549d963d423f847",
+              "id" : "viz_175a2c83adb444e7bfbbc53241f36d1b",
+              "layer" : 1,
+              "options" : {
+                "direction" : "rightToLeft",
+                "font_sizing" : "auto",
+                "mono_font" : "false",
+                "show_sparklines" : "false",
+                "style" : "scoreboard",
+                "ticker_type" : "scoreboard"
+              },
+              "title" : "Price Ticker",
+              "type" : "ticker",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Heatmap & Chart"
+    },
+    {
+      "id" : "row_7a956c2324b446f19373600972f1b530",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_84ed2dd32f0e4c5db1177ed53747b7a4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_58c8ca27ca2d4a3082c91207a78a6c10",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 480,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_9030462a98b74c099d7ed3890670493b",
+              "id" : "viz_84ed2dd32f0e4c5db1177ed53747b7a4",
+              "layer" : 1,
+              "options" : {
+                "show_percentages_row" : "true",
+                "show_totals_row" : "true"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Market Data Table"
+    }
+  ]
+}

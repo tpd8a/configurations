@@ -1,0 +1,131 @@
+{
+  "connectorId" : "grafana-http-api",
+  "streams" : [
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "getNodeRange",
+      "method" : "GET",
+      "name" : "getNodeRange",
+      "path" : "\/datasources\/uid\/afylgi69fxs74f\/resources\/api\/v1\/query_range",
+      "responseTransformer" : "prometheus_matrix",
+      "synthetic" : {
+        "base" : "proxy",
+        "dsType" : "prometheus",
+        "dsUid" : "afylgi69fxs74f"
+      },
+      "userParams" : [
+        {
+          "key" : "query",
+          "label" : "query",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "start",
+          "label" : "start",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "end",
+          "label" : "end",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "step",
+          "label" : "step",
+          "location" : "query",
+          "required" : false
+        }
+      ]
+    },
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "synth_prometheus_prometheus",
+      "method" : "GET",
+      "name" : "Synthetic · Prometheus · prometheus",
+      "path" : "\/datasources\/uid\/afylgi69fxs74f\/resources\/api\/v1\/query_range",
+      "responseTransformer" : "prometheus_matrix",
+      "synthetic" : {
+        "base" : "proxy",
+        "dsType" : "prometheus",
+        "dsUid" : "afylgi69fxs74f"
+      },
+      "userParams" : [
+        {
+          "key" : "query",
+          "label" : "query",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "start",
+          "label" : "start",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "end",
+          "label" : "end",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "step",
+          "label" : "step",
+          "location" : "query",
+          "required" : false
+        }
+      ]
+    },
+    {
+      "columns" : [
+
+      ],
+      "format" : "json",
+      "id" : "synth_prometheus_prometheus_1",
+      "method" : "GET",
+      "name" : "Synthetic · Prometheus · prometheus-1",
+      "path" : "\/datasources\/uid\/dfel5foqpyo74d\/resources\/api\/v1\/query_range",
+      "responseTransformer" : "prometheus_matrix",
+      "synthetic" : {
+        "base" : "proxy",
+        "dsType" : "prometheus",
+        "dsUid" : "dfel5foqpyo74d"
+      },
+      "userParams" : [
+        {
+          "key" : "query",
+          "label" : "query",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "start",
+          "label" : "start",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "end",
+          "label" : "end",
+          "location" : "query",
+          "required" : false
+        },
+        {
+          "key" : "step",
+          "label" : "step",
+          "location" : "query",
+          "required" : false
+        }
+      ]
+    }
+  ]
+}

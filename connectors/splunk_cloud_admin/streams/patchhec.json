@@ -1,0 +1,85 @@
+{
+  "bodyTemplate" : "{\n  \"_meta\": \"{{config._meta}}\",\n  \"allowedIndexes\": [\n    {}\n  ],\n  \"defaultHost\": \"{{config.defaultHost}}\",\n  \"defaultIndex\": \"{{config.defaultIndex}}\",\n  \"defaultSource\": \"{{config.defaultSource}}\",\n  \"defaultSourcetype\": \"{{config.defaultSourcetype}}\",\n  \"disabled\": {{config.disabled}},\n  \"name\": \"{{config.name}}\",\n  \"token\": \"{{config.token}}\",\n  \"useAck\": {{config.useAck}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Modify properties of HEC",
+  "format" : "json",
+  "id" : "patchhec",
+  "method" : "PATCH",
+  "name" : "PatchHEC",
+  "path" : "\/{stack}\/adminconfig\/v2\/inputs\/http-event-collectors\/{hec}",
+  "reviewFields" : [
+    "allowedIndexes"
+  ],
+  "userParams" : [
+    {
+      "key" : "_meta",
+      "label" : "additional metadata in the format <key>::<value>, delimited by space.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "defaultHost",
+      "label" : "defaultHost",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "defaultIndex",
+      "label" : "defaultIndex",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "defaultSource",
+      "label" : "defaultSource",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "defaultSourcetype",
+      "label" : "defaultSourcetype",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "disabled",
+      "label" : "disabled",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "hec",
+      "label" : "hec name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "name",
+      "label" : "name",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "token",
+      "label" : "token",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "useAck",
+      "label" : "useAck",
+      "location" : "body",
+      "required" : false
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "apiKeyLocation" : "query",
+  "authType" : "apiKey",
+  "baseUrl" : "https:\/\/api.twelvedata.com",
+  "commonDefaults" : {
+    "amount" : "100",
+    "interval" : "5min",
+    "symbol" : "AAPL"
+  },
+  "commonEnvelope" : {
+    "errorFields" : [
+      "status",
+      "message"
+    ],
+    "fieldsField" : [
+
+    ],
+    "metaFields" : [
+      "meta"
+    ],
+    "rowsFields" : [
+      "values",
+      "data",
+      "splits",
+      "dividends"
+    ]
+  },
+  "commonInputMappings" : [
+    {
+      "paramKey" : "interval",
+      "role" : "interval"
+    },
+    {
+      "paramKey" : "outputsize",
+      "role" : "limit"
+    },
+    {
+      "paramKey" : "timezone",
+      "role" : "timezone"
+    },
+    {
+      "paramKey" : "start_date",
+      "role" : "timeStart"
+    },
+    {
+      "paramKey" : "end_date",
+      "role" : "timeEnd"
+    },
+    {
+      "paramKey" : "order",
+      "role" : "sort"
+    },
+    {
+      "paramKey" : "period",
+      "role" : "interval"
+    },
+    {
+      "paramKey" : "page_size",
+      "role" : "limit"
+    }
+  ],
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "twelve-data-api",
+  "name" : "Twelve Data API",
+  "parameterIndex" : {
+    "connectorId" : "twelve-data-api",
+    "entries" : [
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/exchanges",
+            "evidence" : "Field 'code' on generator exactly matches consumer param key",
+            "field" : "code"
+          }
+        ],
+        "paramKey" : "code"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'country' on generator exactly matches consumer param key",
+            "field" : "country"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/exchanges",
+            "evidence" : "Field 'country' on generator exactly matches consumer param key",
+            "field" : "country"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'country' on generator exactly matches consumer param key",
+            "field" : "country"
+          }
+        ],
+        "paramKey" : "country"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/cryptocurrencies",
+            "evidence" : "Field 'currency_base' on generator exactly matches consumer param key",
+            "field" : "currency_base"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/forex_pairs",
+            "evidence" : "Field 'currency_base' on generator exactly matches consumer param key",
+            "field" : "currency_base"
+          }
+        ],
+        "paramKey" : "currency_base"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/cryptocurrencies",
+            "evidence" : "Field 'currency_quote' on generator exactly matches consumer param key",
+            "field" : "currency_quote"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/forex_pairs",
+            "evidence" : "Field 'currency_quote' on generator exactly matches consumer param key",
+            "field" : "currency_quote"
+          }
+        ],
+        "paramKey" : "currency_quote"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'cusip' on generator exactly matches consumer param key",
+            "field" : "cusip"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'cusip' on generator exactly matches consumer param key",
+            "field" : "cusip"
+          }
+        ],
+        "paramKey" : "cusip"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'exchange' on generator exactly matches consumer param key",
+            "field" : "exchange"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'exchange' on generator exactly matches consumer param key",
+            "field" : "exchange"
+          }
+        ],
+        "paramKey" : "exchange"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'isin' on generator exactly matches consumer param key",
+            "field" : "isin"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'isin' on generator exactly matches consumer param key",
+            "field" : "isin"
+          }
+        ],
+        "paramKey" : "isin"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'mic_code' on generator exactly matches consumer param key",
+            "field" : "mic_code"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'mic_code' on generator exactly matches consumer param key",
+            "field" : "mic_code"
+          }
+        ],
+        "paramKey" : "mic_code"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/commodities",
+            "evidence" : "Field 'name' on generator exactly matches consumer param key",
+            "field" : "name"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/cryptocurrency_exchanges",
+            "evidence" : "Field 'name' on generator exactly matches consumer param key",
+            "field" : "name"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'name' on generator exactly matches consumer param key",
+            "field" : "name"
+          }
+        ],
+        "paramKey" : "name"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/commodities",
+            "evidence" : "Field 'symbol' on generator exactly matches consumer param key",
+            "field" : "symbol"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/cryptocurrencies",
+            "evidence" : "Field 'symbol' on generator exactly matches consumer param key",
+            "field" : "symbol"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/etfs",
+            "evidence" : "Field 'symbol' on generator exactly matches consumer param key",
+            "field" : "symbol"
+          }
+        ],
+        "paramKey" : "symbol"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/exchanges",
+            "evidence" : "Field 'timezone' on generator exactly matches consumer param key",
+            "field" : "timezone"
+          }
+        ],
+        "paramKey" : "timezone"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/stocks",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          }
+        ],
+        "paramKey" : "type"
+      }
+    ]
+  },
+  "rateLimit" : {
+    "perDay" : 800,
+    "perMinute" : 8
+  },
+  "sourceURL" : "https:\/\/api.twelvedata.com\/doc\/swagger\/openapi.json",
+  "streams" : [
+    "gettimeseriesad",
+    "gettimeseriesadd",
+    "gettimeseriesadosc",
+    "gettimeseriesadx",
+    "gettimeseriesadxr",
+    "getanalystratingslight",
+    "getanalystratingsusequities",
+    "getapiusage",
+    "gettimeseriesapo",
+    "gettimeseriesaroon",
+    "gettimeseriesaroonosc",
+    "gettimeseriesatr",
+    "gettimeseriesavg",
+    "gettimeseriesavgprice",
+    "getbalancesheet",
+    "getbalancesheetconsolidated",
+    "advanced",
+    "gettimeseriesbbands",
+    "gettimeseriesbeta",
+    "getbonds",
+    "gettimeseriesbop",
+    "getcashflow",
+    "getcashflowconsolidated",
+    "gettimeseriescci",
+    "gettimeseriesceil",
+    "gettimeseriescmo",
+    "getcommodities",
+    "gettimeseriescoppock",
+    "gettimeseriescorrel",
+    "getcountries",
+    "getcrosslistings",
+    "gettimeseriescrsi",
+    "getcryptocurrencies",
+    "getcryptocurrencyexchanges",
+    "getcurrencyconversion",
+    "gettimeseriesdema",
+    "getdirectholders",
+    "gettimeseriesdiv",
+    "getdividends",
+    "getdividendscalendar",
+    "gettimeseriesdpo",
+    "gettimeseriesdx",
+    "getearliesttimestamp",
+    "getearnings",
+    "getearningscalendar",
+    "getearningsestimate",
+    "getedgarfilingsarchive",
+    "gettimeseriesema",
+    "geteod",
+    "getepsrevisions",
+    "getepstrend",
+    "getetf",
+    "getetfsfamily",
+    "getetfslist",
+    "getetfstype",
+    "getetfsworld",
+    "getetfsworldcomposition",
+    "getetfsworldperformance",
+    "getetfsworldrisk",
+    "getetfsworldsummary",
+    "getexchangerate",
+    "getexchangeschedule",
+    "getexchanges",
+    "gettimeseriesexp",
+    "gettimeseriesfloor",
+    "getforexpairs",
+    "getfundholders",
+    "getfunds",
+    "getgrowthestimates",
+    "gettimeseriesheikinashicandles",
+    "gettimeserieshlc3",
+    "gettimeserieshtdcperiod",
+    "gettimeserieshtdcphase",
+    "gettimeserieshtphasor",
+    "gettimeserieshtsine",
+    "gettimeserieshttrendline",
+    "gettimeserieshttrendmode",
+    "gettimeseriesichimoku",
+    "getincomestatement",
+    "getincomestatementconsolidated",
+    "getinsidertransactions",
+    "getinstitutionalholders",
+    "getinstrumenttype",
+    "getintervals",
+    "getipocalendar",
+    "gettimeserieskama",
+    "gettimeserieskeltner",
+    "getkeyexecutives",
+    "gettimeserieskst",
+    "getlastchanges",
+    "gettimeserieslinearreg",
+    "gettimeserieslinearregangle",
+    "gettimeserieslinearregintercept",
+    "gettimeserieslinearregslope",
+    "gettimeseriesln",
+    "gettimeserieslog10",
+    "getlogo",
+    "gettimeseriesma",
+    "gettimeseriesmacd",
+    "gettimeseriesmacdslope",
+    "gettimeseriesmacdext",
+    "gettimeseriesmama",
+    "getmarketcap",
+    "getmarketmovers",
+    "getmarketstate",
+    "gettimeseriesmax",
+    "gettimeseriesmaxindex",
+    "gettimeseriesmcginleydynamic",
+    "gettimeseriesmedprice",
+    "gettimeseriesmfi",
+    "gettimeseriesmidpoint",
+    "gettimeseriesmidprice",
+    "gettimeseriesmin",
+    "gettimeseriesminindex",
+    "gettimeseriesminmax",
+    "gettimeseriesminmaxindex",
+    "gettimeseriesminusdi",
+    "gettimeseriesminusdm",
+    "gettimeseriesmom",
+    "gettimeseriesmult",
+    "getmutualfundsfamily",
+    "getmutualfundslist",
+    "getmutualfundstype",
+    "getmutualfundsworld",
+    "getmutualfundsworldcomposition",
+    "getmutualfundsworldperformance",
+    "getmutualfundsworldpurchaseinfo",
+    "getmutualfundsworldratings",
+    "getmutualfundsworldrisk",
+    "getmutualfundsworldsummary",
+    "getmutualfundsworldsustainability",
+    "gettimeseriesnatr",
+    "gettimeseriesobv",
+    "gettimeseriespercent-b",
+    "gettimeseriespivotpointshl",
+    "gettimeseriesplusdi",
+    "gettimeseriesplusdm",
+    "gettimeseriesppo",
+    "pressreleaseslistparameters",
+    "getprice",
+    "getpricetarget",
+    "getprofile",
+    "getquote",
+    "getrecommendations",
+    "getrevenueestimate",
+    "gettimeseriesroc",
+    "gettimeseriesrocp",
+    "gettimeseriesrocr",
+    "gettimeseriesrocr100",
+    "gettimeseriesrsi",
+    "gettimeseriesrvol",
+    "getsourcesanctionedentities",
+    "gettimeseriessar",
+    "gettimeseriessarext",
+    "gettimeseriessma",
+    "getsplits",
+    "getsplitscalendar",
+    "gettimeseriessqrt",
+    "getstatistics",
+    "gettimeseriesstddev",
+    "gettimeseriesstoch",
+    "gettimeseriesstochf",
+    "gettimeseriesstochrsi",
+    "getstocks",
+    "gettimeseriessub",
+    "gettimeseriessum",
+    "gettimeseriessupertrend",
+    "gettimeseriessupertrendheikinashicandles",
+    "getsymbolsearch",
+    "gettimeseriest3ma",
+    "gettaxinfo",
+    "gettechnicalindicators",
+    "gettimeseriestema",
+    "gettimeseries",
+    "gettimeseriescross",
+    "gettimeseriestrange",
+    "gettimeseriestrima",
+    "gettimeseriestsf",
+    "gettimeseriestypprice",
+    "gettimeseriesultosc",
+    "gettimeseriesvar",
+    "gettimeseriesvwap",
+    "gettimeserieswclprice",
+    "gettimeserieswillr",
+    "gettimeserieswma",
+    "price"
+  ],
+  "version" : 1
+}

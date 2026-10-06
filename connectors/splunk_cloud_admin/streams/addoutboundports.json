@@ -1,0 +1,30 @@
+{
+  "bodyTemplate" : "{\n  \"outboundPorts\": [\n    {\n      \"port\": {{config.port}},\n      \"subnets\": {}\n    }\n  ],\n  \"reason\": \"{{config.reason}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "add subnets to the outboundports for the feature, if they don't already exist",
+  "format" : "json",
+  "id" : "addoutboundports",
+  "method" : "POST",
+  "name" : "AddOutboundports",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports",
+  "reviewFields" : [
+    "outboundPorts"
+  ],
+  "userParams" : [
+    {
+      "key" : "reason",
+      "label" : "reason",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

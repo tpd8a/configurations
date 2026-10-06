@@ -1,0 +1,222 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_e2a36677b0a346e189e6805fe2e7bd9a",
+      "query" : {
+        "name" : "base",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '|  stats count', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_f993a321ae48465494a793bd4ddfd5ab",
+      "query" : {
+        "name" : "base",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '|  stats count', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "tab",
+  "id" : "dash_aba6dc3efda24d1f88e351f7ab0a9707",
+  "inputs" : [
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "label" : "Peter",
+            "value" : "peter"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "John",
+            "value" : "john"
+          }
+        ],
+        "default" : "peter",
+        "display_location" : "top",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 72,
+            "w" : 216,
+            "x" : 24,
+            "y" : 24
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "tabBar"
+      },
+      "id" : "input_4c1fc8d86ef34c76a630bdd3be88a691",
+      "token" : "tab"
+    },
+    {
+      "config" : {
+        "default" : "-24h@h,now",
+        "display_location" : "top",
+        "label" : "Global Time Range",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 72,
+            "w" : 216,
+            "x" : 288,
+            "y" : 24
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_50215583cb5b4c5d8157cd1a9b8f05e4",
+      "token" : "global_time"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "one",
+            "value" : "1"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "two",
+            "value" : "2"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Dropdown",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 216,
+            "x" : 552,
+            "y" : 24
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown",
+        "visibility" : {
+          "depends" : [
+            "evalulate"
+          ]
+        }
+      },
+      "id" : "input_62b24b7546394da1bbe694c51f801aa3",
+      "token" : "eval exist"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "tab",
+  "polling_interval_seconds" : 30,
+  "provenance" : {
+    "imported_at" : "2026-09-24T06:32:48Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "A8D4BD62-FAD5-4EC1-AC75-87D320710163"
+  ],
+  "rows" : [
+    {
+      "id" : "row_eb0a697fb796487fb36dcf9cb6681326",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_lAYzB2tn",
+              "viz_ids" : [
+                "viz_f7ad60b26821411a93ccf99aa0d0e8da"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_904a9e319ab149dd9ef0becde49c55ce",
+          "layout" : {
+            "absolute_h" : 408,
+            "absolute_w" : 648,
+            "absolute_x" : 24,
+            "absolute_y" : 120,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "tab=peter"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e2a36677b0a346e189e6805fe2e7bd9a",
+              "id" : "viz_f7ad60b26821411a93ccf99aa0d0e8da",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "tab=peter"
+                  ]
+                }
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_pBsZsWgA",
+              "viz_ids" : [
+                "viz_900be25c651248c6b53360a845ab11b4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9757d8544fa349b982d3d0883cb7afbb",
+          "layout" : {
+            "absolute_h" : 408,
+            "absolute_w" : 624,
+            "absolute_x" : 696,
+            "absolute_y" : 120,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "tab=john"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f993a321ae48465494a793bd4ddfd5ab",
+              "id" : "viz_900be25c651248c6b53360a845ab11b4",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "tab=john"
+                  ]
+                }
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

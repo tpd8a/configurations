@@ -1,0 +1,271 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_9486b1e50a514ed5942846e9bba5d766",
+      "query" : {
+        "name" : "ds_peter",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select 'peter' as peter"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_300a1b13fbfe41179404d6e9c390dff7",
+      "query" : {
+        "name" : "ds_894D3383",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select 'john' as john"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5d63e5b764d043e69398d89711062328",
+      "query" : {
+        "name" : "ds_C8230BAC",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select 'nothing' as xyz"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_cba3a3b20341443f90a7c3a8680a34b7",
+      "query" : {
+        "name" : "ds_1D750088",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select 'clear' as clear"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_9de6bf191c8c46eaafeb2dd99eeeae79",
+  "inputs" : [
+    {
+      "config" : {
+        "choices" : [
+          {
+            "color" : "#941100",
+            "default" : true,
+            "disabled" : false,
+            "icon" : "circle",
+            "label" : "Peter",
+            "value" : "Peter"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "icon" : "square",
+            "label" : "John",
+            "value" : "John"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "dgdg",
+            "value" : "dfgdfg"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "gdgdfgfd",
+            "value" : "dgfgdf"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "dfgdfgfd",
+            "value" : "dfgdfgdfg"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Relatives",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 192,
+            "x" : 24,
+            "y" : 0
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "tabBar"
+      },
+      "id" : "input_418d8adf582f4e91bc3294fdf62ecd3e",
+      "token" : "input4"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Tab Test",
+  "provenance" : {
+    "imported_at" : "2026-09-23T13:36:01Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_f205d6508ff74834bbaa482e0de9f511",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0ec7ac7c00d441cd83aca4734c5e492a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e76b61e6a78c47249fb3e18f7e886e9b",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 144,
+            "absolute_y" : 72,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "input4=tab2"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_300a1b13fbfe41179404d6e9c390dff7",
+              "id" : "viz_0ec7ac7c00d441cd83aca4734c5e492a",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "input4=tab2"
+                  ]
+                }
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_309b5c530ecb4d7d9425e8728a21a291"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_603c359ea621436f98d1a5967256dc3f",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 576,
+            "absolute_x" : 0,
+            "absolute_y" : 216,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "input4=Peter"
+              ]
+            }
+          },
+          "title" : "$bitcoin$",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5d63e5b764d043e69398d89711062328",
+              "id" : "viz_309b5c530ecb4d7d9425e8728a21a291",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "input4=Peter"
+                  ]
+                }
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d272961d132a47ee97efb0d6512fd08a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3b8908f8df4c4136a867ac8fad3a5db8",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 576,
+            "absolute_x" : 576,
+            "absolute_y" : 72,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "input4=John"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_cba3a3b20341443f90a7c3a8680a34b7",
+              "id" : "viz_d272961d132a47ee97efb0d6512fd08a",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "input4=John"
+                  ]
+                }
+              },
+              "type" : "kpi_mosaic",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e997964429074d9bad16d33f8f740844"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e77cdbf32bb846bf8fa2bffda2074e03",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 672,
+            "absolute_y" : 504,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_9486b1e50a514ed5942846e9bba5d766",
+              "id" : "viz_e997964429074d9bad16d33f8f740844",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

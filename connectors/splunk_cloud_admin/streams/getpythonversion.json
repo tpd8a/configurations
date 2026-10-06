@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe python version",
+  "format" : "json",
+  "id" : "getpythonversion",
+  "method" : "GET",
+  "name" : "GetPythonVersion",
+  "path" : "\/{stack}\/adminconfig\/v2\/python-runtime",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

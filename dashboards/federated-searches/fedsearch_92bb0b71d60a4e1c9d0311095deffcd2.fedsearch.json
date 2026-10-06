@@ -1,0 +1,1 @@
+{"description":"Test use of  quotes to protect odd sql chars named in table.","id":"fedsearch_92bb0b71d60a4e1c9d0311095deffcd2","name":"prom_search_labels_like_name","sql":"select * from prom.search_labels('search[]' := 'name', sort_by := 'alpha', sort_dir := 'dsc', limit := 3)","config_version":2}

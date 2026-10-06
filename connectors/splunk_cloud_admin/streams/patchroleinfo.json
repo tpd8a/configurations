@@ -1,0 +1,88 @@
+{
+  "bodyTemplate" : "{\n  \"capabilities\": [\n    {}\n  ],\n  \"cumulativeRTSrchJobsQuota\": {{config.cumulativeRTSrchJobsQuota}},\n  \"cumulativeSrchJobsQuota\": {{config.cumulativeSrchJobsQuota}},\n  \"defaultApp\": \"{{config.defaultApp}}\",\n  \"importedRoles\": [\n    {}\n  ],\n  \"rtSrchJobsQuota\": {{config.rtSrchJobsQuota}},\n  \"srchDiskQuota\": {{config.srchDiskQuota}},\n  \"srchFilter\": \"{{config.srchFilter}}\",\n  \"srchIndexesAllowed\": [\n    {}\n  ],\n  \"srchIndexesDefault\": [\n    {}\n  ],\n  \"srchJobsQuota\": {{config.srchJobsQuota}},\n  \"srchTimeEarliest\": {{config.srchTimeEarliest}},\n  \"srchTimeWin\": {{config.srchTimeWin}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Modify a specific role on the stack",
+  "format" : "json",
+  "id" : "patchroleinfo",
+  "method" : "PATCH",
+  "name" : "PatchRoleInfo",
+  "path" : "\/{stack}\/adminconfig\/v2\/roles\/{roleName}",
+  "reviewFields" : [
+    "capabilities",
+    "importedRoles",
+    "srchIndexesAllowed",
+    "srchIndexesDefault"
+  ],
+  "userParams" : [
+    {
+      "key" : "cumulativeRTSrchJobsQuota",
+      "label" : "cumulativeRTSrchJobsQuota",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "cumulativeSrchJobsQuota",
+      "label" : "cumulativeSrchJobsQuota",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "defaultApp",
+      "label" : "defaultApp",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "roleName",
+      "label" : "role name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "rtSrchJobsQuota",
+      "label" : "rtSrchJobsQuota",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "srchDiskQuota",
+      "label" : "srchDiskQuota",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "srchFilter",
+      "label" : "srchFilter",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "srchJobsQuota",
+      "label" : "srchJobsQuota",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "srchTimeEarliest",
+      "label" : "srchTimeEarliest",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "srchTimeWin",
+      "label" : "srchTimeWin",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

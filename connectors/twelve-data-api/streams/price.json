@@ -1,0 +1,109 @@
+{
+  "columns" : [
+    {
+      "name" : "currency",
+      "type" : "string"
+    },
+    {
+      "name" : "day_volume",
+      "type" : "integer"
+    },
+    {
+      "name" : "event",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "timeFormat" : "epoch_seconds",
+      "type" : "date"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "price",
+  "method" : "GET",
+  "name" : "Live Price",
+  "path" : "\/quotes\/price",
+  "streaming" : {
+    "dataEvent" : {
+      "equals" : "price",
+      "field" : "event"
+    },
+    "endpoint" : "wss:\/\/ws.twelvedata.com\/v1\/quotes\/price?apikey=$apikey$",
+    "keepAlive" : {
+      "intervalSeconds" : 10,
+      "template" : "{\"action\": \"heartbeat\"}"
+    },
+    "keysParam" : "symbols",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ],
+    "subscribe" : {
+      "template" : "{\"action\":\"subscribe\",\"params\":{\"symbols\":\"$keys$\"}}"
+    },
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    },
+    "unsubscribe" : {
+      "template" : "{\"action\":\"unsubscribe\",\"params\":{\"symbols\":\"$keys$\"}}"
+    }
+  },
+  "transforms" : [
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "currency" : "string",
+          "day_volume" : "integer",
+          "event" : "string",
+          "exchange" : "string",
+          "mic_code" : "string",
+          "price" : "number",
+          "symbol" : "string",
+          "type" : "string"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

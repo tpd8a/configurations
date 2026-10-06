@@ -1,0 +1,24 @@
+{
+  "bodyTemplate" : "{\n  \"managedGlueResources\": [\n    {\n      \"cloudProvider\": \"{{config.cloudProvider}}\",\n      \"database\": \"{{config.database}}\",\n      \"extra\": \"{{config.extra}}\",\n      \"fieldDelimiter\": \"{{config.fieldDelimiter}}\",\n      \"fileFormat\": \"{{config.fileFormat}}\",\n      \"locationPrefix\": \"{{config.locationPrefix}}\",\n      \"partitionProjection\": \"{{config.partitionProjection}}\",\n      \"sourceType\": \"{{config.sourceType}}\",\n      \"table\": \"{{config.table}}\"\n    }\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "add cloud resource permissions for a set of federated providers",
+  "format" : "json",
+  "id" : "updatemanagedglueresources",
+  "method" : "PUT",
+  "name" : "UpdateManagedGlueResources",
+  "path" : "\/{stack}\/adminconfig\/v2\/cloud-resources\/managed-glue-resources",
+  "reviewFields" : [
+    "managedGlueResources"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

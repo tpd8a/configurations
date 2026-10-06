@@ -1,0 +1,30 @@
+{
+  "columns" : [
+    {
+      "name" : "closeTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "mins",
+      "type" : "integer"
+    },
+    {
+      "name" : "price",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "avgprice",
+  "method" : "GET",
+  "name" : "Current average price",
+  "path" : "\/api\/v3\/avgPrice",
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

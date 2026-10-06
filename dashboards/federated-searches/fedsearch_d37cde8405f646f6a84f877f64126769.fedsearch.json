@@ -1,0 +1,1 @@
+{"name":"claude_check_status","id":"fedsearch_d37cde8405f646f6a84f877f64126769","sql":"select updated, title, html from claude_rss.status ORDER BY updated DESC\n","config_version":2,"description":"Pulls the Clause RSS feed"}

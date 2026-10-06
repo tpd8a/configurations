@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "MediaWiki page create events. This page create stream\nis just the first revision create event for each page.\nAs such, it reuses the mediawiki\/revision\/create schema.\n\n(NOTE: This stream is an alias of mediawiki.page-create)\n\nSchema title: mediawiki\/revision\/create",
+  "format" : "json",
+  "id" : "get_v2_stream_page_create",
+  "method" : "GET",
+  "name" : "page-create events",
+  "path" : "\/v2\/stream\/page-create",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-create",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

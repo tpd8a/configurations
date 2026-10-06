@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.\n\n### Request body\nOnly JSON `POST` requests are supported.\nThe request content structure consists of key-value items. The key is a unique request ID. The value is requested url.\n\n### Response\nThe response contains key-value data. The key is a unique request ID. The value is returned data.\n\n### API credits\n<ul>\n<li>The number of concurrent requests is limited by your subscription plan.<\/li>\n<li>Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.<\/li>\n<li>If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.<\/li>\n<li>If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.<\/li>\n<\/ul>",
+  "format" : "json",
+  "id" : "advanced",
+  "method" : "POST",
+  "name" : "Batches",
+  "path" : "\/batch",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

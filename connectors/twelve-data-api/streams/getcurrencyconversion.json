@@ -1,0 +1,89 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "memory",
+    "ttl" : 30
+  },
+  "columns" : [
+    {
+      "name" : "amount",
+      "type" : "number"
+    },
+    {
+      "name" : "rate",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    }
+  ],
+  "description" : "The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.",
+  "format" : "json",
+  "id" : "getcurrencyconversion",
+  "method" : "GET",
+  "name" : "Currency conversion",
+  "path" : "\/currency_conversion",
+  "userParams" : [
+    {
+      "key" : "amount",
+      "label" : "Amount of base currency to be converted into quote currency. Supports values in ",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "If not null, will use exchange rate from a specific date or time. Format `2006-0",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Specify the delimiter used when downloading the `CSV` file. Default semicolon `;",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "The number of decimal places for the data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "Value can be `JSON` or `CSV`. Default `JSON`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The currency pair you want to request can be either forex or cryptocurrency. Sla",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "put_order_amend_keeppriority",
+  "method" : "PUT",
+  "name" : "Order Amend Keep Priority (TRADE)",
+  "path" : "\/api\/v3\/order\/amend\/keepPriority",
+  "userParams" : [
+    {
+      "key" : "newClientOrderId",
+      "label" : "The new client order ID for the order after being amended. <br> If not sent, one",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "newQty",
+      "label" : "`newQty` must be greater than 0 and less than the order's quantity.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "orderId",
+      "label" : "`orderId` or `origClientOrderId` must be sent",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "origClientOrderId",
+      "label" : "`orderId` or `origClientOrderId` must be sent",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "The value cannot be greater than `60000`. <br> Supports up to three decimal plac",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    }
+  ]
+}

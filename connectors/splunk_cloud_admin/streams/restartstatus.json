@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Get rolling restart status for a search-head-cluster stack",
+  "format" : "json",
+  "id" : "restartstatus",
+  "method" : "GET",
+  "name" : "RestartStatus",
+  "path" : "\/{stack}\/adminconfig\/v2\/restart\/status",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

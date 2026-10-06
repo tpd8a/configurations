@@ -1,0 +1,52 @@
+{
+  "bodyTemplate" : "{\n  \"maxDataSizeMB\": {{config.maxDataSizeMB}},\n  \"searchableDays\": {{config.searchableDays}},\n  \"selfStorageBucketPath\": \"{{config.selfStorageBucketPath}}\",\n  \"splunkArchivalRetentionDays\": {{config.splunkArchivalRetentionDays}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Modify index info on the stack",
+  "format" : "json",
+  "id" : "patchindexinfo",
+  "method" : "PATCH",
+  "name" : "PatchIndexInfo",
+  "path" : "\/{stack}\/adminconfig\/v2\/indexes\/{index}",
+  "userParams" : [
+    {
+      "key" : "index",
+      "label" : "index name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "maxDataSizeMB",
+      "label" : "maxDataSizeMB",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "searchableDays",
+      "label" : "searchableDays",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "selfStorageBucketPath",
+      "label" : "selfStorageBucketPath",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "splunkArchivalRetentionDays",
+      "label" : "splunkArchivalRetentionDays",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

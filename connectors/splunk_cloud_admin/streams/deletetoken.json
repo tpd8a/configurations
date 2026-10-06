@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "delete token on the stack",
+  "format" : "json",
+  "id" : "deletetoken",
+  "method" : "DELETE",
+  "name" : "DeleteToken",
+  "path" : "\/{stack}\/adminconfig\/v2\/tokens\/{tokenID}",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "tokenID",
+      "label" : "token ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "timeStart"
+    }
+  ]
+}

@@ -1,0 +1,853 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_d42c8cd095cc40c0a77c0f019acf8aee",
+      "query" : {
+        "name" : "Select one or more source types search",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '| tstats count where index=constru* by sourcetype', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_dd2bf2afe55447ceb671535572a321ce",
+      "query" : {
+        "name" : "Column chart search",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := 'index = construct* sourcetype IN($sourcetype_tok$) | timechart count by source', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_19fd6147092f4106bed94d8915e87f6e",
+      "query" : {
+        "name" : "ds_BB62FEEA",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '8. Optional args', 'bind optional params (instant time) via f(k := v), not WHERE — WHERE only lifts required args'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_ea70b3b2370e43cd93100cec3f886ee4",
+      "query" : {
+        "name" : "ds_781EA158",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '8. Optional args', 'bind optional params (instant time) via f(k := v), not WHERE — WHERE only lifts required args'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c388fe30d6fe426ea3beba4f90194892",
+      "query" : {
+        "name" : "ds_4CAEBD93",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2fca190aa0c84e838c51b89aba2e8302",
+      "query" : {
+        "name" : "ds_DD61AD49",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b14620f1a0a74ab8a7399543598ce24a",
+      "query" : {
+        "name" : "ds_B1EC02D5",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_f78d28f05f4d4e6a82b688d4082bd321",
+      "query" : {
+        "name" : "ds_AB2A3032",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_387614dfa1b74d4e80c06a141efe5d84",
+      "query" : {
+        "name" : "ds_06274A18",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_45da20f710ef4327bf3621baeeca73da",
+      "query" : {
+        "name" : "ds_1A47C9B5",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4ddf48049f384e51acf143cff49dde0e",
+      "query" : {
+        "name" : "ds_7E2BA446",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_75530e6e0a904bde95fe61fd32bc9ee0",
+      "query" : {
+        "name" : "ds_6FFA8072",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "",
+  "id" : "dash_4b986cd8acbe45fd8f1aab143aea21da",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_d42c8cd095cc40c0a77c0f019acf8aee",
+          "field_for_label" : "sourcetype",
+          "field_for_value" : "sourcetype"
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "*"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Select one or more source types",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5d1b9518386842e385d352a0a673662b"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "multiselect"
+      },
+      "id" : "input_9cde62db772c45e8b9543db833f6590b",
+      "token" : "sourcetype_tok"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Peter",
+            "value" : "Moore"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Peter",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_2ee1e477b43844eca10aaedd9f502a0a",
+      "token" : "peter_tok"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Text",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 192,
+            "x" : 1200,
+            "y" : 0
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_e8e0dde45093489f9e81df64323c02f6",
+      "token" : "input3"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_6878d7f5ca214647b0cc740f7f4f2b56",
+      "token" : "input4"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Text",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_3065358adb5c4abaa7a007dc2a02b89d",
+      "token" : "input5"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Peter",
+            "value" : "Prter"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Paul",
+            "value" : "Paul"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "John",
+            "value" : "John"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Mary",
+            "value" : "Mary"
+          }
+        ],
+        "default" : "Mary",
+        "display_location" : "top",
+        "label" : "Radio",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_7aedb016ad8b426880040b2e6d537a2e",
+      "token" : "TheBand"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Tick to say yes",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_6c1cdb5174a840ccaf6bda1ca51885dd",
+      "token" : "input7"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Link",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "link"
+      },
+      "id" : "input_c477b263a33c4eb5a64bd451fb6d92a1",
+      "token" : "input8"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Button",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 144,
+            "x" : 0,
+            "y" : 120
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "button"
+      },
+      "id" : "input_cc50b038085141fbb0b1e6405225d0e8",
+      "token" : "input9"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_d42c8cd095cc40c0a77c0f019acf8aee",
+          "field_for_label" : "sourcetype",
+          "field_for_value" : "sourcetype"
+        },
+        "display_location" : "top",
+        "label" : "Radio",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 96,
+            "w" : 216,
+            "x" : 48,
+            "y" : 0
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_e926924ae453456297201229eb68245a",
+      "token" : "input10"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Checkbox",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 48,
+            "w" : 120,
+            "x" : 384,
+            "y" : 0
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_31f2bedce86740869526aa01fd9384be",
+      "token" : "input11"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "multi select input studio",
+  "polling_interval_seconds" : 30,
+  "provenance" : {
+    "imported_at" : "2026-09-22T09:52:11Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+    "A8D4BD62-FAD5-4EC1-AC75-87D320710163"
+  ],
+  "rows" : [
+    {
+      "id" : "row_293ad1bd675d4d65a1dea9d9b908757a",
+      "layout" : {
+        "layout" : "scroll"
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_viz_UDu4dwMu",
+              "viz_ids" : [
+                "viz_5d1b9518386842e385d352a0a673662b",
+                "viz_4a9e3cd675704f4ebf41fa9765852ffd"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e3ef5812520642ffae436c0960efbccf",
+          "layout" : {
+            "absolute_h" : 528,
+            "absolute_w" : 960,
+            "absolute_x" : 672,
+            "absolute_y" : 96,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "5857018B-084F-44FB-AC8B-5343F3C28370",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "http:construct"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_dd2bf2afe55447ceb671535572a321ce",
+              "id" : "viz_5d1b9518386842e385d352a0a673662b",
+              "layer" : 1,
+              "options" : {
+                "legendTruncation" : "ellipsisMiddle",
+                "showRoundedY2AxisLabels" : "false",
+                "showY2MajorGridLines" : "true",
+                "y2AxisAbbreviation" : "off",
+                "yAxisAbbreviation" : "off",
+                "yAxisScale" : "log"
+              },
+              "type" : "chart",
+              "width" : 6
+            },
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "5857018B-084F-44FB-AC8B-5343F3C28370",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "http:construct"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_dd2bf2afe55447ceb671535572a321ce",
+              "id" : "viz_4a9e3cd675704f4ebf41fa9765852ffd",
+              "layer" : 1,
+              "options" : {
+                "legendTruncation" : "ellipsisMiddle",
+                "showRoundedY2AxisLabels" : "false",
+                "showY2MajorGridLines" : "true",
+                "y2AxisAbbreviation" : "off",
+                "yAxisAbbreviation" : "off",
+                "yAxisScale" : "log"
+              },
+              "type" : "chart",
+              "width" : 6
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_71e7aacc223c4e9f9ecabcac668e7fad",
+                "viz_a9fcbc3e333a447092e893e034fb5d3e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6881bee6dcdd427b90ae96febf2dfb33",
+          "layout" : {
+            "absolute_h" : 408,
+            "absolute_w" : 456,
+            "absolute_x" : 480,
+            "absolute_y" : 312,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_dd2bf2afe55447ceb671535572a321ce",
+              "id" : "viz_71e7aacc223c4e9f9ecabcac668e7fad",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_d42c8cd095cc40c0a77c0f019acf8aee",
+              "id" : "viz_a9fcbc3e333a447092e893e034fb5d3e",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_29b1c4d1665d4fe3ab716b914c093a1f",
+                "viz_e5c252b3b5014125b5c10e8682577d9d",
+                "viz_fdd59be4d06a4694b53ea1ab321d3490"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1fc9c169c1ef492c85028869313e8260",
+          "layout" : {
+            "absolute_h" : 312,
+            "absolute_w" : 960,
+            "absolute_x" : 96,
+            "absolute_y" : 0,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_dd2bf2afe55447ceb671535572a321ce",
+              "id" : "viz_29b1c4d1665d4fe3ab716b914c093a1f",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_19fd6147092f4106bed94d8915e87f6e",
+              "id" : "viz_e5c252b3b5014125b5c10e8682577d9d",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_dd2bf2afe55447ceb671535572a321ce",
+              "id" : "viz_fdd59be4d06a4694b53ea1ab321d3490",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

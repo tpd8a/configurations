@@ -1,0 +1,51 @@
+{
+  "columns" : [
+    {
+      "name" : "result",
+      "type" : "string"
+    }
+  ],
+  "description" : "The cross_listings endpoint provides a daily updated list of cross-listed symbols for a specified financial instrument. Cross-listed symbols represent the same security available on multiple exchanges. This endpoint is useful for identifying all the exchanges where a particular security is traded, allowing users to access comprehensive trading information across different markets.",
+  "format" : "json",
+  "id" : "getcrosslistings",
+  "method" : "GET",
+  "name" : "Cross listings",
+  "path" : "\/cross_listings",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country to which stock exchange belongs to",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Exchange where instrument is traded",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "Market identifier code (MIC) under ISO 10383 standard",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "delete an existing ip subnet if it exists, from where the feature is accessible from",
+  "format" : "json",
+  "id" : "deletesubnet",
+  "method" : "DELETE",
+  "name" : "DeleteSubnet",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/{feature}\/ipallowlists\/{subnet}",
+  "userParams" : [
+    {
+      "key" : "feature",
+      "label" : "the feature the access rules apply towards",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "subnet",
+      "label" : "the subnet to be deleted",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "columns" : [
+    {
+      "name" : "serverTime",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "time",
+  "method" : "GET",
+  "name" : "Check server time",
+  "path" : "\/api\/v3\/time",
+  "userParams" : [
+
+  ]
+}

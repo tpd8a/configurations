@@ -1,0 +1,134 @@
+{
+  "columns" : [
+    {
+      "name" : "close",
+      "type" : "number"
+    },
+    {
+      "name" : "closeTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "high",
+      "type" : "number"
+    },
+    {
+      "name" : "low",
+      "type" : "number"
+    },
+    {
+      "name" : "open",
+      "type" : "number"
+    },
+    {
+      "name" : "quoteAssetVol",
+      "type" : "number"
+    },
+    {
+      "name" : "takerBuyBaseAssetVol",
+      "type" : "number"
+    },
+    {
+      "name" : "takerBuyQuoteAssetVol",
+      "type" : "number"
+    },
+    {
+      "name" : "time",
+      "type" : "integer"
+    },
+    {
+      "name" : "trades",
+      "type" : "number"
+    },
+    {
+      "name" : "unused",
+      "type" : "integer"
+    },
+    {
+      "name" : "volume",
+      "type" : "number"
+    }
+  ],
+  "format" : "json",
+  "id" : "uiklines",
+  "method" : "GET",
+  "name" : "UIKlines",
+  "path" : "\/api\/v3\/uiKlines",
+  "transforms" : [
+    {
+      "descend" : {
+        "as" : [
+          "time",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "closeTime",
+          "quoteAssetVol",
+          "trades",
+          "takerBuyBaseAssetVol",
+          "takerBuyQuoteAssetVol",
+          "unused"
+        ],
+        "path" : [
+
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "endTime",
+      "label" : "endTime (epoch ms)",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd",
+      "time" : {
+        "bound" : "end",
+        "format" : "epoch_millis",
+        "pairWith" : "startTime"
+      }
+    },
+    {
+      "key" : "interval",
+      "label" : "interval",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "startTime",
+      "label" : "startTime (epoch ms)",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis",
+        "pairWith" : "endTime"
+      }
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timeZone",
+      "label" : "Default: 0 (UTC)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

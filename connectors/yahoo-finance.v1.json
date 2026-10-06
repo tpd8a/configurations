@@ -13,22 +13,89 @@
       "columns" : [
 
       ],
+      "dynamicSchema" : true,
+      "fieldManifest" : {
+        "entries" : [
+          {
+            "name" : "timestamp",
+            "type" : "time",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "timestamp"
+            ]
+          },
+          {
+            "name" : "open",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "open"
+            ]
+          },
+          {
+            "name" : "high",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "high"
+            ]
+          },
+          {
+            "name" : "low",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "low"
+            ]
+          },
+          {
+            "name" : "close",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "close"
+            ]
+          },
+          {
+            "name" : "volume",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "volume"
+            ]
+          }
+        ],
+        "path" : [
+
+        ]
+      },
       "format" : "json",
       "id" : "chart",
       "method" : "GET",
       "name" : "Chart (OHLCV history)",
       "path" : "\/v8\/finance\/chart\/{{ config.symbol }}",
-      "responseTransformer" : "parallel_arrays",
-      "transforms" : [
-        {
-          "descend" : {
-            "path" : [
-              "chart",
-              "result"
-            ]
-          }
-        }
-      ],
       "userParams" : [
         {
           "key" : "symbol",

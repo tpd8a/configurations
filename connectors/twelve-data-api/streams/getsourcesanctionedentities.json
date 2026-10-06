@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.",
+  "format" : "json",
+  "id" : "getsourcesanctionedentities",
+  "method" : "GET",
+  "name" : "Sanctioned entities",
+  "path" : "\/sanctions\/{source}",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "source",
+      "label" : "Sanctions source",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

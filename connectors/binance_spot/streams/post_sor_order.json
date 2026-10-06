@@ -1,0 +1,121 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "post_sor_order",
+  "method" : "POST",
+  "name" : "New order using SOR (TRADE)",
+  "path" : "\/api\/v3\/sor\/order",
+  "userParams" : [
+    {
+      "key" : "icebergQty",
+      "label" : "Used with `LIMIT` to create an iceberg order.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "newClientOrderId",
+      "label" : "A unique id among open orders. Automatically generated if not sent.<br\/> Orders ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "newOrderRespType",
+      "label" : "Set the response JSON. `ACK`, `RESULT`, or `FULL`. Default to `FULL`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "price",
+      "label" : "price",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "quantity",
+      "label" : "quantity",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "The value cannot be greater than `60000`. <br> Supports up to three decimal plac",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "selfTradePreventionMode",
+      "label" : "The allowed enums is dependent on what is configured on the symbol. The possible",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "side",
+      "label" : "side",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "strategyId",
+      "label" : "strategyId",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "strategyType",
+      "label" : "The value cannot be less than `1000000`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timeInForce",
+      "label" : "timeInForce",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    },
+    {
+      "key" : "type",
+      "label" : "type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

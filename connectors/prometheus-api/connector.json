@@ -1,0 +1,315 @@
+{
+  "authType" : "none",
+  "baseUrl" : "http:\/\/pop-os.local:9090\/api\/v1",
+  "commonDefaults" : {
+    "end" : "1786738178",
+    "limit" : "1000",
+    "metric" : "node_load15",
+    "name" : "__name__",
+    "query" : "node_load15",
+    "start" : "1786734532",
+    "stats" : "all",
+    "step" : "5m",
+    "timeout" : "30"
+  },
+  "commonEnvelope" : {
+    "errorFields" : [
+      "status"
+    ],
+    "fieldsField" : [
+
+    ],
+    "metaFields" : [
+      "timings"
+    ],
+    "rowsFields" : [
+      "metric",
+      "data",
+      "value",
+      "results"
+    ]
+  },
+  "commonInputMappings" : [
+    {
+      "paramKey" : "start",
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "paramKey" : "end",
+      "role" : "timeEnd",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "paramKey" : "query",
+      "role" : "search"
+    },
+    {
+      "paramKey" : "limit",
+      "role" : "limit"
+    },
+    {
+      "paramKey" : "step",
+      "role" : "interval"
+    }
+  ],
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "prometheus-api",
+  "name" : "Prometheus API",
+  "parameterIndex" : {
+    "connectorId" : "prometheus-api",
+    "entries" : [
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'end' on generator exactly matches consumer param key",
+            "field" : "end"
+          }
+        ],
+        "paramKey" : "end"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'exclude_alerts' on generator exactly matches consumer param key",
+            "field" : "exclude_alerts"
+          }
+        ],
+        "paramKey" : "exclude_alerts"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'label' on generator exactly matches consumer param key; param is required",
+            "field" : "label"
+          }
+        ],
+        "paramKey" : "label"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/labels",
+            "evidence" : "Field 'labels' on generator exactly matches consumer param key; param is required",
+            "field" : "labels"
+          }
+        ],
+        "paramKey" : "labels"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/status\/self_metrics",
+            "evidence" : "Field 'metric' on generator exactly matches consumer param key",
+            "field" : "metric"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/targets\/metadata",
+            "evidence" : "Field 'metric' on generator exactly matches consumer param key",
+            "field" : "metric"
+          }
+        ],
+        "paramKey" : "metric"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/status\/self_metrics",
+            "evidence" : "Field 'name' on generator exactly matches consumer param key; param is required",
+            "field" : "name"
+          },
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/status\/tsdb",
+            "evidence" : "Field 'name' on generator exactly matches consumer param key; param is required",
+            "field" : "name"
+          }
+        ],
+        "paramKey" : "name"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'query' on generator exactly matches consumer param key; param is required",
+            "field" : "query"
+          }
+        ],
+        "paramKey" : "query"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/targets",
+            "evidence" : "Field 'scrapePool' on generator exactly matches consumer param key",
+            "field" : "scrapePool"
+          }
+        ],
+        "paramKey" : "scrapePool"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'start' on generator exactly matches consumer param key",
+            "field" : "start"
+          }
+        ],
+        "paramKey" : "start"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/status\/tsdb\/blocks",
+            "evidence" : "Field 'stats' on generator exactly matches consumer param key",
+            "field" : "stats"
+          }
+        ],
+        "paramKey" : "stats"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'step' on generator exactly matches consumer param key; param is required",
+            "field" : "step"
+          }
+        ],
+        "paramKey" : "step"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/features",
+            "evidence" : "Field 'time' on generator exactly matches consumer param key",
+            "field" : "time"
+          }
+        ],
+        "paramKey" : "time"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/metadata",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/status\/self_metrics",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/targets\/metadata",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          }
+        ],
+        "paramKey" : "type"
+      }
+    ]
+  },
+  "providerConfig" : [
+    {
+      "default" : "-5m",
+      "key" : "start",
+      "label" : "start time"
+    },
+    {
+      "default" : "now",
+      "key" : "end",
+      "label" : "end time"
+    },
+    {
+      "default" : "1m",
+      "key" : "step",
+      "label" : "span"
+    }
+  ],
+  "sourceURL" : "\/Users\/peter\/Downloads\/prometheus-openapi.json",
+  "streams" : [
+    "cleantombstones",
+    "deleteseriespost",
+    "snapshotpost",
+    "alertmanagers",
+    "alerts",
+    "features",
+    "format_query",
+    "label_values",
+    "labels",
+    "metadata",
+    "notifications",
+    "otlpwrite",
+    "parse_query",
+    "query",
+    "query_post",
+    "query_exemplars",
+    "query_exemplars_post",
+    "query_range",
+    "query_range_post",
+    "remoteread",
+    "rules",
+    "scrape_pools",
+    "search_label_names",
+    "search_label_values",
+    "search_metric_names",
+    "series",
+    "get_status_buildinfo",
+    "get_status_config",
+    "status_flags",
+    "get_status_runtimeinfo",
+    "status_self_metrics",
+    "status_tsdb",
+    "status_tsdb_blocks",
+    "status_walreplay",
+    "targets",
+    "targets_metadata",
+    "targets_relabel_steps",
+    "remotewrite",
+    "tsdb_labelvaluecountbylabelname",
+    "tsdb_memoryinbytesbylabelname",
+    "tsdb_seriescountbylabelvaluepair",
+    "tsdb_seriescountbymetricname",
+    "tsdb_headstats",
+    "features_api",
+    "features_otlp_receiver",
+    "features_prometheus",
+    "features_promql",
+    "features_promql_functions",
+    "features_promql_operators",
+    "features_rules",
+    "features_scrape",
+    "features_service_discovery_providers",
+    "features_templating_functions",
+    "features_tsdb",
+    "features_ui"
+  ],
+  "version" : 1
+}

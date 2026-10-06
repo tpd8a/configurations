@@ -1,0 +1,89 @@
+{
+  "columns" : [
+    {
+      "name" : "category",
+      "type" : "string"
+    },
+    {
+      "name" : "description",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "description" : "The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.",
+  "format" : "json",
+  "id" : "getcommodities",
+  "method" : "GET",
+  "name" : "Commodities",
+  "path" : "\/commodities",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "category",
+      "label" : "Filter by category of commodity",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Determines the number of data points returned in the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "page",
+      "label" : "Page number of the results to fetch",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

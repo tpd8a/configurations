@@ -1,0 +1,70 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7639606d63454e5096967aca4fe6abfb",
+      "query" : {
+        "name" : "ds_0B7A345D",
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_7aee4ef7dacd4129a64bad43d714cc3e",
+      "query" : {
+        "name" : "claude_status",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from FS.claude_check_status"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_c866b3ba72f64db78d55703f972604d8",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Claude Service Status",
+  "provenance" : {
+    "imported_at" : "2026-09-15T04:29:49Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_caf374e5f3b348e39fb24cac7230b82a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1aadee9cefd34bf99851edb77420650d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_80023f3fd4a649f694732330e5d7465f",
+          "layout" : {
+            "height" : 640,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7aee4ef7dacd4129a64bad43d714cc3e",
+              "id" : "viz_1aadee9cefd34bf99851edb77420650d",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

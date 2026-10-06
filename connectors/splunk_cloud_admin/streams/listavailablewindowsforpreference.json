@@ -1,0 +1,34 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Returns all available windows for a given stack that a customer can choose as 'Preferred time and day of week'. The response groups available days by predefined regional off-hours time slots, with days ordered by availability (most available first). If start and end query parameters are provided, they must match one of the predefined time slots to filter results to that specific time slot only.",
+  "format" : "json",
+  "id" : "listavailablewindowsforpreference",
+  "method" : "GET",
+  "name" : "ListAvailableWindowsForPreference",
+  "path" : "\/{stack}\/adminconfig\/v2\/maintenance-windows\/preferences\/available-windows",
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End time of a predefined regional off-hours time slot in HH:MM UTC format. Must ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start time of a predefined regional off-hours time slot in HH:MM UTC format. Mus",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

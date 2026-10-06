@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "retrieve the AWS Account ID and region in which the stack is deployed",
+  "format" : "json",
+  "id" : "getegressprivateconnectivityaccountid",
+  "method" : "GET",
+  "name" : "GetEgressPrivateConnectivityAccountId",
+  "path" : "\/{stack}\/adminconfig\/v2\/egress-private-connectivity\/account-id",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

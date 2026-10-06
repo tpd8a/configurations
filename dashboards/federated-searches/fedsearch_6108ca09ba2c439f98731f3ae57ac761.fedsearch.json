@@ -1,0 +1,1 @@
+{"config_version":2,"sql":"select * from splunk_enterprise_rest_api.oneshot_search(query := 'index=_internal| bin span=1m _time| stats count by _time source' ,earliest_time:='-180m',latest_time:='now') \n","name":"splunk_stats_time_example","id":"fedsearch_6108ca09ba2c439f98731f3ae57ac761"}

@@ -1,0 +1,4841 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Time Series (Wide)",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_wide_multi.csv",
+            "tql" : "ta ema(api, 10) as ema_api_10"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_9c044512994348e4b823581dc490a35d",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "OHLCV Candles",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_ohlcv.csv",
+            "tql" : "ta bollinger(close, 20, 2) as bb"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Categories",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_categories.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_f70b58a19a4147e787e827d4027dec58",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Box Plot",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_boxplot.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_b73abf350d0245fbb609ba0eac67061c",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Heatmap Grid",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_heatmap.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_71609f20c4ff43039638aefdf18406cf",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Availability",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_availability.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_8c9ba22e06d1451abb05c674ce9a96f7",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Long-Form (Pivot)",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_longform.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_42d06df5417a449c83798d38a2180051",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Scatter\/Bubble",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_scatter.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_1907ea5aad444844bb88ef2b4676ce43",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Events",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_events.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Gauge Values",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_gauges.csv",
+            "tql" : "rowkey label"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_3e9861cda05442f4bde55fe6dcd9e4b6",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Single Values",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_singlevalue.csv",
+            "tql" : "rowkey metric"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_43588b464be04ee19f12aa327c57d154",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Trellis Data",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_trellis.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_d7f447794f134a16b95c93963472a5d9",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Wide Multi-Series",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_wide_multi.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_4778b6190ecb488c9d8f796f759715c1",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "Venn Diagram",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "chart_venn.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_6a4dbd3fec9f4dde8bf8ceb11c28b027",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_5890672A",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/schematic_zones.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_5a2ae47535594c80ac4c8bcf85155828",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_127850D4",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "csv",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_market_data.csv"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "description" : "Comprehensive test dashboard covering every chart mark type, gauge variant, and data shape. Use this to verify each visualization renders correctly with its expected data format.",
+  "id" : "dash_f519ad6ce0074d95b045fb857f374431",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Chart Data Shapes Showcase",
+  "polling_interval_seconds" : 90000,
+  "provenance" : {
+    "imported_at" : "2026-10-06T12:51:03Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_3ea48e34ea0047fc8fd934d166786767",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_line",
+              "viz_ids" : [
+                "viz_68e84980702b47f7ba4f1e5243e992ee"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Floating banner test",
+          "id" : "panel_7c4a9b05088d4cb9b46305a3ccc260f2",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "height" : 440,
+            "panel_width" : 12
+          },
+          "semantic_meta" : {
+            "category" : "health",
+            "role" : "informational",
+            "signals" : [
+              "cpu"
+            ]
+          },
+          "title" : "Floating banner test",
+          "visualizations" : [
+            {
+              "alerts" : {
+                "alerts" : [
+                  {
+                    "actions" : [
+                      {
+                        "toast" : {
+
+                        }
+                      },
+                      {
+                        "notify" : {
+                          "destination" : "cpu"
+                        }
+                      }
+                    ],
+                    "condition" : {
+                      "eventReceived" : {
+                        "severityTerm" : "Notice"
+                      }
+                    },
+                    "dedup" : {
+                      "overrideOnEscalation" : true,
+                      "windowSeconds" : 300
+                    },
+                    "enabled" : true,
+                    "id" : "C2E9B8E1-D995-4F76-9347-AAA514770006",
+                    "label" : "New Alert",
+                    "severityTerm" : "Notice"
+                  }
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                }
+              },
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "api" : {
+                    "color" : "#43A047",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "api",
+                    "fillOpacity" : 0.4,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "dashed",
+                    "lineWidth" : 4,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "cache" : {
+                    "color" : "#FB8C00",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "cache",
+                    "fillOpacity" : 0.05,
+                    "hideFromLegend" : false,
+                    "interpolation" : "stepBefore",
+                    "lineWidth" : 3.5,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "web" : {
+                    "axisPosition" : "right",
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "web",
+                    "fillOpacity" : 0.05,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "solid",
+                    "lineWidth" : 3.5,
+                    "pointShape" : "diamond",
+                    "showPoints" : true,
+                    "unit" : "bytes",
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "worker" : {
+                    "axisPosition" : "left",
+                    "color" : "#8E24AA",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "worker",
+                    "fillOpacity" : 0.30000000000000004,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "dotted",
+                    "lineWidth" : 5,
+                    "unit" : "s",
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "0883999D-A32F-4B8A-A921-FABF6057B5D8",
+                    "marks" : [
+                      {
+                        "id" : "2E5B4C4A-EAC4-4E47-A022-CF78D4A16F35",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiYXBpIjp7ImhpZGRlbiI6ZmFsc2UsIm5lZ2F0ZSI6ZmFsc2UsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjNDNBMDQ3In19LCJmaWxsT3BhY2l0eSI6MC40MDAwMDAwMDAwMDAwMDAwMiwibGluZVN0eWxlIjoiZGFzaGVkIiwibGluZUludGVycG9sYXRpb24iOiJzbW9vdGgiLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJsaW5lV2lkdGgiOjR9LCJ3ZWIiOnsiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsInVuaXQiOiJieXRlcyIsInBvaW50U2hhcGUiOiJkaWFtb25kIiwibGluZVdpZHRoIjozLjUsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibmVnYXRlIjpmYWxzZSwibGluZVN0eWxlIjoic29saWQiLCJheGlzIjoicmlnaHQiLCJmaWxsT3BhY2l0eSI6MC4wNTAwMDAwMDAwMDAwMDAwMDMsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjRTUzOTM1In19LCJoaWRkZW4iOmZhbHNlLCJzaG93UG9pbnRzIjp0cnVlLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCJ9LCJjYWNoZSI6eyJoaWRkZW4iOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJjb2xvdXIiOnsiaGV4Ijp7Il8wIjoiI0ZCOEMwMCJ9fSwiZmlsbE9wYWNpdHkiOjAuMDUwMDAwMDAwMDAwMDAwMDAzLCJsaW5lSW50ZXJwb2xhdGlvbiI6InN0ZXBTdGFydCIsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImxpbmVXaWR0aCI6My41fSwid29ya2VyIjp7InVuaXQiOiJzIiwiaGlkZGVuIjpmYWxzZSwibmVnYXRlIjpmYWxzZSwiY29sb3VyIjp7ImhleCI6eyJfMCI6IiM4RTI0QUEifX0sImZpbGxPcGFjaXR5IjowLjMwMDAwMDAwMDAwMDAwMDA0LCJsaW5lU3R5bGUiOiJkb3R0ZWQiLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImF4aXMiOiJsZWZ0IiwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwibGluZVdpZHRoIjo1fX19"
+                      }
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "api",
+                          "web",
+                          "worker",
+                          "cache",
+                          "db"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Line Chart (Wide-Form)"
+              },
+              "data_source_ref" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+              "id" : "viz_68e84980702b47f7ba4f1e5243e992ee",
+              "layer" : 1,
+              "title" : "Line Chart (Wide-Form)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_area",
+              "viz_ids" : [
+                "viz_a1e255e8397748b08805862385d96cad",
+                "viz_7c26b79cd2d641ce811c9bf99f642f0d"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Need to know",
+          "id" : "panel_1e45b7ce073d45acb1532a398a3feb2c",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 0,
+            "height" : 440,
+            "panel_width" : 12
+          },
+          "title" : "Checked",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "api" : {
+                    "axisPosition" : "right",
+                    "color" : "#43A047",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "api",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "web" : {
+                    "axisPosition" : "left",
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "web",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "F846DA39-DE58-4740-AB0E-1DAA610D4EEC",
+                    "marks" : [
+                      {
+                        "id" : "D76EC385-BE61-4750-8DED-DCD60A4CFD57",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiYXBpIjp7ImF4aXMiOiJyaWdodCIsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjNDNBMDQ3In19LCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfSwid2ViIjp7ImF4aXMiOiJsZWZ0IiwiY29sb3VyIjp7ImhleCI6eyJfMCI6IiNFNTM5MzUifX0sImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsIm5lZ2F0ZSI6ZmFsc2UsImhpZGRlbiI6ZmFsc2V9fX0="
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "api",
+                          "web"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Area Chart (Stacked)"
+              },
+              "data_source_ref" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+              "id" : "viz_a1e255e8397748b08805862385d96cad",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 6
+            },
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "30823DE4-20C6-4339-A5AC-993937E30951",
+                        "kind" : "pricetile",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "price-tile",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "price"
+                        ],
+                        "x",
+                        [
+                          "symbol"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_5a2ae47535594c80ac4c8bcf85155828",
+              "id" : "viz_7c26b79cd2d641ce811c9bf99f642f0d",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 6
+            }
+          ]
+        }
+      ],
+      "title" : "1. Line & Area (Wide-Form Time Series)"
+    },
+    {
+      "id" : "row_3c4e32c44a544ab98e9577539a4d4985",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_col",
+              "viz_ids" : [
+                "viz_2a447557e1df427894c4db9a289f93a5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_74954fe19cd2442db8bd9dd9964024eb",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 0,
+            "height" : 380,
+            "panel_width" : 6
+          },
+          "title" : "Floating banner test — step 2",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "headcount" : {
+                    "dataLinks" : [
+                      {
+                        "evalAssignments" : [
+
+                        ],
+                        "id" : "8D88244B-1B4F-47DC-8807-E82996371865",
+                        "label" : "Drill-down",
+                        "setTokens" : [
+
+                        ],
+                        "unsetTokens" : [
+
+                        ]
+                      }
+                    ],
+                    "fieldId" : "headcount",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "top",
+                  "showValues" : true,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "F46EAA52-5CCF-4038-BB9C-E9B7F3E6B839",
+                    "marks" : [
+                      {
+                        "id" : "2CE4FAE5-3968-42A2-B1CA-FC54268D3F13",
+                        "kind" : "singlevalue",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "single-value",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "headcount"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+                    "department"
+                  ],
+                  "enabled" : true,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Column Chart (Categories)"
+              },
+              "data_source_ref" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
+              "id" : "viz_2a447557e1df427894c4db9a289f93a5",
+              "layer" : 1,
+              "options" : {
+                "fills_panel" : "true"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_bar",
+              "viz_ids" : [
+                "viz_22e52876cda6482990797d65a34d2441"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9a54837614464bb0896c56734150def2",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 240,
+            "height" : 380,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "789058DA-AC30-4FE9-9AB4-FAA96F614E4B",
+                    "marks" : [
+                      {
+                        "id" : "7FBAAAC9-11B4-429B-B676-243D726BC9AB",
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJmaWVsZCI6ICJoZWFkY291bnQiLCAiYXhpcyI6ICJsZWZ0IiwgInN0YWNrTW9kZSI6ICJub25lIiwgImZpbGwiOiB7InBhbGV0dGUiOiB7fX0sICJzZXJpZXNPdmVycmlkZXMiOiB7fSwgImNvcm5lclJhZGl1cyI6IDMsICJob3Jpem9udGFsIjogdHJ1ZSwgImJhcldpZHRoUmF0aW8iOiAwLjl9"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Bar Chart (Horizontal)"
+              },
+              "data_source_ref" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
+              "id" : "viz_22e52876cda6482990797d65a34d2441",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "2. Column & Bar (Categories)"
+    },
+    {
+      "id" : "row_ca39ee76eed2447c9ba5934f5b940141",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_stk_col",
+              "viz_ids" : [
+                "viz_9e93b1c8a47d4f5d9b2f8055efc822b3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_04177b618ea04ce28d1d796152193334",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 240,
+            "height" : 380,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "0AD6835B-219F-415D-9C1A-9B28A8519E97",
+                    "marks" : [
+                      {
+                        "id" : "4FC0EF73-6377-40E2-99E3-138DB9BAACEA",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJmaWVsZCI6ICIiLCAiYXhpcyI6ICJsZWZ0IiwgInN0YWNrTW9kZSI6ICJzdGFja2VkIiwgImZpbGwiOiB7InBhbGV0dGUiOiB7fX0sICJzZXJpZXNPdmVycmlkZXMiOiB7fSwgImNvcm5lclJhZGl1cyI6IDJ9"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Stacked Column (Wide Multi)"
+              },
+              "data_source_ref" : "ds_d7f447794f134a16b95c93963472a5d9",
+              "id" : "viz_9e93b1c8a47d4f5d9b2f8055efc822b3",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_stk_area",
+              "viz_ids" : [
+                "viz_f3f20e81cdcb48689819df11126bfca1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3e3eb9320a444231ab7082fc7acacae7",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 240,
+            "height" : 380,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "36FC1440-653D-42DE-BD9F-A490775DB805",
+                    "marks" : [
+                      {
+                        "id" : "E7966B52-5446-4651-8DD4-1C87BB4D69B7",
+                        "kind" : "area",
+                        "optionsJSON" : "eyJmaWVsZCI6ICIiLCAiYXhpcyI6ICJsZWZ0IiwgInN0YWNrTW9kZSI6ICJzdGFja2VkIiwgImZpbGwiOiB7InBhbGV0dGUiOiB7fX0sICJzdHJva2VPcGFjaXR5IjogMS4wLCAiZmlsbE9wYWNpdHkiOiAwLjUsICJzZXJpZXNPdmVycmlkZXMiOiB7fSwgInNob3dMaW5lIjogdHJ1ZX0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Stacked Area (Wide Multi)"
+              },
+              "data_source_ref" : "ds_d7f447794f134a16b95c93963472a5d9",
+              "id" : "viz_f3f20e81cdcb48689819df11126bfca1",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "3. Stacked Column & Stacked Area (Multi-Series)"
+    },
+    {
+      "id" : "row_56fb192dd87946fca32f113e8b4e4775",
+      "layout" : {
+        "collapsed" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_pie",
+              "viz_ids" : [
+                "viz_1ba6d22021734c81919a4720800f8989"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ab9c2d01c33746d3b4df4081dce1edf8",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 1368,
+            "absolute_y" : 120,
+            "height" : 600,
+            "panel_width" : 6
+          },
+          "title" : "Floating banner test — step 3",
+          "visualizations" : [
+            {
+              "alerts" : {
+                "alerts" : [
+                  {
+                    "actions" : [
+                      {
+                        "toast" : {
+
+                        }
+                      }
+                    ],
+                    "condition" : {
+                      "threshold" : {
+                        "field" : "",
+                        "op" : "gt",
+                        "value" : 0
+                      }
+                    },
+                    "dedup" : {
+                      "overrideOnEscalation" : true,
+                      "windowSeconds" : 300
+                    },
+                    "enabled" : true,
+                    "id" : "B32D8FCD-D612-4EBF-94E6-506F696CA9AC",
+                    "label" : "New Alert",
+                    "severityTerm" : "Notice"
+                  }
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                }
+              },
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "headcount" : {
+                    "color" : "#FB8C00",
+                    "dataLinks" : [
+                      {
+                        "evalAssignments" : [
+
+                        ],
+                        "id" : "BE1A30EA-6CFA-4F48-A303-F94E1AA349F1",
+                        "label" : "Drill-down",
+                        "setTokens" : [
+
+                        ],
+                        "unsetTokens" : [
+
+                        ]
+                      }
+                    ],
+                    "fieldId" : "headcount",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "80A319CE-83EB-4033-B5E1-6879D58891B8",
+                        "kind" : "pie",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiaGVhZGNvdW50Ijp7ImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjRkI4QzAwIn19LCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
+                      }
+                    ],
+                    "shapeId" : "pie",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "headcount"
+                        ],
+                        "x",
+                        [
+                          "department"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "BB6A92E3-2484-4EBC-8052-8D6412CFAA5B",
+                    "marks" : [
+                      {
+                        "id" : "2C1EFCA0-7A37-4D0F-AF40-F4E20BB79D94",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiaGVhZGNvdW50Ijp7ImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJjb2xvdXIiOnsiaGV4Ijp7Il8wIjoiI0ZCOEMwMCJ9fSwibmVnYXRlIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "department"
+                        ],
+                        "y",
+                        [
+                          "headcount"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Pie Chart"
+              },
+              "data_source_ref" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
+              "id" : "viz_1ba6d22021734c81919a4720800f8989",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_donut",
+              "viz_ids" : [
+                "viz_baf1e68b26aa4caa8395c4068a960982"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8771bc25ac0f43f28be729206dfc27d4",
+          "layout" : {
+            "absolute_h" : 264,
+            "absolute_w" : 768,
+            "absolute_x" : 936,
+            "absolute_y" : 720,
+            "height" : 600,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 8,
+                  "position" : "right",
+                  "showValues" : true,
+                  "sortBy" : "valueDesc",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "17185BC2-9868-4EBF-AF6D-3076C1324AD8",
+                    "marks" : [
+                      {
+                        "id" : "1CC9D2E1-D44B-4F74-B8AB-65DFB7B2EE69",
+                        "kind" : "donut",
+                        "optionsJSON" : "eyJ2YWx1ZUZpZWxkIjogImhlYWRjb3VudCIsICJsYWJlbEZpZWxkIjogImRlcGFydG1lbnQiLCAic29ydEJ5IjogInZhbHVlRGVzY2VuZGluZyIsICJtYXhTbGljZXMiOiA4LCAic2hvd0xhYmVscyI6IHRydWUsICJzaG93UGVyY2VudGFnZXMiOiB0cnVlLCAiaW5uZXJSYWRpdXNSYXRpbyI6IDAuNX0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Donut Chart"
+              },
+              "data_source_ref" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
+              "id" : "viz_baf1e68b26aa4caa8395c4068a960982",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "4. Pie & Donut (Categories)"
+    },
+    {
+      "id" : "row_4d2c99a37a1049c0a4768af64da6fcfa",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_point",
+              "viz_ids" : [
+                "viz_5ea130098df74d2b952dddee4a8ca289"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6ad26cf02dc74b56955c63b99d2364fd",
+          "layout" : {
+            "absolute_h" : 80,
+            "absolute_w" : 696,
+            "absolute_x" : 648,
+            "absolute_y" : 96,
+            "height" : 380,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "6E232CA8-7677-4420-BBA2-ABE1B0BBC750",
+                    "marks" : [
+                      {
+                        "id" : "C973B4B4-CB8B-4159-B967-D90F7E40D4DA",
+                        "kind" : "point",
+                        "optionsJSON" : "eyJmaWVsZCI6ICIiLCAiZmlsbCI6IHsicGFsZXR0ZSI6IHt9fSwgInN5bWJvbFNpemUiOiA4MCwgInNlcmllc092ZXJyaWRlcyI6IHt9LCAic2l6ZUZpZWxkIjogInNpemUiLCAiY29sb3VyRmllbGQiOiAiY29sb3VyIiwgInN5bWJvbEZpZWxkIjogInN5bWJvbCIsICJkZWZhdWx0U3ltYm9sIjogImNpcmNsZS5jaXJjbGUuZmlsbCIsICJzaXplUmFuZ2UiOiBbMjAsIDUwMF0sICJ2YXJpYWJsZUZpZWxkIjogInZhcmlhYmxlIiwgImVmZmVjdEZpZWxkIjogImVmZmVjdCJ9"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesField" : "category",
+                "timeField" : "x_val",
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+                  "y_val"
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Point \/ Scatter Plot"
+              },
+              "data_source_ref" : "ds_42d06df5417a449c83798d38a2180051",
+              "id" : "viz_5ea130098df74d2b952dddee4a8ca289",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_venn",
+              "viz_ids" : [
+                "viz_5dfc97a845024f4c8c41d8f265d0686d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c6908c9acbee4ce4a1bbfe834d2d9761",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 744,
+            "height" : 380,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 0,
+                  "position" : "hidden",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : false
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "1F67CFD3-679A-4707-9DDE-955072F55192",
+                    "marks" : [
+                      {
+                        "id" : "F865FEA2-A290-46F9-90F7-99F55182FC36",
+                        "kind" : "point",
+                        "optionsJSON" : "eyJmaWVsZCI6ICIiLCAiZmlsbCI6IHsicGFsZXR0ZSI6IHt9fSwgInN5bWJvbFNpemUiOiA1MDAwMCwgInNlcmllc092ZXJyaWRlcyI6IHt9LCAic2l6ZUZpZWxkIjogInNpemUiLCAiY29sb3VyRmllbGQiOiAiY29sb3VyIiwgInN5bWJvbEZpZWxkIjogInN5bWJvbCIsICJkZWZhdWx0U3ltYm9sIjogImNpcmNsZS5jaXJjbGUuZmlsbCIsICJzaXplUmFuZ2UiOiBbMjAwLCA1MDAwMF0sICJ2YXJpYWJsZUZpZWxkIjogInZhcmlhYmxlIiwgImVmZmVjdEZpZWxkIjogImVmZmVjdCJ9"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesField" : "category",
+                "timeField" : "x_val",
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+                  "y_val"
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Venn Diagram (Large Points)"
+              },
+              "data_source_ref" : "ds_4778b6190ecb488c9d8f796f759715c1",
+              "id" : "viz_5dfc97a845024f4c8c41d8f265d0686d",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_long",
+              "viz_ids" : [
+                "viz_0f6be5460abc4ff498cb0b264ef2935c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0542ee6d22ff413088a888882f4cfe89",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 312,
+            "absolute_x" : 936,
+            "absolute_y" : 672,
+            "height" : 380,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "D7C28945-7C9E-4333-8164-E470EAF21813",
+                    "marks" : [
+                      {
+                        "id" : "B5FD12EC-4F18-4A13-9D8C-022D06BBFDD3",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJmaWVsZCI6ICIiLCAic2VyaWVzT3ZlcnJpZGVzIjoge30sICJzaG93UG9pbnRzIjogdHJ1ZSwgImZpbGxPcGFjaXR5IjogMCwgImZpbGwiOiB7InBhbGV0dGUiOiB7fX19"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "seriesField" : "host",
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Long-Form Pivot (Multi-Series)"
+              },
+              "data_source_ref" : "ds_8c9ba22e06d1451abb05c674ce9a96f7",
+              "id" : "viz_0f6be5460abc4ff498cb0b264ef2935c",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "5. Point\/Scatter, Venn & Long-Form Pivot"
+    },
+    {
+      "id" : "row_de2c8f006b644c94aef4bfa1b535b53f",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_candle",
+              "viz_ids" : [
+                "viz_d1236e8be1e04dc78a3dd74e0285bde8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_29f81eac5e2042f49622d03f0005ee4e",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 744,
+            "height" : 480,
+            "panel_width" : 6
+          },
+          "title" : "Banner test — 4\/5",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "8A9BD2EA-742D-4FD3-A6BC-BF5CCCE0454B",
+                    "label" : "Price",
+                    "marks" : [
+                      {
+                        "id" : "78BCB362-E9B7-4DA4-A92B-559987A386FE",
+                        "kind" : "candle",
+                        "optionsJSON" : "eyJvcGVuRmllbGQiOiAib3BlbiIsICJoaWdoRmllbGQiOiAiaGlnaCIsICJsb3dGaWVsZCI6ICJsb3ciLCAiY2xvc2VGaWVsZCI6ICJjbG9zZSIsICJwb2xhcml0eSI6ICJoaWdoZXJJc0JldHRlciIsICJkb2ppVGhyZXNob2xkIjogMC4wMSwgInJlbmRlcmVyIjogImNhbmRsZXN0aWNrIn0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.3,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "BA323350-FCC4-49DE-8859-D4757800F597",
+                    "label" : "Volume",
+                    "marks" : [
+                      {
+                        "id" : "A6187618-A584-44EF-8E09-8CA5545292EB",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJmaWVsZCI6ICJ2b2x1bWUiLCAiYXhpcyI6ICJsZWZ0IiwgInN0YWNrTW9kZSI6ICJub25lIiwgImZpbGwiOiB7InBhbGV0dGUiOiB7fX0sICJzZXJpZXNPdmVycmlkZXMiOiB7fSwgImNvcm5lclJhZGl1cyI6IDEuNX0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Candlestick (OHLCV)"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_d1236e8be1e04dc78a3dd74e0285bde8",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_hollow",
+              "viz_ids" : [
+                "viz_ac042e696f6b4e88a1992c835f8c407d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_016c5a46fea447d396084f4ec386d82b",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 984,
+            "height" : 480,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "ED51D48B-E3E2-41DF-AF2F-0590F149BE1C",
+                    "marks" : [
+                      {
+                        "id" : "D0FB01FF-E019-4450-84BD-57B1BFC23F82",
+                        "kind" : "candle",
+                        "optionsJSON" : "eyJvcGVuRmllbGQiOiAib3BlbiIsICJoaWdoRmllbGQiOiAiaGlnaCIsICJsb3dGaWVsZCI6ICJsb3ciLCAiY2xvc2VGaWVsZCI6ICJjbG9zZSIsICJwb2xhcml0eSI6ICJoaWdoZXJJc0JldHRlciIsICJkb2ppVGhyZXNob2xkIjogMC4wMSwgInJlbmRlcmVyIjogImhvbGxvdyJ9"
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Hollow Candlestick"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_ac042e696f6b4e88a1992c835f8c407d",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "6. Candlestick & Hollow (OHLCV)"
+    },
+    {
+      "id" : "row_12dc2264614c407299408e128df0f26b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_boll",
+              "viz_ids" : [
+                "viz_c949ecdc52d841fb9511708ba903e919"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4961a9ca61ea4701a05bb99e18df9b12",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 984,
+            "height" : 400,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "9EA6EC4E-72B3-4C40-850F-769BACCC66A9",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      },
+                      {
+                        "id" : "A4917F58-EC25-4F68-A890-515B01E4F019",
+                        "kind" : "indicator_band",
+                        "optionsJSON" : "eyJmaWVsZCI6ImJiIiwiZmlsbE9wYWNpdHkiOjAuMTV9"
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Bollinger Bands"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_c949ecdc52d841fb9511708ba903e919",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_ema",
+              "viz_ids" : [
+                "viz_03ad3d3acaab41379991a5a891403182"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_dbd9006c01c1471b9c30f673607e34ba",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 984,
+            "height" : 400,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "api" : {
+                    "color" : "#8E24AA",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "api",
+                    "fillOpacity" : 0.2,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "solid",
+                    "lineWidth" : 4.5,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "ema_api_10" : {
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "ema_api_10",
+                    "hideFromLegend" : false,
+                    "lineStyle" : "dotted",
+                    "lineWidth" : 3,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "680A2C87-B946-4397-B381-389CD5098F53",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiYXBpIjp7ImhpZGRlbiI6ZmFsc2UsIm5lZ2F0ZSI6ZmFsc2UsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjOEUyNEFBIn19LCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImxpbmVTdHlsZSI6InNvbGlkIiwiZmlsbE9wYWNpdHkiOjAuMjAwMDAwMDAwMDAwMDAwMDEsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImxpbmVXaWR0aCI6NC41fSwiZW1hX2FwaV8xMCI6eyJoaWRkZW4iOmZhbHNlLCJuZWdhdGUiOmZhbHNlLCJjb2xvdXIiOnsiaGV4Ijp7Il8wIjoiI0U1MzkzNSJ9fSwibGluZVN0eWxlIjoiZG90dGVkIiwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwibGluZVdpZHRoIjozfX19"
+                      }
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "api",
+                          "ema_api_10"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Line + EMA Overlay"
+              },
+              "data_source_ref" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+              "id" : "viz_03ad3d3acaab41379991a5a891403182",
+              "layer" : 1,
+              "title" : "Line + EMA Overlay",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "7. Technical Indicators: Bollinger & EMA"
+    },
+    {
+      "id" : "row_3d2332f1929548c3b7173382ad008deb",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_macd",
+              "viz_ids" : [
+                "viz_f3b666dd64f843e1bc118e94f105a45b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5717aed7aaff4f7aa65e16b41c0c034e",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 1224,
+            "height" : 760,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 0.7,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "EE0651BF-95B7-4719-B733-F40A2E87DE49",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : true,
+                        "scale" : "linear",
+                        "showGridlines" : false
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.3,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "pane_macd_close",
+                    "label" : "MACD",
+                    "marks" : [
+                      {
+                        "id" : "32245656-E5EF-4371-96F1-604B925F7A08",
+                        "kind" : "indicator_bar",
+                        "optionsJSON" : "eyJmaWVsZCI6Im1hY2RfY2xvc2UiLCJpbmRleCI6MiwicG9sYXJpdHkiOiJoaWdoZXJJc0JldHRlciJ9"
+                      },
+                      {
+                        "id" : "3F625247-4003-41D5-833F-1D31823770A0",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJmaWVsZCI6Im1hY2RfY2xvc2UiLCJpbmRleCI6MCwiZGFzaGVkIjpmYWxzZX0="
+                      },
+                      {
+                        "id" : "F549BDC8-3C0E-4B49-AB34-3C34F342A690",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJmaWVsZCI6Im1hY2RfY2xvc2UiLCJpbmRleCI6MSwiZGFzaGVkIjp0cnVlfQ=="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "showAxisLabelsXOverride" : false,
+                "showGridLinesXOverride" : false,
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "MACD Indicator"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_f3b666dd64f843e1bc118e94f105a45b",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "F8137410-6E92-4A63-B3CF-5684076C0944",
+              "viz_ids" : [
+                "viz_a044b0245c8e4946ba07701831c7bdfc"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ba4df436d0734b759f1aef3af7fcbd5f",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 1224,
+            "height" : 1140,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 0.7,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "EE0651BF-95B7-4719-B733-F40A2E87DE49",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.3,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "pane_macd_close",
+                    "label" : "MACD",
+                    "marks" : [
+                      {
+                        "id" : "69397F94-0267-42B3-9502-791441CDBED6",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table-totals",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "MACD Indicator"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_a044b0245c8e4946ba07701831c7bdfc",
+              "layer" : 1,
+              "options" : {
+                "show_totals_row" : "true"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_rsi",
+              "viz_ids" : [
+                "viz_22235a2c03f441c484c5fe0a8821662e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5b2d6f2a28f840f2b3f811daa2aea6cb",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 1224,
+            "height" : 480,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 0.75,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "2649B7EA-8EAA-4967-A902-5FDD7E49348F",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.25,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "pane_rsi14",
+                    "label" : "RSI",
+                    "marks" : [
+                      {
+                        "id" : "8B0ED988-A189-4A6E-8609-86D856B247E0",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJmaWVsZCI6InJzaTE0IiwiaW5kZXgiOjAsImRhc2hlZCI6ZmFsc2V9"
+                      },
+                      {
+                        "id" : "DF9F2B6A-602C-43F7-9C07-2500727FCE62",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6NzAsImF4aXMiOiJsZWZ0IiwiY29sb3VyIjoic2Vjb25kYXJ5IiwiZGFzaGVkIjp0cnVlfQ=="
+                      },
+                      {
+                        "id" : "9A915143-DED8-4ABC-8A77-ED681A0C9D50",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6MzAsImF4aXMiOiJsZWZ0IiwiY29sb3VyIjoic2Vjb25kYXJ5IiwiZGFzaGVkIjp0cnVlfQ=="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "max" : 100,
+                        "min" : 0,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "RSI Indicator"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_22235a2c03f441c484c5fe0a8821662e",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_vwap",
+              "viz_ids" : [
+                "viz_672dd3caaedf4d088059f35867ffe31f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_159281f622d54cff9c970d3b51d926af",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 1464,
+            "height" : 480,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "EB9FAC17-EF12-4009-B7B7-651291FD5381",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      },
+                      {
+                        "id" : "11DF073B-8364-4BF8-9FBD-2D9327FE9148",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJmaWVsZCI6InZ3YXBfdiIsImluZGV4IjowLCJkYXNoZWQiOnRydWUsImZpbGxIZXgiOiIjRkZCMzAwIn0="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "VWAP Overlay"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_672dd3caaedf4d088059f35867ffe31f",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_rsi",
+              "viz_ids" : [
+                "viz_b9acaea8e8ee433c92ddf0268609b051"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1e6d83b244e647be8b55ebbbd9096ea6",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 1464,
+            "height" : 480,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "F1138C33-BDD6-422B-92F5-4E05295ECE34",
+                    "label" : "Price",
+                    "marks" : [
+                      {
+                        "id" : "2638127C-C31C-48E0-B943-B80B9929FC4A",
+                        "kind" : "candle",
+                        "optionsJSON" : "eyJvcGVuRmllbGQiOiAib3BlbiIsICJoaWdoRmllbGQiOiAiaGlnaCIsICJsb3dGaWVsZCI6ICJsb3ciLCAiY2xvc2VGaWVsZCI6ICJjbG9zZSIsICJwb2xhcml0eSI6ICJoaWdoZXJJc0JldHRlciIsICJkb2ppVGhyZXNob2xkIjogMC4wMSwgInJlbmRlcmVyIjogImNhbmRsZXN0aWNrIn0="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.4,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "086ABC67-96D3-49DA-AD4D-77F3E082CFB3",
+                    "label" : "RSI",
+                    "marks" : [
+                      {
+                        "id" : "D531A698-9C5A-430D-BA7D-F07DCC6FB6DF",
+                        "kind" : "rsi",
+                        "optionsJSON" : "eyJmaWVsZCI6ICJjbG9zZSIsICJwZXJpb2QiOiAxNCwgIm92ZXJib3VnaHQiOiA3MCwgIm92ZXJzb2xkIjogMzAsICJsYWJlbEZvbnRTY2FsZSI6IDEuMH0="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.25,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "pane_rsi14",
+                    "label" : "RSI",
+                    "marks" : [
+                      {
+                        "derivedFromIndicatorId" : "rsi14",
+                        "id" : "5C6C2A44-76D2-45F8-9EFD-AAB9911F9CA0",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MCwic2VyaWVzT3ZlcnJpZGVzIjp7fSwic2hvd1BvaW50cyI6ZmFsc2UsImZpbGwiOnsicGFsZXR0ZSI6e319LCJmaWVsZCI6InJzaTE0In0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "rsi14",
+                        "id" : "B8530FB6-BA0E-462C-AB14-3725FC62D16F",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6NzAuMH0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "rsi14",
+                        "id" : "285CB6AE-0307-44DC-A6B1-5BCE2916FEA8",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6MzAuMH0="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "max" : 100,
+                        "min" : 0,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "RSI via .ta stage (new)"
+              },
+              "data_source_ref" : "ds_9c044512994348e4b823581dc490a35d",
+              "id" : "viz_b9acaea8e8ee433c92ddf0268609b051",
+              "layer" : 1,
+              "options" : {
+                "field_roles" : "{\"rsi14\":\"series\"}",
+                "fields" : "rsi14"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "8. Technical Indicators: MACD, RSI, VWAP"
+    },
+    {
+      "id" : "row_c79271602f1348a88f5ec9a53c4fb144",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_boxplot",
+              "viz_ids" : [
+                "viz_cb6b86aa9d2d4748866ec66cc5d44165"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d799bb85cecb46f993ada8eadc961c8c",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 1464,
+            "height" : 400,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "A47E32D3-04FF-42BD-8565-C3C478233B90",
+                    "marks" : [
+                      {
+                        "id" : "11225A2E-18A6-425D-A8C0-A22DA37B0D03",
+                        "kind" : "boxplot",
+                        "optionsJSON" : "eyJtaW5GaWVsZCI6ICJtaW4iLCAicTFGaWVsZCI6ICJxMSIsICJtZWRpYW5GaWVsZCI6ICJtZWRpYW4iLCAicTNGaWVsZCI6ICJxMyIsICJtYXhGaWVsZCI6ICJtYXgiLCAiY29sb3VySGV4IjogIiMwQTg0RkYiLCAibWVkaWFuQ29sb3VySGV4IjogIiNGRkZGRkYifQ=="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Box Plot"
+              },
+              "data_source_ref" : "ds_f70b58a19a4147e787e827d4027dec58",
+              "id" : "viz_cb6b86aa9d2d4748866ec66cc5d44165",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_heatmap",
+              "viz_ids" : [
+                "viz_19285b525ad34a90a3c6160eed2da633"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_335a90f5bfc84896832bb46a7257626a",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 1704,
+            "height" : 400,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Heatmap Tile (Grid)"
+              },
+              "data_source_ref" : "ds_b73abf350d0245fbb609ba0eac67061c",
+              "id" : "viz_19285b525ad34a90a3c6160eed2da633",
+              "layer" : 1,
+              "options" : {
+                "color_scale" : "blueRed",
+                "symbol_field" : "hour",
+                "value_field" : "activity",
+                "weight_field" : "activity"
+              },
+              "type" : "heatmap_tile",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "9. Box Plot & Heatmap"
+    },
+    {
+      "id" : "row_388c52d65a994c738e84710b6558477e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_avail",
+              "viz_ids" : [
+                "viz_753a5d7dc92b480397fb1f5eb06377f8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9b7521dd16e148d387af22791bbb2028",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 1704,
+            "height" : 300,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "direction" : "neutral",
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "418C3354-C3BD-48D9-9F36-33CC27C30358",
+                    "marks" : [
+                      {
+                        "id" : "DFC67074-34CF-4CE1-82C8-84BBBDA7FC12",
+                        "kind" : "availability",
+                        "optionsJSON" : "eyJlbnRpdHlGaWVsZCI6ICJzZXJ2aWNlIiwgInN0YXR1c0ZpZWxkIjogInN0YXR1cyIsICJzdGF0dXNDb2xvdXJzIjogW3siaWQiOiAiMUJERjI3NDUtRDlGOC00MjU0LUJGQUEtNzhFMjE4RTNEQTVFIiwgInN0YXR1c1ZhbHVlIjogInVwIiwgImNvbG91ckhleCI6ICIjMzRDNzU5IiwgInRlcm0iOiAiVXAifSwgeyJpZCI6ICJCQkFFRjMxMS1DNkIyLTQyMTEtQThDQi1CMDIxNTRCOEYwNUEiLCAic3RhdHVzVmFsdWUiOiAiZGVncmFkZWQiLCAiY29sb3VySGV4IjogIiNGRjk1MDAiLCAidGVybSI6ICJEZWdyYWRlZCJ9LCB7ImlkIjogIkU4RkFCQTYyLTQ0QTEtNDYzMy04MzBBLThGODI0M0Y4QUFBNiIsICJzdGF0dXNWYWx1ZSI6ICJkb3duIiwgImNvbG91ckhleCI6ICIjRkYzQjMwIiwgInRlcm0iOiAiRG93biJ9XSwgInVua25vd25Db2xvdXJIZXgiOiAiIzNBM0EzQyIsICJzaG93TGFiZWxzIjogdHJ1ZX0="
+                      }
+                    ],
+                    "yAxis" : {
+                      "gridLines" : true,
+                      "position" : "left",
+                      "scale" : "linear"
+                    }
+                  }
+                ],
+                "trellis" : {
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "valueFields" : [
+
+                ],
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Availability Timeline"
+              },
+              "data_source_ref" : "ds_71609f20c4ff43039638aefdf18406cf",
+              "id" : "viz_753a5d7dc92b480397fb1f5eb06377f8",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_rule",
+              "viz_ids" : [
+                "viz_2c1e67311db94a5b8e04f17985398f90"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c054a2d916ca431abe89dd275571e36b",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 1704,
+            "height" : 300,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "api" : {
+                    "color" : "#1E88E5",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "api",
+                    "fillOpacity" : 0.25,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineWidth" : 5,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "ema_api_10" : {
+                    "axisPosition" : "right",
+                    "color" : "#E53935",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "ema_api_10",
+                    "hideFromLegend" : false,
+                    "lineWidth" : 3,
+                    "showPoints" : true,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "BD8C2857-515C-47AB-B61C-B409078FEB86",
+                    "marks" : [
+                      {
+                        "id" : "30A54046-0515-401E-BE6E-0BF0AF900AAC",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiYXBpIjp7Im5lZ2F0ZSI6ZmFsc2UsImhpZGRlbiI6ZmFsc2UsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjMUU4OEU1In19LCJmaWxsT3BhY2l0eSI6MC4yNSwibGluZUludGVycG9sYXRpb24iOiJzbW9vdGgiLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJsaW5lV2lkdGgiOjV9LCJlbWFfYXBpXzEwIjp7Im5lZ2F0ZSI6ZmFsc2UsImhpZGRlbiI6ZmFsc2UsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjRTUzOTM1In19LCJzaG93UG9pbnRzIjp0cnVlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJheGlzIjoicmlnaHQiLCJsaW5lV2lkdGgiOjN9fX0="
+                      }
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "api"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "cpu"
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+                    "y",
+                    [
+                      "cpu"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Line + Rule Marks"
+              },
+              "data_source_ref" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+              "id" : "viz_2c1e67311db94a5b8e04f17985398f90",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "10. Availability & Rule Marks"
+    },
+    {
+      "id" : "row_b745215cb3ca4eccb7c4d6ece1f09c14",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_trellis",
+              "viz_ids" : [
+                "viz_a8a22264522c40bea3a64323b802f19a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_fd6af4283428461980f7a2140664f110",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 1944,
+            "height" : 400,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "region" : {
+                    "color" : "#7CB342",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "region",
+                    "fillOpacity" : 0.45,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineWidth" : 2,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "03D3DA47-1C5A-4CDB-B3FD-E6D228A254A9",
+                    "marks" : [
+                      {
+                        "id" : "1F224EF2-AD3E-4B76-9AE1-6FC294D2BCD2",
+                        "kind" : "area",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "stacked-area-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "latency"
+                        ],
+                        "stack",
+                        [
+
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "latency"
+                ],
+                "slotBindings" : {
+                  "storage" : [
+                    "y",
+                    [
+                      "latency"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+                    "region"
+                  ],
+                  "enabled" : true,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Trellis \/ Small Multiples"
+              },
+              "data_source_ref" : "ds_43588b464be04ee19f12aa327c57d154",
+              "id" : "viz_a8a22264522c40bea3a64323b802f19a",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "11. Trellis \/ Small Multiples"
+    },
+    {
+      "id" : "row_9ea4fb0aa4f54e60a7ff538390faaf2c",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_rad",
+              "viz_ids" : [
+                "viz_511f7ea41a494d53bff4d79e0de3f0b2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_11b93f6bfea145a5917dfa3d96232ebd",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 1944,
+            "height" : 280,
+            "panel_width" : 2
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Radial Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_511f7ea41a494d53bff4d79e0de3f0b2",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_fill",
+              "viz_ids" : [
+                "viz_0d53ef207ad24701b203fdad924e6c2d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5c0a2cb32ee644daacf00fa66cf2a847",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 1944,
+            "height" : 280,
+            "panel_width" : 2
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Fill Radial Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_0d53ef207ad24701b203fdad924e6c2d",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "fillRadial",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_lin",
+              "viz_ids" : [
+                "viz_cfce31944b6b42e196863722881c7cca"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d80ba06bb2774ffb9f572a5c69028f06",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 2208,
+            "height" : 280,
+            "panel_width" : 2
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Linear Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_cfce31944b6b42e196863722881c7cca",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "linear",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_bar",
+              "viz_ids" : [
+                "viz_e1018a96c7c647b59aa176136080bd7b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2051e0fb310e4701b58fa57a54c17d2c",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 2208,
+            "height" : 280,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Bar Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_e1018a96c7c647b59aa176136080bd7b",
+              "layer" : 1,
+              "options" : {
+                "display_mode" : "gradient",
+                "gauge_type" : "barGauge",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_mark",
+              "viz_ids" : [
+                "viz_9f248ba038ef4dc3983fd41d37a86c9f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2c48a47d14d945f7bb2cf6ab3dff7e55",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 2208,
+            "height" : 280,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Marker Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_9f248ba038ef4dc3983fd41d37a86c9f",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "marker",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_g_filler",
+              "viz_ids" : [
+                "viz_80dce2ecb9f642f99373d9e122cdf87a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ded9cf18d4374c0e9e808e59adc5de2d",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 2448,
+            "height" : 280,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Filler Gauge"
+              },
+              "data_source_ref" : "ds_cb6e623b7882485f8cf073eb63b5d270",
+              "id" : "viz_80dce2ecb9f642f99373d9e122cdf87a",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "filler",
+                "max" : "100",
+                "min" : "0",
+                "thresholds" : "0:green,70:yellow,90:red",
+                "unit" : "%",
+                "value_field" : "value"
+              },
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "12. Gauge Types"
+    },
+    {
+      "id" : "row_797a06f95e654574b1a6de10d30ba3a0",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_p_sv",
+              "viz_ids" : [
+                "viz_caa37fc5c62348eab48cfb0726264993"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e696544bf4dc4363b2fe2018531ad0f1",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 2448,
+            "height" : 200,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Single Value"
+              },
+              "data_source_ref" : "ds_3e9861cda05442f4bde55fe6dcd9e4b6",
+              "id" : "viz_caa37fc5c62348eab48cfb0726264993",
+              "layer" : 1,
+              "options" : {
+                "color_mode" : "value",
+                "thresholds" : "0:green,80:yellow,95:red",
+                "unit" : "",
+                "value_field" : "value"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_p_table",
+              "viz_ids" : [
+                "viz_a5eda1fac13a4d52bbecd55459eff32d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6e21ef4336af46dab7a2243243ec37b5",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 624,
+            "absolute_y" : 2448,
+            "height" : 400,
+            "panel_width" : 8
+          },
+          "title" : "Floating banner test — step 4 ✨",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Table (Time Series)"
+              },
+              "data_source_ref" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
+              "id" : "viz_a5eda1fac13a4d52bbecd55459eff32d",
+              "layer" : 1,
+              "options" : {
+                "count" : "15",
+                "show_row_numbers" : "true",
+                "show_totals_row" : "false"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aa65979461024246a8f29071af095066"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f6b534cdc0c94194b312921fb67fdc88",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 2688,
+            "height" : 280,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "647D53E3-3AD3-444A-9403-46935714E98F",
+                        "kind" : "landscape",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "landscape",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_6a4dbd3fec9f4dde8bf8ceb11c28b027",
+              "id" : "viz_aa65979461024246a8f29071af095066",
+              "layer" : 1,
+              "options" : {
+                "sceneRef" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/dashboards\/k8s-schematic.local.json"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "13. Single Value & Table"
+    }
+  ]
+}

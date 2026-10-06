@@ -1,0 +1,40 @@
+{
+  "columns" : [
+    {
+      "name" : "price",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "ticker_price",
+  "method" : "GET",
+  "name" : "Symbol price ticker",
+  "path" : "\/api\/v3\/ticker\/price",
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "Parameter symbol and symbols cannot be used in combination. If neither parameter",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbolStatus",
+      "label" : "Filters for symbols that have this `tradingStatus`. For a single symbol, a statu",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Parameter symbol and symbols cannot be used in combination. If neither parameter",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

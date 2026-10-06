@@ -1,0 +1,84 @@
+{
+  "columns" : [
+    {
+      "name" : "country",
+      "type" : "string"
+    },
+    {
+      "name" : "currency",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange",
+      "type" : "string"
+    },
+    {
+      "name" : "exchange_timezone",
+      "type" : "string"
+    },
+    {
+      "name" : "instrument_name",
+      "type" : "string"
+    },
+    {
+      "name" : "instrument_type",
+      "type" : "string"
+    },
+    {
+      "name" : "mic_code",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "description" : "The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.",
+  "format" : "json",
+  "id" : "getsymbolsearch",
+  "method" : "GET",
+  "name" : "Symbol search",
+  "path" : "\/symbol_search",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Number of matches in response. Max <code>120<\/code>",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "show_plan",
+      "label" : "Adds info on which plan symbol is available.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "Symbol to search. Supports:\n<ul>\n<li>Ticker symbol of instrument.<\/li>\n<li>Inter",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

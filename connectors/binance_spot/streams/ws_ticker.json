@@ -1,0 +1,169 @@
+{
+  "columns" : [
+    {
+      "name" : "askPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "askQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "avgPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "bid",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "close",
+      "type" : "number"
+    },
+    {
+      "name" : "closeQuantity",
+      "type" : "number"
+    },
+    {
+      "name" : "eventType",
+      "type" : "string"
+    },
+    {
+      "name" : "firstTradID",
+      "type" : "integer"
+    },
+    {
+      "name" : "firstTradeF1",
+      "type" : "number"
+    },
+    {
+      "name" : "high",
+      "type" : "number"
+    },
+    {
+      "name" : "lastTradeID",
+      "type" : "integer"
+    },
+    {
+      "name" : "low",
+      "type" : "number"
+    },
+    {
+      "name" : "open",
+      "type" : "number"
+    },
+    {
+      "name" : "priceChange",
+      "type" : "number"
+    },
+    {
+      "name" : "priceChangePercent",
+      "type" : "number"
+    },
+    {
+      "name" : "quoteVolume",
+      "type" : "number"
+    },
+    {
+      "name" : "statsCloseTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "statsOpenTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "time",
+      "type" : "integer"
+    },
+    {
+      "name" : "totalTrades",
+      "type" : "integer"
+    },
+    {
+      "name" : "volume",
+      "type" : "string"
+    }
+  ],
+  "disabledCommonRenames" : [
+    "t",
+    "m",
+    "i",
+    "T"
+  ],
+  "format" : "json",
+  "id" : "ws_ticker",
+  "method" : "GET",
+  "name" : "ticker",
+  "path" : "\/ws_ticker",
+  "streaming" : {
+    "endpoint" : "wss:\/\/stream.binance.com:9443\/ws",
+    "keyCase" : "lower",
+    "keyColumn" : "symbol",
+    "keyTemplate" : "$key$@ticker",
+    "keysParam" : "symbols",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+      "s"
+    ],
+    "subscribe" : {
+      "template" : "{\"method\":\"SUBSCRIBE\",\"params\":$keysJSON$,\"id\":1}"
+    },
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transforms" : [
+    {
+      "rename" : {
+        "fields" : {
+          "p" : "priceChange"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "askPrice" : "number",
+          "askQuantity" : "number",
+          "avgPrice" : "number",
+          "bid" : "number",
+          "bidQuantity" : "number",
+          "close" : "number",
+          "closeQuantity" : "number",
+          "firstTradeF1" : "number",
+          "high" : "number",
+          "low" : "number",
+          "open" : "number",
+          "priceChange" : "number",
+          "priceChangePercent" : "number",
+          "quoteVolume" : "number",
+          "volume" : "number"
+        }
+      }
+    }
+  ],
+  "transport" : "webSocket",
+  "userParams" : [
+    {
+      "key" : "symbols",
+      "label" : "Symbols (comma-separated)",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

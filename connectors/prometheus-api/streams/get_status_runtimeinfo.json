@@ -1,0 +1,73 @@
+{
+  "columns" : [
+    {
+      "name" : "CWD",
+      "type" : "string"
+    },
+    {
+      "name" : "GODEBUG",
+      "type" : "string"
+    },
+    {
+      "name" : "GOGC",
+      "type" : "string"
+    },
+    {
+      "name" : "GOMAXPROCS",
+      "type" : "integer"
+    },
+    {
+      "name" : "GOMEMLIMIT",
+      "type" : "integer"
+    },
+    {
+      "name" : "corruptionCount",
+      "type" : "boolean"
+    },
+    {
+      "name" : "goroutineCount",
+      "type" : "integer"
+    },
+    {
+      "name" : "hostname",
+      "type" : "string"
+    },
+    {
+      "name" : "lastConfigTime",
+      "type" : "string"
+    },
+    {
+      "name" : "reloadConfigSuccess",
+      "type" : "boolean"
+    },
+    {
+      "name" : "serverTime",
+      "type" : "string"
+    },
+    {
+      "name" : "startTime",
+      "type" : "string"
+    },
+    {
+      "name" : "storageRetention",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "get_status_runtimeinfo",
+  "method" : "GET",
+  "name" : "Get status runtimeinfo",
+  "path" : "\/status\/runtimeinfo",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

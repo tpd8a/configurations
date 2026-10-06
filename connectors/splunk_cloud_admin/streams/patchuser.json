@@ -1,0 +1,67 @@
+{
+  "bodyTemplate" : "{\n  \"defaultApp\": \"{{config.defaultApp}}\",\n  \"email\": \"{{config.email}}\",\n  \"forceChangePass\": {{config.forceChangePass}},\n  \"fullName\": \"{{config.fullName}}\",\n  \"oldPassword\": \"{{config.oldPassword}}\",\n  \"password\": \"{{config.password}}\",\n  \"roles\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "Modify a specific user on the stack",
+  "format" : "json",
+  "id" : "patchuser",
+  "method" : "PATCH",
+  "name" : "PatchUser",
+  "path" : "\/{stack}\/adminconfig\/v2\/users\/{userName}",
+  "reviewFields" : [
+    "roles"
+  ],
+  "userParams" : [
+    {
+      "key" : "defaultApp",
+      "label" : "defaultApp",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "email",
+      "label" : "email",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "forceChangePass",
+      "label" : "forceChangePass",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "fullName",
+      "label" : "fullName",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "oldPassword",
+      "label" : "oldPassword",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "password",
+      "label" : "password",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "userName",
+      "label" : "user name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

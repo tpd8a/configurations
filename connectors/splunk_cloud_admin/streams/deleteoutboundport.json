@@ -1,0 +1,31 @@
+{
+  "bodyTemplate" : "{\n  \"subnets\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "delete an existing outbound port if it exists, from where the feature is accessible from",
+  "format" : "json",
+  "id" : "deleteoutboundport",
+  "method" : "DELETE",
+  "name" : "DeleteOutboundport",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports\/{port}",
+  "reviewFields" : [
+    "subnets"
+  ],
+  "userParams" : [
+    {
+      "key" : "port",
+      "label" : "the outbound port to be deleted",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "disk",
+    "ttl" : 604800
+  },
+  "columns" : [
+    {
+      "name" : "available_exchanges",
+      "type" : "string"
+    },
+    {
+      "name" : "currency_base",
+      "type" : "string"
+    },
+    {
+      "name" : "currency_quote",
+      "type" : "string"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "description" : "The cryptocurrencies endpoint provides a daily updated list of all available cryptos. It returns an array containing detailed information about each cryptocurrency, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of cryptocurrencies for applications that require up-to-date market listings or need to display available crypto assets to users.",
+  "format" : "json",
+  "id" : "getcryptocurrencies",
+  "method" : "GET",
+  "name" : "Cryptocurrency pairs",
+  "path" : "\/cryptocurrencies",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "currency_base",
+      "label" : "Filter by currency base",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "currency_quote",
+      "label" : "Filter by currency quote",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "The separator used in the CSV response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "Filter by exchange name. E.g. `Binance`, `Coinbase`, etc.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Determines the number of data points returned in the output",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "page",
+      "label" : "Page number of the results to fetch",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

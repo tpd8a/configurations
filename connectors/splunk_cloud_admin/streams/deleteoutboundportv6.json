@@ -1,0 +1,31 @@
+{
+  "bodyTemplate" : "{\n  \"subnets\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "delete an existing ipv6 outbound port if it exists, from where the feature is accessible from",
+  "format" : "json",
+  "id" : "deleteoutboundportv6",
+  "method" : "DELETE",
+  "name" : "DeleteOutboundPortV6",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports-v6\/{port}",
+  "reviewFields" : [
+    "subnets"
+  ],
+  "userParams" : [
+    {
+      "key" : "port",
+      "label" : "the ipv6 outbound port to be deleted",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

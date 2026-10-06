@@ -1,0 +1,78 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "memory",
+    "ttl" : 300
+  },
+  "columns" : [
+    {
+      "name" : "rate",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    }
+  ],
+  "description" : "The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.",
+  "format" : "json",
+  "id" : "getexchangerate",
+  "method" : "GET",
+  "name" : "Exchange rate",
+  "path" : "\/exchange_rate",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "If not null, will use exchange rate from a specific date or time. Format `2006-0",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Specify the delimiter used when downloading the `CSV` file. Default semicolon `;",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "The number of decimal places for the data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "Value can be `JSON` or `CSV`. Default `JSON`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The currency pair you want to request can be either forex or cryptocurrency. Sla",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "timezone",
+      "label" : "Timezone at which output datetime will be displayed. Supports:\n<ul>\n<li>1. <code",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

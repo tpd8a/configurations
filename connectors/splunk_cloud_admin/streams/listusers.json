@@ -1,0 +1,39 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "list all users",
+  "format" : "json",
+  "id" : "listusers",
+  "method" : "GET",
+  "name" : "ListUsers",
+  "pagination" : {
+    "pageParam" : "offset",
+    "pageSizeParam" : "count",
+    "strategy" : "offset"
+  },
+  "path" : "\/{stack}\/adminconfig\/v2\/users",
+  "userParams" : [
+    {
+      "key" : "count",
+      "label" : "The maximum number of results to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "offset",
+      "label" : "The offset to start returning items from.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

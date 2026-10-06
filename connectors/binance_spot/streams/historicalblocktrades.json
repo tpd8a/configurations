@@ -1,0 +1,33 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "historicalblocktrades",
+  "method" : "GET",
+  "name" : "Historical Block Trades (MARKET_DATA)",
+  "path" : "\/api\/v3\/historicalBlockTrades",
+  "userParams" : [
+    {
+      "key" : "fromId",
+      "label" : "Block trade ID to fetch from",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "limit",
+      "label" : "Default: 500; Maximum: 1000",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

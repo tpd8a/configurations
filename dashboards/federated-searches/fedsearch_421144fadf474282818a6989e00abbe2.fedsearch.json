@@ -1,0 +1,1 @@
+{"id":"fedsearch_421144fadf474282818a6989e00abbe2","description":"CPU load of node exporter per minute","sql":"SELECT * FROM grafana_api.ds_query(dsUid := 'afylgi69fxs74f', expr := 'node_load1', intervalMs := '1000', maxDataPoints := '1900', from := '$time.from_ms$', to := '$time.to_ms$')","name":"grafana_test_ss_node_load1","config_version":2}

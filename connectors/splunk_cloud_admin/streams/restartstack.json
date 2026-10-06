@@ -1,0 +1,20 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Restart a search head on a non-cluster stack, or initiate a rolling restart on a search-head-cluster stack",
+  "format" : "json",
+  "id" : "restartstack",
+  "method" : "POST",
+  "name" : "RestartStack",
+  "path" : "\/{stack}\/adminconfig\/v2\/restart-now",
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

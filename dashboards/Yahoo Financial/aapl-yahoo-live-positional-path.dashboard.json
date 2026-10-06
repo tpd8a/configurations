@@ -1,0 +1,770 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_59a8cb30d91d8c00e42f7f387f6e57b8",
+      "query" : {
+        "name" : "viz_ccf7369714b24568b4de5e150f39a28b",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT close AS v FROM chart(symbol := 'AAPL', range := '6mo', interval := '1d') ORDER BY timestamp ASC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e9fefbc44e8fcc67172c3383a5926c0d",
+      "query" : {
+        "name" : "viz_a818fd15d614469ea1f7760a200b29de",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT MAX(high) AS v FROM chart(symbol := 'AAPL', range := '6mo', interval := '1d')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b3cecac432b4a61c6e7b6495b89e5e8d",
+      "query" : {
+        "name" : "viz_49eecafd6fd742fea82fee523306cc9a",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT MIN(low)  AS v FROM chart(symbol := 'AAPL', range := '6mo', interval := '1d')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_d6cc8c600932e026f48f8838e6a2e922",
+      "query" : {
+        "name" : "viz_e2883f5eedee4ce984aeb33e275440fa",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT volume AS v FROM chart(symbol := 'AAPL', range := '6mo', interval := '1d') ORDER BY timestamp ASC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_56ce376e594dfbe1ec8edb116529850f",
+      "query" : {
+        "name" : "viz_e17e5ee6eb1e45d2b612a31de0b500a4",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT timestamp AS _time, open, high, low, close, volume FROM chart(symbol := 'AAPL', range := '1mo', interval := '1d') ORDER BY timestamp ASC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_798579c94d4d51e74c76f151dd76c743",
+      "query" : {
+        "name" : "viz_btcusdt_klines",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT time, open, high, low, close, volume FROM binance_spot.klines(symbol:='BTCUSDT',startTime:='-24h',endTime:='now',interval:='1m')\n\n"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e4288de2e0a54c4a800d4913ab5b3a7d",
+      "query" : {
+        "name" : "viz_btcusdt_ws_klines",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM binance_spot.ws_kline(symbol:='BTCUSDT',startTime:='-24h',endTime:='now',interval:='1m')\n\n"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live AAPL OHLCV via the Yahoo chart connector, through the Stage 2.5 positional field-manifest path (no parallel_arrays).",
+  "id" : "dash_124026d013ac424199d5a7f0e075ba78",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "AAPL — Yahoo Live (positional path)",
+  "provenance" : {
+    "imported_at" : "2026-09-28T17:22:35Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_5a6a465b1b8d436a9dea77e91f6be894",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ccf7369714b24568b4de5e150f39a28b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4ed564d08e7a4af994c57a0556c5d4fc",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "height" : 220,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Last Close"
+              },
+              "data_source_ref" : "ds_59a8cb30d91d8c00e42f7f387f6e57b8",
+              "id" : "viz_ccf7369714b24568b4de5e150f39a28b",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_8d9230cec3dbbc6f5c5f5ad44a8be8e3",
+                "orientation" : "vertical",
+                "precision" : "2",
+                "reduction" : "last",
+                "unit" : "currency:USD"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a818fd15d614469ea1f7760a200b29de"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ce44007537a442dc8216a4dbe6487c4b",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 0,
+            "height" : 220,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "6mo High"
+              },
+              "data_source_ref" : "ds_e9fefbc44e8fcc67172c3383a5926c0d",
+              "id" : "viz_a818fd15d614469ea1f7760a200b29de",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_9ea73357cb691cd89280b1136a271815",
+                "orientation" : "vertical",
+                "precision" : "2",
+                "reduction" : "last",
+                "unit" : "currency:USD"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_49eecafd6fd742fea82fee523306cc9a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ebc74b8bf4ff4cc682ef3dd89bf67d74",
+          "layout" : {
+            "absolute_h" : 384,
+            "absolute_w" : 816,
+            "absolute_x" : 624,
+            "absolute_y" : 0,
+            "height" : 220,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "6mo Low"
+              },
+              "data_source_ref" : "ds_b3cecac432b4a61c6e7b6495b89e5e8d",
+              "id" : "viz_49eecafd6fd742fea82fee523306cc9a",
+              "layer" : 1,
+              "options" : {
+                "content_alignment" : "center",
+                "data_source_ref" : "ds_dc246a4dffe51f4e1f582335fab2d577",
+                "fills_panel" : "false",
+                "font_sizing" : "manual:1.0",
+                "orientation" : "vertical",
+                "precision" : "2",
+                "reduction" : "last",
+                "unit" : "currency:USD"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e2883f5eedee4ce984aeb33e275440fa"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8d5415d28cc7496884ecf9e5d9b8a2d7",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 0,
+            "absolute_y" : 240,
+            "height" : 220,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Latest Volume"
+              },
+              "data_source_ref" : "ds_d6cc8c600932e026f48f8838e6a2e922",
+              "id" : "viz_e2883f5eedee4ce984aeb33e275440fa",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_39fe6e0f17f7d7fb32fd15c7a396250f",
+                "orientation" : "vertical",
+                "precision" : "0",
+                "reduction" : "last",
+                "unit" : "short"
+              },
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Price"
+    },
+    {
+      "id" : "row_0a9fd906133e4cd2a3fac5a7308a83a4",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e17e5ee6eb1e45d2b612a31de0b500a4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bbae1b0b49fb46d1a4b20c045fbde850",
+          "layout" : {
+            "absolute_h" : 220,
+            "absolute_w" : 300,
+            "absolute_x" : 312,
+            "absolute_y" : 240,
+            "height" : 720,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 2,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "MK-CANDLE-0001",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.6602559840425533,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "volpane",
+                    "marks" : [
+                      {
+                        "id" : "MK-VOL-0001",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "volume"
+                        ],
+                        "x",
+                        [
+                          "_time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.7397440159574467,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "1C022742-EFEB-4764-9D6C-5BFC076A7D61",
+                    "marks" : [
+                      {
+                        "id" : "6DB01692-2379-46FF-848C-300B6EBD11F8",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "AAPL — daily OHLCV (6 months, live via Yahoo)"
+              },
+              "data_source_ref" : "ds_56ce376e594dfbe1ec8edb116529850f",
+              "id" : "viz_e17e5ee6eb1e45d2b612a31de0b500a4",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_9b35e3fcbfdf18add262b68c3ed3ca89"
+              },
+              "title" : "AAPL — daily OHLCV (6 months, live via Yahoo)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c1481302e97a4274a9576a8d4d6861f4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3d95dc0dd79f453b8b676d6a3b51f78e",
+          "layout" : {
+            "height" : 480,
+            "panel_width" : 12
+          },
+          "title" : "BTC\/USDT — klines (OHLC, 5m)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 2,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "MK-CANDLE-0001",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "open",
+                          "high",
+                          "low",
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.4,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "volpane",
+                    "marks" : [
+                      {
+                        "id" : "MK-VOL-0001",
+                        "kind" : "column",
+                        "optionsJSON" : "eyJmaWVsZCI6InZvbHVtZSJ9"
+                      }
+                    ],
+                    "shapeId" : "column-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "volume"
+                        ],
+                        "x",
+                        [
+                          "time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_798579c94d4d51e74c76f151dd76c743",
+              "id" : "viz_c1481302e97a4274a9576a8d4d6861f4",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_a25e8798e89441f2b07a4527c87687ab",
+                "show_totals_row" : "false"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "60C76946-BE40-4A50-B7C6-BFE04A83A0C4",
+              "viz_ids" : [
+                "viz_1e0a545bbc994583904406c1564fcbb5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8cd5572933cc46d09db1363e0afdd30c",
+          "layout" : {
+            "height" : 480,
+            "panel_width" : 12
+          },
+          "title" : "BTC\/USDT — klines (OHLC, 5m) (copy)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_e4288de2e0a54c4a800d4913ab5b3a7d",
+              "id" : "viz_1e0a545bbc994583904406c1564fcbb5",
+              "layer" : 1,
+              "options" : {
+                "data_source_ref" : "ds_a25e8798e89441f2b07a4527c87687ab",
+                "show_totals_row" : "false"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Chart"
+    }
+  ]
+}

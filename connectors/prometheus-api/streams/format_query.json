@@ -1,0 +1,26 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "format_query",
+  "method" : "GET",
+  "name" : "Format a PromQL query",
+  "path" : "\/format_query",
+  "userParams" : [
+    {
+      "key" : "query",
+      "label" : "PromQL expression to format.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

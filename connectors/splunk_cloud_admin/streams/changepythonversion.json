@@ -1,0 +1,27 @@
+{
+  "bodyTemplate" : "{\n  \"pythonVersion\": \"{{config.pythonVersion}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "Change python version on co2 stack spec",
+  "format" : "json",
+  "id" : "changepythonversion",
+  "method" : "POST",
+  "name" : "ChangePythonVersion",
+  "path" : "\/{stack}\/adminconfig\/v2\/python-runtime",
+  "userParams" : [
+    {
+      "key" : "pythonVersion",
+      "label" : "pythonVersion",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

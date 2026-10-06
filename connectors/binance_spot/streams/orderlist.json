@@ -1,0 +1,51 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "orderlist",
+  "method" : "GET",
+  "name" : "Query Order list (USER_DATA)",
+  "path" : "\/api\/v3\/orderList",
+  "userParams" : [
+    {
+      "key" : "orderListId",
+      "label" : "Query order list by `orderListId`. `orderListId` or `origClientOrderId` must be ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "origClientOrderId",
+      "label" : "Query order list by `listClientOrderId`. `orderListId` or `origClientOrderId` mu",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "recvWindow",
+      "label" : "Supports up to three decimal places of precision (e.g., 6000.346) so that micros",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    }
+  ]
+}

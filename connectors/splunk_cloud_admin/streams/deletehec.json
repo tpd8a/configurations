@@ -1,0 +1,28 @@
+{
+  "bodyTemplate" : "{\n\n}",
+  "columns" : [
+
+  ],
+  "description" : "delete HEC",
+  "format" : "json",
+  "id" : "deletehec",
+  "method" : "DELETE",
+  "name" : "DeleteHec",
+  "path" : "\/{stack}\/adminconfig\/v2\/inputs\/http-event-collectors\/{hec}",
+  "userParams" : [
+    {
+      "key" : "hec",
+      "label" : "hec name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

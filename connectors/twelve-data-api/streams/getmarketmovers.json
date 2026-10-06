@@ -1,0 +1,62 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "The market movers endpoint provides a ranked list of the top-gaining and losing assets for the current trading day. It returns detailed data on the highest percentage price increases and decreases since the previous day's close. This endpoint supports international equities, forex, and cryptocurrencies, enabling users to quickly identify significant market movements across various asset classes.",
+  "format" : "json",
+  "id" : "getmarketmovers",
+  "method" : "GET",
+  "name" : "Market movers",
+  "path" : "\/market_movers\/{market}",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "Country of the snapshot, applicable to non-currencies only.\nTakes country name o",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "direction",
+      "label" : "Specifies direction of the snapshot gainers or losers",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "dp",
+      "label" : "Specifies the number of decimal places for floating values.\nShould be in range [",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "market",
+      "label" : "Market type",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "outputsize",
+      "label" : "Specifies the size of the snapshot.\nCan be in a range from `1` to `50`",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "price_greater_than",
+      "label" : "Takes values with price grater than specified value",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

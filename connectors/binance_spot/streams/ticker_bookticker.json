@@ -1,0 +1,64 @@
+{
+  "columns" : [
+    {
+      "name" : "askPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "askQty",
+      "type" : "number"
+    },
+    {
+      "name" : "bidPrice",
+      "type" : "number"
+    },
+    {
+      "name" : "bidQty",
+      "type" : "number"
+    },
+    {
+      "name" : "symbol",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "ticker_bookticker",
+  "method" : "GET",
+  "name" : "Symbol order book ticker",
+  "path" : "\/api\/v3\/ticker\/bookTicker",
+  "transforms" : [
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "askPrice" : "number",
+          "askQty" : "number",
+          "bidPrice" : "number",
+          "bidQty" : "number"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "symbol",
+      "label" : "Parameter symbol and symbols cannot be used in combination. If neither parameter",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbolStatus",
+      "label" : "Filters for symbols that have this `tradingStatus`. For a single symbol, a statu",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbols",
+      "label" : "Parameter symbol and symbols cannot be used in combination. If neither parameter",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    },
+    {
+      "name" : "meta",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "description" : "The tax information endpoint provides detailed tax-related data for a specified financial instrument, including applicable tax rates and relevant tax codes. This information is essential for users needing to understand the tax implications associated with trading or investing in specific instruments.",
+  "format" : "json",
+  "id" : "gettaxinfo",
+  "method" : "GET",
+  "name" : "Tax information",
+  "path" : "\/tax_info",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cusip",
+      "label" : "The CUSIP of an instrument for which data is requested. CUSIP access is activati",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "The exchange name where the instrument is traded, e.g., `Nasdaq`, `Euronext`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "figi",
+      "label" : "The FIGI of an instrument for which data is requested. This parameter is availab",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "isin",
+      "label" : "Filter by international securities identification number (ISIN). ISIN access is ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "The Market Identifier Code (MIC) of the exchange where the instrument is traded,",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested, e.g., `SKYQ`, `A",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

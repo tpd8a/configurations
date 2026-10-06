@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Describe a configured self storage location on the stack",
+  "format" : "json",
+  "id" : "describeselfstoragelocation",
+  "method" : "GET",
+  "name" : "DescribeSelfStorageLocation",
+  "path" : "\/{stack}\/adminconfig\/v2\/cloud-resources\/self-storage-locations\/buckets\/{bucketPath}",
+  "userParams" : [
+    {
+      "key" : "bucketPath",
+      "label" : "bucket path of the self storage location",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -96,6 +96,36 @@
         },
         "type" : "ds.sql"
       }
+    },
+    {
+      "id" : "ds_234b33323652963e78d5e4ae9d51ffdb",
+      "query" : {
+        "name" : "viz_a05237c78af145348535f314a8ee1291",
+        "sql" : {
+          "query" : "SELECT wiki, COUNT(*) FROM wikimedia_eventstreams.recentchange GROUP BY wiki"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9b53679fdc4592fd8f3bcd8148314ad7",
+      "query" : {
+        "name" : "viz_4254468273b14c9abb19880801c70aa5",
+        "sql" : {
+          "query" : "SELECT wiki, COUNT(*) AS changes FROM wikimedia_eventstreams.recentchange GROUP BY wiki ORDER BY changes DESC LIMIT 25"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_ca2d012b7c4023a4be2d5ab6f7ba4027",
+      "query" : {
+        "name" : "viz_17547382b05b4da29bff5f9b8dce0162",
+        "sql" : {
+          "query" : "SELECT wiki, user, bot, type, title, _time FROM wikimedia_eventstreams.recentchange LIMIT 200"
+        },
+        "type" : "ds.sql"
+      }
     }
   ],
   "id" : "dash_52298e7ddaf5424bbd052559c82cd39f",
@@ -281,10 +311,9 @@
           },
           "visualizations" : [
             {
-              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "data_source_ref" : "ds_234b33323652963e78d5e4ae9d51ffdb",
               "id" : "viz_a05237c78af145348535f314a8ee1291",
               "layer" : 1,
-              "sql_composition" : "SELECT wiki, COUNT(*) FROM wikimedia_eventstreams.recentchange GROUP BY wiki",
               "type" : "table",
               "width" : 12
             }
@@ -312,13 +341,12 @@
           },
           "visualizations" : [
             {
-              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "data_source_ref" : "ds_9b53679fdc4592fd8f3bcd8148314ad7",
               "id" : "viz_4254468273b14c9abb19880801c70aa5",
               "layer" : 1,
               "options" : {
                 "title" : "Per-Wiki Activity (FedSQL)"
               },
-              "sql_composition" : "SELECT wiki, COUNT(*) AS changes FROM wikimedia_eventstreams.recentchange GROUP BY wiki ORDER BY changes DESC LIMIT 25",
               "type" : "table",
               "width" : 12
             }
@@ -346,13 +374,12 @@
           },
           "visualizations" : [
             {
-              "data_source_ref" : "ds_e27e554e9d79491f81cad8984db1e29a",
+              "data_source_ref" : "ds_ca2d012b7c4023a4be2d5ab6f7ba4027",
               "id" : "viz_17547382b05b4da29bff5f9b8dce0162",
               "layer" : 1,
               "options" : {
                 "title" : "Recent Events (FedSQL)"
               },
-              "sql_composition" : "SELECT wiki, user, bot, type, title, _time FROM wikimedia_eventstreams.recentchange LIMIT 200",
               "type" : "table",
               "width" : 12
             }

@@ -1,0 +1,40 @@
+{
+  "bodyTemplate" : "{\n  \"package\": \"{{config.package}}\",\n  \"token\": \"{{config.token}}\"\n}",
+  "columns" : [
+
+  ],
+  "description" : "install an app",
+  "format" : "json",
+  "id" : "installapp",
+  "method" : "POST",
+  "name" : "InstallApp",
+  "path" : "\/{stack}\/adminconfig\/v2\/apps",
+  "userParams" : [
+    {
+      "key" : "package",
+      "label" : "the pre-approved app package file in tar.gz format",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "splunkbase",
+      "label" : "is the app available in splunkbase",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "token",
+      "label" : "the splunkbase authentication token",
+      "location" : "body",
+      "required" : false
+    }
+  ]
+}

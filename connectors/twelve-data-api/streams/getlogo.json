@@ -1,0 +1,55 @@
+{
+  "columns" : [
+    {
+      "name" : "meta",
+      "type" : "string"
+    },
+    {
+      "name" : "url",
+      "type" : "string"
+    }
+  ],
+  "description" : "The logo endpoint provides the official logo image for a specified company, cryptocurrency, or forex pair. This endpoint is useful for integrating visual branding elements into financial applications, websites, or reports, ensuring that users can easily identify and associate the correct logo with the respective financial asset.",
+  "format" : "json",
+  "id" : "getlogo",
+  "method" : "GET",
+  "name" : "Logo",
+  "path" : "\/logo",
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "country",
+      "label" : "The country where the instrument is traded, e.g., `United States` or `US`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "exchange",
+      "label" : "The exchange name where the instrument is traded, e.g., `NASDAQ`, `NSE`",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "mic_code",
+      "label" : "The Market Identifier Code (MIC) of the exchange where the instrument is traded,",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "The ticker symbol of an instrument for which data is requested, e.g., `AAPL`, `B",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

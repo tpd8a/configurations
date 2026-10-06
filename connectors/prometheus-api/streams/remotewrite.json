@@ -1,0 +1,15 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Prometheus remote write endpoint for sending metrics. Accepts Protocol Buffer encoded write requests.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "remotewrite",
+  "method" : "POST",
+  "name" : "Remote write endpoint",
+  "path" : "\/write",
+  "userParams" : [
+
+  ]
+}

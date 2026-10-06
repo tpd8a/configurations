@@ -1,0 +1,41 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Audit status changes for a specific maintenance window schedule.",
+  "format" : "json",
+  "id" : "auditmaintenancewindowsschedule",
+  "method" : "GET",
+  "name" : "AuditMaintenanceWindowsSchedule",
+  "path" : "\/{stack}\/adminconfig\/v2\/maintenance-windows\/schedules\/{scheduleID}\/audits",
+  "userParams" : [
+    {
+      "key" : "fromTime",
+      "label" : "The earliest time to return results from. Format is expected to be YYYY-MM-DD or",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "scheduleID",
+      "label" : "The maintenance window schedule ID.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "toTime",
+      "label" : "The latest time to return results from. Format is expected to be YYYY-MM-DD or i",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

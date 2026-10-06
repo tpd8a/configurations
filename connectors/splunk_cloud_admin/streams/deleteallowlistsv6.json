@@ -1,0 +1,31 @@
+{
+  "bodyTemplate" : "{\n  \"subnets\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "delete existing ipv6 subnets (if they exists) from where the splunk cloud stack feature is accessible from",
+  "format" : "json",
+  "id" : "deleteallowlistsv6",
+  "method" : "DELETE",
+  "name" : "DeleteAllowlistsV6",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/{feature}\/ipallowlists-v6",
+  "reviewFields" : [
+    "subnets"
+  ],
+  "userParams" : [
+    {
+      "key" : "feature",
+      "label" : "the feature the access rules apply towards",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"id":"fedsearch_fc3dc6cead444d64a032506f1622604e","name":"first_test_for_queries","sql":"SELECT * FROM prom.query_range(end := 'now', limit := '600', query := 'node_load15', start := '-1h', step := '5m')\nUNION ALL\nSELECT * FROM prom.query_range(end := 'now', limit := '600', query := 'node_load5', start := '-1h', step := '5m')","config_version":2}

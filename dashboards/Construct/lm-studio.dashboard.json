@@ -1,0 +1,74 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c8d386c69cd54b8ca70f925e01918582",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_C977575F",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "txt",
+            "lineBreaker" : "([\\r\\n]+)\\[",
+            "maxRows" : "10000",
+            "path" : "\/Users\/peter\/.lmstudio\/server-logs\/2026-07\/2026-09-22.1.log",
+            "tql" : "extract  \/ef\/"
+          }
+        },
+        "refresh_seconds" : 60,
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_1d176e55a7e146c8b6fa7f089649da75",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "LM Studio",
+  "provenance" : {
+    "imported_at" : "2026-09-23T05:08:19Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_734133e59d6c4d28b826402779d4a948",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3542e9cf8e504d77a6bd88dfd668f68f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_eb41ebd8c89744b8823bedec1a64277e",
+          "layout" : {
+            "height" : 700,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_c8d386c69cd54b8ca70f925e01918582",
+              "id" : "viz_3542e9cf8e504d77a6bd88dfd668f68f",
+              "layer" : 1,
+              "options" : {
+                "raw_field" : "line",
+                "time_field" : ""
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

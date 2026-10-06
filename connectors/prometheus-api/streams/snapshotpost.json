@@ -1,0 +1,21 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Creates a snapshot of all current data.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "snapshotpost",
+  "method" : "POST",
+  "name" : "Create a snapshot of the TSDB",
+  "path" : "\/admin\/tsdb\/snapshot",
+  "userParams" : [
+    {
+      "key" : "skip_head",
+      "label" : "If true, do not snapshot data in the head block.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

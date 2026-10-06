@@ -1,0 +1,63 @@
+{
+  "bodyTemplate" : "{\n  \"datatype\": \"{{config.datatype}}\",\n  \"maxDataSizeMB\": {{config.maxDataSizeMB}},\n  \"mdlIndex\": {{config.mdlIndex}},\n  \"name\": \"{{config.name}}\",\n  \"searchableDays\": {{config.searchableDays}},\n  \"selfStorageBucketPath\": \"{{config.selfStorageBucketPath}}\",\n  \"splunkArchivalRetentionDays\": {{config.splunkArchivalRetentionDays}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "create index on the stack",
+  "format" : "json",
+  "id" : "createindex",
+  "method" : "POST",
+  "name" : "CreateIndex",
+  "path" : "\/{stack}\/adminconfig\/v2\/indexes",
+  "userParams" : [
+    {
+      "key" : "datatype",
+      "label" : "datatype",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "maxDataSizeMB",
+      "label" : "maxDataSizeMB",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "mdlIndex",
+      "label" : "mdlIndex",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "name",
+      "label" : "name",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "searchableDays",
+      "label" : "searchableDays",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "selfStorageBucketPath",
+      "label" : "selfStorageBucketPath",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "splunkArchivalRetentionDays",
+      "label" : "splunkArchivalRetentionDays",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

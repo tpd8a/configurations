@@ -1,0 +1,49 @@
+{
+  "columns" : [
+    {
+      "name" : "name",
+      "type" : "string"
+    }
+  ],
+  "description" : "The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.",
+  "format" : "json",
+  "id" : "getcryptocurrencyexchanges",
+  "method" : "GET",
+  "name" : "Cryptocurrency exchanges",
+  "path" : "\/cryptocurrency_exchanges",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "meta"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "apikey",
+      "label" : "apikey",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "delimiter",
+      "label" : "Specify the delimiter used when downloading the CSV file",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "format",
+      "label" : "The format of the response data",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

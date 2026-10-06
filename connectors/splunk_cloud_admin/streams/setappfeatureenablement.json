@@ -1,0 +1,41 @@
+{
+  "bodyTemplate" : "{\n  \"enabled\": {{config.enabled}}\n}",
+  "columns" : [
+
+  ],
+  "description" : "Enable or disable an app feature",
+  "format" : "json",
+  "id" : "setappfeatureenablement",
+  "method" : "POST",
+  "name" : "SetAppFeatureEnablement",
+  "path" : "\/{stack}\/adminconfig\/v2\/enablement\/{appGroup}\/{featureName}",
+  "userParams" : [
+    {
+      "key" : "appGroup",
+      "label" : "the app name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "enabled",
+      "label" : "enabled",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "featureName",
+      "label" : "the feature name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

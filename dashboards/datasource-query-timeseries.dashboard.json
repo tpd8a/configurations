@@ -1,0 +1,203 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "connector_stream" : "getdatasources",
+      "id" : "ds_5c8c287604164b8fabd3f6bad2a2d2c9",
+      "provider_ref" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
+      "query" : {
+        "name" : "Choices: Datasource",
+        "refresh_seconds" : 3600,
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_1202c75db41d463f8cb559ba23ab4735",
+      "provider_ref" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
+      "query" : {
+        "name" : "Datasource Query (timeseries)",
+        "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT * FROM grafana_api.ds_query(dsUid := '$dsUid$', expr := '$expr$', intervalMs := '$intervalMs$', maxDataPoints := '$maxDataPoints$', from := '$time.from_ms$', to := '$time.to_ms$')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_4e5a305ae05449fc85b1d31c9956e7bb",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_5c8c287604164b8fabd3f6bad2a2d2c9",
+          "field_for_label" : "name",
+          "field_for_value" : "uid"
+        },
+        "default" : "afylgi69fxs74f",
+        "display_location" : "top",
+        "initial_value" : "afylgi69fxs74f",
+        "label" : "Datasource",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_f5732e9709194923bef9480154ab2717",
+      "token" : "dsUid"
+    },
+    {
+      "config" : {
+        "default" : "node_load1",
+        "display_location" : "top",
+        "entry" : {
+          "example" : "up",
+          "help" : "Single PromQL query (label values need double quotes: {job=\"node\"}) — or use Targets JSON below for multi-target",
+          "kind" : "multiline",
+          "required" : false
+        },
+        "initial_value" : "node_load1",
+        "label" : "PromQL Expression",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_71a18bc08296425e9a367f1936ff0345",
+      "token" : "expr"
+    },
+    {
+      "config" : {
+        "default" : "60000",
+        "display_location" : "top",
+        "entry" : {
+          "help" : "Step floor — step = max(interval, range\/maxDataPoints)",
+          "kind" : "integer",
+          "required" : false,
+          "validate" : {
+            "min" : 1000,
+            "step" : 1000
+          }
+        },
+        "initial_value" : "60000",
+        "label" : "Interval (ms)",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_6310dc5f579d4a3d9084663c5acda6db",
+      "token" : "intervalMs"
+    },
+    {
+      "config" : {
+        "default" : "1440",
+        "display_location" : "top",
+        "entry" : {
+          "help" : "Resolution ceiling — Grafana defaults to 100; 1440 = 1m bins over 24h",
+          "kind" : "integer",
+          "required" : false,
+          "validate" : {
+            "max" : 100000,
+            "min" : 1,
+            "step" : 100
+          }
+        },
+        "initial_value" : "1440",
+        "label" : "Max Data Points",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_daeec3eb6b874a718aef8800917fe496",
+      "token" : "maxDataPoints"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time Range",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-1h",
+          "default_latest" : "now"
+        },
+        "type" : "time"
+      },
+      "id" : "input_aa52c99f169142069d0987aff8e7353c",
+      "token" : "time"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Button",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "button"
+      },
+      "id" : "input_7413c7bd17204c79a2604cc8ad870d87",
+      "token" : "input6"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Datasource Query (timeseries)",
+  "provenance" : {
+    "imported_at" : "2026-10-02T17:58:21Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_e25ad258e7c4418788c6f7a39f22455f",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a6022e40618e488590896ae7934aa629"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bedf5099fe484857822f417a6a7ed565",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_1202c75db41d463f8cb559ba23ab4735",
+              "id" : "viz_a6022e40618e488590896ae7934aa629",
+              "layer" : 1,
+              "title" : "Datasource Query (timeseries)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

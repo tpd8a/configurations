@@ -1,0 +1,51 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "query_exemplars",
+  "method" : "GET",
+  "name" : "Query exemplars",
+  "path" : "\/query_exemplars",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "timings"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End timestamp for exemplars query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "query",
+      "label" : "PromQL query to extract exemplars for.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for exemplars query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

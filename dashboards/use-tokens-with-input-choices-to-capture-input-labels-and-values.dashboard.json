@@ -1,0 +1,152 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c10de39f686847e39e0383c51be7295d",
+      "query" : {
+        "name" : "Source Type by $date_label$",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := 'index = _internal | timechart count by sourcetype', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "$earliest_tok$",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_7df5bc11acac4d798c6d7281972d30cc",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "date_label",
+                  "type" : "set",
+                  "value" : "$label$"
+                },
+                {
+                  "token" : "earliest_tok",
+                  "type" : "set",
+                  "value" : "$value$"
+                }
+              ]
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 24 Hours",
+            "value" : "-24h@h"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 7 Days",
+            "value" : "-7d@d"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 30 Days",
+            "value" : "-30d@d"
+          }
+        ],
+        "default" : "Last 7 Days",
+        "display_location" : "top",
+        "label" : "Select a time range",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_2787efd0935b449ca5db9180c66a6eb5",
+      "token" : "period_tok"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Auto Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_ba443c35c45448b2a5bd1dc76abb3788",
+      "token" : "_fieldset_autoRun"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Use tokens with input choices to capture input labels and values",
+  "provenance" : {
+    "imported_at" : "2026-09-25T17:11:31Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_194c965b85e14f609447f1c3cdf5b74e",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b48a2e3158ee49a2b13a9ae63c601d06"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_979f8693c93545ba888350d0eeb1e5ee",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Conditional Inputs",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Source Type by $date_label$"
+              },
+              "data_source_ref" : "ds_c10de39f686847e39e0383c51be7295d",
+              "id" : "viz_b48a2e3158ee49a2b13a9ae63c601d06",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleX.text" : "Time period",
+                "charting.axisTitleY.text" : "Events",
+                "charting.axisY.scale" : "log"
+              },
+              "title" : "Source Type by $date_label$",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Describe a specific maintenance window schedule",
+  "format" : "json",
+  "id" : "describemaintenancewindowsschedule",
+  "method" : "GET",
+  "name" : "DescribeMaintenanceWindowsSchedule",
+  "path" : "\/{stack}\/adminconfig\/v2\/maintenance-windows\/schedules\/{scheduleID}",
+  "userParams" : [
+    {
+      "key" : "scheduleID",
+      "label" : "The maintenance window schedule ID.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}
