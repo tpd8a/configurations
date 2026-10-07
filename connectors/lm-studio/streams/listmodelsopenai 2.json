@@ -1,0 +1,13 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "listmodelsopenai",
+  "method" : "GET",
+  "name" : "List models (OpenAI-compatible)",
+  "path" : "\/v1\/models",
+  "userParams" : [
+
+  ]
+}

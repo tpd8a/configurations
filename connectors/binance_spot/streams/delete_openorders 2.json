@@ -1,0 +1,44 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "delete_openorders",
+  "method" : "DELETE",
+  "name" : "Cancel All Open Orders on a Symbol (TRADE)",
+  "path" : "\/api\/v3\/openOrders",
+  "userParams" : [
+    {
+      "key" : "recvWindow",
+      "label" : "Supports up to three decimal places of precision (e.g., 6000.346) so that micros",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "signature",
+      "label" : "Signature",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "symbol",
+      "label" : "symbol",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "timestamp",
+      "label" : "UTC timestamp in ms",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "bound" : "start",
+        "format" : "epoch_millis"
+      }
+    }
+  ]
+}

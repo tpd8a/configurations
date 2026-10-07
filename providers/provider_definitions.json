@@ -44,7 +44,7 @@
     "config_version" : 2,
     "enabled" : true,
     "id" : "4430DF34-0930-4D0D-840C-16653E27F3C4",
-    "name" : "Prometheus",
+    "name" : "Prometheus API",
     "options" : {
       "insecure_ssl" : true,
       "timeout_seconds" : 30,

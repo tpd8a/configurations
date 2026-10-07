@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe the outboundports with ports and ipv6 subnets",
+  "format" : "json",
+  "id" : "describeoutboundportsv6",
+  "method" : "GET",
+  "name" : "DescribeOutboundportsV6",
+  "path" : "\/{stack}\/adminconfig\/v2\/access\/outbound-ports-v6\/{port}",
+  "userParams" : [
+    {
+      "key" : "port",
+      "label" : "the port on which we want to get the allowed ipv6 subnets",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

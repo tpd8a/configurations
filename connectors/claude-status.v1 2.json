@@ -1,0 +1,61 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/status.claude.com\/",
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "claude-status",
+  "name" : "Claude RSS",
+  "streams" : [
+    {
+      "columns" : [
+        {
+          "name" : "html",
+          "type" : "string"
+        },
+        {
+          "name" : "published",
+          "type" : "string"
+        },
+        {
+          "name" : "title",
+          "type" : "string"
+        },
+        {
+          "name" : "updated",
+          "type" : "string"
+        }
+      ],
+      "format" : "xml",
+      "id" : "status",
+      "method" : "GET",
+      "name" : "Status",
+      "path" : "history.atom",
+      "transforms" : [
+        {
+          "descend" : {
+            "path" : [
+              "feed",
+              "entry"
+            ]
+          }
+        },
+        {
+          "keyValue" : {
+            "from" : [
+              "content"
+            ],
+            "name" : "@type",
+            "value" : "#text"
+          }
+        }
+      ],
+      "userParams" : [
+
+      ]
+    }
+  ],
+  "version" : 1
+}

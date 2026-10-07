@@ -1,0 +1,138 @@
+{
+  "columns" : [
+    {
+      "name" : "args",
+      "type" : "boolean"
+    },
+    {
+      "name" : "externalURL",
+      "type" : "boolean"
+    },
+    {
+      "name" : "first",
+      "type" : "boolean"
+    },
+    {
+      "name" : "graphLink",
+      "type" : "boolean"
+    },
+    {
+      "name" : "humanize",
+      "type" : "boolean"
+    },
+    {
+      "name" : "humanize1024",
+      "type" : "boolean"
+    },
+    {
+      "name" : "humanizeDuration",
+      "type" : "boolean"
+    },
+    {
+      "name" : "humanizePercentage",
+      "type" : "boolean"
+    },
+    {
+      "name" : "humanizeTimestamp",
+      "type" : "boolean"
+    },
+    {
+      "name" : "label",
+      "type" : "boolean"
+    },
+    {
+      "name" : "match",
+      "type" : "boolean"
+    },
+    {
+      "name" : "now",
+      "type" : "boolean"
+    },
+    {
+      "name" : "parseDuration",
+      "type" : "boolean"
+    },
+    {
+      "name" : "pathPrefix",
+      "type" : "boolean"
+    },
+    {
+      "name" : "query",
+      "type" : "boolean"
+    },
+    {
+      "name" : "reReplaceAll",
+      "type" : "boolean"
+    },
+    {
+      "name" : "safeHtml",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sortByLabel",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stripDomain",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stripPort",
+      "type" : "boolean"
+    },
+    {
+      "name" : "strvalue",
+      "type" : "boolean"
+    },
+    {
+      "name" : "tableLink",
+      "type" : "boolean"
+    },
+    {
+      "name" : "title",
+      "type" : "boolean"
+    },
+    {
+      "name" : "toDuration",
+      "type" : "boolean"
+    },
+    {
+      "name" : "toLower",
+      "type" : "boolean"
+    },
+    {
+      "name" : "toTime",
+      "type" : "boolean"
+    },
+    {
+      "name" : "toUpper",
+      "type" : "boolean"
+    },
+    {
+      "name" : "urlQueryEscape",
+      "type" : "boolean"
+    },
+    {
+      "name" : "value",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_templating_functions",
+  "method" : "GET",
+  "name" : "data.templating_functions",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "templating_functions"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

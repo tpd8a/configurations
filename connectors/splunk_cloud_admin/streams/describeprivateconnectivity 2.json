@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describes the status, customerAccountIds and endpoint name",
+  "format" : "json",
+  "id" : "describeprivateconnectivity",
+  "method" : "GET",
+  "name" : "DescribePrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/private-connectivity\/endpoints",
+  "userParams" : [
+    {
+      "key" : "feature",
+      "label" : "select which feature endpoint tried to retrieve, supported feature: search, inge",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

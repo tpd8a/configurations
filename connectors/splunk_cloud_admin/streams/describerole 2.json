@@ -1,0 +1,27 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "describe a specific role",
+  "format" : "json",
+  "id" : "describerole",
+  "method" : "GET",
+  "name" : "DescribeRole",
+  "path" : "\/{stack}\/adminconfig\/v2\/roles\/{roleName}",
+  "userParams" : [
+    {
+      "key" : "roleName",
+      "label" : "role name",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

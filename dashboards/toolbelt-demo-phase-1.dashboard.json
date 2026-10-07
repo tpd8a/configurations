@@ -1,0 +1,342 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8726f6c951724aa5be3a7f594711b96c",
+      "query" : {
+        "name" : "ds_8726f6c951724aa5be3a7f594711b96c",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT status_text, branch, changed_count, remote_moved, has_baseline FROM construct_repo_status"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_a0f9bbb4364f46b0bca20f1354a0ba17",
+      "query" : {
+        "name" : "ds_a0f9bbb4364f46b0bca20f1354a0ba17",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT name, current FROM construct_repo_branches ORDER BY current DESC, name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_70afde232e3d42d19252f7fafe8a60aa",
+      "query" : {
+        "name" : "ds_70afde232e3d42d19252f7fafe8a60aa",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT name FROM construct_repo_branches ORDER BY current DESC, name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2dab5cbc8e264f5c8e7ff16117dce1a7",
+      "query" : {
+        "name" : "ds_2dab5cbc8e264f5c8e7ff16117dce1a7",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT name, connector, enabled, status_text, repository, has_credential FROM construct_providers"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Scratch demo: repo\/provider tables, command buttons, branch dropdown, underline tab bar.",
+  "id" : "dash_e3b717333a7c439ea12038df5a792dc4",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "action" : {
+                    "command" : {
+                      "args" : {
+                        "branch" : "$value$"
+                      },
+                      "name" : "repo.switch_branch"
+                    }
+                  },
+                  "confirm" : "Switch to branch '$value$'? Local changes will be discarded.",
+                  "type" : "action"
+                }
+              ]
+            }
+          ]
+        },
+        "choice_search" : {
+          "data_source_ref" : "ds_70afde232e3d42d19252f7fafe8a60aa",
+          "field_for_label" : "name",
+          "field_for_value" : "name"
+        },
+        "display_location" : "top",
+        "label" : "Branch",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_107c7c1d3f61437ca5d02c5099eba79b",
+      "token" : "branch"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.commit"
+          }
+        },
+        "display_location" : "top",
+        "label" : "Save changes…",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "square.and.arrow.down",
+        "type" : "button"
+      },
+      "id" : "input_659e1d9b9a17470a8a465e0861fe254b",
+      "token" : "save"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.pull"
+          }
+        },
+        "display_location" : "top",
+        "label" : "Get latest",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.down.circle",
+        "type" : "button"
+      },
+      "id" : "input_054c66030d554beda0aa7b1e48263824",
+      "token" : "pull"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.undo_all"
+          }
+        },
+        "confirm" : "Undo all local changes?",
+        "destructive" : true,
+        "display_location" : "top",
+        "label" : "Undo all",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.uturn.backward.circle",
+        "type" : "button"
+      },
+      "id" : "input_cc5d0925aec64a09a9eb3c650ed6e6c0",
+      "token" : "undo"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "pane" : "remote_config"
+            },
+            "name" : "open.settings"
+          }
+        },
+        "display_location" : "top",
+        "label" : "Open Remote Config",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "gearshape",
+        "type" : "button"
+      },
+      "id" : "input_7419a2ef3fdc41ee9869cb9f3c72922a",
+      "token" : "settings"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "icon" : "arrow.triangle.branch",
+            "label" : "Repo",
+            "value" : "repo"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "icon" : "server.rack",
+            "label" : "Providers",
+            "value" : "providers"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Section",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "style" : "underline",
+        "type" : "tabBar"
+      },
+      "id" : "input_c58622b151734e01b10a69f3e31bbaa1",
+      "token" : "tab"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Toolbelt demo (Phase 1)",
+  "provenance" : {
+    "imported_at" : "2026-10-07T09:19:50Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_a57effcde80b449e889e698f01cd6a44",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0f261949cec54cfaa78e191594549c46"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_37412a3ffe28431eb4e4f5498b3e5591",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "depends" : [
+                "tab=repo"
+              ]
+            }
+          },
+          "title" : "Repo status",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8726f6c951724aa5be3a7f594711b96c",
+              "id" : "viz_0f261949cec54cfaa78e191594549c46",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "tab=repo"
+                  ]
+                }
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_786b6e5ba4a84258af46962e0e5a05b9"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1bdc69483c0844499b0222d5d4e68f50",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "depends" : [
+                "tab=repo"
+              ]
+            }
+          },
+          "title" : "Branches",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_a0f9bbb4364f46b0bca20f1354a0ba17",
+              "id" : "viz_786b6e5ba4a84258af46962e0e5a05b9",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "tab=repo"
+                  ]
+                }
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_21f2d87dafd64edd8581ccbf86524952"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1d4431e17edf414baec7a3fe65c29c0b",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "tab=providers"
+              ]
+            }
+          },
+          "title" : "Providers",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_2dab5cbc8e264f5c8e7ff16117dce1a7",
+              "id" : "viz_21f2d87dafd64edd8581ccbf86524952",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "tab=providers"
+                  ]
+                }
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Toolbelt"
+    }
+  ]
+}

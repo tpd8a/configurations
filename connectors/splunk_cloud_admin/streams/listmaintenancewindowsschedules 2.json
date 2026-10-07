@@ -1,0 +1,48 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "List all scheduled maintenance windows schedules on the stack. The default time range is 30 days. If both fromTime and toTime is empty, the default range is +30 days from current time. If only toTime is given, the default range is -30 days from toTime.",
+  "format" : "json",
+  "id" : "listmaintenancewindowsschedules",
+  "method" : "GET",
+  "name" : "ListMaintenanceWindowsSchedules",
+  "path" : "\/{stack}\/adminconfig\/v2\/maintenance-windows\/schedules",
+  "userParams" : [
+    {
+      "key" : "count",
+      "label" : "The maximum number of results to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fromTime",
+      "label" : "The earliest time to return results from. Format is expected to be YYYY-MM-DD or",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "nextLink",
+      "label" : "The key for the next page of the result set. A nextLink with the value null indi",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "toTime",
+      "label" : "The latest time to return results from. Format is expected to be YYYY-MM-DD or i",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

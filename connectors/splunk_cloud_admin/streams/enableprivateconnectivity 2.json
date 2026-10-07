@@ -1,0 +1,25 @@
+{
+  "bodyTemplate" : "{\n  \"customerAccountIds\": [\n    {}\n  ],\n  \"feature\": [\n    {}\n  ]\n}",
+  "columns" : [
+
+  ],
+  "description" : "enables private connectivity and adds provided customerAccountIds to the private network",
+  "format" : "json",
+  "id" : "enableprivateconnectivity",
+  "method" : "POST",
+  "name" : "EnablePrivateConnectivity",
+  "path" : "\/{stack}\/adminconfig\/v2\/private-connectivity\/endpoints",
+  "reviewFields" : [
+    "customerAccountIds",
+    "feature"
+  ],
+  "userParams" : [
+    {
+      "key" : "stack",
+      "label" : "The name of the stack.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}
