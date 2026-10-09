@@ -1,0 +1,246 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a51",
+      "query" : {
+        "name" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a51",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_fields WHERE provider = '81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA' AND stream = 'ds_query'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a52",
+      "query" : {
+        "name" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a52",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '$form.__complete$' AS complete, '$form.__submitted$' AS submitted, '$form.__stream$' AS stream, '$form.__args$' AS args"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a59",
+      "query" : {
+        "description" : "Runs Grafana API ds_query with the Form's args (on Run).",
+        "name" : "Results",
+        "refresh_seconds" : 0,
+        "run_when" : "form.__submitted",
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_rows(provider := '81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA', stream := 'ds_query', args := '$form.__args$')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b1a2c3d4e5f60718293a4b5c6d7e8f01",
+      "query" : {
+        "name" : "Binance klines fields",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_fields WHERE provider = '6EA80C8F-F8E3-47E3-9253-F92DA5187E94' AND stream = 'klines'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b1a2c3d4e5f60718293a4b5c6d7e8f02",
+      "query" : {
+        "description" : "Runs Binance Spot klines with the bn. Form's args (on Run).",
+        "name" : "Binance klines results",
+        "refresh_seconds" : 0,
+        "run_when" : "bn.__submitted",
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_rows(provider := '6EA80C8F-F8E3-47E3-9253-F92DA5187E94', stream := 'klines', args := '$bn.__args$')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Scratch: Form viz over construct_stream_fields (Grafana API ds_query) → Run → results table via construct_stream_rows.",
+  "id" : "dash_8757f2c1fb1a4dd1a6d321e207c1ed32",
+  "inputs" : [
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a53",
+      "token" : "time"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Form demo (Phase 2)",
+  "provenance" : {
+    "imported_at" : "2026-10-07T12:00:00Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a54",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a56"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a55",
+          "layout" : {
+            "panel_width" : 7
+          },
+          "title" : "ds_query form",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a51",
+              "id" : "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a56",
+              "layer" : 1,
+              "options" : {
+                "submit" : "button",
+                "submit_label" : "Run"
+              },
+              "type" : "form",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a58"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a57",
+          "layout" : {
+            "panel_width" : 5
+          },
+          "title" : "Published tokens",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a52",
+              "id" : "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a58",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Form"
+    },
+    {
+      "id" : "row_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a60",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a62"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a61",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Results",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a59",
+              "id" : "viz_f0f0a1b2c3d44e5f8a9b0c1d2e3f4a62",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Results"
+    },
+    {
+      "id" : "row_b1a2c3d4e5f60718293a4b5c6d7e8f03",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b1a2c3d4e5f60718293a4b5c6d7e8f05"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b1a2c3d4e5f60718293a4b5c6d7e8f04",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "title" : "klines form",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_b1a2c3d4e5f60718293a4b5c6d7e8f01",
+              "id" : "viz_b1a2c3d4e5f60718293a4b5c6d7e8f05",
+              "layer" : 1,
+              "options" : {
+                "submit" : "button",
+                "submit_label" : "Run",
+                "token_prefix" : "bn."
+              },
+              "type" : "form",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b1a2c3d4e5f60718293a4b5c6d7e8f07"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b1a2c3d4e5f60718293a4b5c6d7e8f06",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "title" : "klines results",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_b1a2c3d4e5f60718293a4b5c6d7e8f02",
+              "id" : "viz_b1a2c3d4e5f60718293a4b5c6d7e8f07",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Binance (GET stream)"
+    }
+  ]
+}

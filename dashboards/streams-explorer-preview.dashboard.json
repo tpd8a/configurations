@@ -1,0 +1,194 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b01",
+      "query" : {
+        "name" : "Providers",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT id AS value, name AS label FROM construct_providers WHERE enabled = 1 ORDER BY name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b02",
+      "query" : {
+        "name" : "Streams",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_streams WHERE provider = '$provider_id$' AND listed = 1 ORDER BY entry DESC, name COLLATE NOCASE"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b04",
+      "query" : {
+        "name" : "Stream fields",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_fields WHERE provider = '$provider_id$' AND stream = '$stream$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b05",
+      "query" : {
+        "description" : "Runs the selected stream with the Form's args (on Run).",
+        "name" : "Results",
+        "refresh_seconds" : 0,
+        "run_when" : "form.__submitted",
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_rows(provider := '$provider_id$', stream := '$stream$', args := '$form.__args$')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Preview of the provider page Streams tab as an ordinary dashboard: streams List → Form → Run → results.",
+  "id" : "dash_64880b4404344faf9e7985028c6e7b88",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "stream",
+                  "type" : "unset"
+                }
+              ]
+            }
+          ]
+        },
+        "choice_search" : {
+          "data_source_ref" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b01",
+          "field_for_label" : "label",
+          "field_for_value" : "value"
+        },
+        "default" : "6EA80C8F-F8E3-47E3-9253-F92DA5187E94",
+        "display_location" : "top",
+        "label" : "Provider",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b10",
+      "token" : "provider_id"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Streams explorer (preview)",
+  "provenance" : {
+    "imported_at" : "2026-10-08T07:53:38Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b20",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b22"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b21",
+          "layout" : {
+            "height" : 760,
+            "panel_width" : 5
+          },
+          "title" : "Streams",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b02",
+              "id" : "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b22",
+              "layer" : 1,
+              "options" : {
+                "group_by" : "section",
+                "page_size" : "200",
+                "preset" : "endpoint",
+                "selection" : "single",
+                "selection_token" : "stream",
+                "show_search" : "true"
+              },
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b32",
+                "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b33",
+                "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b34"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b31",
+          "layout" : {
+            "height" : 760,
+            "panel_width" : 7,
+            "visibility" : {
+              "depends" : [
+                "stream"
+              ]
+            }
+          },
+          "title" : "Stream",
+          "visualizations" : [
+            {
+              "id" : "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b32",
+              "layer" : 1,
+              "options" : {
+                "content" : "## $stream.name$\n\n`$stream.method$ $stream.path$`\n\n$stream.description$",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b04",
+              "id" : "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b33",
+              "layer" : 1,
+              "options" : {
+                "submit" : "button",
+                "submit_label" : "Run",
+                "token_prefix" : "form."
+              },
+              "type" : "form",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b05",
+              "id" : "viz_5e0a1c2b3d4e4f5a8b9c0d1e2f3a4b34",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Streams"
+    }
+  ]
+}

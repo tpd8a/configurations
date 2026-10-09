@@ -144,6 +144,11 @@
   {
     "base_url" : "http:\/\/mini.local:3000",
     "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/-\/healthy"
+    },
     "id" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
     "name" : "Grafana API",
     "options" : {

@@ -1,0 +1,1534 @@
+{
+  "absolute_geometry_version" : 1,
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000040",
+      "query" : {
+        "name" : "Providers",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT id AS value, name AS label FROM construct_providers ORDER BY name COLLATE NOCASE"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000041",
+      "query" : {
+        "name" : "Provider header",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '## ' || name || char(10) || char(10) || connector || COALESCE(' · version ' || connector_version, '') || '  ·  ' || status_text AS md FROM construct_providers WHERE id = '$provider_id$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000042",
+      "query" : {
+        "name" : "Provider is the repository",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 1 AS repository FROM construct_providers WHERE id = '$provider_id$' AND repository = 1"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000043",
+      "query" : {
+        "name" : "Provider tabs",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT value, label, icon FROM (SELECT 1 AS ord, 'files' AS value, 'Files' AS label, 'doc.on.doc' AS icon FROM construct_providers WHERE id = '$provider_id$' AND repository = 1 UNION ALL SELECT 2 AS ord, 'streams' AS value, 'Streams' AS label, 'list.bullet.rectangle' AS icon FROM construct_providers WHERE id = '$provider_id$' AND EXISTS (SELECT 1 FROM construct_streams WHERE provider = '$provider_id$') UNION ALL SELECT 3 AS ord, 'history' AS value, 'History' AS label, 'clock.arrow.circlepath' AS icon FROM construct_providers WHERE id = '$provider_id$' AND repository = 1 UNION ALL SELECT 4 AS ord, 'authentication' AS value, 'Authentication' AS label, 'key' AS icon FROM construct_providers WHERE id = '$provider_id$' UNION ALL SELECT 5 AS ord, 'settings' AS value, 'Settings' AS label, 'gearshape' AS icon FROM construct_providers WHERE id = '$provider_id$') ORDER BY ord"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000044",
+      "query" : {
+        "name" : "Provider enabled",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT CASE WHEN enabled = 1 THEN 'true' ELSE 'false' END AS value FROM construct_providers WHERE id = '$provider_id$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000045",
+      "query" : {
+        "name" : "Repository status",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '**' || branch || '**  ·  ' || status_text AS md FROM construct_repo_status"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000046",
+      "query" : {
+        "name" : "Branches",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT name FROM construct_repo_branches ORDER BY current DESC, name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000047",
+      "query" : {
+        "name" : "Repository has changes",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT changed_count FROM construct_repo_status WHERE changed_count > 0 AND first_connect = ''"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000048",
+      "query" : {
+        "name" : "Files",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT *, open_kind <> 'none' AS openable, state IN ('localChanges', 'untracked', 'deletedLocally') AS committable, CASE state WHEN 'localChanges' THEN 'Modified' WHEN 'untracked' THEN 'New' WHEN 'deletedLocally' THEN 'Deleted' WHEN 'stale' THEN 'Behind' ELSE NULL END AS state_label FROM construct_repo_files"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000049",
+      "query" : {
+        "name" : "File history",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_repo_history WHERE path = '$row.path$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b000000004a",
+      "query" : {
+        "name" : "History",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT *, by_line || ' · ' || COALESCE(device || ' · ', '') || strftime('%Y-%m-%d %H:%M', date, 'unixepoch') || ' · ' || short_sha AS meta FROM construct_repo_history"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b000000004b",
+      "query" : {
+        "name" : "Provider settings",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '**Endpoint**  ' || COALESCE(endpoint, '—') || char(10) || char(10) || '**Connector**  ' || connector || COALESCE(' · version ' || connector_version, '') || char(10) || char(10) || '**Enabled**  ' || CASE WHEN enabled = 1 THEN 'Yes' ELSE 'No' END || char(10) || char(10) || '**Status**  ' || status_text || char(10) || char(10) || '_Provider settings are edited in Settings → Providers._' AS md FROM construct_providers WHERE id = '$provider_id$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b000000004c",
+      "query" : {
+        "name" : "Provider authentication",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT '**Auth type**  ' || auth_type || char(10) || char(10) || '**Credential**  ' || CASE WHEN has_credential = 1 THEN '✓ present on this device' ELSE '✗ missing' END || char(10) || char(10) || '_Credentials are edited in Settings → Providers._' AS md FROM construct_providers WHERE id = '$provider_id$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000060",
+      "query" : {
+        "name" : "Repository accepts writes",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 1 AS writable FROM construct_repo_status WHERE first_connect = ''"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000061",
+      "query" : {
+        "name" : "First connect notice",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT CASE first_connect WHEN 'pending' THEN '**Not synced — choose how to connect.** Save, Get latest and Undo all are off until you choose.' ELSE '**Couldn''t check the repository.** Save, Get latest and Undo all are off until it can be checked.' END AS md FROM construct_repo_status WHERE first_connect <> ''"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000062",
+      "query" : {
+        "name" : "First connect pending",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 1 AS state FROM construct_repo_status WHERE first_connect = 'pending'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5a6e0000d0c0000000000b0000000063",
+      "query" : {
+        "name" : "First connect check failed",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 1 AS state FROM construct_repo_status WHERE first_connect = 'check_failed'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000047",
+      "query" : {
+        "name" : "Browse flows",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT *, 'by ' || COALESCE(parent_name, parent) AS browse_hint FROM construct_streams WHERE provider = '$provider_id$' AND browse_flow = 1 ORDER BY name COLLATE NOCASE"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000048",
+      "query" : {
+        "description" : "The selected browse flow's parent rows (the picker's choices).",
+        "name" : "Browse parents",
+        "refresh_seconds" : 0,
+        "run_when" : [
+          "browse",
+          "browse.parent_key=~\\A(?!(?i:AND|ARRAY|AS|ASC|BETWEEN|BY|CROSS|DESC|DISTINCT|FALSE|FROM|GROUP|HAVING|IN|INNER|IS|JOIN|LATERAL|LEFT|LIKE|LIMIT|NOT|NULL|OFFSET|ON|OR|ORDER|RIGHT|SELECT|TRUE|WHERE)\\z)[A-Za-z_][A-Za-z0-9_]*\\z",
+          "browse.parent_label_field=~\\A(?!(?i:AND|ARRAY|AS|ASC|BETWEEN|BY|CROSS|DESC|DISTINCT|FALSE|FROM|GROUP|HAVING|IN|INNER|IS|JOIN|LATERAL|LEFT|LIKE|LIMIT|NOT|NULL|OFFSET|ON|OR|ORDER|RIGHT|SELECT|TRUE|WHERE)\\z)[A-Za-z_][A-Za-z0-9_]*\\z"
+        ],
+        "sql" : {
+          "query" : "SELECT '$browse.parent_root_value$' AS value, '$browse.parent_root_label$' AS label WHERE '$browse.parent_root_value$' <> '' UNION ALL SELECT $browse.parent_key$ AS value, coalesce($browse.parent_label_field$, $browse.parent_key$) AS label FROM construct_stream_rows(provider := '$provider_id$', stream := '$browse.parent$', args := '{}')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000049",
+      "query" : {
+        "description" : "The selected browse flow's rows for the picked parent.",
+        "name" : "Browse items",
+        "refresh_seconds" : 0,
+        "run_when" : [
+          "browse",
+          "browse_parent"
+        ],
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_rows(provider := '$provider_id$', stream := '$browse.id$', param := '$browse.child_param$', value := '$browse_parent$')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000040",
+      "query" : {
+        "name" : "Streams",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_streams WHERE provider = '$provider_id$' AND listed = 1 ORDER BY entry DESC, name COLLATE NOCASE"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000042",
+      "query" : {
+        "name" : "Stream opens dashboards",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'Rows of this stream open as dashboards — select a result row, then **Open**.' AS md FROM construct_streams WHERE provider = '$provider_id$' AND id = '$stream$' AND open_dashboard = 1"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000043",
+      "query" : {
+        "name" : "Stream fields",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_fields WHERE provider = '$provider_id$' AND stream = '$stream$'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000044",
+      "query" : {
+        "description" : "Runs the selected stream with the Form's args (on Run).",
+        "name" : "Results",
+        "refresh_seconds" : 0,
+        "run_when" : "form.__submitted",
+        "sql" : {
+          "query" : "SELECT * FROM construct_stream_rows(provider := '$provider_id$', stream := '$stream$', args := '$form.__args$')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_5ec7105e0d5c0000000000a000000045",
+      "query" : {
+        "name" : "Child streams",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM construct_streams WHERE provider = '$provider_id$' AND parent = '$stream$' ORDER BY name COLLATE NOCASE"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "The provider page for every provider — driven by $provider_id$. Edit it like any dashboard; “Use built-in page” switches back.",
+  "id" : "dash_5a6e0000d0c0000000000b0000000001",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "stream",
+                  "type" : "unset"
+                },
+                {
+                  "token" : "browse",
+                  "type" : "unset"
+                },
+                {
+                  "token" : "browse_parent",
+                  "type" : "unset"
+                },
+                {
+                  "token" : "provider_tab",
+                  "type" : "unset"
+                }
+              ]
+            }
+          ]
+        },
+        "choice_search" : {
+          "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000040",
+          "field_for_label" : "label",
+          "field_for_value" : "value"
+        },
+        "display_location" : "inline",
+        "label" : "Provider",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000030"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown",
+        "visibility" : {
+          "rejects" : [
+            "provider_page_host"
+          ]
+        }
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000050",
+      "token" : "provider_id"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "provider" : "$provider_id$"
+            },
+            "name" : "provider.test"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Test connection",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000030"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "bolt.horizontal.circle",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000051",
+      "token" : "provider_page_test"
+    },
+    {
+      "config" : {
+        "bind_value" : true,
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "action" : {
+                    "command" : {
+                      "args" : {
+                        "enabled" : "$value$",
+                        "provider" : "$provider_id$"
+                      },
+                      "name" : "provider.set_enabled"
+                    }
+                  },
+                  "type" : "action"
+                }
+              ]
+            }
+          ]
+        },
+        "choice_search" : {
+          "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000044",
+          "field_for_label" : "value",
+          "field_for_value" : "value"
+        },
+        "display_location" : "inline",
+        "label" : "Enabled",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000030"
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000052",
+      "token" : "provider_enabled"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "provider" : "$provider_id$"
+            },
+            "name" : "provider.refresh"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Refresh",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000030"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.clockwise",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000053",
+      "token" : "provider_page_refresh"
+    },
+    {
+      "config" : {
+        "bind_value" : true,
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "action" : {
+                    "command" : {
+                      "args" : {
+                        "branch" : "$value$"
+                      },
+                      "name" : "repo.switch_branch"
+                    }
+                  },
+                  "confirm" : "Switch to branch “$value$”? This loads that branch and replaces your current dashboards with its saved content; unsaved changes are lost.",
+                  "type" : "action"
+                }
+              ]
+            }
+          ]
+        },
+        "choice_search" : {
+          "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000046",
+          "field_for_label" : "name",
+          "field_for_value" : "name"
+        },
+        "display_location" : "inline",
+        "label" : "Branch",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000054",
+      "token" : "repo_branch"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.commit"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "ds_5a6e0000d0c0000000000b0000000060.__state.status=done",
+        "label" : "Save changes…",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "square.and.arrow.up",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000055",
+      "token" : "provider_page_repo_save"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.pull"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "ds_5a6e0000d0c0000000000b0000000060.__state.status=done",
+        "label" : "Get latest",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.down.circle",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000056",
+      "token" : "provider_page_repo_pull"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.undo_all"
+          }
+        },
+        "confirm" : "Undo all local changes? Discards every uncommitted change in the config repository and restores the last committed version.",
+        "destructive" : true,
+        "display_location" : "inline",
+        "enabled_when" : "ds_5a6e0000d0c0000000000b0000000047.__state.status=done",
+        "label" : "Undo all",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.uturn.backward",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000057",
+      "token" : "provider_page_repo_undo"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "New branch name",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "text"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000058",
+      "token" : "repo_new_branch"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "name" : "$repo_new_branch$"
+            },
+            "name" : "repo.create_branch"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "repo_new_branch",
+        "label" : "Duplicate to new branch…",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "plus",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b0000000059",
+      "token" : "provider_page_repo_duplicate"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.reload_branch"
+          }
+        },
+        "confirm" : "Reload this branch? This replaces your local dashboards with the branch's saved version. Any unsaved changes will be lost.",
+        "destructive" : true,
+        "display_location" : "inline",
+        "enabled_when" : "ds_5a6e0000d0c0000000000b0000000060.__state.status=done",
+        "label" : "Reload this branch…",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000031"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.clockwise",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005a",
+      "token" : "provider_page_repo_reload"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.choose_connect"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Choose…",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000037"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "link.badge.plus",
+        "type" : "button",
+        "visibility" : {
+          "depends" : [
+            "ds_5a6e0000d0c0000000000b0000000062.__state.status=done"
+          ]
+        }
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005e",
+      "token" : "provider_page_repo_choose_connect"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "name" : "repo.recheck_connect"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Retry",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000037"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.clockwise",
+        "type" : "button",
+        "visibility" : {
+          "depends" : [
+            "ds_5a6e0000d0c0000000000b0000000063.__state.status=done"
+          ]
+        }
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005f",
+      "token" : "provider_page_repo_recheck_connect"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000043",
+          "field_for_icon" : "icon",
+          "field_for_label" : "label",
+          "field_for_value" : "value"
+        },
+        "display_location" : "inline",
+        "label" : "Section",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000032"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : "underline",
+        "type" : "tabBar"
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005b",
+      "token" : "provider_tab"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "pane" : "providers",
+              "provider" : "$provider_id$"
+            },
+            "name" : "open.settings"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Open in Settings",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000035"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "gearshape",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005c",
+      "token" : "provider_page_settings_open"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "pane" : "providers",
+              "provider" : "$provider_id$"
+            },
+            "name" : "open.settings"
+          }
+        },
+        "display_location" : "inline",
+        "label" : "Open in Settings",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5a6e0000d0c0000000000b0000000036"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "gearshape",
+        "type" : "button"
+      },
+      "id" : "input_5a6e0000d0c0000000000b000000005d",
+      "token" : "provider_page_auth_open"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000048",
+          "field_for_label" : "label",
+          "field_for_value" : "value"
+        },
+        "display_location" : "inline",
+        "label" : "Browse in",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5ec7105e0d5c0000000000a000000037"
+          }
+        },
+        "reseed_when_missing" : true,
+        "search_when_changed" : true,
+        "type" : "dropdown",
+        "visibility" : {
+          "depends" : [
+            "browse"
+          ]
+        }
+      },
+      "id" : "input_5ec7105e0d5c0000000000a000000054",
+      "token" : "browse_parent"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "args" : "$form.__args$",
+              "provider" : "$provider_id$",
+              "stream" : "$stream$"
+            },
+            "name" : "open.query_constructor"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "form.__args",
+        "label" : "Shape in Queries",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5ec7105e0d5c0000000000a000000034"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "hammer",
+        "type" : "button"
+      },
+      "id" : "input_5ec7105e0d5c0000000000a000000050",
+      "token" : "streams_shape_in_queries"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "args" : "$form.__args$",
+              "provider" : "$provider_id$",
+              "stream" : "$stream$"
+            },
+            "name" : "stream.promote"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "form.__args",
+        "label" : "Promote",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_5ec7105e0d5c0000000000a000000034"
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.up.forward.app",
+        "type" : "button"
+      },
+      "id" : "input_5ec7105e0d5c0000000000a000000051",
+      "token" : "streams_promote"
+    },
+    {
+      "config" : {
+        "action" : {
+          "command" : {
+            "args" : {
+              "provider" : "$provider_id$",
+              "row" : "$form.__row$",
+              "stream" : "$stream$"
+            },
+            "name" : "stream.open_row"
+          }
+        },
+        "display_location" : "inline",
+        "enabled_when" : "form.__row",
+        "label" : "Open",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 72,
+            "w" : 216,
+            "x" : 1008,
+            "y" : 216
+          }
+        },
+        "search_when_changed" : false,
+        "symbol" : "arrow.up.right.square",
+        "type" : "button",
+        "visibility" : {
+          "depends" : [
+            "ds_5ec7105e0d5c0000000000a000000042.__state.status=done"
+          ]
+        }
+      },
+      "id" : "input_5ec7105e0d5c0000000000a000000052",
+      "token" : "streams_open_row"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Provider page",
+  "provenance" : {
+    "imported_at" : "2026-10-09T07:50:34Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000010",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000030"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000020",
+          "layout" : {
+            "absolute_h" : 120,
+            "absolute_w" : 432,
+            "absolute_x" : 984,
+            "absolute_y" : 0,
+            "height" : 120,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000041",
+              "id" : "viz_5a6e0000d0c0000000000b0000000030",
+              "layer" : 1,
+              "options" : {
+                "content_field" : "md",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000011",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "ds_5a6e0000d0c0000000000b0000000042.__state.status=done"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000031",
+                "viz_5a6e0000d0c0000000000b0000000037"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000021",
+          "layout" : {
+            "absolute_h" : 140,
+            "absolute_w" : 288,
+            "absolute_x" : 696,
+            "absolute_y" : 698,
+            "height" : 140,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "ds_5a6e0000d0c0000000000b0000000042.__state.status=done",
+                "provider_tab=files"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000045",
+              "id" : "viz_5a6e0000d0c0000000000b0000000031",
+              "layer" : 1,
+              "options" : {
+                "content_field" : "md",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000061",
+              "id" : "viz_5a6e0000d0c0000000000b0000000037",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "ds_5a6e0000d0c0000000000b0000000061.__state.status=done"
+                  ]
+                }
+              },
+              "options" : {
+                "content_field" : "md",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000012",
+      "panels" : [
+
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000013",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "provider_tab=files"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000033"
+              ],
+              "width" : 12
+            }
+          ],
+          "content_fill" : true,
+          "id" : "panel_5a6e0000d0c0000000000b0000000023",
+          "layout" : {
+            "absolute_h" : 600,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 600,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=files"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Files"
+              },
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000048",
+              "id" : "viz_5a6e0000d0c0000000000b0000000033",
+              "layer" : 1,
+              "options" : {
+                "badge_fields" : "state_label",
+                "detail_datasource" : "ds_5a6e0000d0c0000000000b0000000049",
+                "detail_height" : "320",
+                "detail_options" : "{\"row_actions\":[{\"confirm\":\"Restore “$parent.name$” to $row.short_sha$ — $row.subject$? It shows as changed until you save it; an open dashboard reloads.\",\"destructive\":true,\"id\":\"restore\",\"label\":\"Restore this version\",\"symbol\":\"clock.arrow.circlepath\"}],\"subtitle_field\":\"by_line\",\"title_field\":\"subject\",\"trailing_field\":\"short_sha\"}",
+                "expansion" : "single",
+                "filter_toggle_field" : "changed",
+                "filter_toggle_label" : "Changed only",
+                "filter_toggles" : "[{\"field\":\"deleted\",\"label\":\"Hide deleted\",\"mode\":\"hide\"}]",
+                "group_badge_field" : "changed",
+                "group_by" : "kind_title,subgroup_title",
+                "icon_field" : "state",
+                "icon_rules" : "[{\"color\":\"warning\",\"match\":{\"exact\":\"localChanges\"},\"symbol\":\"arrow.up.circle.fill\"},{\"color\":\"warning\",\"match\":{\"exact\":\"untracked\"},\"symbol\":\"arrow.up.circle.fill\"},{\"color\":\"warning\",\"match\":{\"exact\":\"deletedLocally\"},\"symbol\":\"minus.circle.fill\"},{\"color\":\"accent\",\"match\":{\"exact\":\"stale\"},\"symbol\":\"arrow.down.circle.fill\"},{\"color\":\"success\",\"match\":{\"exact\":\"upToDate\"},\"symbol\":\"checkmark.circle.fill\"},{\"color\":\"warning\",\"match\":{\"exact\":\"Modified\"}},{\"color\":\"warning\",\"match\":{\"exact\":\"New\"}},{\"color\":\"warning\",\"match\":{\"exact\":\"Deleted\"}},{\"color\":\"accent\",\"match\":{\"exact\":\"Behind\"}}]",
+                "page_size" : "500",
+                "row_actions" : "[{\"enabled_field\":\"openable\",\"id\":\"open\",\"label\":\"Open\",\"symbol\":\"arrow.up.forward.app\"},{\"enabled_field\":\"committable\",\"id\":\"save_file\",\"label\":\"Save this file…\",\"symbol\":\"square.and.arrow.up\"},{\"confirm\":\"Undo changes to “$row.name$”? Discards its uncommitted changes and restores the last committed version.\",\"destructive\":true,\"enabled_field\":\"undoable\",\"id\":\"undo\",\"label\":\"Undo changes\",\"symbol\":\"arrow.uturn.backward\"}]",
+                "selection" : "multiple",
+                "selection_field" : "path",
+                "selection_token" : "__construct_repo_files",
+                "show_search" : "true",
+                "subtitle_field" : "path",
+                "title_field" : "name"
+              },
+              "title" : "Files",
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000014",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "provider_tab=history"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000034"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000024",
+          "layout" : {
+            "absolute_h" : 600,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 600,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=history"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Commits"
+              },
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b000000004a",
+              "id" : "viz_5a6e0000d0c0000000000b0000000034",
+              "layer" : 1,
+              "options" : {
+                "show_search" : "true",
+                "subtitle_field" : "meta",
+                "title_field" : "subject"
+              },
+              "title" : "Commits",
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5ec7105e0d5c0000000000a000000012",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "ds_5ec7105e0d5c0000000000a000000047.__state.status=done",
+            "provider_tab=streams"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5ec7105e0d5c0000000000a000000036"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5ec7105e0d5c0000000000a000000023",
+          "layout" : {
+            "absolute_h" : 420,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 420,
+            "panel_width" : 4,
+            "visibility" : {
+              "depends" : [
+                "ds_5ec7105e0d5c0000000000a000000047.__state.status=done",
+                "provider_tab=streams"
+              ]
+            }
+          },
+          "title" : "Browse",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000047",
+              "id" : "viz_5ec7105e0d5c0000000000a000000036",
+              "layer" : 1,
+              "options" : {
+                "page_size" : "50",
+                "selection" : "single",
+                "selection_clears" : "browse_parent",
+                "selection_field" : "id",
+                "selection_token" : "browse",
+                "subtitle_field" : "browse_hint",
+                "title_field" : "name"
+              },
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5ec7105e0d5c0000000000a000000037"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5ec7105e0d5c0000000000a000000024",
+          "layout" : {
+            "absolute_h" : 420,
+            "absolute_w" : 648,
+            "absolute_x" : 336,
+            "absolute_y" : 96,
+            "height" : 420,
+            "panel_width" : 8,
+            "visibility" : {
+              "depends" : [
+                "ds_5ec7105e0d5c0000000000a000000047.__state.status=done",
+                "provider_tab=streams"
+              ]
+            }
+          },
+          "title" : "Pick one, then Open",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000049",
+              "id" : "viz_5ec7105e0d5c0000000000a000000037",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "browse"
+                  ]
+                }
+              },
+              "options" : {
+                "expansion" : "single",
+                "page_size" : "200",
+                "row_actions" : "[{\"command\":{\"args\":{\"provider\":\"$provider_id$\",\"row\":\"$row.__json$\",\"stream\":\"$browse.id$\"},\"name\":\"stream.open_row\"},\"id\":\"open\",\"label\":\"Open\",\"symbol\":\"arrow.up.right.square\"}]",
+                "show_search" : "true",
+                "subtitle_field" : "name",
+                "title_field" : "label,title,name"
+              },
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5ec7105e0d5c0000000000a000000010",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "provider_tab=streams"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5ec7105e0d5c0000000000a000000030"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5ec7105e0d5c0000000000a000000020",
+          "layout" : {
+            "absolute_h" : 760,
+            "absolute_w" : 312,
+            "absolute_x" : 0,
+            "absolute_y" : 544,
+            "height" : 760,
+            "panel_width" : 5,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=streams"
+              ]
+            }
+          },
+          "title" : "Streams",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Streams"
+              },
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000040",
+              "id" : "viz_5ec7105e0d5c0000000000a000000030",
+              "layer" : 1,
+              "options" : {
+                "group_by" : "section",
+                "page_size" : "200",
+                "preset" : "endpoint",
+                "selection" : "single",
+                "selection_token" : "stream",
+                "show_search" : "true"
+              },
+              "title" : "Streams",
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5ec7105e0d5c0000000000a000000033",
+                "viz_5ec7105e0d5c0000000000a000000034"
+              ],
+              "width" : 12
+            }
+          ],
+          "content_fill" : true,
+          "id" : "panel_5ec7105e0d5c0000000000a000000021",
+          "layout" : {
+            "absolute_h" : 760,
+            "absolute_w" : 648,
+            "absolute_x" : 336,
+            "absolute_y" : 544,
+            "height" : 760,
+            "panel_width" : 7,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=streams"
+              ]
+            }
+          },
+          "title" : "Stream details",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000043",
+              "id" : "viz_5ec7105e0d5c0000000000a000000033",
+              "layer" : 1,
+              "options" : {
+                "scope_tokens" : "[\"provider_id\",\"stream\"]",
+                "submit" : "button",
+                "submit_label" : "Run",
+                "token_prefix" : "form."
+              },
+              "type" : "form",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000044",
+              "id" : "viz_5ec7105e0d5c0000000000a000000034",
+              "layer" : 1,
+              "options" : {
+                "selection_token" : "form.__row"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000032"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000022",
+          "layout" : {
+            "absolute_h" : 56,
+            "absolute_w" : 984,
+            "absolute_x" : 0,
+            "absolute_y" : 12,
+            "height" : 56,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b0000000043",
+              "id" : "viz_5a6e0000d0c0000000000b0000000032",
+              "layer" : 1,
+              "options" : {
+                "content" : " ",
+                "render_mode" : "raw"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5ec7105e0d5c0000000000a000000011",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "ds_5ec7105e0d5c0000000000a000000045.__state.status=done",
+            "provider_tab=streams"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5ec7105e0d5c0000000000a000000035"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5ec7105e0d5c0000000000a000000022",
+          "layout" : {
+            "absolute_h" : 280,
+            "absolute_w" : 312,
+            "absolute_x" : 984,
+            "absolute_y" : 388,
+            "height" : 280,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "ds_5ec7105e0d5c0000000000a000000045.__state.status=done",
+                "provider_tab=streams"
+              ]
+            }
+          },
+          "title" : "Child streams — select a result row, then open one",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Child Streams"
+              },
+              "data_source_ref" : "ds_5ec7105e0d5c0000000000a000000045",
+              "id" : "viz_5ec7105e0d5c0000000000a000000035",
+              "layer" : 1,
+              "options" : {
+                "expansion" : "single",
+                "preset" : "endpoint",
+                "row_actions" : "[{\"command\":{\"args\":{\"parent_row\":\"$form.__row$\",\"provider\":\"$provider_id$\",\"stream\":\"$row.id$\"},\"name\":\"streams.drill\"},\"id\":\"drill\",\"label\":\"Open for selected row\",\"symbol\":\"chevron.right.circle\"}]"
+              },
+              "title" : "Child Streams",
+              "type" : "list",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000015",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "provider_tab=settings"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000035"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000025",
+          "layout" : {
+            "absolute_h" : 240,
+            "absolute_w" : 984,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 240,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=settings"
+              ]
+            }
+          },
+          "title" : "Settings",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b000000004b",
+              "id" : "viz_5a6e0000d0c0000000000b0000000035",
+              "layer" : 1,
+              "options" : {
+                "content_field" : "md",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_5a6e0000d0c0000000000b0000000016",
+      "layout" : {
+        "visibility" : {
+          "depends" : [
+            "provider_tab=authentication"
+          ]
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a6e0000d0c0000000000b0000000036"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a6e0000d0c0000000000b0000000026",
+          "layout" : {
+            "absolute_h" : 240,
+            "absolute_w" : 984,
+            "absolute_x" : 0,
+            "absolute_y" : 96,
+            "height" : 240,
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "provider_tab=authentication"
+              ]
+            }
+          },
+          "title" : "Authentication",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_5a6e0000d0c0000000000b000000004c",
+              "id" : "viz_5a6e0000d0c0000000000b0000000036",
+              "layer" : 1,
+              "options" : {
+                "content_field" : "md",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

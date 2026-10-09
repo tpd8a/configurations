@@ -1,7 +1,51 @@
 {
+  "absolute_geometry_version" : 1,
   "config_version" : 2,
   "data_sources" : [
-
+    {
+      "id" : "ds_ffceb0c0b1d4403295fa98601baaf5c1",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.node_load15_lasthour_5m"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_97b2ca79397442929eb3911432c5e8ce",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.node_load15_now"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_fee55e19899547f7baa7f4dcd387c05a",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.prom_search_labels_like_name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9b05a5e6c93e41b19cb37476b2714254",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.node_load15_lasthour_5m"
+        },
+        "type" : "ds.sql"
+      }
+    }
   ],
   "description" : "Live, runnable federated-SQL examples over the Prometheus connector (node_load). Derived tables, multi-series wide JOIN, long format, instant. Time bounds are a fixed example window — swap for your own epoch-seconds range.",
   "id" : "dash_1b370f1d3f3b473f9bff65881b618e4b",
@@ -26,7 +70,7 @@
   "layout_type" : "absolute",
   "name" : "Prometheus FedSQL Help",
   "provenance" : {
-    "imported_at" : "2026-08-14T06:07:12Z",
+    "imported_at" : "2026-10-09T15:41:51Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -82,12 +126,12 @@
                 },
                 "version" : 2
               },
+              "data_source_ref" : "ds_ffceb0c0b1d4403295fa98601baaf5c1",
               "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa100",
               "layer" : 1,
               "options" : {
                 "stackMode" : "none"
               },
-              "sql_composition" : "SELECT a.timestamp, a.value AS load1 FROM (SELECT * FROM prom.range_query WHERE query='node_load1'\n  AND start='$timerange.earliest$' AND end='$timerange.latest$' AND step='10m') AS a ORDER BY\n  a.timestamp",
               "type" : "chart",
               "width" : 12
             }
@@ -139,12 +183,12 @@
                 },
                 "version" : 2
               },
+              "data_source_ref" : "ds_97b2ca79397442929eb3911432c5e8ce",
               "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa101",
               "layer" : 1,
               "options" : {
                 "stackMode" : "none"
               },
-              "sql_composition" : "SELECT a.timestamp AS timestamp, a.load1, b.load5, c.load15 FROM (\nSELECT timestamp, value AS load1 FROM prom.range_query WHERE query='node_load1' AND start='1785684734' AND end='1785688334' AND step='15m') AS a JOIN (\nSELECT timestamp, value AS load5 FROM prom.range_query WHERE query='node_load5' AND start='1785684734' AND end='1785688334' AND step='15m') AS b ON a.timestamp=b.timestamp JOIN (\nSELECT timestamp, value AS load15 FROM prom.range_query WHERE query='node_load15' AND start='1785684734' AND end='1785688334' AND step='15m') AS c ON a.timestamp=c.timestamp ORDER BY a.timestamp",
               "type" : "chart",
               "width" : 12
             }
@@ -196,12 +240,12 @@
                 },
                 "version" : 2
               },
+              "data_source_ref" : "ds_fee55e19899547f7baa7f4dcd387c05a",
               "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa102",
               "layer" : 1,
               "options" : {
                 "stackMode" : "none"
               },
-              "sql_composition" : "SELECT __name__, timestamp, value FROM prom.range_query WHERE query='{__name__=~\"node_load1|node_load5|node_load15\"}' AND start='1785684734' AND end='1785688334' AND step='30m' ORDER BY timestamp",
               "type" : "chart",
               "width" : 12
             }
@@ -253,12 +297,12 @@
                 },
                 "version" : 2
               },
+              "data_source_ref" : "ds_9b05a5e6c93e41b19cb37476b2714254",
               "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa103",
               "layer" : 1,
               "options" : {
                 "stackMode" : "none"
               },
-              "sql_composition" : "SELECT a.timestamp, a.value AS load1 FROM (SELECT * FROM prom.range_query WHERE query='node_load1'\n  AND start='$__from$' AND end='now' AND step='10m') AS a ORDER BY a.timestamp",
               "type" : "chart",
               "width" : 12
             }
@@ -315,7 +359,6 @@
               "options" : {
                 "stackMode" : "none"
               },
-              "sql_composition" : "SELECT '1. WHERE args' AS topic, 'join conditions with AND, not commas' AS note UNION ALL SELECT '2. Named args', 'FROM prom.range_query(query := ''x'', start := ''-1h'') — use :=' UNION ALL SELECT '3. Derived table', 'FROM (SELECT ...) AS a — alias required' UNION ALL SELECT '4. Wide series', 'rename value INSIDE each subquery, then JOIN on timestamp' UNION ALL SELECT '5. Explicit cols', 'Test & Map the stream once so value\/timestamp are declared' UNION ALL SELECT '6. Time', 'epoch seconds; -1h\/now need Wave E; these panels use a fixed example window' UNION ALL SELECT '7. ORDER BY', 'single sort key only over connector TVFs (no ORDER BY a, b)' UNION ALL SELECT '8. Optional args', 'bind optional params (instant time) via f(k := v), not WHERE — WHERE only lifts required args'",
               "type" : "chart",
               "width" : 12
             }

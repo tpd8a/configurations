@@ -1,1 +1,1 @@
-{"name":"node_load15_now","id":"fedsearch_10775150ca26492a945afaee3785f014","sql":"select __name__ as name, value from prom.instant WHERE query = 'node_load15' ","description":"example of simple prometheus syntax","config_version":2}
+{"config_version":2,"sql":"select __name__ as name, value from prom.instant WHERE query = 'node_load15' ","description":"example of simple prometheus syntax","name":"node_load15_now","id":"fedsearch_10775150ca26492a945afaee3785f014"}
