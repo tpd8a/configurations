@@ -1,4 +1,5 @@
 {
+  "absolute_geometry_version" : 1,
   "conditions" : [
     {
       "expression" : "$symbol_tok$ = 'BTCUSDT'",
@@ -136,12 +137,13 @@
           "absolute" : {
             "anchor" : "topLeft",
             "h" : 48,
-            "w" : 1056,
+            "w" : 1440,
             "x" : 0,
             "y" : 0
           }
         },
         "search_when_changed" : true,
+        "style" : "pills",
         "type" : "tabBar"
       },
       "id" : "input_bf66c6c7254144bda337c47d57b182fd",
@@ -171,7 +173,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Tab Symbol Browser",
   "provenance" : {
-    "imported_at" : "2026-10-06T22:52:31Z",
+    "imported_at" : "2026-10-10T07:02:03Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -193,11 +195,11 @@
           ],
           "id" : "panel_1b00752338e3459abb67e80e69bca5ec",
           "layout" : {
-            "absolute_h" : 216,
+            "absolute_h" : 360,
             "absolute_w" : 312,
             "absolute_x" : 0,
-            "absolute_y" : 72,
-            "height" : 260,
+            "absolute_y" : 48,
+            "height" : 360,
             "panel_width" : 6
           },
           "visualizations" : [
@@ -396,11 +398,11 @@
           ],
           "id" : "panel_5661960609824174a6ae9122d9e1bc1e",
           "layout" : {
-            "absolute_h" : 192,
-            "absolute_w" : 1056,
+            "absolute_h" : 552,
+            "absolute_w" : 1080,
             "absolute_x" : 0,
-            "absolute_y" : 600,
-            "height" : 540,
+            "absolute_y" : 408,
+            "height" : 552,
             "panel_width" : 12
           },
           "title" : "Binance",
@@ -585,8 +587,8 @@
           "id" : "panel_063771678b3f41a28ab59fcf65e9db90",
           "layout" : {
             "absolute_h" : 360,
-            "absolute_w" : 720,
-            "absolute_x" : 336,
+            "absolute_w" : 768,
+            "absolute_x" : 312,
             "absolute_y" : 48,
             "panel_width" : 12
           },
@@ -791,7 +793,7 @@
                       {
                         "id" : "E5DD8BD8-7821-4F3A-94E8-871B9EEF08C7",
                         "kind" : "indicator_band",
-                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY2xvc2UiOnsibmVnYXRlIjpmYWxzZSwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwiaGlkZGVuIjpmYWxzZX19LCJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCJ9"
+                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCIsInNlcmllc092ZXJyaWRlcyI6eyJjbG9zZSI6eyJuZWdhdGUiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
                       }
                     ],
                     "shapeId" : "candlestick",
@@ -1006,10 +1008,10 @@
           ],
           "id" : "panel_6397c091beed438e831ad8d7c3e34802",
           "layout" : {
-            "absolute_h" : 792,
+            "absolute_h" : 912,
             "absolute_w" : 360,
             "absolute_x" : 1080,
-            "absolute_y" : 0,
+            "absolute_y" : 48,
             "panel_width" : 12
           },
           "visualizations" : [
