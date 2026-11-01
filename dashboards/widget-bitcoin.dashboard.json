@@ -1,0 +1,300 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_25cb04a849194d79ab04550d59192f93",
+      "query" : {
+        "alerts" : [
+          {
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "priceChange",
+              "value" : {
+                "number" : -57.98
+              }
+            },
+            "id" : "3550788B-8D3C-42C6-9478-822738195EDC",
+            "name" : "priceChange gt -57.98",
+            "severity" : "Notice",
+            "showOn" : [
+              "viz_efccaf8bea61405c9977fdba63c485c2"
+            ]
+          }
+        ],
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "1h"
+        },
+        "name" : "ds_btcusdt_price",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, priceChange, priceChangePercent, close FROM binance_spot.ws_ticker WHERE symbol = 'BTCUSDT'"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_8ac00d436a2c402a8907d90063983667",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_25cb04a849194d79ab04550d59192f93",
+          "query" : ""
+        },
+        "name" : "ds_2D927688",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    }
+  ],
+  "id" : "dash_3fb94a79b40d4ec88c6205915a0e6414",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Widget Bitcoin",
+  "provenance" : {
+    "imported_at" : "2026-10-31T17:36:52Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_1aced39f476d4cfda07d23162d10fc71",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8d0da384de7a43a79512e18b192e29d6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5c107e68145d4dd78e36013ebb18ac03",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_25cb04a849194d79ab04550d59192f93",
+              "id" : "viz_8d0da384de7a43a79512e18b192e29d6",
+              "layer" : 1,
+              "options" : {
+                "delta_field" : "priceChange",
+                "delta_pct_field" : "priceChangePercent",
+                "price_field" : "close"
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    },
+    {
+      "id" : "row_00185fd235274173abd27e3fa24bdf6a",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_efccaf8bea61405c9977fdba63c485c2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ffe00804e0a24bec80f7d4effc96ebc2",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "priceChange" : {
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "priceChange",
+                    "fillOpacity" : 0.55,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineWidth" : 2.5,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "DEC3F594-C0C1-4037-B11B-5DE7899B7B66",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsicHJpY2VDaGFuZ2UiOnsibmVnYXRlIjpmYWxzZSwiaGlkZGVuIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNTUwMDAwMDAwMDAwMDAwMDQsImxpbmVJbnRlcnBvbGF0aW9uIjoic21vb3RoIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibGluZVdpZHRoIjoyLjV9fX0="
+                      }
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "priceChange"
+                        ],
+                        "x",
+                        [
+                          "arrival_ts"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_25cb04a849194d79ab04550d59192f93",
+              "id" : "viz_efccaf8bea61405c9977fdba63c485c2",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 2"
+    }
+  ]
+}

@@ -74,9 +74,12 @@
       "id" : "ds_e4288de2e0a54c4a800d4913ab5b3a7d",
       "query" : {
         "name" : "viz_btcusdt_ws_klines",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM binance_spot.ws_kline(symbol:='BTCUSDT',startTime:='-24h',endTime:='now',interval:='1m')\n\n"
+          "query" : "SELECT * FROM binance_spot.klines(symbol:='BTCUSDT',startTime:='-24h',endTime:='now',interval:='1m')\n\n"
         },
         "type" : "ds.sql"
       }
@@ -90,7 +93,7 @@
   "layout_type" : "bootstrap",
   "name" : "AAPL — Yahoo Live (positional path)",
   "provenance" : {
-    "imported_at" : "2026-09-28T17:22:35Z",
+    "imported_at" : "2026-10-31T18:51:03Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -751,6 +754,158 @@
           "title" : "BTC\/USDT — klines (OHLC, 5m) (copy)",
           "visualizations" : [
             {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "A39F8D1C-C4CA-4919-BF79-76EA589F955A",
+                        "kind" : "candle",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "candlestick",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "close",
+                          "closeTime",
+                          "high",
+                          "low"
+                        ],
+                        "x",
+                        [
+                          "time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
               "data_source_ref" : "ds_e4288de2e0a54c4a800d4913ab5b3a7d",
               "id" : "viz_1e0a545bbc994583904406c1564fcbb5",
               "layer" : 1,

@@ -1,4 +1,5 @@
 {
+  "absolute_geometry_version" : 1,
   "config_version" : 2,
   "data_sources" : [
     {
@@ -114,7 +115,7 @@
   "layout_type" : "absolute",
   "name" : "Financial Visualizations Showcase",
   "provenance" : {
-    "imported_at" : "2026-10-03T20:25:43Z",
+    "imported_at" : "2026-10-18T15:48:10Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -913,7 +914,7 @@
           "id" : "panel_7b6d5248d30c4e2fb3147822e1724da2",
           "layout" : {
             "absolute_h" : 456,
-            "absolute_w" : 312,
+            "absolute_w" : 720,
             "absolute_x" : 312,
             "absolute_y" : 240,
             "panel_width" : 12
@@ -947,10 +948,10 @@
           ],
           "id" : "panel_616674e6ee3749a1aa88d3b97378a89e",
           "layout" : {
-            "absolute_h" : 456,
-            "absolute_w" : 312,
-            "absolute_x" : 624,
-            "absolute_y" : 240,
+            "absolute_h" : 384,
+            "absolute_w" : 1032,
+            "absolute_x" : 0,
+            "absolute_y" : 696,
             "panel_width" : 12
           },
           "visualizations" : [
@@ -1026,7 +1027,7 @@
                         "optionsJSON" : "e30="
                       }
                     ],
-                    "shapeId" : "ticker-vertical",
+                    "shapeId" : "ticker-bloomberg",
                     "slotBindings" : {
                       "storage" : [
                         "x",
@@ -1104,15 +1105,18 @@
                   "gridLines" : true
                 }
               },
+              "config" : {
+                "title" : "Price Ticker"
+              },
               "data_source_ref" : "ds_ca72da77dcac4e679549d963d423f847",
               "id" : "viz_175a2c83adb444e7bfbbc53241f36d1b",
               "layer" : 1,
               "options" : {
-                "direction" : "rightToLeft",
+                "direction" : "vertical",
                 "font_sizing" : "auto",
                 "mono_font" : "false",
                 "show_sparklines" : "false",
-                "style" : "scoreboard",
+                "style" : "bloomberg",
                 "ticker_type" : "scoreboard"
               },
               "title" : "Price Ticker",

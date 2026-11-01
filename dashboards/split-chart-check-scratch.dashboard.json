@@ -1,0 +1,290 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8e2b4c6a1f3d4b5c9a7e6d5c4b3a2f10",
+      "query" : {
+        "name" : "errors_by_url_method",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, status, COUNT(*) AS hits FROM construct_examples.combined_access(path := 'web\/access.log') WHERE status >= 400 GROUP BY url, status"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4f1a9c2e7b3d4e6a8c0f2b4d6e8a1c35",
+      "query" : {
+        "name" : "failures_404_500_by_url",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, SUM(CASE WHEN status = 404 THEN 1 ELSE 0 END) AS e404, SUM(CASE WHEN status = 500 THEN 1 ELSE 0 END) AS e500 FROM construct_examples.combined_access(path := 'web\/access.log') WHERE status IN (404, 500) GROUP BY url"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b7c2e9f41a6d4c8e93f05a2d7e1b6c84",
+      "query" : {
+        "name" : "pct_failures_per_url",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, COUNT(*) AS total_failures, SUM(CASE WHEN status = 404 THEN 1 ELSE 0 END) AS count_404, SUM(CASE WHEN status = 500 THEN 1 ELSE 0 END) AS count_500, CAST(SUM(CASE WHEN status = 404 THEN 1 ELSE 0 END) * 100.0 \/ COUNT(*) AS INTEGER) AS pct_404 FROM construct_examples.combined_access(path := 'web\/access.log') WHERE status >= 400 GROUP BY url ORDER BY pct_404 DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "connector_stream" : "combined_access",
+      "id" : "ds_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6c",
+      "provider_ref" : "files-f260f07b-c9ee-405a-bea6-e4ed1907d475",
+      "query" : {
+        "name" : "access_realtime",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "path" : "web\/access.log"
+          }
+        },
+        "refresh_seconds" : 0,
+        "refresh_type" : "realtime",
+        "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c7d",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "access_localfile_realtime",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "txt",
+            "path" : "\/tmp\/construct_examples\/web\/access.log",
+            "tql" : "sort _offset desc"
+          }
+        },
+        "refresh_seconds" : 0,
+        "refresh_type" : "realtime",
+        "type" : "ds.search"
+      }
+    }
+  ],
+  "id" : "dash_5428c950c1154f8dbcf27fcb9bacb41c",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Split chart check (scratch)",
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_1c3e5a7b9d2f4a6c8e0b1d3f5a7c9e21",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3e5a7c9d1f2b4d6e8a0c2e4f6b8d0a43"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2d4f6b8c0e1a4c3e5a7b9d1f3e5c7a32",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "title" : "Live patch probe A",
+          "visualizations" : [
+            {
+              "chart" : {
+                "dimensionFields" : [
+                  "status"
+                ],
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJzdGFja01vZGUiOiJzdGFja2VkIn0="
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "hits"
+                ],
+                "timeField" : "url"
+              },
+              "data_source_ref" : "ds_8e2b4c6a1f3d4b5c9a7e6d5c4b3a2f10",
+              "id" : "viz_3e5a7c9d1f2b4d6e8a0c2e4f6b8d0a43",
+              "layer" : 1,
+              "title" : "Errors by URL and status",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Errors"
+    },
+    {
+      "id" : "row_7d2e4f6a8b0c4d1e9f3a5b7c9d1e2f46",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9f4a6b8c0d2e4f3a1b5c7d9e1f3a4b68"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8e3f5a7b9c1d4e2f0a4b6c8d0e2f3a57",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "title" : "404 vs 500 failures per URL",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJzdGFja01vZGUiOiJzdGFja2VkIn0="
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "e404",
+                  "e500"
+                ],
+                "timeField" : "url"
+              },
+              "data_source_ref" : "ds_4f1a9c2e7b3d4e6a8c0f2b4d6e8a1c35",
+              "id" : "viz_9f4a6b8c0d2e4f3a1b5c7d9e1f3a4b68",
+              "layer" : 1,
+              "title" : "404 vs 500 failures per URL",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "404 vs 500"
+    },
+    {
+      "id" : "row_c3a8f2e61b9d4f07a5e24c9d8b1f6a73",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a9f3c6e21d8b4a57c0e69b2f4d7a1c95"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e5d1a7c39f2b4e86b0c47a1d9e3f5b28",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "title" : "% failures per URL",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_b7c2e9f41a6d4c8e93f05a2d7e1b6c84",
+              "id" : "viz_a9f3c6e21d8b4a57c0e69b2f4d7a1c95",
+              "layer" : 1,
+              "options" : {
+                "fields" : "url,total_failures,count_404,count_500,pct_404"
+              },
+              "title" : "% failures per URL",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "% failures per URL"
+    },
+    {
+      "id" : "row_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6d",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6e",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "title" : "Access log — real-time",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6c",
+              "id" : "viz_7e3a1c9b5d2f4e8a9c0b1d2e3f4a5b6f",
+              "layer" : 1,
+              "title" : "Access log — real-time",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Real-time access log (test)"
+    },
+    {
+      "id" : "row_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c7e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c80"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c7f",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "title" : "Local File — real-time",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c7d",
+              "id" : "viz_8f4b2d0c6e3a4f9b8d1c2e3f4a5b6c80",
+              "layer" : 1,
+              "title" : "Local File — real-time",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Local File real-time (fix #893 test)"
+    }
+  ]
+}

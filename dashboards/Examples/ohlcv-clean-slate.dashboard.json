@@ -28,7 +28,7 @@
   "layout_type" : "bootstrap",
   "name" : "OHLCV Clean Slate",
   "provenance" : {
-    "imported_at" : "2026-06-17T15:19:04Z",
+    "imported_at" : "2026-10-19T11:09:50Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -37,6 +37,9 @@
   "rows" : [
     {
       "id" : "row_1e8130d56d634bf2afac9883c2952e35",
+      "layout" : {
+        "fill" : true
+      },
       "panels" : [
         {
           "columns" : [
@@ -50,7 +53,7 @@
           ],
           "id" : "panel_23ae37bad5034b129467be0c270cfc7b",
           "layout" : {
-            "height" : 1020,
+            "height" : 360,
             "panel_width" : 12
           },
           "visualizations" : [

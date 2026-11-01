@@ -34,6 +34,17 @@
           }
         },
         "refresh_seconds" : 60,
+        "steps" : [
+          {
+            "alias" : "rsi",
+            "args" : {
+              "period" : "14",
+              "source" : "close"
+            },
+            "id" : "st_rsi",
+            "library" : "rsi"
+          }
+        ],
         "type" : "ds.search"
       }
     },
@@ -327,56 +338,6 @@
           "title" : "Floating banner test",
           "visualizations" : [
             {
-              "alerts" : {
-                "alerts" : [
-                  {
-                    "actions" : [
-                      {
-                        "toast" : {
-
-                        }
-                      },
-                      {
-                        "notify" : {
-                          "destination" : "cpu"
-                        }
-                      }
-                    ],
-                    "condition" : {
-                      "eventReceived" : {
-                        "severityTerm" : "Notice"
-                      }
-                    },
-                    "dedup" : {
-                      "overrideOnEscalation" : true,
-                      "windowSeconds" : 300
-                    },
-                    "enabled" : true,
-                    "id" : "C2E9B8E1-D995-4F76-9347-AAA514770006",
-                    "label" : "New Alert",
-                    "severityTerm" : "Notice"
-                  }
-                ],
-                "severityCatalog" : {
-                  "terms" : [
-                    {
-                      "colourHex" : "#5AC8FA",
-                      "rank" : 1,
-                      "term" : "Notice"
-                    },
-                    {
-                      "colourHex" : "#FF9500",
-                      "rank" : 2,
-                      "term" : "Watch"
-                    },
-                    {
-                      "colourHex" : "#FF3B30",
-                      "rank" : 3,
-                      "term" : "Action"
-                    }
-                  ]
-                }
-              },
               "chart" : {
                 "adaptMode" : "auto",
                 "alerts" : [
@@ -1423,53 +1384,6 @@
           "title" : "Floating banner test — step 3",
           "visualizations" : [
             {
-              "alerts" : {
-                "alerts" : [
-                  {
-                    "actions" : [
-                      {
-                        "toast" : {
-
-                        }
-                      }
-                    ],
-                    "condition" : {
-                      "threshold" : {
-                        "field" : "",
-                        "op" : "gt",
-                        "value" : 0
-                      }
-                    },
-                    "dedup" : {
-                      "overrideOnEscalation" : true,
-                      "windowSeconds" : 300
-                    },
-                    "enabled" : true,
-                    "id" : "B32D8FCD-D612-4EBF-94E6-506F696CA9AC",
-                    "label" : "New Alert",
-                    "severityTerm" : "Notice"
-                  }
-                ],
-                "severityCatalog" : {
-                  "terms" : [
-                    {
-                      "colourHex" : "#5AC8FA",
-                      "rank" : 1,
-                      "term" : "Notice"
-                    },
-                    {
-                      "colourHex" : "#FF9500",
-                      "rank" : 2,
-                      "term" : "Watch"
-                    },
-                    {
-                      "colourHex" : "#FF3B30",
-                      "rank" : 3,
-                      "term" : "Action"
-                    }
-                  ]
-                }
-              },
               "chart" : {
                 "adaptMode" : "auto",
                 "alerts" : [
@@ -3595,34 +3509,6 @@
                     }
                   },
                   {
-                    "heightRatio" : 0.4,
-                    "hiddenFields" : [
-
-                    ],
-                    "id" : "086ABC67-96D3-49DA-AD4D-77F3E082CFB3",
-                    "label" : "RSI",
-                    "marks" : [
-                      {
-                        "id" : "D531A698-9C5A-430D-BA7D-F07DCC6FB6DF",
-                        "kind" : "rsi",
-                        "optionsJSON" : "eyJmaWVsZCI6ICJjbG9zZSIsICJwZXJpb2QiOiAxNCwgIm92ZXJib3VnaHQiOiA3MCwgIm92ZXJzb2xkIjogMzAsICJsYWJlbEZvbnRTY2FsZSI6IDEuMH0="
-                      }
-                    ],
-                    "slotBindings" : {
-                      "storage" : [
-
-                      ]
-                    },
-                    "yAxis" : {
-                      "position" : "left",
-                      "primary" : {
-                        "hidden" : false,
-                        "scale" : "linear",
-                        "showGridlines" : true
-                      }
-                    }
-                  },
-                  {
                     "heightRatio" : 0.25,
                     "hiddenFields" : [
 
@@ -3645,6 +3531,49 @@
                       {
                         "derivedFromIndicatorId" : "rsi14",
                         "id" : "285CB6AE-0307-44DC-A6B1-5BCE2916FEA8",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6MzAuMH0="
+                      }
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "max" : 100,
+                        "min" : 0,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  },
+                  {
+                    "heightRatio" : 0.25,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "pane_rsi",
+                    "label" : "Relative Strength Index",
+                    "marks" : [
+                      {
+                        "derivedFromIndicatorId" : "rsi",
+                        "id" : "74DE53E2-A064-43C6-B0F2-C5C16D0C2569",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJkYXNoZWQiOmZhbHNlLCJmaWVsZCI6InJzaSIsImluZGV4IjowfQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "rsi",
+                        "id" : "1F8E0819-8E45-4987-B933-7456D3B137A5",
+                        "kind" : "rule",
+                        "optionsJSON" : "eyJ2YWx1ZSI6NzAuMH0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "rsi",
+                        "id" : "27A669EE-A981-4B8A-A094-F311FA186D28",
                         "kind" : "rule",
                         "optionsJSON" : "eyJ2YWx1ZSI6MzAuMH0="
                       }

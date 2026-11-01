@@ -1,0 +1,108 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_16570db47b134c3493020046b6bdc716",
+      "query" : {
+        "name" : "Perf by datasource (GROUP BY)",
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT datasource, provider, SUM(fetches) AS fetches, SUM(errors) AS errors, MAX(max_ms) AS max_ms FROM construct_perf GROUP BY datasource, provider"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4c020bb3f07c4dbb87591d4478f90fde",
+      "query" : {
+        "name" : "Perf windows (no GROUP BY)",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT window_start, datasource, provider, transport, fetches, errors FROM construct_perf ORDER BY window_start DESC LIMIT 50"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Two Fed.SQL datasources over construct_perf: one keyed by SQL GROUP BY, one with no GROUP BY (shape-detected key).",
+  "id" : "dash_717818134d95421eab64269f75af3d97",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Row Key Example",
+  "provenance" : {
+    "imported_at" : "2026-10-26T08:34:50Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_c08c934ffc2d4963bde9897862e74013",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b8225fc1c179479d9a7ea5a8d992b47e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e5ac3383217540bfa82cea79b44529a3",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Keyed by SQL GROUP BY"
+              },
+              "data_source_ref" : "ds_16570db47b134c3493020046b6bdc716",
+              "id" : "viz_b8225fc1c179479d9a7ea5a8d992b47e",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a1f668ebc0e240ff9d64a493befcdf9c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_10fc4ac897cc4234b795cabc3266f0d4",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "No GROUP BY (detected \/ set your own)"
+              },
+              "data_source_ref" : "ds_4c020bb3f07c4dbb87591d4478f90fde",
+              "id" : "viz_a1f668ebc0e240ff9d64a493befcdf9c",
+              "layer" : 1,
+              "title" : "No GROUP BY (detected \/ set your own)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

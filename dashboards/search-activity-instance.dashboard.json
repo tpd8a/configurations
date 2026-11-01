@@ -1,0 +1,2122 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7ff8fd837b2d429ba3ef170670e60c78",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_90f6348f986643a594551006de921a43",
+          "query" : "            eval total_historical_vs_limit = \"$count_total_hist$\".\"\/\".max_hist_searches\n            | fields total_historical_vs_limit\n          "
+        },
+        "name" : "ds_1",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_3f999cf84dcf423cb8dbe455c7e1f9cf",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_90f6348f986643a594551006de921a43",
+          "query" : "            eval total_rt_vs_limit = \"$count_total_rt$\".\"\/\".max_rt_searches\n            | fields total_rt_vs_limit\n          "
+        },
+        "name" : "ds_2",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_bfa0f1158a6144d6afb5b9df27b61546",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_90f6348f986643a594551006de921a43",
+          "query" : "            eval scheduled_vs_total_hist_scheduled_search_limit = \"$count_hist_scheduled_search$\".\"\/\".max_hist_scheduled_searches\n            | fields scheduled_vs_total_hist_scheduled_search_limit\n          "
+        },
+        "name" : "ds_3",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_b59c0cfe66b1408b87961c96a8e9c6ec",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_90f6348f986643a594551006de921a43",
+          "query" : "            eval scheduled_vs_total_rt_scheduled_search_limit = \"$count_rt_scheduled_search$\".\"\/\".max_rt_scheduled_searches\n            | fields scheduled_vs_total_rt_scheduled_search_limit\n          "
+        },
+        "name" : "ds_4",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_4d813bef764945948b3c20925ed09885",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_90f6348f986643a594551006de921a43",
+          "query" : "            eval scheduled_vs_total_auto_summary_search_limit = \"$count_auto_summary_search$\".\"\/\".max_auto_summary_searches\n            | fields scheduled_vs_total_auto_summary_search_limit\n          "
+        },
+        "name" : "ds_5",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_8972d00d3aba42ea89f6e0187c04fa10",
+      "query" : {
+        "name" : "ds_11",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '          | `dmc_get_groups_containing_role($role$)`\n          | search search_group!=\"dmc_group_*\"\n        ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_90f6348f986643a594551006de921a43",
+      "query" : {
+        "name" : "search_concurrency_limits_base",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '          | rest splunk_server=$splunk_server$ \/services\/server\/status\/limits\/search-concurrency\n        ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2d2966fb734f4c2898b2a91f038101bd",
+      "query" : {
+        "name" : "ds_6",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '            where (''search_props.type''==\"scheduled\" OR ''search_props.type''==\"summary indexing\" OR ''search_props.type''==\"report acceleration\" OR ''search_props.type''==\"datamodel acceleration\" OR ''search_props.type''==\"ad-hoc\") AND (''search_props.mode''==\"historical\" OR ''search_props.mode''==\"historical batch\")\n            | eval mem_used = round(mem_used, 0)\n            | eval count_cpu = round(pct_cpu \/ 100.0, 2)\n            | eval elapsed = round(elapsed, 0)\n            | fields search_props.sid, search_props.label, search_props.app, search_props.user, search_props.type, search_props.mode, search_props.role, mem_used, count_cpu, elapsed\n            | rename search_props.sid as SID, search_props.label as \"Search Name\", search_props.app as App, search_props.user as User, search_props.type as Type, search_props.mode as Mode, search_props.role as Role, mem_used as \"Memory Used (MB)\", count_cpu as \"CPU Usage (# cores)\", elapsed as \"Time Elapsed (sec)\"\n          ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4b80f86f7fac438a82c56934d4cf21a3",
+      "query" : {
+        "name" : "ds_7",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '            where (''search_props.type''==\"scheduled\" OR ''search_props.type''==\"summary indexing\" OR ''search_props.type''==\"report acceleration\" OR ''search_props.type''==\"datamodel acceleration\" OR ''search_props.type''==\"ad-hoc\") AND (''search_props.mode''==\"RT\" OR ''search_props.mode''==\"RT indexed\")\n            | eval mem_used = round(mem_used, 0)\n            | eval count_cpu = round(pct_cpu \/ 100.0, 2)\n            | eval elapsed = round(elapsed, 0)\n            | fields search_props.sid, search_props.label, search_props.app, search_props.user, search_props.type, search_props.mode, search_props.role, mem_used, count_cpu, elapsed\n            | rename search_props.sid as SID, search_props.label as \"Search Name\", search_props.app as App, search_props.user as User, search_props.type as Type, search_props.mode as Mode, search_props.role as Role, mem_used as \"Memory Used (MB)\", count_cpu as \"CPU Usage (# cores)\", elapsed as \"Time Elapsed (sec)\"\n          ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_bb8f51d6fb404a00be975f11b3fde171",
+      "query" : {
+        "name" : "ds_8",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '            where (''search_props.type''==\"scheduled\" OR ''search_props.type''==\"summary indexing\" OR ''search_props.type''==\"report acceleration\" OR ''search_props.type''==\"datamodel acceleration\") AND (''search_props.mode''==\"historical\" OR ''search_props.mode''==\"historical batch\")\n            | eval mem_used = round(mem_used, 0)\n            | eval count_cpu = round(pct_cpu \/ 100.0, 2)\n            | eval elapsed = round(elapsed, 0)\n            | fields search_props.sid, search_props.label, search_props.app, search_props.user, search_props.type, search_props.mode, search_props.role, mem_used, count_cpu, elapsed\n            | rename search_props.sid as SID, search_props.label as \"Search Name\", search_props.app as App, search_props.user as User, search_props.type as Type, search_props.mode as Mode, search_props.role as Role, mem_used as \"Memory Used (MB)\", count_cpu as \"CPU Usage (# cores)\", elapsed as \"Time Elapsed (sec)\"\n          ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e9e64e7a90e4494dbb39c162192d01dd",
+      "query" : {
+        "name" : "ds_9",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '            where (''search_props.type''==\"scheduled\" OR ''search_props.type''==\"summary indexing\" OR ''search_props.type''==\"report acceleration\" OR ''search_props.type''==\"datamodel acceleration\") AND (''search_props.mode''==\"RT\" OR ''search_props.mode''==\"RT indexed\")\n            | eval mem_used = round(mem_used, 0)\n            | eval count_cpu = round(pct_cpu \/ 100.0, 2)\n            | eval elapsed = round(elapsed, 0)\n            | fields search_props.sid, search_props.label, search_props.app, search_props.user, search_props.type, search_props.mode, search_props.role, mem_used, count_cpu, elapsed\n            | rename search_props.sid as SID, search_props.label as \"Search Name\", search_props.app as App, search_props.user as User, search_props.type as Type, search_props.mode as Mode, search_props.role as Role, mem_used as \"Memory Used (MB)\", count_cpu as \"CPU Usage (# cores)\", elapsed as \"Time Elapsed (sec)\"\n          ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0d2d6af1f07c41de91084083ff2f9b32",
+      "query" : {
+        "name" : "ds_10",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '            where (''search_props.type''==\"report acceleration\" OR ''search_props.type''==\"datamodel acceleration\")\n            | eval mem_used = round(mem_used, 0)\n            | eval count_cpu = round(pct_cpu \/ 100.0, 2)\n            | eval elapsed = round(elapsed, 0)\n            | fields search_props.sid, search_props.label, search_props.app, search_props.user, search_props.type, search_props.mode, search_props.role, mem_used, count_cpu, elapsed\n            | rename search_props.sid as SID, search_props.label as \"Search Name\", search_props.app as App, search_props.user as User, search_props.type as Type, search_props.mode as Mode, search_props.role as Role, mem_used as \"Memory Used (MB)\", count_cpu as \"CPU Usage (# cores)\", elapsed as \"Time Elapsed (sec)\"\n          ', namespace := 'splunk_monitoring_console')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "",
+  "id" : "dash_1c5c87490dfb46168b8329a71fdb73b0",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "resourceSnapshotModeDoc",
+                  "type" : "set",
+                  "value" : "true"
+                },
+                {
+                  "token" : "resourceSnapshotSplitByLabel",
+                  "type" : "set",
+                  "value" : "$label$"
+                }
+              ],
+              "when" : "value == \"mode\""
+            },
+            {
+              "actions" : [
+                {
+                  "token" : "resourceSnapshotModeDoc",
+                  "type" : "unset"
+                },
+                {
+                  "token" : "resourceSnapshotSplitByLabel",
+                  "type" : "set",
+                  "value" : "$label$"
+                }
+              ],
+              "when" : "value == \"*\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "App",
+            "value" : "app"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "User",
+            "value" : "user"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Mode",
+            "value" : "mode"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Type",
+            "value" : "type"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Role",
+            "value" : "role"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Dispatching Search Head",
+            "value" : "search_head"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Search Name",
+            "value" : "label"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Provenance",
+            "value" : "provenance"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Workload Pool",
+            "value" : "workload_pool"
+          }
+        ],
+        "default" : "type",
+        "display_location" : "top",
+        "label" : "Split by",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_fe1a463e4e224de781ae251214c323c8",
+      "token" : "resourceSnapshotSplitBy"
+    },
+    {
+      "config" : {
+        "default" : "        ",
+        "display_location" : "top",
+        "label" : "Time Range:",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_d16aec72bc74414c861857fba5b6a183",
+      "token" : "time"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "concurrencyFuncLabel",
+                  "type" : "set",
+                  "value" : "$label$"
+                }
+              ]
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Average",
+            "value" : "Avg"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Median",
+            "value" : "Median"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Minimum",
+            "value" : "Min"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Maximum",
+            "value" : "Max"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "90th Percentile",
+            "value" : "Perc90"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Sampled",
+            "value" : "First"
+          }
+        ],
+        "default" : "Median",
+        "display_location" : "top",
+        "label" : "Aggregation",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_051f104191c14184927c81a3d6206ee3",
+      "token" : "concurrencyFunction"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "concurrencyModeDoc",
+                  "type" : "set",
+                  "value" : "true"
+                }
+              ],
+              "when" : "value == \"mode\""
+            },
+            {
+              "actions" : [
+                {
+                  "token" : "concurrencyModeDoc",
+                  "type" : "unset"
+                }
+              ],
+              "when" : "value == \"*\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "App",
+            "value" : "app"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "User",
+            "value" : "user"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Mode",
+            "value" : "mode"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Type",
+            "value" : "type"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Role",
+            "value" : "role"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Dispatching Search Head",
+            "value" : "search_head"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Search Name",
+            "value" : "label"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Provenance",
+            "value" : "provenance"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Workload Pool",
+            "value" : "workload_pool"
+          }
+        ],
+        "default" : "type",
+        "display_location" : "top",
+        "label" : "Split by",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_27719a2b569e426fa69572b5ed9539bb",
+      "token" : "concurrencySplitBy"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "usageYAxis",
+                  "type" : "set",
+                  "value" : "CPU Usage (# cores)"
+                },
+                {
+                  "token" : "cpuDisplayMsg",
+                  "type" : "set",
+                  "value" : "CPU usage is expressed in total number of CPU cores cumulatively used by search processes."
+                }
+              ],
+              "when" : "value == \"pct_cpu\""
+            },
+            {
+              "actions" : [
+                {
+                  "token" : "usageYAxis",
+                  "type" : "set",
+                  "value" : "Memory Usage (MB)"
+                },
+                {
+                  "token" : "cpuDisplayMsg",
+                  "type" : "set",
+                  "value" : " "
+                }
+              ],
+              "when" : "value == \"mem_used\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "CPU",
+            "value" : "pct_cpu"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Memory",
+            "value" : "mem_used"
+          }
+        ],
+        "default" : "pct_cpu",
+        "display_location" : "top",
+        "label" : "Resource Type",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_5cbb5dbd3d48424bb50bdcf344ce49fa",
+      "token" : "resourceType"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "resourceFuncLabel",
+                  "type" : "set",
+                  "value" : "$label$"
+                }
+              ]
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Average",
+            "value" : "Avg"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Median",
+            "value" : "Median"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Minimum",
+            "value" : "Min"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Maximum",
+            "value" : "Max"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "90th Percentile",
+            "value" : "Perc90"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Sampled",
+            "value" : "First"
+          }
+        ],
+        "default" : "Median",
+        "display_location" : "top",
+        "label" : "Aggregation",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_e0bcd628fc3d4d26ad098b43bbf7e6f0",
+      "token" : "resourceFunction"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "resourceModeDoc",
+                  "type" : "set",
+                  "value" : "true"
+                }
+              ],
+              "when" : "value == \"mode\""
+            },
+            {
+              "actions" : [
+                {
+                  "token" : "resourceModeDoc",
+                  "type" : "unset"
+                }
+              ],
+              "when" : "value == \"*\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "App",
+            "value" : "app"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "User",
+            "value" : "user"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Mode",
+            "value" : "mode"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Type",
+            "value" : "type"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Role",
+            "value" : "role"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Dispatching Search Head",
+            "value" : "search_head"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Search Name",
+            "value" : "label"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Provenance",
+            "value" : "provenance"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Workload Pool",
+            "value" : "workload_pool"
+          }
+        ],
+        "default" : "type",
+        "display_location" : "top",
+        "label" : "Split by",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_de9a4623266d41948a5c8bd69b7ba845",
+      "token" : "resourceSplitBy"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "top10_drilldown_sid",
+                  "type" : "set",
+                  "value" : "$click.value2$"
+                },
+                {
+                  "token" : "top10_drilldown_earliest",
+                  "type" : "set",
+                  "value" : "$earliest$"
+                },
+                {
+                  "token" : "top10_drilldown_latest",
+                  "type" : "set",
+                  "value" : "$latest$"
+                },
+                {
+                  "token" : "top10drilldown",
+                  "type" : "set",
+                  "value" : "$click.name2$"
+                }
+              ]
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Local and Remote Instance(s)",
+            "value" : "(`dmc_event_local_search_dispatch`) OR (`dmc_event_remote_search_dispatch`)"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Local Instance",
+            "value" : "`dmc_event_local_search_dispatch`"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Remote Instance(s)",
+            "value" : "`dmc_event_remote_search_dispatch`"
+          }
+        ],
+        "default" : "(`dmc_event_local_search_dispatch`) OR (`dmc_event_remote_search_dispatch`)",
+        "display_location" : "top",
+        "label" : "Dispatcher",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_ef07419b8c7c49eabc79e851f8512318",
+      "token" : "dispatcher"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "runtimeModeDoc",
+                  "type" : "set",
+                  "value" : "true"
+                }
+              ],
+              "when" : "value == \"mode\""
+            },
+            {
+              "actions" : [
+                {
+                  "token" : "runtimeModeDoc",
+                  "type" : "unset"
+                }
+              ],
+              "when" : "value == \"*\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "App",
+            "value" : "app"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "User",
+            "value" : "user"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Mode",
+            "value" : "mode"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Type",
+            "value" : "type"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Role",
+            "value" : "role"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Dispatching Search Head",
+            "value" : "search_head"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Search Name",
+            "value" : "label"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Provenance",
+            "value" : "provenance"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Workload Pool",
+            "value" : "workload_pool"
+          }
+        ],
+        "default" : "type",
+        "display_location" : "top",
+        "label" : "Split by",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_81e46996effb48c186c1ef2028223e4f",
+      "token" : "runtimeSplitBy"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Search Heads",
+            "value" : "dmc_group_search_head"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Indexers",
+            "value" : "dmc_group_indexer"
+          }
+        ],
+        "default" : "dmc_group_search_head",
+        "display_location" : "top",
+        "label" : "Role",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_c5dce06f314440ceb19c275ad2ddbdf3",
+      "token" : "role"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_8972d00d3aba42ea89f6e0187c04fa10",
+          "field_for_label" : "label",
+          "field_for_value" : "search_group"
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "*"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Group",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_991ce4f2670348259ff595a9205f9b8b",
+      "token" : "dmc_group"
+    },
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "host",
+                  "type" : "set",
+                  "value" : "$row.host$"
+                }
+              ],
+              "when" : "value == \"*\""
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "pop-os",
+            "value" : "pop-os"
+          }
+        ],
+        "display_location" : "top",
+        "label" : "Instance",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_cb105408483a47f4a95956ddbc53e087",
+      "token" : "splunk_server"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Auto Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_4526d1b9ee60405b8c25e6fd83c5e663",
+      "token" : "_fieldset_autoRun"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Search Activity: Instance",
+  "provenance" : {
+    "imported_at" : "2026-10-12T10:53:36Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_de49e2a946954c20a27a549218613a05",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_508907c1883b42638b7067d6ae52dc47"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6ef0a0831df74e7b92abdfc8488a4097",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_508907c1883b42638b7067d6ae52dc47",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_351e40a7016e4ff6bb6b593132d00593",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_952b55cf386b481986f2ae60c30ccd12",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Snapshots",
+          "visualizations" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_4aaa5d50db9f482193987dedae03b1b1",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_39a1949ee5694214a8c1aa09ab6e1065",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Search Concurrency (Running\/Limit)",
+          "visualizations" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_7662988a34b8479f8c6fa9a81dc4b2e4",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4bea3c2af1e5458b9de6a6558b7f4c92",
+                "viz_490858d0f75942aeb7b6839dd1e9f3ed"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e5316248b6d7499eb7d1b2416def79cd",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Ad hoc + Scheduled Searches ($count_total_adhoc_scheduled_search$ Running)",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_7ff8fd837b2d429ba3ef170670e60c78",
+              "id" : "viz_4bea3c2af1e5458b9de6a6558b7f4c92",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "all",
+                "height" : "80px",
+                "underLabel" : "Historical"
+              },
+              "title" : "",
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_3f999cf84dcf423cb8dbe455c7e1f9cf",
+              "id" : "viz_490858d0f75942aeb7b6839dd1e9f3ed",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "all",
+                "height" : "80px",
+                "underLabel" : "Real-time"
+              },
+              "title" : "",
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9e3bb7ae42d34aa5b407d799eb09cfaf",
+                "viz_2743a332854e457d80df00eec3791b23",
+                "viz_2f734688aacf40fb808022f6aefad1a6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_57795ca6acb3409b9b52dd3d627878b2",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Scheduled Searches ($count_total_scheduled_search$ Running)",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_bfa0f1158a6144d6afb5b9df27b61546",
+              "id" : "viz_9e3bb7ae42d34aa5b407d799eb09cfaf",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "all",
+                "height" : "80px",
+                "underLabel" : "Historical"
+              },
+              "title" : "",
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_b59c0cfe66b1408b87961c96a8e9c6ec",
+              "id" : "viz_2743a332854e457d80df00eec3791b23",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "all",
+                "height" : "80px",
+                "underLabel" : "Real-time"
+              },
+              "title" : "",
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_4d813bef764945948b3c20925ed09885",
+              "id" : "viz_2f734688aacf40fb808022f6aefad1a6",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "all",
+                "height" : "80px",
+                "underLabel" : "Summarization"
+              },
+              "title" : "",
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_a9b734a4f8d447e7bdb7a7dcc5f08cd0",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2c4120551f0b42a1b54f982da288fc3b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4d7b1345aed54a229279dafc1575c948",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_2c4120551f0b42a1b54f982da288fc3b",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_c9dca85acc3f478c8cd74b2217f722ad",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_997f0ad6a9e64e259a50c0d998ded1c1",
+                "viz_bf582aaa6c854a3989ba851bd95e7d4b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7ef77fa1a04c4078950318b06a2ad581",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$show_total_hist_search_details$"
+              ],
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Ad hoc + Scheduled Historical Search Concurrency Details",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_2d2966fb734f4c2898b2a91f038101bd",
+              "id" : "viz_997f0ad6a9e64e259a50c0d998ded1c1",
+              "layer" : 1,
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_bf582aaa6c854a3989ba851bd95e7d4b",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_3c68e3779a8f4709a038d22c402393a1",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ddda6c510c374b4288d925afa0950dc8",
+                "viz_e1ed59b5e46c48aa9036c2d00213e59d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_91545be04d994f9aa96764c0fef14068",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$show_total_rt_search_details$"
+              ],
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Ad hoc + Scheduled Real-time Search Concurrency Details",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_4b80f86f7fac438a82c56934d4cf21a3",
+              "id" : "viz_ddda6c510c374b4288d925afa0950dc8",
+              "layer" : 1,
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_e1ed59b5e46c48aa9036c2d00213e59d",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_bb57f46f5c1349a7a0527f08ebcf293f",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0b755c003024471fab0d5c7a2354d679",
+                "viz_8b6152b2f30c4598b7a679b30f994598"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_836babc548494a3084b0a42aeaa8ee34",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$show_hist_search_details$"
+              ],
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Scheduled Historical Search Concurrency Details",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_bb8f51d6fb404a00be975f11b3fde171",
+              "id" : "viz_0b755c003024471fab0d5c7a2354d679",
+              "layer" : 1,
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_8b6152b2f30c4598b7a679b30f994598",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_ba8a536652434d3d80d604944f32f8a1",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1fe14e6cdf9d4d0e926b1f8cc8e5b3ab",
+                "viz_b370d985d93242c5b7c22b04d5c83e9e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d3809a7a6f5a4059a5fe969097f0315b",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$show_rt_search_details$"
+              ],
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Scheduled Real-time Concurrency Search Details",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_e9e64e7a90e4494dbb39c162192d01dd",
+              "id" : "viz_1fe14e6cdf9d4d0e926b1f8cc8e5b3ab",
+              "layer" : 1,
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_b370d985d93242c5b7c22b04d5c83e9e",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_fc8b2ec922dc46afa35e5ec7323ffe38",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c49b1bd2865d4275a83e4160b7cce005",
+                "viz_012ac35c3f4240c094579db2d2c3f43b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a1338ae0bb674fb38a0aefde94d82d5e",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "depends" : [
+                "$show_summarization_search_details$"
+              ],
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Summarization Search Details",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_0d2d6af1f07c41de91084083ff2f9b32",
+              "id" : "viz_c49b1bd2865d4275a83e4160b7cce005",
+              "layer" : 1,
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_012ac35c3f4240c094579db2d2c3f43b",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_28f8d7a5765340c6aa0ae3b31a5ffa10",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_94dbe3e76062415a9450bd5585ea8ccc",
+                "viz_6c369e8fe6614f50b2b7476d140f9715",
+                "viz_6e8b8400b5f84513b0c71739ca420fa4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f9089f0fc9c2496daf83ed72d5496b40",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$historical$"
+              ]
+            }
+          },
+          "title" : "Search Activity",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_94dbe3e76062415a9450bd5585ea8ccc",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "table",
+                "charting.axisLabelsX.majorLabelStyle.overflowMode" : "ellipsisNone",
+                "charting.axisLabelsX.majorLabelStyle.rotation" : "0",
+                "charting.axisLabelsY.majorUnit" : "1",
+                "charting.axisTitleX.text" : "Count",
+                "charting.axisTitleY.text" : "Count",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.axisX.scale" : "linear",
+                "charting.axisY.scale" : "linear",
+                "charting.axisY2.enabled" : "false",
+                "charting.axisY2.scale" : "inherit",
+                "charting.chart.bubbleMaximumSize" : "50",
+                "charting.chart.bubbleMinimumSize" : "10",
+                "charting.chart.bubbleSizeBy" : "area",
+                "charting.chart.nullValueMode" : "gaps",
+                "charting.chart.sliceCollapsingThreshold" : "0.01",
+                "charting.chart.style" : "shiny",
+                "charting.drilldown" : "all",
+                "charting.layout.splitSeries" : "0",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisMiddle",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "legend_position" : "right",
+                "refresh.auto.interval" : "60",
+                "refresh.time.visible" : "false",
+                "rowNumbers" : "false",
+                "show_x_axis_title" : "false",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "none",
+                "wrap" : "true"
+              },
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_6c369e8fe6614f50b2b7476d140f9715",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "$resourceSnapshotModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_6e8b8400b5f84513b0c71739ca420fa4",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "rejects" : [
+                    "$resourceSnapshotModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_f1b1bf592fd3487589bb4045453045fa",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_01e1a32686d74d8298c7fb38372bd087",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "Historical Charts",
+          "visualizations" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_51a6cfa9c3cd408cb4a843bbdd432ebd",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1b0873f351aa495598afdeae1c5a5f00",
+                "viz_0f3f9de33554439ba2928a7f0e8dc25e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_057278a8abc44957ba31d81711b89c59",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "$concurrencyFuncLabel$ Search Concurrency",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_1b0873f351aa495598afdeae1c5a5f00",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisLabelsX.majorLabelStyle.overflowMode" : "ellipsisNone",
+                "charting.axisLabelsX.majorLabelStyle.rotation" : "0",
+                "charting.axisTitleX.text" : "Time",
+                "charting.axisTitleY.text" : "Count",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.axisX.scale" : "linear",
+                "charting.axisY.scale" : "linear",
+                "charting.axisY2.enabled" : "false",
+                "charting.axisY2.scale" : "inherit",
+                "charting.chart.nullValueMode" : "connect",
+                "charting.chart.sliceCollapsingThreshold" : "0.01",
+                "charting.chart.style" : "shiny",
+                "charting.drilldown" : "all",
+                "charting.layout.splitSeries" : "0",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisMiddle",
+                "legend_position" : "right",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal"
+              },
+              "title" : "",
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_0f3f9de33554439ba2928a7f0e8dc25e",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "$concurrencyModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_a4c0396efa7f4924b85a398fa143a8a9",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_fc965b6ea03c4df48e479c3b7401d752",
+                "viz_16a4aa1003664c57b78c53170a297618",
+                "viz_8001b2ab4f084e69b812f2e663ae7450"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_76f19e439bda46a69f6bcd30b659c17f",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "$resourceFuncLabel$ Resource Usage of Searches",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_fc965b6ea03c4df48e479c3b7401d752",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisLabelsX.majorLabelStyle.overflowMode" : "ellipsisNone",
+                "charting.axisLabelsX.majorLabelStyle.rotation" : "0",
+                "charting.axisTitleX.text" : "Time",
+                "charting.axisTitleY.text" : "$usageYAxis$",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.axisX.scale" : "linear",
+                "charting.axisY.scale" : "linear",
+                "charting.axisY2.enabled" : "false",
+                "charting.axisY2.scale" : "inherit",
+                "charting.chart.nullValueMode" : "connect",
+                "charting.chart.sliceCollapsingThreshold" : "0.01",
+                "charting.chart.style" : "shiny",
+                "charting.drilldown" : "all",
+                "charting.layout.splitSeries" : "0",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisMiddle",
+                "dataOverlayMode" : "none",
+                "legend_position" : "right",
+                "list.drilldown" : "full",
+                "list.wrap" : "1",
+                "maxLines" : "5",
+                "raw.drilldown" : "full",
+                "rowNumbers" : "false",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "table.drilldown" : "all",
+                "table.wrap" : "1",
+                "type" : "list",
+                "wrap" : "true"
+              },
+              "title" : "",
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_16a4aa1003664c57b78c53170a297618",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "$resourceModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_8001b2ab4f084e69b812f2e663ae7450",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "rejects" : [
+                    "$resourceModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_02d13c14135947838211c45cd7ddc623",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_22ea2651d85a48bd8f22e63c093dcdda",
+                "viz_dee6108e79a444698258db823da2eaab"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_30fc4bdc3e584e019d27753f52d43290",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "Top 20 Memory-Consuming Searches",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_22ea2651d85a48bd8f22e63c093dcdda",
+              "layer" : 1,
+              "options" : {
+                "count" : "10",
+                "dataOverlayMode" : "none",
+                "drilldown" : "cell",
+                "rowNumbers" : "true",
+                "wrap" : "true"
+              },
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_dee6108e79a444698258db823da2eaab",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_571a24b78d154aee89769529a5183752",
+                "viz_3b8109028a2b43b6a603c665cf152139"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_beb3daf0140b4959998622e6bf9b0f7f",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+              "depends" : [
+                "$top10drilldown$"
+              ]
+            }
+          },
+          "title" : "Details of SID: $top10_drilldown_sid$",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_571a24b78d154aee89769529a5183752",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "off",
+                "wrap" : "true"
+              },
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_3b8109028a2b43b6a603c665cf152139",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_44bf87b6abde4d278936da881b01a09b",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_263a26b16240407f8693dba9bf934e77",
+                "viz_93c3fa950a434ee68e5fd84a34e69705"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f747452c7a7c417a8e2107d77affe314",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "Searches Started Per Minute by Dispatcher",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_263a26b16240407f8693dba9bf934e77",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisLabelsX.majorLabelStyle.overflowMode" : "ellipsisNone",
+                "charting.axisLabelsX.majorLabelStyle.rotation" : "0",
+                "charting.axisTitleX.text" : "Time",
+                "charting.axisTitleY.text" : "New searches\/minute",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.axisX.scale" : "linear",
+                "charting.axisY.scale" : "linear",
+                "charting.axisY2.enabled" : "false",
+                "charting.axisY2.scale" : "inherit",
+                "charting.chart.nullValueMode" : "connect",
+                "charting.chart.sliceCollapsingThreshold" : "0.01",
+                "charting.chart.style" : "shiny",
+                "charting.drilldown" : "all",
+                "charting.layout.splitSeries" : "0",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisMiddle",
+                "legend_position" : "right",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal"
+              },
+              "title" : "",
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_93c3fa950a434ee68e5fd84a34e69705",
+              "layer" : 1,
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_c40eac398e74448d9a37c61456aad7c8",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c9519e8674e54cc38f9de8cea8169e12",
+                "viz_e05cf649a41c49cd8b3e5553298dd8b5"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c3a4c8cd9c154b13b59a2c50ba7378c3",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+              "rejects" : [
+                "$snapshot$"
+              ]
+            }
+          },
+          "title" : "Aggregate Search Runtime",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_c9519e8674e54cc38f9de8cea8169e12",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "column",
+                "charting.axisLabelsX.majorLabelStyle.overflowMode" : "ellipsisNone",
+                "charting.axisLabelsX.majorLabelStyle.rotation" : "0",
+                "charting.axisTitleX.text" : "Time",
+                "charting.axisTitleY.text" : "Runtime (seconds)",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.axisX.scale" : "linear",
+                "charting.axisY.scale" : "linear",
+                "charting.axisY2.enabled" : "false",
+                "charting.axisY2.scale" : "inherit",
+                "charting.chart.nullValueMode" : "connect",
+                "charting.chart.sliceCollapsingThreshold" : "0.01",
+                "charting.chart.style" : "shiny",
+                "charting.drilldown" : "all",
+                "charting.layout.splitSeries" : "0",
+                "charting.legend.labelStyle.overflowMode" : "ellipsisMiddle",
+                "legend_position" : "right",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal"
+              },
+              "title" : "",
+              "type" : "chart",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "id" : "viz_e05cf649a41c49cd8b3e5553298dd8b5",
+              "layer" : 1,
+              "layout" : {
+                "visibility" : {
+                  "depends" : [
+                    "$runtimeModeDoc$"
+                  ]
+                }
+              },
+              "title" : "",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

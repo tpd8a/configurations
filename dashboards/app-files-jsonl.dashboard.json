@@ -1,0 +1,69 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_09255e68281c4743922550d51b18c219",
+      "query" : {
+        "name" : "ds_B3A9FC2A",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.file_app"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_e5b15ed3ad6f4f8b81bd2f2864f64151",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "App Files JSONL",
+  "provenance" : {
+    "imported_at" : "2026-10-27T08:44:49Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_b0d2d37f572a46468d00ea5f83689572",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a2f2ea09c2514ccf8662eca65e8d219a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e7a805c2390f4159973cb34434a2d90d",
+          "layout" : {
+            "height" : 600,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_09255e68281c4743922550d51b18c219",
+              "id" : "viz_a2f2ea09c2514ccf8662eca65e8d219a",
+              "layer" : 1,
+              "options" : {
+                "raw_field" : "data",
+                "time_field" : "eventTimestamp"
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

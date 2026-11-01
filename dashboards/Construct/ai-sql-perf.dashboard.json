@@ -1,4 +1,5 @@
 {
+  "absolute_geometry_version" : 1,
   "config_version" : 2,
   "data_sources" : [
     {
@@ -37,7 +38,7 @@
         "name" : "viz_b74463b5e78f4961a851af2140c070a8",
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT dashboard,\n    SUM(fetches) AS total_fetches,\n    SUM(errors) AS total_errors,\n    CASE WHEN SUM(fetches)>0 THEN ROUND(100.0*SUM(errors)\/NULLIF(SUM(fetches),0),2) END AS error_rate_pct,\n    AVG(avg_ms) AS avg_latency_ms,\n    MAX(max_ms) AS max_latency_ms\nFROM construct_perf\nWHERE window_start > unixepoch('now','-1 day')\nGROUP BY dashboard\nORDER BY total_fetches DESC;"
+          "query" : "SELECT dashboard,\n    SUM(fetches) AS total_fetches,\n    SUM(errors) AS total_errors,\n    CASE WHEN SUM(fetches)>0 THEN ROUND(100.0*SUM(errors)\/NULLIF(SUM(fetches),0),2) END AS error_rate_pct,\n    AVG(avg_ms) AS avg_latency_ms,\n    MAX(max_ms) AS max_latency_ms\nFROM construct_perf\nWHERE window_start > unixepoch('now','-2 day')\nGROUP BY dashboard\nORDER BY total_fetches DESC;"
         },
         "type" : "ds.sql"
       }
@@ -65,7 +66,7 @@
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM binance_spot.ws_trade WHERE symbols = 'BTCUSDT'"
+          "query" : "SELECT * FROM binance_spot.ws_depth where symbols='BTCUSDT' AND levels=10"
         },
         "type" : "ds.sql"
       }
@@ -79,7 +80,7 @@
   "layout_type" : "absolute",
   "name" : "AI Sql Perf",
   "provenance" : {
-    "imported_at" : "2026-09-15T09:54:56Z",
+    "imported_at" : "2026-10-21T07:53:29Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -221,20 +222,23 @@
                     "marks" : [
                       {
                         "id" : "318A1110-7DF1-46AE-9F0F-43BE9FAFE508",
-                        "kind" : "pie",
+                        "kind" : "candle",
                         "optionsJSON" : "e30="
                       }
                     ],
-                    "shapeId" : "pie",
+                    "shapeId" : "candlestick",
                     "slotBindings" : {
                       "storage" : [
                         "x",
                         [
-                          "eventType"
+                          "time"
                         ],
                         "y",
                         [
-                          "price"
+                          "ohlc_open",
+                          "ohlc_high",
+                          "ohlc_low",
+                          "ohlc_close"
                         ]
                       ]
                     },
@@ -306,7 +310,7 @@
               "data_source_ref" : "ds_63360cefdfaeb227646da691a1aab0ef",
               "id" : "viz_3cd2956baafa430e95d6524044f49916",
               "layer" : 1,
-              "type" : "gauge",
+              "type" : "table",
               "width" : 12
             }
           ]

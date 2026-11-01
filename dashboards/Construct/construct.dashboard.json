@@ -21,7 +21,7 @@
   "layout_type" : "bootstrap",
   "name" : "Construct",
   "provenance" : {
-    "imported_at" : "2026-10-06T21:05:06Z",
+    "imported_at" : "2026-10-16T14:56:15Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -31,6 +31,7 @@
     {
       "id" : "row_11d23782752748578adfdead261e4475",
       "layout" : {
+        "fill" : true,
         "visibility" : {
 
         }

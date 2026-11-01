@@ -8,9 +8,9 @@
         "query" : {
           "method" : "GET"
         },
-        "refresh_seconds" : 0,
+        "refresh_seconds" : 300,
         "sql" : {
-          "query" : "select * from splunk_enterprise_rest_api.search_job(query:='index=_internal info',earliest_time:='@h', latest_time:='now')"
+          "query" : "select * from splunk_enterprise_rest_api.search_job_flow(query:='index=_internal info',earliest_time:='@h', latest_time:='now')"
         },
         "type" : "ds.sql"
       }
@@ -18,15 +18,13 @@
     {
       "id" : "ds_139da45851a441188bbcd897ca95756a",
       "query" : {
+        "chain" : {
+          "extend" : "ds_f14a97aa8ec8b130ed17a943d5cd1b49",
+          "query" : "| timechart count | fields - _span"
+        },
         "name" : "ds_timechart",
-        "query" : {
-          "method" : "GET"
-        },
         "refresh_seconds" : 0,
-        "sql" : {
-          "query" : "select * from splunk_enterprise_rest_api.search_job(query:='index=_internal info | timechart count |fields - _span',earliest_time:='@h', latest_time:='now')"
-        },
-        "type" : "ds.sql"
+        "type" : "ds.chain"
       }
     }
   ],
@@ -37,7 +35,7 @@
   "layout_type" : "bootstrap",
   "name" : "splunk_stats_time_example",
   "provenance" : {
-    "imported_at" : "2026-09-15T10:52:10Z",
+    "imported_at" : "2026-10-31T16:17:16Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -46,6 +44,10 @@
   "rows" : [
     {
       "id" : "row_6982724acac34f619c1f37f16b16f184",
+      "layout" : {
+        "fill" : true,
+        "fill_min" : 380
+      },
       "panels" : [
         {
           "columns" : [

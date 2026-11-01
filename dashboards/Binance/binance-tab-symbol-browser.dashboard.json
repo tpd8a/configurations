@@ -32,7 +32,7 @@
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "select time, symbol, priceChange, priceChangePercent, askPrice, askQuantity, bid, bidQuantity, open, high, low, close, volume  from binance_spot.ws_ticker"
+          "query" : "select time, symbol, priceChange, priceChangePercent, askPrice, askQuantity, bid, bidQuantity, open, high, low, close, volume from binance_spot.ws_ticker"
         },
         "type" : "ds.sql"
       }
@@ -54,17 +54,85 @@
     {
       "id" : "ds_7da3c4410f3a042110bbe72116145dc3",
       "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "kind" : "aiSummary",
+                "template" : "You are summarising a fired alert in one or two sentences.\n\nAlert: {{mark.label}}\nPanel: {{panel.title}}\nSeverity: {{severityTerm}}\nTriggering value: {{value}}\nCondition: {{condition}}\n\nRecent data points (last {{contextWindow}} intervals):\n{{recentData}}\n\nEvents within the alert window:\n{{recentEvents}}\n\nRespond with: (1) the likely cause, considering events if relevant;\n(2) one concrete next action. Keep it factual, no speculation\nbeyond the data provided."
+              },
+              {
+                "kind" : "sound",
+                "name" : "Glass"
+              },
+              {
+                "kind" : "notification"
+              }
+            ],
+            "condition" : {
+              "kind" : "expression",
+              "text" : "close > 100 and $symbol_tok$ == \"BTCUSDT\""
+            },
+            "id" : "286A606E-B938-45A3-8243-1392973F984E",
+            "name" : "close gt 84567.66",
+            "severity" : "Action",
+            "showOn" : [
+              "viz_bf7078df768048babadb477fbdaa34c2"
+            ]
+          },
+          {
+            "actions" : [
+              {
+                "action" : {
+                  "set_tokens" : {
+                    "last_alert" : "$alert.label$ — close $alert.value$"
+                  }
+                },
+                "kind" : "construct"
+              },
+              {
+                "action" : {
+                  "notify" : {
+                    "destination" : "cpu",
+                    "duration" : "dismiss",
+                    "show_result" : true
+                  }
+                },
+                "kind" : "construct"
+              }
+            ],
+            "condition" : {
+              "kind" : "expression",
+              "text" : "close > 0"
+            },
+            "id" : "D3C846C7-7172-4DD6-BFDB-4501AFEEEA5A",
+            "name" : "Demo action",
+            "severity" : "Notice",
+            "showOn" : [
+              "viz_bf7078df768048babadb477fbdaa34c2"
+            ]
+          }
+        ],
         "name" : "viz_klines",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "tql" : "ta bollinger(close, 20, 2) as sma20"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
         "sql" : {
           "query" : "SELECT * FROM binance_spot.klines(symbol:='$symbol_tok$',startTime:='$earliest$', endTime:='$latest$',interval:='5m') ORDER BY time DESC\n"
         },
+        "steps" : [
+          {
+            "alias" : "sma20",
+            "args" : {
+              "k" : "2",
+              "period" : "20",
+              "source" : "close"
+            },
+            "id" : "st_sma20",
+            "library" : "bollinger"
+          }
+        ],
         "time_mode" : {
           "earliest" : "$input2.earliest$",
           "latest" : "$input2.latest$",
@@ -76,13 +144,33 @@
     {
       "id" : "ds_992a2f1ae09e4cee822b6a69b436f50d",
       "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "kind" : "sound",
+                "name" : "Glass"
+              }
+            ],
+            "condition" : {
+              "kind" : "expression",
+              "text" : "close > 100 and $symbol_tok$ == \"BTCUSD\""
+            },
+            "id" : "286A606E-B938-45A3-8243-1392973F984E",
+            "name" : "close gt 100",
+            "severity" : "Action",
+            "showOn" : [
+              "viz_e3b89f67d78d4835b12dc61201ebdcf9"
+            ]
+          }
+        ],
         "name" : "viz_klines_ws",
         "query" : {
           "method" : "GET"
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM binance_spot.ws_kline(symbol:='$symbol_tok$',startTime:='$earliest$', endTime:='$latest$',interval:='1m')\n"
+          "query" : "SELECT * FROM binance_spot.ws_kline(symbols:='$symbol_tok$',interval:='1s')\n"
         },
         "type" : "ds.sql"
       }
@@ -91,6 +179,9 @@
       "id" : "ds_403419dc75284e54b5837b160e63d9aa",
       "query" : {
         "name" : "ds_exchange_info",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
           "query" : "SELECT symbol, quoteAsset, status FROM binance_spot.exchangeinfo where status='TRADING'\n"
@@ -137,7 +228,7 @@
           "absolute" : {
             "anchor" : "topLeft",
             "h" : 48,
-            "w" : 1440,
+            "w" : 1656,
             "x" : 0,
             "y" : 0
           }
@@ -173,7 +264,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Tab Symbol Browser",
   "provenance" : {
-    "imported_at" : "2026-10-10T07:02:03Z",
+    "imported_at" : "2026-10-28T21:01:16Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -399,9 +490,9 @@
           "id" : "panel_5661960609824174a6ae9122d9e1bc1e",
           "layout" : {
             "absolute_h" : 552,
-            "absolute_w" : 1080,
+            "absolute_w" : 1272,
             "absolute_x" : 0,
-            "absolute_y" : 408,
+            "absolute_y" : 432,
             "height" : 552,
             "panel_width" : 12
           },
@@ -587,8 +678,8 @@
           "id" : "panel_063771678b3f41a28ab59fcf65e9db90",
           "layout" : {
             "absolute_h" : 360,
-            "absolute_w" : 768,
-            "absolute_x" : 312,
+            "absolute_w" : 936,
+            "absolute_x" : 336,
             "absolute_y" : 48,
             "panel_width" : 12
           },
@@ -597,100 +688,6 @@
           },
           "visualizations" : [
             {
-              "alerts" : {
-                "alerts" : [
-                  {
-                    "actions" : [
-                      {
-                        "toast" : {
-
-                        }
-                      },
-                      {
-                        "visualGlow" : {
-
-                        }
-                      },
-                      {
-                        "llmEnrich" : {
-                          "template" : "You are summarising a fired alert in one or two sentences.\n\nAlert: {{mark.label}}\nPanel: {{panel.title}}\nSeverity: {{severityTerm}}\nTriggering value: {{value}}\nCondition: {{condition}}\n\nRecent data points (last {{contextWindow}} intervals):\n{{recentData}}\n\nEvents within the alert window:\n{{recentEvents}}\n\nRespond with: (1) the likely cause, considering events if relevant;\n(2) one concrete next action. Keep it factual, no speculation\nbeyond the data provided."
-                        }
-                      },
-                      {
-                        "systemSound" : {
-                          "soundName" : "Glass"
-                        }
-                      }
-                    ],
-                    "condition" : {
-                      "expression" : {
-                        "_0" : "close > 100 and $symbol_tok$ == \"BTCUSD\""
-                      }
-                    },
-                    "dedup" : {
-                      "overrideOnEscalation" : true,
-                      "windowSeconds" : 300
-                    },
-                    "enabled" : true,
-                    "id" : "286A606E-B938-45A3-8243-1392973F984E",
-                    "label" : "close gt 84567.66",
-                    "severityTerm" : "Action"
-                  },
-                  {
-                    "actions" : [
-                      {
-                        "toast" : {
-                          "duration" : "dismiss"
-                        }
-                      },
-                      {
-                        "set_tokens" : {
-                          "last_alert" : "$alert.label$ — close $alert.value$"
-                        }
-                      },
-                      {
-                        "notify" : {
-                          "destination" : "cpu",
-                          "duration" : "dismiss",
-                          "show_result" : true
-                        }
-                      }
-                    ],
-                    "condition" : {
-                      "expression" : {
-                        "_0" : "close > 0"
-                      }
-                    },
-                    "dedup" : {
-                      "overrideOnEscalation" : true,
-                      "windowSeconds" : 180
-                    },
-                    "enabled" : true,
-                    "id" : "D3C846C7-7172-4DD6-BFDB-4501AFEEEA5A",
-                    "label" : "Demo action",
-                    "severityTerm" : "Notice"
-                  }
-                ],
-                "severityCatalog" : {
-                  "terms" : [
-                    {
-                      "colourHex" : "#5AC8FA",
-                      "rank" : 1,
-                      "term" : "Notice"
-                    },
-                    {
-                      "colourHex" : "#FF9500",
-                      "rank" : 2,
-                      "term" : "Watch"
-                    },
-                    {
-                      "colourHex" : "#FF3B30",
-                      "rank" : 3,
-                      "term" : "Action"
-                    }
-                  ]
-                }
-              },
               "chart" : {
                 "adaptMode" : "auto",
                 "alerts" : [
@@ -793,7 +790,7 @@
                       {
                         "id" : "E5DD8BD8-7821-4F3A-94E8-871B9EEF08C7",
                         "kind" : "indicator_band",
-                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwiZmllbGQiOiJzbWEyMCIsInNlcmllc092ZXJyaWRlcyI6eyJjbG9zZSI6eyJuZWdhdGUiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
+                        "optionsJSON" : "eyJmaWxsT3BhY2l0eSI6MC4xNDk5OTk5OTk5OTk5OTk5OSwic2VyaWVzT3ZlcnJpZGVzIjp7ImNsb3NlIjp7Im5lZ2F0ZSI6ZmFsc2UsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImhpZGRlbiI6ZmFsc2V9fSwiZmllbGQiOiJzbWEyMCJ9"
                       }
                     ],
                     "shapeId" : "candlestick",
@@ -910,52 +907,161 @@
           "id" : "panel_46419856dde541c78400f45076366418",
           "layout" : {
             "absolute_h" : 336,
-            "absolute_w" : 1056,
+            "absolute_w" : 1440,
             "absolute_x" : 0,
-            "absolute_y" : 984,
+            "absolute_y" : 960,
             "panel_width" : 12
           },
           "visualizations" : [
             {
-              "alerts" : {
+              "config" : {
+                "title" : "Candlestick $symbol_tok$"
+              },
+              "data_source_ref" : "ds_992a2f1ae09e4cee822b6a69b436f50d",
+              "id" : "viz_e3b89f67d78d4835b12dc61201ebdcf9",
+              "layer" : 1,
+              "options" : {
+                "change_field" : "askPrice",
+                "change_pct_field" : "priceChangePercent",
+                "name_field" : "symbol",
+                "style" : "marquee",
+                "wrap_cells" : "true"
+              },
+              "title" : "Candlesticker $symbol_tok$",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2fa1f5d3198f4a4ba7da384a2572a470"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6397c091beed438e831ad8d7c3e34802",
+          "layout" : {
+            "absolute_h" : 912,
+            "absolute_w" : 360,
+            "absolute_x" : 1296,
+            "absolute_y" : 48,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
                 "alerts" : [
-                  {
-                    "actions" : [
-                      {
-                        "toast" : {
 
-                        }
-                      },
-                      {
-                        "visualGlow" : {
+                ],
+                "annotations" : [
 
-                        }
-                      },
-                      {
-                        "visualFlash" : {
+                ],
+                "colorPalette" : {
+                  "theme" : {
 
-                        }
-                      },
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "$row.symbol$" : {
+                    "dataLinks" : [
                       {
-                        "systemSound" : {
-                          "soundName" : "Glass"
-                        }
+                        "evalAssignments" : [
+
+                        ],
+                        "id" : "A06BDCEE-D16A-4455-AD4A-589F36DADCBF",
+                        "label" : "Drill-down",
+                        "setTokens" : [
+                          {
+                            "id" : "00D308EB-1692-44D4-918D-BEA3633E1111",
+                            "name" : "symbol_tok",
+                            "value" : "$field.symbol$"
+                          }
+                        ],
+                        "unsetTokens" : [
+
+                        ]
                       }
                     ],
-                    "condition" : {
-                      "expression" : {
-                        "_0" : "close > 100 and $symbol_tok$ == \"BTCUSD\""
-                      }
-                    },
-                    "dedup" : {
-                      "overrideOnEscalation" : true,
-                      "windowSeconds" : 300
-                    },
-                    "enabled" : true,
-                    "id" : "286A606E-B938-45A3-8243-1392973F984E",
-                    "label" : "close gt 84567.66",
-                    "severityTerm" : "Action"
+                    "fieldId" : "$row.symbol$",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
                   }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+
+                    ],
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
                 ],
                 "severityCatalog" : {
                   "terms" : [
@@ -975,47 +1081,40 @@
                       "term" : "Action"
                     }
                   ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
                 }
               },
-              "config" : {
-                "title" : "Candlestick $symbol_tok$"
-              },
-              "data_source_ref" : "ds_992a2f1ae09e4cee822b6a69b436f50d",
-              "id" : "viz_e3b89f67d78d4835b12dc61201ebdcf9",
-              "layer" : 1,
-              "options" : {
-                "change_field" : "askPrice",
-                "change_pct_field" : "priceChangePercent",
-                "name_field" : "symbol",
-                "style" : "marquee",
-                "wrap_cells" : "true"
-              },
-              "title" : "Candlesticker $symbol_tok$",
-              "type" : "chart",
-              "width" : 12
-            }
-          ]
-        },
-        {
-          "columns" : [
-            {
-              "id" : "col_0",
-              "viz_ids" : [
-                "viz_2fa1f5d3198f4a4ba7da384a2572a470"
-              ],
-              "width" : 12
-            }
-          ],
-          "id" : "panel_6397c091beed438e831ad8d7c3e34802",
-          "layout" : {
-            "absolute_h" : 912,
-            "absolute_w" : 360,
-            "absolute_x" : 1080,
-            "absolute_y" : 48,
-            "panel_width" : 12
-          },
-          "visualizations" : [
-            {
               "data_source_ref" : "ds_403419dc75284e54b5837b160e63d9aa",
               "id" : "viz_2fa1f5d3198f4a4ba7da384a2572a470",
               "layer" : 1,

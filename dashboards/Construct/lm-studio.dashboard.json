@@ -12,12 +12,32 @@
             "format" : "txt",
             "lineBreaker" : "([\\r\\n]+)\\[",
             "maxRows" : "10000",
-            "path" : "\/Users\/peter\/.lmstudio\/server-logs\/2026-07\/2026-09-22.1.log",
-            "tql" : "extract  \/ef\/"
+            "path" : "\/Users\/peter\/.lmstudio\/server-logs\/2026-09\/2026-09-2*log",
+            "tql" : "extract line \/^.(?:\\S+\\s\\S+?)\\]\\[(?:\\w+)\\](?:[\\v\\V]+)\/ | parsetime _time \"yyyy-MM-dd HH:mm:ss\""
           }
         },
         "refresh_seconds" : 60,
         "type" : "ds.search"
+      }
+    },
+    {
+      "id" : "ds_fa6fdb446d8048d79311f1cd01d2e475",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_CC939A8E",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "txt",
+            "maxRows" : "10000",
+            "path" : "*"
+          }
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
       }
     }
   ],
@@ -28,7 +48,7 @@
   "layout_type" : "bootstrap",
   "name" : "LM Studio",
   "provenance" : {
-    "imported_at" : "2026-09-23T05:08:19Z",
+    "imported_at" : "2026-10-26T13:02:45Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -37,6 +57,9 @@
   "rows" : [
     {
       "id" : "row_734133e59d6c4d28b826402779d4a948",
+      "layout" : {
+        "fill" : true
+      },
       "panels" : [
         {
           "columns" : [
@@ -50,7 +73,7 @@
           ],
           "id" : "panel_eb41ebd8c89744b8823bedec1a64277e",
           "layout" : {
-            "height" : 700,
+            "height" : 240,
             "panel_width" : 12
           },
           "visualizations" : [
@@ -59,8 +82,10 @@
               "id" : "viz_3542e9cf8e504d77a6bd88dfd668f68f",
               "layer" : 1,
               "options" : {
-                "raw_field" : "line",
-                "time_field" : ""
+                "raw_field" : "event",
+                "stats_mode" : "severity",
+                "time_field" : "time",
+                "timeline_enabled" : "true"
               },
               "type" : "events",
               "width" : 12

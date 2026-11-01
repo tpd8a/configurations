@@ -1,0 +1,313 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7c1a2e3b4d5f46a7b8c9d0e1f2a3b4c5",
+      "query" : {
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "1h"
+        },
+        "name" : "btc_live",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, close AS price, priceChange AS change, priceChangePercent AS change_pct, high, low, volume, time AS time_ms, time \/ 1000 AS tick_ts FROM ws_ticker WHERE symbol = 'BTCUSDT'"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_8d2b3f4c5e6a47b8c9d0e1f2a3b4c5d6",
+      "query" : {
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "15m"
+        },
+        "name" : "btc_last_20",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT time AS time_ms, time \/ 1000 AS tick_ts, symbol, close AS price, priceChange AS change, priceChangePercent AS change_pct FROM ws_ticker WHERE symbol = 'BTCUSDT' ORDER BY time_ms DESC LIMIT 20"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_1a2b3c4d5e6f47a8b9c0d1e2f3a4b5c6",
+      "query" : {
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "1h"
+        },
+        "name" : "eth_live",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT symbol, close AS price, priceChange AS change, priceChangePercent AS change_pct, high, low, volume, time AS time_ms, time \/ 1000 AS tick_ts FROM ws_ticker WHERE symbol = 'ETHUSDT'"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2b3c4d5e6f7a48b9c0d1e2f3a4b5c6d7",
+      "query" : {
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "15m"
+        },
+        "name" : "eth_last_20",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT time AS time_ms, time \/ 1000 AS tick_ts, symbol, close AS price, priceChange AS change, priceChangePercent AS change_pct FROM ws_ticker WHERE symbol = 'ETHUSDT' ORDER BY time_ms DESC LIMIT 20"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live BTCUSDT and ETHUSDT prices with 24h change, recent-price sparklines and last 20 ticks.",
+  "id" : "dash_48e721dd01424ef6b4ae02d815dfc0f1",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b2 r2",
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_9e3c4a5d6f7b48c9d0e1f2a3b4c5d6e7",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e5f6a7b8c9d04b5c637e8f9a0b1c2d34"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a1b2c3d4e5f64718293a4b5c6d7e8f90",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "title" : "BTCUSDT price",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7c1a2e3b4d5f46a7b8c9d0e1f2a3b4c5",
+              "id" : "viz_e5f6a7b8c9d04b5c637e8f9a0b1c2d34",
+              "layer" : 1,
+              "options" : {
+                "delta_field" : "change",
+                "delta_pct_field" : "change_pct",
+                "price_field" : "price",
+                "symbol_field" : "symbol"
+              },
+              "title" : "BTCUSDT",
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f6a7b8c9d0e14c6d748f9a0b1c2d3e45"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b2c3d4e5f6a74829304b5c6d7e8f9a01",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "title" : "BTCUSDT recent price",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "line"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "price"
+                ],
+                "timeField" : "tick_ts"
+              },
+              "data_source_ref" : "ds_7c1a2e3b4d5f46a7b8c9d0e1f2a3b4c5",
+              "id" : "viz_f6a7b8c9d0e14c6d748f9a0b1c2d3e45",
+              "layer" : 1,
+              "title" : "BTCUSDT price (last hour, every tick)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "BTCUSDT live"
+    },
+    {
+      "id" : "row_3c4d5e6f7a8b49c0d1e2f3a4b5c6d7e8",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7a8b9c0d1e2f4d04b5c6d7e8f9a0b1c2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4d5e6f7a8b9c4ad1e2f3a4b5c6d7e8f9",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "title" : "ETHUSDT price",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_1a2b3c4d5e6f47a8b9c0d1e2f3a4b5c6",
+              "id" : "viz_7a8b9c0d1e2f4d04b5c6d7e8f9a0b1c2",
+              "layer" : 1,
+              "options" : {
+                "delta_field" : "change",
+                "delta_pct_field" : "change_pct",
+                "price_field" : "price",
+                "symbol_field" : "symbol"
+              },
+              "title" : "ETHUSDT",
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8b9c0d1e2f3a4e15c6d7e8f9a0b1c2d3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5e6f7a8b9c0d4be2f3a4b5c6d7e8f9a0",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "title" : "ETHUSDT recent price",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "line"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "price"
+                ],
+                "timeField" : "tick_ts"
+              },
+              "data_source_ref" : "ds_1a2b3c4d5e6f47a8b9c0d1e2f3a4b5c6",
+              "id" : "viz_8b9c0d1e2f3a4e15c6d7e8f9a0b1c2d3",
+              "layer" : 1,
+              "title" : "ETHUSDT price (last hour, every tick)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "ETHUSDT live"
+    },
+    {
+      "id" : "row_c3d4e5f6a7b8493a415c6d7e8f9a0b12",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a7b8c9d0e1f24d7e859a0b1c2d3e4f56"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d4e5f6a7b8c94a4b526d7e8f9a0b1c23",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "BTCUSDT last 20 ticks (newest first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8d2b3f4c5e6a47b8c9d0e1f2a3b4c5d6",
+              "id" : "viz_a7b8c9d0e1f24d7e859a0b1c2d3e4f56",
+              "layer" : 1,
+              "options" : {
+                "fields" : "tick_ts,symbol,price,change,change_pct"
+              },
+              "title" : "Last 20 BTCUSDT ticks",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9c0d1e2f3a4b4f26d7e8f9a0b1c2d3e4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_6f7a8b9c0d1e4cf3a4b5c6d7e8f9a0b1",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "ETHUSDT last 20 ticks (newest first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_2b3c4d5e6f7a48b9c0d1e2f3a4b5c6d7",
+              "id" : "viz_9c0d1e2f3a4b4f26d7e8f9a0b1c2d3e4",
+              "layer" : 1,
+              "options" : {
+                "fields" : "tick_ts,symbol,price,change,change_pct"
+              },
+              "title" : "Last 20 ETHUSDT ticks",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Ticks"
+    }
+  ]
+}

@@ -16,6 +16,9 @@
       "provider_ref" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
       "query" : {
         "name" : "Datasource Query (timeseries)",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 60,
         "sql" : {
           "query" : "SELECT * FROM grafana_api.ds_query(dsUid := '$dsUid$', expr := '$expr$', intervalMs := '$intervalMs$', maxDataPoints := '$maxDataPoints$', from := '$time.from_ms$', to := '$time.to_ms$')"
@@ -162,7 +165,7 @@
   "layout_type" : "bootstrap",
   "name" : "Datasource Query (timeseries)",
   "provenance" : {
-    "imported_at" : "2026-10-02T17:58:21Z",
+    "imported_at" : "2026-10-25T14:50:43Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -171,6 +174,9 @@
   "rows" : [
     {
       "id" : "row_e25ad258e7c4418788c6f7a39f22455f",
+      "layout" : {
+        "fill" : true
+      },
       "panels" : [
         {
           "columns" : [
@@ -184,15 +190,175 @@
           ],
           "id" : "panel_bedf5099fe484857822f417a6a7ed565",
           "layout" : {
+            "height" : 320,
             "panel_width" : 12
           },
           "visualizations" : [
             {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "06F2A918-0F6C-4249-8DF5-8E4706E9BF35",
+                        "kind" : "area",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "stacked-area-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "stack",
+                        [
+                          "__name__"
+                        ],
+                        "y",
+                        [
+                          "node_load1"
+                        ],
+                        "x",
+                        [
+                          "Time"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "Datasource Query (timeseries)"
+              },
               "data_source_ref" : "ds_1202c75db41d463f8cb559ba23ab4735",
               "id" : "viz_a6022e40618e488590896ae7934aa629",
               "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
               "title" : "Datasource Query (timeseries)",
-              "type" : "table",
+              "type" : "chart",
               "width" : 12
             }
           ]

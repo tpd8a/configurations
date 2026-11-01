@@ -1,0 +1,113 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_4c1e9a7b2d3f4e5a8b6c0d1e2f3a4b5c",
+      "query" : {
+        "name" : "failures_by_path",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, SUM(CASE WHEN status = 404 THEN 1 ELSE 0 END) AS e404, SUM(CASE WHEN status = 500 THEN 1 ELSE 0 END) AS e500, COUNT(*) AS requests, SUM(CASE WHEN status = 404 OR status = 500 THEN 1 ELSE 0 END) * 100.0 \/ COUNT(*) AS pct_failed FROM construct_examples.combined_access(path := 'bench\/access.log') GROUP BY url ORDER BY pct_failed DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "404 \/ 500 failures per request path from construct_examples bench\/access.log",
+  "id" : "dash_fb56480326284cc98d61d0ed53a4e234",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Bench b1 r1",
+  "provenance" : {
+    "imported_at" : "2026-10-30T12:54:30Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7a2b4c6d8e0f4a1b9c3d5e7f9a1b3c5d",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9e8d7c6b5a4f4e3d2c1b0a9f8e7d6c5b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1f3e5d7c9b0a4e2d8c6b4a2f0e1d3c5b",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "404s, 500s and % failed by path",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_4c1e9a7b2d3f4e5a8b6c0d1e2f3a4b5c",
+              "id" : "viz_9e8d7c6b5a4f4e3d2c1b0a9f8e7d6c5b",
+              "layer" : 1,
+              "options" : {
+                "fields" : "url,e404,e500,requests,pct_failed"
+              },
+              "title" : "404s, 500s and % failed by path (worst first)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3b5d7f9a1c2e4b6d8f0a2c4e6b8d0f1a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2a4c6e8f0b1d4f3a5c7e9b1d3f5a7c9e",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "404 vs 500 per path",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "e404",
+                  "e500"
+                ],
+                "timeField" : "url"
+              },
+              "data_source_ref" : "ds_4c1e9a7b2d3f4e5a8b6c0d1e2f3a4b5c",
+              "id" : "viz_3b5d7f9a1c2e4b6d8f0a2c4e6b8d0f1a",
+              "layer" : 1,
+              "title" : "404 vs 500 per path",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Failures by path"
+    }
+  ]
+}

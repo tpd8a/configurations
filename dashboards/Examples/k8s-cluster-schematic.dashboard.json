@@ -413,7 +413,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "ingress",
           "groupValues" : [
@@ -434,7 +434,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "frontend",
           "groupValues" : [
@@ -455,7 +455,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "api",
           "groupValues" : [
@@ -476,7 +476,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "auth"
         },
@@ -493,7 +493,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "postgres",
           "groupValues" : [
@@ -514,7 +514,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "redis"
         },
@@ -531,7 +531,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "rabbitmq"
         },
@@ -548,7 +548,7 @@
         "scorecard" : {
           "breakdownField" : "status",
           "countField" : "hostname",
-          "format" : "{total} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
+          "format" : "{count} pods\nCPU {avg:cpu_percent}%\n{breakdown}",
           "groupField" : "role",
           "groupValue" : "worker",
           "groupValues" : [

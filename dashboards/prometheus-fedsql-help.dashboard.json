@@ -8,7 +8,12 @@
         "name" : "New datasource",
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM FS.node_load15_lasthour_5m"
+          "query" : "select __name__ as name, value from prom.range  WHERE query = 'node_load1' AND earliest='$timerange.earliest$' AND latest='now' AND step='5m'"
+        },
+        "time_mode" : {
+          "earliest" : "$timerange.earliest$",
+          "latest" : "$timerange.latest$",
+          "mode" : "fixed"
         },
         "type" : "ds.sql"
       }
@@ -70,7 +75,7 @@
   "layout_type" : "absolute",
   "name" : "Prometheus FedSQL Help",
   "provenance" : {
-    "imported_at" : "2026-10-09T15:41:51Z",
+    "imported_at" : "2026-10-31T11:37:05Z",
     "source" : "local"
   },
   "provider_refs" : [

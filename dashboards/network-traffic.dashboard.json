@@ -1,11 +1,12 @@
 {
+  "absolute_geometry_version" : 1,
   "config_version" : 2,
   "data_sources" : [
     {
-      "id" : "ds_a2a22f3c83374b139bcd1d46b4bc9479",
+      "id" : "ds_04bb7ba74cce4e7cb3408e7b8b2d0f91",
       "query" : {
         "chain" : {
-          "extend" : "ds_e3e4ad3f247b4bac971a04f39f2804b8",
+          "extend" : "ds_fe5d81d046dc4ab888d0b58794d401b9",
           "query" : "| where Username IN ($username|s$) OR (\"$username$\"=\"*\")\n| table Timestamp, Username, Source_IP, VPN_Gateway, Connection_Duration_min, Data_Transferred_MB, Result, Authentication_Method\n"
         },
         "name" : "VPN chart",
@@ -14,18 +15,7 @@
       }
     },
     {
-      "id" : "ds_e3e4ad3f247b4bac971a04f39f2804b8",
-      "query" : {
-        "name" : "Base VPN user info",
-        "refresh_seconds" : 0,
-        "sql" : {
-          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '| makeresults count=8\n| streamstats count as row_num\n| eval Timestamp = case(\n    row_num=1, \"2025-10-30 11:00:10 UTC\",\n    row_num=2, \"2025-10-30 11:01:05 UTC\",\n    row_num=3, \"2025-10-30 11:02:30 UTC\",\n    row_num=4, \"2025-10-30 11:03:15 UTC\",\n    row_num=5, \"2025-10-30 11:04:00 UTC\",\n    row_num=6, \"2025-10-30 11:05:20 UTC\",\n    row_num=7, \"2025-10-30 11:06:10 UTC\",\n    row_num=8, \"2025-10-30 11:07:00 UTC\"\n)\n| eval Username = case(\n    row_num=1, \"Ahmed Khan\",\n    row_num=2, \"Carlos Garcia\",\n    row_num=3, \"Mei Lin\",\n    row_num=4, \"David Schmidt\",\n    row_num=5, \"Padma Sharma\",\n    row_num=6, \"Jane Williams\",\n    row_num=7, \"Sofia Rossi\",\n    row_num=8, \"Ken Tanaka\"\n)\n| eval Source_IP = case(\n    row_num=1, \"72.21.99.1\",\n    row_num=2, \"104.16.2.3\",\n    row_num=3, \"198.51.100.10\",\n    row_num=4, \"72.21.99.1\",\n    row_num=5, \"203.0.113.25\",\n    row_num=6, \"104.16.2.3\",\n    row_num=7, \"198.51.100.10\",\n    row_num=8, \"1.2.3.4\"\n)\n| eval VPN_Gateway = case(\n    row_num=1, \"vpn-us-east-01\",\n    row_num=2, \"vpn-us-west-02\",\n    row_num=3, \"vpn-us-east-01\",\n    row_num=4, \"vpn-us-east-01\",\n    row_num=5, \"vpn-us-west-02\",\n    row_num=6, \"vpn-us-west-02\",\n    row_num=7, \"vpn-us-east-01\",\n    row_num=8, \"vpn-us-east-01\"\n)\n| eval Connection_Duration_min = case(\n    row_num=1, 60,\n    row_num=2, 120,\n    row_num=3, 45,\n    row_num=4, 0,\n    row_num=5, 90,\n    row_num=6, 0,\n    row_num=7, 30,\n    row_num=8, 0\n)\n| eval Data_Transferred_MB = case(\n    row_num=1, 500,\n    row_num=2, 1200,\n    row_num=3, 300,\n    row_num=4, 0,\n    row_num=5, 800,\n    row_num=6, 0,\n    row_num=7, 200,\n    row_num=8, 0\n)\n| eval Authentication_Method = case(\n    row_num=1, \"MFA\",\n    row_num=2, \"MFA\",\n    row_num=3, \"MFA\",\n    row_num=4, \"Password\",\n    row_num=5, \"MFA\",\n    row_num=6, \"Password\",\n    row_num=7, \"MFA\",\n    row_num=8, \"Password\"\n)\n| eval Result = case(\n    row_num=1, \"Allowed\",\n    row_num=2, \"Allowed\",\n    row_num=3, \"Allowed\",\n    row_num=4, \"Blocked\",\n    row_num=5, \"Allowed\",\n    row_num=6, \"Blocked\",\n    row_num=7, \"Allowed\",\n    row_num=8, \"Blocked\"\n)', namespace := 'search')"
-        },
-        "type" : "ds.sql"
-      }
-    },
-    {
-      "id" : "ds_cad544c61d454b61ae68a3a869746b8c",
+      "id" : "ds_eb212471b9934909a65df37bba858dee",
       "query" : {
         "name" : "Country Connections",
         "query" : {
@@ -33,7 +23,18 @@
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job(query := '| makeresults count=100\n| eval _time = now() - random() % 3600\n| eval user = \"user\" + tostring(random() % 10 + 1)\n| eval vpn_server = case(random() % 3 == 0, \"VPN_US_East\", random() % 3 == 1, \"VPN_EU_West\", 1=1, \"VPN_ASIA_South\")\n| eval country = case(random() % 5 == 0, \"USA\", random() % 5 == 1, \"Canada\", random() % 5 == 2, \"Germany\", random() % 5 == 3, \"Japan\", 1=1, \"Australia\")\n| eval connection_status = if(random() % 5 == 0, \"disconnected\", \"connected\")\n| eval bytes_in = random() % 1000000 + 10000\n| eval bytes_out = random() % 500000 + 5000\n| stats count AS \"Number of Connections\" by country', namespace := 'search')"
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '| makeresults count=100\n| eval _time = now() - random() % 3600\n| eval user = \"user\" + tostring(random() % 10 + 1)\n| eval vpn_server = case(random() % 3 == 0, \"VPN_US_East\", random() % 3 == 1, \"VPN_EU_West\", 1=1, \"VPN_ASIA_South\")\n| eval country = case(random() % 5 == 0, \"USA\", random() % 5 == 1, \"Canada\", random() % 5 == 2, \"Germany\", random() % 5 == 3, \"Japan\", 1=1, \"Australia\")\n| eval connection_status = if(random() % 5 == 0, \"disconnected\", \"connected\")\n| eval bytes_in = random() % 1000000 + 10000\n| eval bytes_out = random() % 500000 + 5000\n| stats count AS \"Number of Connections\" by country| where country IN ($country|s$) OR (\"$country$\"\n=\"*\")\n| rename country AS \"Country\"', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_fe5d81d046dc4ab888d0b58794d401b9",
+      "query" : {
+        "name" : "Base VPN user info",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '| makeresults count=8\n| streamstats count as row_num\n| eval Timestamp = case(\n    row_num=1, \"2025-10-30 11:00:10 UTC\",\n    row_num=2, \"2025-10-30 11:01:05 UTC\",\n    row_num=3, \"2025-10-30 11:02:30 UTC\",\n    row_num=4, \"2025-10-30 11:03:15 UTC\",\n    row_num=5, \"2025-10-30 11:04:00 UTC\",\n    row_num=6, \"2025-10-30 11:05:20 UTC\",\n    row_num=7, \"2025-10-30 11:06:10 UTC\",\n    row_num=8, \"2025-10-30 11:07:00 UTC\"\n)\n| eval Username = case(\n    row_num=1, \"Ahmed Khan\",\n    row_num=2, \"Carlos Garcia\",\n    row_num=3, \"Mei Lin\",\n    row_num=4, \"David Schmidt\",\n    row_num=5, \"Padma Sharma\",\n    row_num=6, \"Jane Williams\",\n    row_num=7, \"Sofia Rossi\",\n    row_num=8, \"Ken Tanaka\"\n)\n| eval Source_IP = case(\n    row_num=1, \"72.21.99.1\",\n    row_num=2, \"104.16.2.3\",\n    row_num=3, \"198.51.100.10\",\n    row_num=4, \"72.21.99.1\",\n    row_num=5, \"203.0.113.25\",\n    row_num=6, \"104.16.2.3\",\n    row_num=7, \"198.51.100.10\",\n    row_num=8, \"1.2.3.4\"\n)\n| eval VPN_Gateway = case(\n    row_num=1, \"vpn-us-east-01\",\n    row_num=2, \"vpn-us-west-02\",\n    row_num=3, \"vpn-us-east-01\",\n    row_num=4, \"vpn-us-east-01\",\n    row_num=5, \"vpn-us-west-02\",\n    row_num=6, \"vpn-us-west-02\",\n    row_num=7, \"vpn-us-east-01\",\n    row_num=8, \"vpn-us-east-01\"\n)\n| eval Connection_Duration_min = case(\n    row_num=1, 60,\n    row_num=2, 120,\n    row_num=3, 45,\n    row_num=4, 0,\n    row_num=5, 90,\n    row_num=6, 0,\n    row_num=7, 30,\n    row_num=8, 0\n)\n| eval Data_Transferred_MB = case(\n    row_num=1, 500,\n    row_num=2, 1200,\n    row_num=3, 300,\n    row_num=4, 0,\n    row_num=5, 800,\n    row_num=6, 0,\n    row_num=7, 200,\n    row_num=8, 0\n)\n| eval Authentication_Method = case(\n    row_num=1, \"MFA\",\n    row_num=2, \"MFA\",\n    row_num=3, \"MFA\",\n    row_num=4, \"Password\",\n    row_num=5, \"MFA\",\n    row_num=6, \"Password\",\n    row_num=7, \"MFA\",\n    row_num=8, \"Password\"\n)\n| eval Result = case(\n    row_num=1, \"Allowed\",\n    row_num=2, \"Allowed\",\n    row_num=3, \"Allowed\",\n    row_num=4, \"Blocked\",\n    row_num=5, \"Allowed\",\n    row_num=6, \"Blocked\",\n    row_num=7, \"Allowed\",\n    row_num=8, \"Blocked\"\n)', namespace := 'search')"
         },
         "type" : "ds.sql"
       }
@@ -52,13 +53,13 @@
             "value" : "*"
           },
           {
-            "default" : false,
+            "default" : true,
             "disabled" : false,
             "label" : "Australia",
             "value" : "Australia"
           },
           {
-            "default" : false,
+            "default" : true,
             "disabled" : false,
             "label" : "Canada",
             "value" : "Canada"
@@ -76,7 +77,7 @@
             "value" : "Japan"
           }
         ],
-        "default" : "All",
+        "default" : "Australia,Canada",
         "display_location" : "top",
         "label" : "Country Multiselect Input",
         "location" : {
@@ -87,7 +88,7 @@
         "search_when_changed" : true,
         "type" : "multiselect"
       },
-      "id" : "input_983c82183705437088095185d0baf3f2",
+      "id" : "input_77f9c764b4054f9694363b5cc040105a",
       "token" : "country"
     },
     {
@@ -103,13 +104,13 @@
         "search_when_changed" : true,
         "type" : "time"
       },
-      "id" : "input_e3d8b475e5c749e491a54e0b7262edac",
+      "id" : "input_593e348912584bd49023011e06d110e5",
       "token" : "global_time"
     },
     {
       "config" : {
         "choice_search" : {
-          "data_source_ref" : "ds_e3e4ad3f247b4bac971a04f39f2804b8",
+          "data_source_ref" : "ds_fe5d81d046dc4ab888d0b58794d401b9",
           "field_for_label" : "Username",
           "field_for_value" : "Username"
         },
@@ -131,7 +132,7 @@
         "search_when_changed" : true,
         "type" : "multiselect"
       },
-      "id" : "input_b31dcbc583df48b98589653b1c87a65a",
+      "id" : "input_87ffc1daab6f4b6992a69270a1bc4a77",
       "token" : "username"
     }
   ],
@@ -139,7 +140,7 @@
   "name" : "Network Traffic",
   "polling_interval_seconds" : 30,
   "provenance" : {
-    "imported_at" : "2026-10-02T07:39:12Z",
+    "imported_at" : "2026-11-01T14:37:18Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -147,24 +148,24 @@
   ],
   "rows" : [
     {
-      "id" : "row_4006c79ca4cd4193b15f3cdf19f3e762",
+      "id" : "row_3ca606869479425aa8b487f31cff1f46",
       "panels" : [
         {
           "columns" : [
             {
               "id" : "col_viz_K9ZIBWXa",
               "viz_ids" : [
-                "viz_188c3a20e1f04062b7ce9e5c6ca142e1"
+                "viz_dec81c2f93114646889c314ec09d6cd0"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_d4e6f14cba37431b8172b95313be38a8",
+          "id" : "panel_234c8257385e44379b8af56fa5a5fe3e",
           "layout" : {
-            "absolute_h" : 340,
-            "absolute_w" : 1380,
-            "absolute_x" : 20,
-            "absolute_y" : 20,
+            "absolute_h" : 336,
+            "absolute_w" : 1320,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
             "panel_width" : 12
           },
           "title" : "VPN User Session Log",
@@ -173,8 +174,8 @@
               "config" : {
                 "title" : "VPN User Session Log"
               },
-              "data_source_ref" : "ds_a2a22f3c83374b139bcd1d46b4bc9479",
-              "id" : "viz_188c3a20e1f04062b7ce9e5c6ca142e1",
+              "data_source_ref" : "ds_04bb7ba74cce4e7cb3408e7b8b2d0f91",
+              "id" : "viz_dec81c2f93114646889c314ec09d6cd0",
               "layer" : 1,
               "type" : "table",
               "width" : 12
@@ -186,17 +187,17 @@
             {
               "id" : "col_viz_5seQZ9KK",
               "viz_ids" : [
-                "viz_67b414c4caf04fadba21c7cc9737d328"
+                "viz_25540abaa8e2484ea91eb1846edbceeb"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_025c399d47564d51b7c1efe802eb956e",
+          "id" : "panel_1783401ea5014a1e8cac1419166e4165",
           "layout" : {
-            "absolute_h" : 300,
-            "absolute_w" : 1370,
-            "absolute_x" : 20,
-            "absolute_y" : 380,
+            "absolute_h" : 312,
+            "absolute_w" : 1320,
+            "absolute_x" : 0,
+            "absolute_y" : 360,
             "panel_width" : 12
           },
           "title" : "Number of VPN Connections by Country",
@@ -224,7 +225,17 @@
                 ],
                 "direction" : "neutral",
                 "fieldOverrides" : {
+                  "Number of Connections" : {
+                    "color" : "#7CB342",
+                    "dataLinks" : [
 
+                    ],
+                    "fieldId" : "Number of Connections",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  }
                 },
                 "fitMode" : {
                   "fit" : {
@@ -268,21 +279,21 @@
                     "id" : "main",
                     "marks" : [
                       {
-                        "id" : "6D89057C-6B47-4B1B-9C82-3D055396768A",
+                        "id" : "44736F2C-B6E8-4B35-B662-AE93B5FBF34A",
                         "kind" : "column",
-                        "optionsJSON" : "e30="
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiTnVtYmVyIG9mIENvbm5lY3Rpb25zIjp7Im5lZ2F0ZSI6ZmFsc2UsImNvbG91ciI6eyJoZXgiOnsiXzAiOiIjN0NCMzQyIn19LCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlfX19"
                       }
                     ],
                     "shapeId" : "column-by-category",
                     "slotBindings" : {
                       "storage" : [
-                        "x",
-                        [
-                          "country"
-                        ],
                         "y",
                         [
                           "Number of Connections"
+                        ],
+                        "x",
+                        [
+                          "Country"
                         ]
                       ]
                     },
@@ -354,8 +365,8 @@
               "config" : {
                 "title" : "Number of VPN Connections by Country"
               },
-              "data_source_ref" : "ds_cad544c61d454b61ae68a3a869746b8c",
-              "id" : "viz_67b414c4caf04fadba21c7cc9737d328",
+              "data_source_ref" : "ds_eb212471b9934909a65df37bba858dee",
+              "id" : "viz_25540abaa8e2484ea91eb1846edbceeb",
               "layer" : 1,
               "options" : {
                 "stackMode" : "none",

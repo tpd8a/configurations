@@ -1,0 +1,305 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_4a1c9e2b7d3f4e5a8b6c0d1e2f3a4b5c",
+      "query" : {
+        "name" : "failures_by_path",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, CASE WHEN '$status_class$' = '5xx' THEN NULL ELSE SUM(CASE WHEN status = 404 THEN 1 ELSE 0 END) END AS e404, CASE WHEN '$status_class$' = '4xx' THEN NULL ELSE SUM(CASE WHEN status = 500 THEN 1 ELSE 0 END) END AS e500, SUM(CASE WHEN (status >= 400 AND status < 500 AND '$status_class$' <> '5xx') OR (status >= 500 AND '$status_class$' <> '4xx') THEN 1 ELSE 0 END) * 100.0 \/ COUNT(*) AS pct_failed, COUNT(*) AS requests FROM construct_examples.combined_access(path := 'bench\/access.log') GROUP BY url ORDER BY pct_failed DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "404 \/ 500 failures per request path from construct_examples bench\/access.log",
+  "id" : "dash_bfdb44d72b06474c97f1a9e5e52975cd",
+  "inputs" : [
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "all"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "4xx",
+            "value" : "4xx"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "5xx",
+            "value" : "5xx"
+          }
+        ],
+        "default" : "all",
+        "display_location" : "top",
+        "help" : "Which failures count: 4xx (404), 5xx (500), or all. Drives the 404\/500 columns and % failed.",
+        "label" : "Status",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_145d89f052b0463d9cebb75f40a11670",
+      "token" : "status_class"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b1 r3",
+  "provenance" : {
+    "imported_at" : "2026-10-30T19:52:15Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_9b2e7c1d4a5f4b3c8e6d0a1b2c3d4e5f",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2a4c6e8f0b1d3f5a7c9e1a3c5e7f9b0d"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "% errors = matching errors ÷ all requests to that path. Worst first; click a header to re-sort. Hover a count for the status-code breakdown.",
+          "id" : "panel_1f3e5a7c9b2d4f6a8c0e1b3d5f7a9c2e",
+          "layout" : {
+            "height" : 240,
+            "panel_width" : 6
+          },
+          "title" : "404 \/ 500 by path (worst first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_4a1c9e2b7d3f4e5a8b6c0d1e2f3a4b5c",
+              "id" : "viz_2a4c6e8f0b1d3f5a7c9e1a3c5e7f9b0d",
+              "layer" : 1,
+              "options" : {
+                "fields" : "url,e404,e500,pct_failed,requests"
+              },
+              "title" : "Failures per path",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4e6a8c0d2f1b3d5f7a9c1e3a5c7e9f2b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3c5e7a9b1d2f4a6c8e0b2d4f6a8c0e1f",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "404s vs 500s per path",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "7764510A-7CBD-4229-B2BE-BB3214E5BD3B",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "e404"
+                        ],
+                        "x",
+                        [
+                          "url"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+                  "e404",
+                  "e500"
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+                    "y",
+                    [
+                      "e404",
+                      "e500"
+                    ],
+                    "x",
+                    [
+                      "url"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "timeField" : "url",
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "404 vs 500 per path"
+              },
+              "data_source_ref" : "ds_4a1c9e2b7d3f4e5a8b6c0d1e2f3a4b5c",
+              "id" : "viz_4e6a8c0d2f1b3d5f7a9c1e3a5c7e9f2b",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "title" : "404 vs 500 per path",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Failures by request path"
+    }
+  ]
+}

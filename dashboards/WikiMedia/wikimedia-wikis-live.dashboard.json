@@ -3,34 +3,30 @@
   "data_sources" : [
     {
       "id" : "ds_40b26659bea4475facc78181e6037d3e",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Wiki Activity",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "wiki_activity.csv"
-          }
+          "method" : "GET"
         },
-        "refresh_seconds" : 15,
-        "type" : "ds.search"
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT wiki, wiki AS label, COUNT(*) AS changes,\n  SUM(CASE WHEN bot THEN 1 ELSE 0 END) AS bot_changes,\n  SUM(CASE WHEN bot THEN 0 ELSE 1 END) AS human_changes,\n  CASE WHEN COUNT(*) >= 30 THEN 'hot' WHEN COUNT(*) >= 5 THEN 'active' ELSE 'quiet' END AS status,\n  CASE WHEN wiki = 'commonswiki' THEN 'commons' WHEN wiki = 'wikidatawiki' THEN 'wikidata'\n       WHEN wiki LIKE '%wiki' THEN 'wikipedia' ELSE 'other' END AS zone,\n  CASE WHEN COUNT(*) >= 30 THEN 'alarm' WHEN COUNT(*) >= 5 THEN 'pulse' ELSE 'idle' END AS sprite_behavior\nFROM wikimedia_eventstreams.recentchange\nGROUP BY wiki ORDER BY changes DESC LIMIT 24"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_5b19723270a142b7a3d76d95a767fe9e",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Wiki Zones",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "wiki_zones.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT 'wikipedia' AS zone_id, 'Wikipedias' AS label, '#1a2a3e' AS color, 80 AS x, 60 AS y, 880 AS w, 440 AS h, 'grp_wikipedia' AS group_id\nUNION ALL SELECT 'commons', 'Commons \/ Media', '#1a3a2e', 980, 60, 880, 440, 'grp_commons'\nUNION ALL SELECT 'wikidata', 'Wikidata', '#3a2a1e', 80, 540, 880, 440, 'grp_wikidata'\nUNION ALL SELECT 'other', 'Other Projects', '#2a1a3e', 980, 540, 880, 440, 'grp_other'"
+        },
+        "type" : "ds.sql"
       }
     }
   ],
@@ -113,7 +109,7 @@
             "field" : "changes",
             "inputRange" : [
               0,
-              320
+              60
             ],
             "range" : [
               0.7,

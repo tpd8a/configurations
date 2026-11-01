@@ -1,0 +1,544 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8245b6043b654e45abb1fcacb0846262",
+      "query" : {
+        "name" : "ds_8245b6043b654e45abb1fcacb0846262",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT status, COUNT(*) AS hits FROM construct_examples.combined_access(path := 'web\/access.log') GROUP BY status ORDER BY hits DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_acfd4ff12230478484282b36d554e41c",
+      "query" : {
+        "name" : "ds_acfd4ff12230478484282b36d554e41c",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT url, status, COUNT(*) AS hits FROM construct_examples.combined_access(path := 'web\/access.log') WHERE status >= 400 GROUP BY url, status ORDER BY hits DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e148214577bf43ad8237cbeb38893b41",
+      "query" : {
+        "name" : "ds_e148214577bf43ad8237cbeb38893b41",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT client, COUNT(*) AS hits, SUM(bytes) AS bytes FROM construct_examples.combined_access(path := 'web\/access.log') GROUP BY client ORDER BY hits DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_bf1e8a44f8114b27b07fc2d4adc4fa65",
+      "query" : {
+        "name" : "ds_bf1e8a44f8114b27b07fc2d4adc4fa65",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT action, COUNT(*) AS events, AVG(latency_ms) AS avg_ms, MAX(latency_ms) AS max_ms FROM construct_examples.app_events() GROUP BY action ORDER BY events DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0d1a3b841a4d4801bdae269a4fe2b343",
+      "query" : {
+        "name" : "ds_0d1a3b841a4d4801bdae269a4fe2b343",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT ts, user, action, latency_ms, ctx_region FROM construct_examples.app_events() WHERE level = 'ERROR' ORDER BY ts DESC LIMIT 50"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_69d01dad4b7e4ada8cc32a4c3e3c62ba",
+      "query" : {
+        "name" : "ds_69d01dad4b7e4ada8cc32a4c3e3c62ba",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT user, COUNT(*) AS events, AVG(latency_ms) AS avg_ms FROM construct_examples.app_events() GROUP BY user ORDER BY events DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_078a3b07bb9b48bfb54ddb15a8346f21",
+      "query" : {
+        "name" : "ds_078a3b07bb9b48bfb54ddb15a8346f21",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT ts, process, message, _raw FROM construct_examples.syslog(path := 'sys\/system.log') ORDER BY ts DESC LIMIT 200"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_942093e7069a4bfeb5bc172a01c2e15e",
+      "query" : {
+        "name" : "ds_942093e7069a4bfeb5bc172a01c2e15e",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT _offset, _raw FROM construct_examples.lines(path := 'app\/server.log', break := '^\\d{4}-') ORDER BY _offset DESC LIMIT 200"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_fb1c5c2a14c64dd092d3dd512a33b2c4",
+      "query" : {
+        "name" : "ds_fb1c5c2a14c64dd092d3dd512a33b2c4",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT path, size, modified FROM construct_examples.files(path := '**\/*') ORDER BY modified DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9b1e3c6a2f4d4e8b9a7c5d3e1f2a4b6c",
+      "query" : {
+        "name" : "ds_9b1e3c6a2f4d4e8b9a7c5d3e1f2a4b6c",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT ctx_region, COUNT(*) AS events, AVG(latency_ms) AS avg_ms FROM construct_examples.app_events() GROUP BY ctx_region ORDER BY events DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_3f8a2c1e9b7d4a6f8e2c5b1d7a9f0e34",
+      "query" : {
+        "alerts" : [
+          {
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "failures",
+              "value" : {
+                "number" : 23
+              }
+            },
+            "id" : "23A3A34F-0266-40D1-B303-4EE2D67BFA47",
+            "name" : "failures gt 23",
+            "severity" : "Notice",
+            "showOn" : [
+              "viz_5d9b3e7a1c4f4b2e9a8d6c1f3e5b7a29"
+            ]
+          }
+        ],
+        "name" : "failures_by_url",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT url, COUNT(*) AS failures FROM construct_examples.combined_access(path := 'web\/access.log') WHERE status >= 400 GROUP BY url ORDER BY failures DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_c2d6d7ea2ade4f209c39722504057832",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Construct Examples — Files",
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_9a13323eaf2d4926be0d41a4bfdb1971",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e0cea1980eb04642ade011a5e8f45bd1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8fa33ce7a3a546c9913c96c6d94a748a",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Hits by status"
+              },
+              "data_source_ref" : "ds_8245b6043b654e45abb1fcacb0846262",
+              "id" : "viz_e0cea1980eb04642ade011a5e8f45bd1",
+              "layer" : 1,
+              "options" : {
+                "title" : "Hits by status"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_cecdd0e2b9aa4a6ba3625c3c71cf33da"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c1d1bd02d8474c8d9733c7e1bc655196",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Top failing URLs"
+              },
+              "data_source_ref" : "ds_acfd4ff12230478484282b36d554e41c",
+              "id" : "viz_cecdd0e2b9aa4a6ba3625c3c71cf33da",
+              "layer" : 1,
+              "options" : {
+                "title" : "Top failing URLs"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4c039ccb69394af8bbf6d18829199e76"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_fd2addd16ef548fd9fb4f2a72100106a",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Clients"
+              },
+              "data_source_ref" : "ds_e148214577bf43ad8237cbeb38893b41",
+              "id" : "viz_4c039ccb69394af8bbf6d18829199e76",
+              "layer" : 1,
+              "options" : {
+                "title" : "Clients"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Web access"
+    },
+    {
+      "id" : "row_7c2e9a4b1f3d4e8a9b6c2d5f1e8a7b03",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5d9b3e7a1c4f4b2e9a8d6c1f3e5b7a29"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a4e81c7f2b9d4c3e8f1a6b5d2c9e7f10",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 12
+          },
+          "title" : "Failures by URL (status >= 400)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "failures"
+                ],
+                "timeField" : "url"
+              },
+              "data_source_ref" : "ds_3f8a2c1e9b7d4a6f8e2c5b1d7a9f0e34",
+              "id" : "viz_5d9b3e7a1c4f4b2e9a8d6c1f3e5b7a29",
+              "layer" : 1,
+              "options" : {
+                "title" : "Failures by URL (status >= 400)"
+              },
+              "title" : "Failures by URL (status >= 400)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Web failures"
+    },
+    {
+      "id" : "row_615addae82f843378a2c251ef6c1870e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_5a33ac1dd96644a4b521debea95a5d34"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_642428e1667f4432898d7a0888015806",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Actions"
+              },
+              "data_source_ref" : "ds_bf1e8a44f8114b27b07fc2d4adc4fa65",
+              "id" : "viz_5a33ac1dd96644a4b521debea95a5d34",
+              "layer" : 1,
+              "options" : {
+                "title" : "Actions"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7ac6974139e640b5a2e98fe0ddb1ca8f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c0892453ca584f4eb0670268ea800fb3",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Errors"
+              },
+              "data_source_ref" : "ds_0d1a3b841a4d4801bdae269a4fe2b343",
+              "id" : "viz_7ac6974139e640b5a2e98fe0ddb1ca8f",
+              "layer" : 1,
+              "options" : {
+                "title" : "Errors"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_072a4c02104445dd85b6383b980af7ef"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7c773b2d4c0949eaa97765f63970dac4",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Users"
+              },
+              "data_source_ref" : "ds_69d01dad4b7e4ada8cc32a4c3e3c62ba",
+              "id" : "viz_072a4c02104445dd85b6383b980af7ef",
+              "layer" : 1,
+              "options" : {
+                "title" : "Users"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4d6f8a0c2e4b6d8f0a2c4e6b8d0f2a3b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3c5e7a9b1d2f4a6c8e0b2d4f6a8c0e1a",
+          "layout" : {
+            "height" : 320,
+            "panel_width" : 3
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Regions (ctx_region)"
+              },
+              "data_source_ref" : "ds_9b1e3c6a2f4d4e8b9a7c5d3e1f2a4b6c",
+              "id" : "viz_4d6f8a0c2e4b6d8f0a2c4e6b8d0f2a3b",
+              "layer" : 1,
+              "options" : {
+                "title" : "Regions (ctx_region)"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "App events (app_events log type)"
+    },
+    {
+      "id" : "row_229a8cf835a04018aa40dc059633b694",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4559c789c0414f1ebc218aff4e3d8048"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a17fd781cccd48ea9186792519a70207",
+          "layout" : {
+            "height" : 420,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "System log (syslog)"
+              },
+              "data_source_ref" : "ds_078a3b07bb9b48bfb54ddb15a8346f21",
+              "id" : "viz_4559c789c0414f1ebc218aff4e3d8048",
+              "layer" : 1,
+              "options" : {
+                "raw_field" : "_raw",
+                "time_field" : "ts",
+                "title" : "System log (syslog)"
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d8a9686ff0614ffd9273cb8c5185d05c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7534436c3cc247c98c40c333bf4bad59",
+          "layout" : {
+            "height" : 420,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Server log (multi-line events)"
+              },
+              "data_source_ref" : "ds_942093e7069a4bfeb5bc172a01c2e15e",
+              "id" : "viz_d8a9686ff0614ffd9273cb8c5185d05c",
+              "layer" : 1,
+              "options" : {
+                "raw_field" : "_raw",
+                "title" : "Server log (multi-line events)"
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Logs"
+    },
+    {
+      "id" : "row_d99a6d32705c4acf8da0505883c58b57",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_05ed1fbe161a474b84acf2f02c6fd995"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0ba6e8b8a7e84ce5ac196ee3d8834ee2",
+          "layout" : {
+            "height" : 260,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Files"
+              },
+              "data_source_ref" : "ds_fb1c5c2a14c64dd092d3dd512a33b2c4",
+              "id" : "viz_05ed1fbe161a474b84acf2f02c6fd995",
+              "layer" : 1,
+              "options" : {
+                "title" : "Files"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Files in the root"
+    }
+  ]
+}

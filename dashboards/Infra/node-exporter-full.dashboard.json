@@ -2,7 +2,7 @@
   "config_version" : 2,
   "data_sources" : [
     {
-      "id" : "ds_b94e4d6c597a4a2ca82554accf66224d",
+      "id" : "ds_d2f827b7f961401790024c8d16515555",
       "provider_ref" : "81A9BF9C-7D16-4EC3-98E0-4D798A1D9DCA",
       "query" : {
         "name" : "Variable: Datasource",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "id" : "ds_e99f6b0c1852428cbbd676c769d1bfa6",
+      "id" : "ds_ac36f9cb26dc4d7b9fa92edcabf5d677",
       "query" : {
         "name" : "Variable: Job",
         "refresh_seconds" : 60,
@@ -25,7 +25,7 @@
       }
     },
     {
-      "id" : "ds_c88224b0d84b4f1b99c90e244bbecf2e",
+      "id" : "ds_bbed43ce85c147828e6b5e731d002a62",
       "query" : {
         "name" : "Variable: Nodename",
         "refresh_seconds" : 60,
@@ -36,7 +36,7 @@
       }
     },
     {
-      "id" : "ds_8584b63d05d04a3a889347cae82042a8",
+      "id" : "ds_6fcf2d85ae83450bb1a221f63fbd703d",
       "query" : {
         "name" : "Variable: Instance",
         "refresh_seconds" : 60,
@@ -47,7 +47,7 @@
       }
     },
     {
-      "id" : "ds_c7a61fc6f7ba4aeabfdee9fa4ab2e9c6",
+      "id" : "ds_092886a1ba6e4e78aef25fa8fc5f4a45",
       "query" : {
         "name" : "Pressure",
         "refresh_seconds" : 60,
@@ -58,7 +58,7 @@
       }
     },
     {
-      "id" : "ds_e51da2da897e411d957532cf55005f94",
+      "id" : "ds_4b1a022261184494ac5bb22a369f915f",
       "query" : {
         "name" : "CPU Busy",
         "refresh_seconds" : 60,
@@ -69,7 +69,7 @@
       }
     },
     {
-      "id" : "ds_d24abf05d9f84c33a1c33720cea23403",
+      "id" : "ds_4f505152c1f044de805b585259b92cda",
       "query" : {
         "name" : "Sys Load",
         "refresh_seconds" : 60,
@@ -80,7 +80,7 @@
       }
     },
     {
-      "id" : "ds_3136f681a2d6452c87701c221144bfc4",
+      "id" : "ds_7414b86c76e44a139b642595d8231009",
       "query" : {
         "name" : "RAM Used",
         "refresh_seconds" : 60,
@@ -91,7 +91,7 @@
       }
     },
     {
-      "id" : "ds_56d32a571fb742e98f796593a6da9eee",
+      "id" : "ds_cf50a6c9d66b4c8dbcaa68e98378a3a9",
       "query" : {
         "name" : "SWAP Used",
         "refresh_seconds" : 60,
@@ -102,7 +102,7 @@
       }
     },
     {
-      "id" : "ds_73f94acfbea7495380f251b3aed98a98",
+      "id" : "ds_8d84e8aca9754fc5ad01b0d4dfcdcca4",
       "query" : {
         "name" : "Root FS Used",
         "refresh_seconds" : 60,
@@ -113,7 +113,7 @@
       }
     },
     {
-      "id" : "ds_68a505a995dd4ae1b8ca3840f253e63d",
+      "id" : "ds_54bb0dfb3e7a451486798fe882a56e8e",
       "query" : {
         "name" : "CPU Cores",
         "refresh_seconds" : 60,
@@ -124,7 +124,7 @@
       }
     },
     {
-      "id" : "ds_051286e891a7444bbc1a28455e1c8114",
+      "id" : "ds_5a8b877465b24e47ba0cd6ff449d0972",
       "query" : {
         "name" : "RAM Total",
         "refresh_seconds" : 60,
@@ -135,7 +135,7 @@
       }
     },
     {
-      "id" : "ds_07639a67203b4ee0b216adbd3d721551",
+      "id" : "ds_95630e5114814da2bed5b37f06cc4496",
       "query" : {
         "name" : "SWAP Total",
         "refresh_seconds" : 60,
@@ -146,7 +146,7 @@
       }
     },
     {
-      "id" : "ds_74fcaed7fdc641628016c76345e0377f",
+      "id" : "ds_7906fe0482e0416f8c635a9fde7f5570",
       "query" : {
         "name" : "RootFS Total",
         "refresh_seconds" : 60,
@@ -157,7 +157,7 @@
       }
     },
     {
-      "id" : "ds_a52125a12c8040238fa0ef3007d9ba74",
+      "id" : "ds_f115978393eb444195ebb23f0ef425f8",
       "query" : {
         "name" : "Uptime",
         "refresh_seconds" : 60,
@@ -168,7 +168,7 @@
       }
     },
     {
-      "id" : "ds_79522ae02f794933b5cbc47326437ef4",
+      "id" : "ds_e7409d55e59540b3be4e1b218f4b2ede",
       "query" : {
         "name" : "CPU Basic",
         "refresh_seconds" : 60,
@@ -179,7 +179,7 @@
       }
     },
     {
-      "id" : "ds_88ff863ac94246648bfc83bb501be2d6",
+      "id" : "ds_52ce41d86dd141a8854cc12db572a368",
       "query" : {
         "name" : "Memory Basic",
         "refresh_seconds" : 60,
@@ -190,7 +190,7 @@
       }
     },
     {
-      "id" : "ds_5af59539da6e4bb8809c11324efaa466",
+      "id" : "ds_68b3caf531a348139136f964e2d7ae42",
       "query" : {
         "name" : "Network Traffic Basic",
         "refresh_seconds" : 60,
@@ -201,7 +201,7 @@
       }
     },
     {
-      "id" : "ds_5c08fa12ad2142638d436e2a6f81cd37",
+      "id" : "ds_b4700c404ad74587aa50bd6c4b9861d0",
       "query" : {
         "name" : "Disk Space Used Basic",
         "refresh_seconds" : 60,
@@ -212,7 +212,7 @@
       }
     },
     {
-      "id" : "ds_44fa4a8700474175b8d1bc010bda007f",
+      "id" : "ds_87615e30fb414157b518e531dbc56e6a",
       "query" : {
         "name" : "CPU",
         "refresh_seconds" : 60,
@@ -223,7 +223,7 @@
       }
     },
     {
-      "id" : "ds_e018dfbc03a24f3387b5e3ac5f23b2f5",
+      "id" : "ds_4cddc4388ad4409ab79e02481724a08b",
       "query" : {
         "name" : "Memory",
         "refresh_seconds" : 60,
@@ -234,7 +234,7 @@
       }
     },
     {
-      "id" : "ds_076e1c4f0a7d4e99ad208d86dc6023c5",
+      "id" : "ds_9e43c53dbc8d4d609837b6a53577dd1b",
       "query" : {
         "name" : "Memory Committed",
         "refresh_seconds" : 60,
@@ -245,7 +245,7 @@
       }
     },
     {
-      "id" : "ds_7aa01eddc9044321bd57b1d69b12f443",
+      "id" : "ds_24f65faa747e4e139128764f0005b1c0",
       "query" : {
         "name" : "Memory Writeback and Dirty",
         "refresh_seconds" : 60,
@@ -256,7 +256,7 @@
       }
     },
     {
-      "id" : "ds_48ae8f6e6837426d8600960f05893301",
+      "id" : "ds_c19cb4a6b9fc4ed384329bb2eb874a21",
       "query" : {
         "name" : "Memory Pages In \/ Out",
         "refresh_seconds" : 60,
@@ -267,7 +267,7 @@
       }
     },
     {
-      "id" : "ds_5ae0d21d200341b4a130a1000f14b503",
+      "id" : "ds_461b6945655d47a5a78afb3ba928b5b0",
       "query" : {
         "name" : "Memory Pages Swap In \/ Out",
         "refresh_seconds" : 60,
@@ -278,7 +278,7 @@
       }
     },
     {
-      "id" : "ds_dcc1cc2fdcd84d6daeeb95832ce58343",
+      "id" : "ds_0cb16d6bc58a49cf97127e2fdba70e20",
       "query" : {
         "name" : "Time Synchronized Drift",
         "refresh_seconds" : 60,
@@ -289,7 +289,7 @@
       }
     },
     {
-      "id" : "ds_037914ba21924486b55dcb72e7bc8502",
+      "id" : "ds_67933d0ceacf411b89f3d35a06423073",
       "query" : {
         "name" : "Time PLL Adjust",
         "refresh_seconds" : 60,
@@ -300,7 +300,7 @@
       }
     },
     {
-      "id" : "ds_06ed261ef5314b51b476dd8ddb2730c9",
+      "id" : "ds_065823579ebd451988577aa4dda841be",
       "query" : {
         "name" : "Processes Status",
         "refresh_seconds" : 60,
@@ -311,7 +311,7 @@
       }
     },
     {
-      "id" : "ds_48b2b82f2a8d432f834f288b87786337",
+      "id" : "ds_deaad04b5b31425499404a9a7d3663a9",
       "query" : {
         "name" : "Processes Detailed States",
         "refresh_seconds" : 60,
@@ -322,7 +322,7 @@
       }
     },
     {
-      "id" : "ds_32748ba59c56490bbeecc9aa2c0b82a4",
+      "id" : "ds_0ea255db3651471793df2adcde4ab2e0",
       "query" : {
         "name" : "Memory Page Faults",
         "refresh_seconds" : 60,
@@ -333,7 +333,7 @@
       }
     },
     {
-      "id" : "ds_c68c09374e934ae082726f801657b19e",
+      "id" : "ds_a429db7263374bf7b7da26e1ca072a56",
       "query" : {
         "name" : "OOM Killer",
         "refresh_seconds" : 60,
@@ -344,7 +344,7 @@
       }
     },
     {
-      "id" : "ds_ad5be8aeaabc48bcb7a1c6937da97b88",
+      "id" : "ds_c717de7cb4bf426f8a46ce8f1c53e2a8",
       "query" : {
         "name" : "Processes Forks",
         "refresh_seconds" : 60,
@@ -355,7 +355,7 @@
       }
     },
     {
-      "id" : "ds_57ae574a8d8c489c9b8a094230bc8d2f",
+      "id" : "ds_22000da13cf84a5891c9be01054a11b1",
       "query" : {
         "name" : "CPU Saturation per Core",
         "refresh_seconds" : 60,
@@ -366,7 +366,7 @@
       }
     },
     {
-      "id" : "ds_984e081b40794b47aa33269f4d49bdb8",
+      "id" : "ds_03156590fb9640529b049b5cc9f0eb17",
       "query" : {
         "name" : "PIDs Number and Limit",
         "refresh_seconds" : 60,
@@ -377,7 +377,7 @@
       }
     },
     {
-      "id" : "ds_9f11d83650454e519d3435cb3b3e1be9",
+      "id" : "ds_3ca3874e6d0045358bb535411bda96d3",
       "query" : {
         "name" : "Threads Number and Limit",
         "refresh_seconds" : 60,
@@ -388,7 +388,7 @@
       }
     },
     {
-      "id" : "ds_c3998f2e69f149f5a62144b03f0f9022",
+      "id" : "ds_cd7c727c2fb844f9a21f3d1111e83f61",
       "query" : {
         "name" : "Context Switches \/ Interrupts",
         "refresh_seconds" : 60,
@@ -399,7 +399,7 @@
       }
     },
     {
-      "id" : "ds_2d2b0a1b63d14fa6801a1885216ad788",
+      "id" : "ds_5d343a89730e42efa0c1e40e26871356",
       "query" : {
         "name" : "System Load",
         "refresh_seconds" : 60,
@@ -410,7 +410,7 @@
       }
     },
     {
-      "id" : "ds_b712e58b99c547f197ec4c2a45fd8636",
+      "id" : "ds_0f3ba5c60e6a46a5b06ec3fbd6f63ac3",
       "query" : {
         "name" : "Hardware Temperature Monitor",
         "refresh_seconds" : 60,
@@ -421,7 +421,7 @@
       }
     },
     {
-      "id" : "ds_e0a14237a30445af86d66136cfb35d46",
+      "id" : "ds_defca92826b2415a81ad34ea331c8c3f",
       "query" : {
         "name" : "Cooling Device Utilization",
         "refresh_seconds" : 60,
@@ -432,7 +432,7 @@
       }
     },
     {
-      "id" : "ds_a3147ec15d4a4070a8dd1b435c7313a0",
+      "id" : "ds_ea712b82c52e457f8294e73772bb657f",
       "query" : {
         "name" : "Systemd Units State",
         "refresh_seconds" : 60,
@@ -443,7 +443,7 @@
       }
     },
     {
-      "id" : "ds_da0216660c914614a7e7122944ac9ca5",
+      "id" : "ds_b651527afab8404db8d3bb01c72c0d2b",
       "query" : {
         "name" : "Systemd Sockets Current",
         "refresh_seconds" : 60,
@@ -454,7 +454,7 @@
       }
     },
     {
-      "id" : "ds_d5e2c12edeee448ca653b65736ff2efd",
+      "id" : "ds_aae1b7396a4d440da0b025c75e80ce0f",
       "query" : {
         "name" : "Disk Read\/Write IOps",
         "refresh_seconds" : 60,
@@ -465,7 +465,7 @@
       }
     },
     {
-      "id" : "ds_e6edb5d236414c9b8b87f4396c9d2854",
+      "id" : "ds_9744dd76417649f38f07828dc20f04db",
       "query" : {
         "name" : "Disk Read\/Write Data",
         "refresh_seconds" : 60,
@@ -476,7 +476,7 @@
       }
     },
     {
-      "id" : "ds_72300b2417d147128787344d235608b8",
+      "id" : "ds_61ac5a7c6f49479eb11293f2abf75751",
       "query" : {
         "name" : "File Descriptor",
         "refresh_seconds" : 60,
@@ -487,7 +487,7 @@
       }
     },
     {
-      "id" : "ds_c7a5355e92534004bd1b09486aea8d5d",
+      "id" : "ds_5e0b887543914e469ceb2bb4bbd48f17",
       "query" : {
         "name" : "File Nodes Free",
         "refresh_seconds" : 60,
@@ -498,7 +498,7 @@
       }
     },
     {
-      "id" : "ds_d0b359714d064740a931705ac9311ed6",
+      "id" : "ds_efe6a2449b954e8585207b82674902a3",
       "query" : {
         "name" : "Network Traffic by Packets",
         "refresh_seconds" : 60,
@@ -509,9 +509,12 @@
       }
     },
     {
-      "id" : "ds_13d354e8e2d34cfdbc78b94f20ca2276",
+      "id" : "ds_db74d03ef6914ae49753810bdf2612bb",
       "query" : {
         "name" : "Network Traffic Errors",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 60,
         "sql" : {
           "query" : "SELECT * FROM grafana_api.ds_query(dsUid := '$ds_prometheus$', targetsJson := '[{\"datasource\":{\"type\":\"prometheus\",\"uid\":\"$ds_prometheus$\"},\"expr\":\"rate(node_network_receive_errs_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[$__rate_interval$])\",\"format\":\"time_series\",\"legendFormat\":\"{{device}} - Rx in\",\"range\":true,\"refId\":\"A\"},{\"datasource\":{\"type\":\"prometheus\",\"uid\":\"$ds_prometheus$\"},\"expr\":\"rate(node_network_transmit_errs_total{instance=\\\"$node$\\\",job=\\\"$job$\\\"}[$__rate_interval$])\",\"format\":\"time_series\",\"legendFormat\":\"{{device}} - Tx out\",\"range\":true,\"refId\":\"B\"}]', from := '$time.from_ms$', to := '$time.to_ms$')"
@@ -520,7 +523,7 @@
       }
     },
     {
-      "id" : "ds_d405d2e396194e95bc7b2ec67cefd77d",
+      "id" : "ds_85c0f75b810745f183566e496e348d4f",
       "query" : {
         "name" : "Sockstat TCP",
         "refresh_seconds" : 60,
@@ -531,7 +534,7 @@
       }
     },
     {
-      "id" : "ds_0065e71f37f84d189aa57985fa4ea387",
+      "id" : "ds_c3c7326cfa0f4b47919ddbf9c339bba7",
       "query" : {
         "name" : "Sockstat UDP",
         "refresh_seconds" : 60,
@@ -542,7 +545,7 @@
       }
     },
     {
-      "id" : "ds_e1cf77b8725748eb9c403245576c93a4",
+      "id" : "ds_bc027079e97a4e6a952349d81e29bb2c",
       "query" : {
         "name" : "Netstat IP In \/ Out Octets",
         "refresh_seconds" : 60,
@@ -553,7 +556,7 @@
       }
     },
     {
-      "id" : "ds_124f211a15f44c8aa92ab9a5089183d1",
+      "id" : "ds_1328a0103b1b4faea623ec99ebcfc7bc",
       "query" : {
         "name" : "TCP In \/ Out",
         "refresh_seconds" : 60,
@@ -564,7 +567,7 @@
       }
     },
     {
-      "id" : "ds_863fa6d37a2d4dc4825490dc3173434b",
+      "id" : "ds_6fb256fb40bf4f70916af7f841f03a3a",
       "query" : {
         "name" : "Node Exporter Scrape Time",
         "refresh_seconds" : 60,
@@ -575,7 +578,7 @@
       }
     },
     {
-      "id" : "ds_b458a3ea457f45c58869ddd983a59185",
+      "id" : "ds_c87aacada2514e1db85261468880e464",
       "query" : {
         "name" : "Exporter Process CPU Usage",
         "refresh_seconds" : 60,
@@ -586,7 +589,7 @@
       }
     },
     {
-      "id" : "ds_b9ce65fcfc5a4a57a05191268f9bdcd4",
+      "id" : "ds_16fe832f6ad14122be31b656983d5692",
       "query" : {
         "name" : "CPU Frequency Scaling",
         "refresh_seconds" : 60,
@@ -597,7 +600,7 @@
       }
     },
     {
-      "id" : "ds_a51301483e974dd593292f5036829067",
+      "id" : "ds_2af64afcd8fb48a78734d3e4ef8121ee",
       "query" : {
         "name" : "CPU Schedule Timeslices",
         "refresh_seconds" : 60,
@@ -608,7 +611,7 @@
       }
     },
     {
-      "id" : "ds_a34469d68e224499bb754b47f478be13",
+      "id" : "ds_1aeac17a5eaf499f88874c2aee1f148c",
       "query" : {
         "name" : "Power Supply",
         "refresh_seconds" : 60,
@@ -619,7 +622,7 @@
       }
     },
     {
-      "id" : "ds_da90cf2ed53646ef9d1029e904c967ec",
+      "id" : "ds_b85e46a9e9f947698ec190fdb68d1a77",
       "query" : {
         "name" : "Hardware Fan Speed",
         "refresh_seconds" : 60,
@@ -630,7 +633,7 @@
       }
     },
     {
-      "id" : "ds_f3ba61c159944528a09bd0ecc08df435",
+      "id" : "ds_1f047b0b7e0c48a6aa087ad9825f1bcc",
       "query" : {
         "name" : "Systemd Sockets Accepted",
         "refresh_seconds" : 60,
@@ -641,7 +644,7 @@
       }
     },
     {
-      "id" : "ds_978180aa95304934a576d2c7cc2e9127",
+      "id" : "ds_dc6b8e4162724139915049537fde7625",
       "query" : {
         "name" : "Systemd Sockets Refused",
         "refresh_seconds" : 60,
@@ -652,7 +655,7 @@
       }
     },
     {
-      "id" : "ds_713c5fb8d2b04ea19be554af9778c395",
+      "id" : "ds_2bf688e19984412cb91f23164bbdc328",
       "query" : {
         "name" : "Sockstat Used",
         "refresh_seconds" : 60,
@@ -663,7 +666,7 @@
       }
     },
     {
-      "id" : "ds_acc0b71f6cb448a79892a2566c67c4ee",
+      "id" : "ds_7faabf2b06e64af0914069720c8fea7b",
       "query" : {
         "name" : "Sockstat FRAG \/ RAW",
         "refresh_seconds" : 60,
@@ -674,7 +677,7 @@
       }
     },
     {
-      "id" : "ds_ebaa3c55e30a4bd6a53cb77cbfc69d03",
+      "id" : "ds_9f24b38553a741b096e7839c5421823e",
       "query" : {
         "name" : "Exporter Processes Memory",
         "refresh_seconds" : 60,
@@ -685,7 +688,7 @@
       }
     },
     {
-      "id" : "ds_a314b2306fc546f4892ac9b1d6a604cc",
+      "id" : "ds_369ecab4f41443ff962a969a1383d2ce",
       "query" : {
         "name" : "Exporter File Descriptor Usage",
         "refresh_seconds" : 60,
@@ -696,7 +699,7 @@
       }
     },
     {
-      "id" : "ds_04d6c3ef22794ec3878e5eb0021a24b6",
+      "id" : "ds_0026928d5778455180b5279ef66ace1b",
       "query" : {
         "name" : "Node Exporter Scrape",
         "refresh_seconds" : 60,
@@ -707,7 +710,7 @@
       }
     },
     {
-      "id" : "ds_1a4598306c204ad08f0bb8598706c6c7",
+      "id" : "ds_47344d0d1f594486be25fe1d0faa2a59",
       "query" : {
         "name" : "IRQ Detail",
         "refresh_seconds" : 60,
@@ -718,7 +721,7 @@
       }
     },
     {
-      "id" : "ds_5902e9c2bfb54049ba1d06d5b94c7485",
+      "id" : "ds_03a836b5834c4cdb919515da374dc8ea",
       "query" : {
         "name" : "Entropy",
         "refresh_seconds" : 60,
@@ -729,7 +732,7 @@
       }
     },
     {
-      "id" : "ds_e2ff3013e94a4fd785106d3fe94610ea",
+      "id" : "ds_da1e8a2e42a44728b6b86d9584daef2e",
       "query" : {
         "name" : "Sockstat Memory Size",
         "refresh_seconds" : 60,
@@ -740,7 +743,7 @@
       }
     },
     {
-      "id" : "ds_087fdb1a3fa744e58343280267da1fc7",
+      "id" : "ds_4a041597e9464fee845b13188d6077be",
       "query" : {
         "name" : "Sockstat Average Socket Memory",
         "refresh_seconds" : 60,
@@ -751,7 +754,7 @@
       }
     },
     {
-      "id" : "ds_3be5cbd31fb74170bd1c93a7adc644ab",
+      "id" : "ds_19de32f90a104d308aedd108ce10480b",
       "query" : {
         "name" : "TCP\/UDP Kernel Buffer Memory Pages",
         "refresh_seconds" : 60,
@@ -762,7 +765,7 @@
       }
     },
     {
-      "id" : "ds_b68b4a6c2d3f4ebf9b5081b00133e01c",
+      "id" : "ds_3ff332b71f5348339bd3798dc81c47a5",
       "query" : {
         "name" : "Softnet Packets",
         "refresh_seconds" : 60,
@@ -773,7 +776,7 @@
       }
     },
     {
-      "id" : "ds_4cb4ea04a62144cda9b7b84efc44fff9",
+      "id" : "ds_4ce32fb7fab946b0994dd079c68d80dc",
       "query" : {
         "name" : "UDP In \/ Out",
         "refresh_seconds" : 60,
@@ -784,7 +787,7 @@
       }
     },
     {
-      "id" : "ds_fddabf833fc843c5bdf3a007d27e2a19",
+      "id" : "ds_c7cae9dd609341fc802506f6878516e4",
       "query" : {
         "name" : "ICMP In \/ Out",
         "refresh_seconds" : 60,
@@ -795,7 +798,7 @@
       }
     },
     {
-      "id" : "ds_a590c843600b406ba5acd8400f4d7b83",
+      "id" : "ds_e7ab16af9368403b88f22e7c111651f6",
       "query" : {
         "name" : "Softnet Out of Quota",
         "refresh_seconds" : 60,
@@ -806,7 +809,7 @@
       }
     },
     {
-      "id" : "ds_79bab612ecd14fc4b093a578a3d46e08",
+      "id" : "ds_f76b3937f8ae4d21a01df626a5b5dee5",
       "query" : {
         "name" : "Softnet RPS",
         "refresh_seconds" : 60,
@@ -817,7 +820,7 @@
       }
     },
     {
-      "id" : "ds_ba2ae8142373410090b4a35e765ec6df",
+      "id" : "ds_8dc5856c3c26463f9af21da28819b1ef",
       "query" : {
         "name" : "TCP Errors",
         "refresh_seconds" : 60,
@@ -828,7 +831,7 @@
       }
     },
     {
-      "id" : "ds_a64ed99203134d1a9624288511b53fdb",
+      "id" : "ds_b184858391c84404b0965a1053505cc8",
       "query" : {
         "name" : "UDP Errors",
         "refresh_seconds" : 60,
@@ -839,7 +842,7 @@
       }
     },
     {
-      "id" : "ds_efca39c361ae43b990393fb6920fbb76",
+      "id" : "ds_89a733ffa02d4748bad36bcc86d15054",
       "query" : {
         "name" : "ICMP Errors",
         "refresh_seconds" : 60,
@@ -850,7 +853,7 @@
       }
     },
     {
-      "id" : "ds_8ec4d653129c4781969c0e78b9ae61b4",
+      "id" : "ds_3efcea44ddee460790f74db3862da7a5",
       "query" : {
         "name" : "TCP SynCookie",
         "refresh_seconds" : 60,
@@ -861,7 +864,7 @@
       }
     },
     {
-      "id" : "ds_aefbad073586405a9360a6d6b10b3396",
+      "id" : "ds_b2bfe4c74c184fc2a1c7c94288b3e793",
       "query" : {
         "name" : "TCP Connections",
         "refresh_seconds" : 60,
@@ -872,7 +875,7 @@
       }
     },
     {
-      "id" : "ds_6b9c846d3678455783286182e4150f67",
+      "id" : "ds_36313260d4024b41b5bd13ccef716020",
       "query" : {
         "name" : "UDP Queue",
         "refresh_seconds" : 60,
@@ -883,7 +886,7 @@
       }
     },
     {
-      "id" : "ds_5844ece253744eda9bf83f281c353003",
+      "id" : "ds_c9de5df56aa0496cae54c43f305a1179",
       "query" : {
         "name" : "TCP Direct Transition",
         "refresh_seconds" : 60,
@@ -894,7 +897,7 @@
       }
     },
     {
-      "id" : "ds_80dadff3ca71408caf0abdcec4b2447f",
+      "id" : "ds_0a85cc09720c48a8bbe415db8dd0e7d9",
       "query" : {
         "name" : "TCP Stat Persistent",
         "refresh_seconds" : 60,
@@ -905,7 +908,7 @@
       }
     },
     {
-      "id" : "ds_5548dc0f9dfd4442ad9cfe3d4d86c1cd",
+      "id" : "ds_a3a4dc1e5f944387bb204410feb242bc",
       "query" : {
         "name" : "TCP Stat Transient",
         "refresh_seconds" : 60,
@@ -916,7 +919,7 @@
       }
     },
     {
-      "id" : "ds_263e3ad2ff5d4436ab39a3fa6c87fbf5",
+      "id" : "ds_cc106eb58b5b4089b7f42b0df9d028a2",
       "query" : {
         "name" : "TCP Socket Queue",
         "refresh_seconds" : 60,
@@ -927,7 +930,7 @@
       }
     },
     {
-      "id" : "ds_22bc16f85af44d379b4247fcad3a2d7a",
+      "id" : "ds_3e10387af78d4775b34621abdf6a6f5a",
       "query" : {
         "name" : "Time Synchronized Status",
         "refresh_seconds" : 60,
@@ -938,7 +941,7 @@
       }
     },
     {
-      "id" : "ds_0bcb8b1dcca04f348e27bbb960c4630c",
+      "id" : "ds_71dfc0e026af491fa828d619c95fe3a6",
       "query" : {
         "name" : "PPS Frequency \/ Stability",
         "refresh_seconds" : 60,
@@ -949,7 +952,7 @@
       }
     },
     {
-      "id" : "ds_3eabc9ad9a674a078fffba66f9eaa094",
+      "id" : "ds_c8896b8d05074268862b5472c8d356a3",
       "query" : {
         "name" : "PPS Time Accuracy",
         "refresh_seconds" : 60,
@@ -960,7 +963,7 @@
       }
     },
     {
-      "id" : "ds_7b0eeef84edc478188cdb88ea7869412",
+      "id" : "ds_fd74d7da0cea4f0d8417c9d1bd913677",
       "query" : {
         "name" : "PPS Sync Events",
         "refresh_seconds" : 60,
@@ -971,7 +974,7 @@
       }
     },
     {
-      "id" : "ds_16dbc9bb1d534a39a63d57ec9f72da5e",
+      "id" : "ds_0a9976f7ae414a0dbb32597cf40071e4",
       "query" : {
         "name" : "Memory Slab",
         "refresh_seconds" : 60,
@@ -982,7 +985,7 @@
       }
     },
     {
-      "id" : "ds_43d15312d31c464a8ab7e76eaef02ae4",
+      "id" : "ds_bce88d2ba24b460eba7723b8db63e5c9",
       "query" : {
         "name" : "Memory Shared and Mapped",
         "refresh_seconds" : 60,
@@ -993,7 +996,7 @@
       }
     },
     {
-      "id" : "ds_4dad71f9e9b24723987e0b50dd2cd371",
+      "id" : "ds_f941c1329c8d479a899cf4e18424b37f",
       "query" : {
         "name" : "Memory LRU Active \/ Inactive (%)",
         "refresh_seconds" : 60,
@@ -1004,7 +1007,7 @@
       }
     },
     {
-      "id" : "ds_6be07a59e2284eb69eac219843cbbbc0",
+      "id" : "ds_45e66b900e46477090d746b9985c46a4",
       "query" : {
         "name" : "Memory LRU Active \/ Inactive Detail",
         "refresh_seconds" : 60,
@@ -1015,7 +1018,7 @@
       }
     },
     {
-      "id" : "ds_26c997f1188c4beda615dcde39d3488c",
+      "id" : "ds_3806a8a2c8be4d1ba658cb3c5382fa83",
       "query" : {
         "name" : "Memory Kernel \/ CPU \/ IO",
         "refresh_seconds" : 60,
@@ -1026,7 +1029,7 @@
       }
     },
     {
-      "id" : "ds_f90a0d01b5e44f56bee102f962cea334",
+      "id" : "ds_7bd064ded78343bdb6709f2aba4396cc",
       "query" : {
         "name" : "Memory Vmalloc",
         "refresh_seconds" : 60,
@@ -1037,7 +1040,7 @@
       }
     },
     {
-      "id" : "ds_ce14decdc4064ac2b7978bf26e743ed5",
+      "id" : "ds_a9b63b8c467d49b68785561ad90cedb4",
       "query" : {
         "name" : "Memory Anonymous",
         "refresh_seconds" : 60,
@@ -1048,7 +1051,7 @@
       }
     },
     {
-      "id" : "ds_31cdf8df395f4a7e8ad30f1c3fab13d0",
+      "id" : "ds_f35116e34fb148dfb4d99eeb7060d121",
       "query" : {
         "name" : "Memory Unevictable and MLocked",
         "refresh_seconds" : 60,
@@ -1059,7 +1062,7 @@
       }
     },
     {
-      "id" : "ds_3cbbdeb2acf343a5bca65c2aa5370685",
+      "id" : "ds_aed5d593a88145488f095526c2534b5a",
       "query" : {
         "name" : "Memory DirectMap",
         "refresh_seconds" : 60,
@@ -1070,7 +1073,7 @@
       }
     },
     {
-      "id" : "ds_53e2cc62da834c549bc2fbb1128584fa",
+      "id" : "ds_2048f0c73abc4489ad50704f751586b3",
       "query" : {
         "name" : "Memory HugePages",
         "refresh_seconds" : 60,
@@ -1081,7 +1084,7 @@
       }
     },
     {
-      "id" : "ds_e4d8f8f2933b427aa77bbc2e265c851f",
+      "id" : "ds_a06661a2b3874cc6ad542739c81439b7",
       "query" : {
         "name" : "Network Traffic Drop",
         "refresh_seconds" : 60,
@@ -1092,7 +1095,7 @@
       }
     },
     {
-      "id" : "ds_9fc54e23943a422f84e65112b8cd9647",
+      "id" : "ds_0105e54fffcc47b5951658c20b0508ab",
       "query" : {
         "name" : "Network Traffic Compressed",
         "refresh_seconds" : 60,
@@ -1103,7 +1106,7 @@
       }
     },
     {
-      "id" : "ds_3bcdd4eb3ffb4c0f87def521860da2d1",
+      "id" : "ds_3ca017b1895c46fd9bbe2157376b7546",
       "query" : {
         "name" : "Network Traffic Multicast",
         "refresh_seconds" : 60,
@@ -1114,7 +1117,7 @@
       }
     },
     {
-      "id" : "ds_d2dcba966cd54b47824eecee687296fb",
+      "id" : "ds_4b6559de5cb34af7b6e16abc6da6f4d2",
       "query" : {
         "name" : "Network Traffic NoHandler",
         "refresh_seconds" : 60,
@@ -1125,7 +1128,7 @@
       }
     },
     {
-      "id" : "ds_f8c190de82944daf9cfa11fd609b6aaa",
+      "id" : "ds_20382d061fda4924aa2423b69a1ea9e0",
       "query" : {
         "name" : "Network Traffic Frame",
         "refresh_seconds" : 60,
@@ -1136,7 +1139,7 @@
       }
     },
     {
-      "id" : "ds_b58593cb555242d48a4ba0d401962867",
+      "id" : "ds_e3258439b6ad4ecaa4f35b753780088d",
       "query" : {
         "name" : "Network Traffic Fifo",
         "refresh_seconds" : 60,
@@ -1147,7 +1150,7 @@
       }
     },
     {
-      "id" : "ds_65be6b482e9c4941af082ce8a4643ea5",
+      "id" : "ds_f230c33eee6c4dafad66d5a00d9a6188",
       "query" : {
         "name" : "Network Traffic Collision",
         "refresh_seconds" : 60,
@@ -1158,7 +1161,7 @@
       }
     },
     {
-      "id" : "ds_b8447a0cb6bd4055bc5161c7b17d9324",
+      "id" : "ds_43a9f0c4412b4033bf1041aa46b0339f",
       "query" : {
         "name" : "Network Traffic Carrier Errors",
         "refresh_seconds" : 60,
@@ -1169,7 +1172,7 @@
       }
     },
     {
-      "id" : "ds_e87497049dc345ddaa4b327b2c9a5936",
+      "id" : "ds_cce7aba490304ade933d65fe6606cd74",
       "query" : {
         "name" : "ARP Entries",
         "refresh_seconds" : 60,
@@ -1180,7 +1183,7 @@
       }
     },
     {
-      "id" : "ds_436eced4967348c7abdca047dfbc7782",
+      "id" : "ds_153fbfd5c3ed4abc8d1dece45049d93e",
       "query" : {
         "name" : "NF Conntrack",
         "refresh_seconds" : 60,
@@ -1191,7 +1194,7 @@
       }
     },
     {
-      "id" : "ds_4cc01e09ea4c4e78b641948cc9e7748f",
+      "id" : "ds_aced1d0226be4fe58ac84adfb5ba4431",
       "query" : {
         "name" : "Network Operational Status",
         "refresh_seconds" : 60,
@@ -1202,7 +1205,7 @@
       }
     },
     {
-      "id" : "ds_7f7eacaef4354177aa973d9714e78d7f",
+      "id" : "ds_d8cfffc16ec84af199b2e962fe45d305",
       "query" : {
         "name" : "Speed",
         "refresh_seconds" : 60,
@@ -1213,7 +1216,7 @@
       }
     },
     {
-      "id" : "ds_397625dfad0a4564849fcf50023ffd3c",
+      "id" : "ds_fdcd8b9675e0402d88cb3e9e7ba811b3",
       "query" : {
         "name" : "MTU",
         "refresh_seconds" : 60,
@@ -1224,7 +1227,7 @@
       }
     },
     {
-      "id" : "ds_21ec67c070574372afb7db008ce70c5d",
+      "id" : "ds_a42176a7b71141afade840a05264b031",
       "query" : {
         "name" : "Filesystem in ReadOnly \/ Error",
         "refresh_seconds" : 60,
@@ -1235,7 +1238,7 @@
       }
     },
     {
-      "id" : "ds_d5cd48aa669448108c3a2c0ee3c10278",
+      "id" : "ds_645d7d500b08407eaad136ba6f7efc62",
       "query" : {
         "name" : "File Nodes Size",
         "refresh_seconds" : 60,
@@ -1246,7 +1249,7 @@
       }
     },
     {
-      "id" : "ds_4f9543b51d9048f98e5565a350939da7",
+      "id" : "ds_375f46a2c6e9456e96673d8d59bb99c2",
       "query" : {
         "name" : "Disk Average Wait Time",
         "refresh_seconds" : 60,
@@ -1257,7 +1260,7 @@
       }
     },
     {
-      "id" : "ds_2c4026848343492f9ab764ee6c23d473",
+      "id" : "ds_a43f09627ba743d0a04944664dac2719",
       "query" : {
         "name" : "Average Queue Size",
         "refresh_seconds" : 60,
@@ -1268,7 +1271,7 @@
       }
     },
     {
-      "id" : "ds_a4f83984b0114cdca5180ed1f1f7dbc5",
+      "id" : "ds_afc8f6ef71714f83bf7dabf388297e56",
       "query" : {
         "name" : "Disk R\/W Merged",
         "refresh_seconds" : 60,
@@ -1279,7 +1282,7 @@
       }
     },
     {
-      "id" : "ds_fb29e0c0859c450fa27a0bf10a58d3d9",
+      "id" : "ds_93caa6a897e44ec4bc642975c1b4a9e0",
       "query" : {
         "name" : "Time Spent Doing I\/Os",
         "refresh_seconds" : 60,
@@ -1290,7 +1293,7 @@
       }
     },
     {
-      "id" : "ds_24362425d80b46d3ba59f8405ce87f5d",
+      "id" : "ds_316d5ea3edf741b5ba1e2f67019853ab",
       "query" : {
         "name" : "Network Traffic",
         "refresh_seconds" : 60,
@@ -1301,7 +1304,7 @@
       }
     },
     {
-      "id" : "ds_b4795cf6331d400da0854c4b5455abcd",
+      "id" : "ds_3464d0572aff4c118a4018e6b262e274",
       "query" : {
         "name" : "Network Saturation",
         "refresh_seconds" : 60,
@@ -1312,7 +1315,7 @@
       }
     },
     {
-      "id" : "ds_00fc150947d14c1d80d620d1cde5a913",
+      "id" : "ds_7012693ad0c3480fbbd0d0c3bfcb4ede",
       "query" : {
         "name" : "Disk Ops Discards \/ Flush",
         "refresh_seconds" : 60,
@@ -1323,7 +1326,7 @@
       }
     },
     {
-      "id" : "ds_14188de8ab7e4e858a3b94d5b85e2094",
+      "id" : "ds_14a56e8e7bbd4f57a78f81953687f039",
       "query" : {
         "name" : "Disk Sectors Discarded Successfully",
         "refresh_seconds" : 60,
@@ -1334,7 +1337,7 @@
       }
     },
     {
-      "id" : "ds_db9c104ded5d4a3f8f2ce79e45b56ba5",
+      "id" : "ds_39e510f30c4840bdb05094e6ae108777",
       "query" : {
         "name" : "Disk IOps",
         "refresh_seconds" : 60,
@@ -1345,7 +1348,7 @@
       }
     },
     {
-      "id" : "ds_dac1ad8147794e278fb3c891f41e0082",
+      "id" : "ds_5d633187e2d3409aa0c2fb9557a93556",
       "query" : {
         "name" : "Disk Throughput",
         "refresh_seconds" : 60,
@@ -1356,7 +1359,7 @@
       }
     },
     {
-      "id" : "ds_65681e92b6e14c1694ba53b3a2097799",
+      "id" : "ds_47a25ebe1cc7435f8caef4a422fc8f76",
       "query" : {
         "name" : "Instantaneous Queue Size",
         "refresh_seconds" : 60,
@@ -1367,7 +1370,7 @@
       }
     },
     {
-      "id" : "ds_457f9dadc00e403abbfb03963e22e094",
+      "id" : "ds_068441b396364738a8f93a3889123825",
       "query" : {
         "name" : "Filesystem Space Available",
         "refresh_seconds" : 60,
@@ -1378,7 +1381,7 @@
       }
     },
     {
-      "id" : "ds_63029df89aeb4f3ea4af99e273e8ecd5",
+      "id" : "ds_86a2106c9ccd459abd929365bf6e7594",
       "query" : {
         "name" : "Filesystem Used",
         "refresh_seconds" : 60,
@@ -1389,7 +1392,7 @@
       }
     },
     {
-      "id" : "ds_b1d18084c68c4846a377762fda3855b7",
+      "id" : "ds_928d44b20f3340738b0797218a895187",
       "query" : {
         "name" : "Disk I\/O Utilization",
         "refresh_seconds" : 60,
@@ -1400,7 +1403,7 @@
       }
     },
     {
-      "id" : "ds_6e833b3592b148df95d766fc7b08118a",
+      "id" : "ds_2937cbfaf5a743beaf86e086b4179bf6",
       "query" : {
         "name" : "Pressure Stall Information",
         "refresh_seconds" : 60,
@@ -1416,13 +1419,13 @@
     {
       "config" : {
         "choice_search" : {
-          "data_source_ref" : "ds_b94e4d6c597a4a2ca82554accf66224d",
+          "data_source_ref" : "ds_d2f827b7f961401790024c8d16515555",
           "field_for_label" : "label",
           "field_for_value" : "value"
         },
-        "default" : "",
+        "default" : "afylgi69fxs74f",
         "display_location" : "top",
-        "initial_value" : "",
+        "initial_value" : "afylgi69fxs74f",
         "label" : "Datasource",
         "location" : {
           "global" : {
@@ -1432,13 +1435,13 @@
         "search_when_changed" : true,
         "type" : "dropdown"
       },
-      "id" : "input_ddef324b3e6548f8b01066c385dffcc3",
+      "id" : "input_7040d91fc56b48fbb9408851cd48d035",
       "token" : "ds_prometheus"
     },
     {
       "config" : {
         "choice_search" : {
-          "data_source_ref" : "ds_e99f6b0c1852428cbbd676c769d1bfa6",
+          "data_source_ref" : "ds_ac36f9cb26dc4d7b9fa92edcabf5d677",
           "field_for_label" : "value",
           "field_for_value" : "value"
         },
@@ -1454,13 +1457,13 @@
         "search_when_changed" : true,
         "type" : "dropdown"
       },
-      "id" : "input_8092173c647f42dbb342d5dabb64e908",
+      "id" : "input_659dfc0b5f3d4ca89eb5cc48b37b636b",
       "token" : "job"
     },
     {
       "config" : {
         "choice_search" : {
-          "data_source_ref" : "ds_c88224b0d84b4f1b99c90e244bbecf2e",
+          "data_source_ref" : "ds_bbed43ce85c147828e6b5e731d002a62",
           "field_for_label" : "value",
           "field_for_value" : "value"
         },
@@ -1476,16 +1479,17 @@
         "search_when_changed" : true,
         "type" : "dropdown"
       },
-      "id" : "input_5189c1a7eeb04f3a8f0aabbfaf86696b",
+      "id" : "input_8729b961f0cd4f3dac8fcdd5c518dfec",
       "token" : "nodename"
     },
     {
       "config" : {
         "choice_search" : {
-          "data_source_ref" : "ds_8584b63d05d04a3a889347cae82042a8",
+          "data_source_ref" : "ds_6fcf2d85ae83450bb1a221f63fbd703d",
           "field_for_label" : "value",
           "field_for_value" : "value"
         },
+        "default" : "localhost:9100",
         "display_location" : "top",
         "initial_value" : "",
         "label" : "Instance",
@@ -1497,7 +1501,7 @@
         "search_when_changed" : true,
         "type" : "dropdown"
       },
-      "id" : "input_b6d0880c710c48199232c3f9fddb0fda",
+      "id" : "input_1aca5341d2bd4d1ebe2aafde2bfe08d6",
       "token" : "node"
     },
     {
@@ -1516,7 +1520,7 @@
         },
         "type" : "time"
       },
-      "id" : "input_94180fc440b44e56aacc3f8ef6b5762b",
+      "id" : "input_19e0b41401204cc3b7bd44f9df652499",
       "token" : "time"
     },
     {
@@ -1532,7 +1536,7 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_fca365f7a05f4274b815d8e25279d737",
+      "id" : "input_4e5eda555d1644c68649128cb91e89cc",
       "token" : "__rate_interval"
     },
     {
@@ -1548,7 +1552,7 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_1169c1309f4848cfac0f832e2ac1bae2",
+      "id" : "input_cb81210b8b44402fa0657df0c8beea0a",
       "token" : "__interval"
     },
     {
@@ -1564,7 +1568,7 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_8619cacd23c646c6876447813034cff6",
+      "id" : "input_3bf5711b8ee043628571f2ec6e9bfeff",
       "token" : "__interval_ms"
     },
     {
@@ -1580,7 +1584,7 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_e1089b6b175140b59fc9330ed2c84eec",
+      "id" : "input_914babe5f2a3417f8f9619535bce0f3a",
       "token" : "__range"
     },
     {
@@ -1596,7 +1600,7 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_77f06e55637944e8b83b36ac58bf6114",
+      "id" : "input_15d0ea19666347a9a72a824c56e027fa",
       "token" : "__range_s"
     },
     {
@@ -1612,14 +1616,14 @@
         "search_when_changed" : true,
         "type" : "hidden"
       },
-      "id" : "input_391fb360a27b4b87868af94d69d4cee4",
+      "id" : "input_30ccb554f80f4af2a4c54a2f7d334218",
       "token" : "__range_ms"
     }
   ],
   "layout_type" : "bootstrap",
   "name" : "Node Exporter Full",
   "provenance" : {
-    "imported_at" : "2026-10-09T18:56:03Z",
+    "imported_at" : "2026-10-25T07:21:40Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -1627,20 +1631,20 @@
   ],
   "rows" : [
     {
-      "id" : "row_383e74535842447f9ca6f2a7b987f51a",
+      "id" : "row_10c87d24a41f496fbc99b3749ff482d5",
       "panels" : [
         {
           "columns" : [
             {
               "id" : "viz_323_col_0",
               "viz_ids" : [
-                "viz_ed26762daece411a8dc8ef9a6473839f"
+                "viz_45cf49d6b55148e7a99373faf052f8a0"
               ],
               "width" : 12
             }
           ],
           "description" : "Resource pressure via PSI",
-          "id" : "panel_913e2ff0e943439baf513c3c39572c43",
+          "id" : "panel_1d40bea259364e8f9cdd0a7cec14529f",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1650,8 +1654,8 @@
               "config" : {
                 "title" : "Pressure"
               },
-              "data_source_ref" : "ds_c7a61fc6f7ba4aeabfdee9fa4ab2e9c6",
-              "id" : "viz_ed26762daece411a8dc8ef9a6473839f",
+              "data_source_ref" : "ds_092886a1ba6e4e78aef25fa8fc5f4a45",
+              "id" : "viz_45cf49d6b55148e7a99373faf052f8a0",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "linear",
@@ -1676,13 +1680,13 @@
             {
               "id" : "viz_20_col_0",
               "viz_ids" : [
-                "viz_030c4da782764f0ab6a79897ccd653d7"
+                "viz_10bd0c0947964e98a04453c9fa662cc6"
               ],
               "width" : 12
             }
           ],
           "description" : "Overall CPU busy percentage (averaged across all cores)",
-          "id" : "panel_7dadad42fc704bd78fdf736c28d48757",
+          "id" : "panel_973c9dafd83344c0914f806d8fa5622b",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1692,8 +1696,8 @@
               "config" : {
                 "title" : "CPU Busy"
               },
-              "data_source_ref" : "ds_e51da2da897e411d957532cf55005f94",
-              "id" : "viz_030c4da782764f0ab6a79897ccd653d7",
+              "data_source_ref" : "ds_4b1a022261184494ac5bb22a369f915f",
+              "id" : "viz_10bd0c0947964e98a04453c9fa662cc6",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "radial",
@@ -1716,13 +1720,13 @@
             {
               "id" : "viz_155_col_0",
               "viz_ids" : [
-                "viz_3bf50f6eea604336802124d51a628555"
+                "viz_59d8a87fe9044754a5250864ba258f67"
               ],
               "width" : 12
             }
           ],
           "description" : "System load over all CPU cores together",
-          "id" : "panel_beb9f78a5a914cc58ddf9f16bed73725",
+          "id" : "panel_fbeea4b863664da1b65ad732ce71fd4c",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1732,8 +1736,8 @@
               "config" : {
                 "title" : "Sys Load"
               },
-              "data_source_ref" : "ds_d24abf05d9f84c33a1c33720cea23403",
-              "id" : "viz_3bf50f6eea604336802124d51a628555",
+              "data_source_ref" : "ds_4f505152c1f044de805b585259b92cda",
+              "id" : "viz_59d8a87fe9044754a5250864ba258f67",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "radial",
@@ -1756,13 +1760,13 @@
             {
               "id" : "viz_16_col_0",
               "viz_ids" : [
-                "viz_6945bab3cc04496bab2932f97c806c47"
+                "viz_5bdd9637d965404cac7bc7a2b247b454"
               ],
               "width" : 12
             }
           ],
           "description" : "Real RAM usage excluding cache and reclaimable memory",
-          "id" : "panel_5b9f12a5adf545a2ad57fba4af4e1ee1",
+          "id" : "panel_b2aa9a7754814a8481ca0f2e56c4d937",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1772,8 +1776,8 @@
               "config" : {
                 "title" : "RAM Used"
               },
-              "data_source_ref" : "ds_3136f681a2d6452c87701c221144bfc4",
-              "id" : "viz_6945bab3cc04496bab2932f97c806c47",
+              "data_source_ref" : "ds_7414b86c76e44a139b642595d8231009",
+              "id" : "viz_5bdd9637d965404cac7bc7a2b247b454",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "radial",
@@ -1796,13 +1800,13 @@
             {
               "id" : "viz_21_col_0",
               "viz_ids" : [
-                "viz_a12d4bb56d7a4ab8a95ef6b9352e0eb9"
+                "viz_68733bc462114953a41aece2b2a2a256"
               ],
               "width" : 12
             }
           ],
           "description" : "Percentage of swap space currently used by the system",
-          "id" : "panel_387294b3ddc44421b5ad939a39a3efde",
+          "id" : "panel_d2f23adbb9674645a367b5ad0336ef9a",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1812,8 +1816,8 @@
               "config" : {
                 "title" : "SWAP Used"
               },
-              "data_source_ref" : "ds_56d32a571fb742e98f796593a6da9eee",
-              "id" : "viz_a12d4bb56d7a4ab8a95ef6b9352e0eb9",
+              "data_source_ref" : "ds_cf50a6c9d66b4c8dbcaa68e98378a3a9",
+              "id" : "viz_68733bc462114953a41aece2b2a2a256",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "radial",
@@ -1836,13 +1840,13 @@
             {
               "id" : "viz_154_col_0",
               "viz_ids" : [
-                "viz_88d4ac30f9694114a471198a20ffc5e8"
+                "viz_cad7387446ed4cc38a1b055f69b011c3"
               ],
               "width" : 12
             }
           ],
           "description" : "Used Root FS",
-          "id" : "panel_9555fc5eb09f4ced8dd58a9239aeea67",
+          "id" : "panel_2382743a837049bf9920a6c4481b27f5",
           "layout" : {
             "height" : 120,
             "panel_width" : 1
@@ -1852,8 +1856,8 @@
               "config" : {
                 "title" : "Root FS Used"
               },
-              "data_source_ref" : "ds_73f94acfbea7495380f251b3aed98a98",
-              "id" : "viz_88d4ac30f9694114a471198a20ffc5e8",
+              "data_source_ref" : "ds_8d84e8aca9754fc5ad01b0d4dfcdcca4",
+              "id" : "viz_cad7387446ed4cc38a1b055f69b011c3",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "radial",
@@ -1876,12 +1880,12 @@
             {
               "id" : "viz_14_col_0",
               "viz_ids" : [
-                "viz_c7d778e4b4734d55a4ae9d56538fa779"
+                "viz_da904934d5624684b88f23591ebf2f41"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_148887cc639e48c29b437b5f99b3562c",
+          "id" : "panel_d5bce4f445364676bb808f84622ba486",
           "layout" : {
             "height" : 60,
             "panel_width" : 1
@@ -1891,8 +1895,8 @@
               "config" : {
                 "title" : "CPU Cores"
               },
-              "data_source_ref" : "ds_68a505a995dd4ae1b8ca3840f253e63d",
-              "id" : "viz_c7d778e4b4734d55a4ae9d56538fa779",
+              "data_source_ref" : "ds_54bb0dfb3e7a451486798fe882a56e8e",
+              "id" : "viz_da904934d5624684b88f23591ebf2f41",
               "layer" : 1,
               "options" : {
                 "color_mode" : "none",
@@ -1911,12 +1915,12 @@
             {
               "id" : "viz_75_col_0",
               "viz_ids" : [
-                "viz_e637c569358946d6bbacc23bc27fdb61"
+                "viz_8935c30a2c77442ebfaaf4409c8fec7d"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_e947962467e34150875819c02014cdff",
+          "id" : "panel_16916d1bb1eb4820b4d44d38aa037a7e",
           "layout" : {
             "height" : 60,
             "panel_width" : 1
@@ -1926,8 +1930,8 @@
               "config" : {
                 "title" : "RAM Total"
               },
-              "data_source_ref" : "ds_051286e891a7444bbc1a28455e1c8114",
-              "id" : "viz_e637c569358946d6bbacc23bc27fdb61",
+              "data_source_ref" : "ds_5a8b877465b24e47ba0cd6ff449d0972",
+              "id" : "viz_8935c30a2c77442ebfaaf4409c8fec7d",
               "layer" : 1,
               "options" : {
                 "color_mode" : "none",
@@ -1948,12 +1952,12 @@
             {
               "id" : "viz_18_col_0",
               "viz_ids" : [
-                "viz_2761394a69da45409cd82bc097280321"
+                "viz_5deb0f1ae9494c6ca553975336e3d617"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_326dcefe4ea84f089fe287d7b1efa6eb",
+          "id" : "panel_e6e147ca34f64d1cb4df109013d27fcc",
           "layout" : {
             "height" : 60,
             "panel_width" : 1
@@ -1963,8 +1967,8 @@
               "config" : {
                 "title" : "SWAP Total"
               },
-              "data_source_ref" : "ds_07639a67203b4ee0b216adbd3d721551",
-              "id" : "viz_2761394a69da45409cd82bc097280321",
+              "data_source_ref" : "ds_95630e5114814da2bed5b37f06cc4496",
+              "id" : "viz_5deb0f1ae9494c6ca553975336e3d617",
               "layer" : 1,
               "options" : {
                 "color_mode" : "none",
@@ -1985,12 +1989,12 @@
             {
               "id" : "viz_23_col_0",
               "viz_ids" : [
-                "viz_23607e371b9c4fdd8934fdf8f153b525"
+                "viz_f9761500338445678a6984888af8c475"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_c2667da465c94e4a9c7551edff3de10f",
+          "id" : "panel_539accb12570461aad71c87e4e1280d7",
           "layout" : {
             "height" : 60,
             "panel_width" : 1
@@ -2000,8 +2004,8 @@
               "config" : {
                 "title" : "RootFS Total"
               },
-              "data_source_ref" : "ds_74fcaed7fdc641628016c76345e0377f",
-              "id" : "viz_23607e371b9c4fdd8934fdf8f153b525",
+              "data_source_ref" : "ds_7906fe0482e0416f8c635a9fde7f5570",
+              "id" : "viz_f9761500338445678a6984888af8c475",
               "layer" : 1,
               "options" : {
                 "color_mode" : "none",
@@ -2022,12 +2026,12 @@
             {
               "id" : "viz_15_col_0",
               "viz_ids" : [
-                "viz_28bcf5c3c1624efab64f6f1c8aadd476"
+                "viz_6f2107259a774c00b117da02aaac5199"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_762d74288a58415dbb521544521f4f55",
+          "id" : "panel_9626df37ea324c57acf9b0c93cb3a167",
           "layout" : {
             "height" : 60,
             "panel_width" : 2
@@ -2037,8 +2041,8 @@
               "config" : {
                 "title" : "Uptime"
               },
-              "data_source_ref" : "ds_a52125a12c8040238fa0ef3007d9ba74",
-              "id" : "viz_28bcf5c3c1624efab64f6f1c8aadd476",
+              "data_source_ref" : "ds_f115978393eb444195ebb23f0ef425f8",
+              "id" : "viz_6f2107259a774c00b117da02aaac5199",
               "layer" : 1,
               "options" : {
                 "color_mode" : "none",
@@ -2058,20 +2062,20 @@
       "title" : "Quick CPU \/ Mem \/ Disk"
     },
     {
-      "id" : "row_1e631e60ae00495290360b64bcd388a6",
+      "id" : "row_30da092186bf443ea24c3798cd1e6e68",
       "panels" : [
         {
           "columns" : [
             {
               "id" : "viz_77_col_0",
               "viz_ids" : [
-                "viz_4d1037d4aaa946c19bb908fb6c66fd81"
+                "viz_1a69ce217cf64ed4bdefbcaa6be48157"
               ],
               "width" : 12
             }
           ],
           "description" : "CPU time spent busy vs idle, split by activity type",
-          "id" : "panel_c1ea84382cb041d4a87943f79d4beb4a",
+          "id" : "panel_8f472a44053f4f3c937d72914be99bae",
           "layout" : {
             "height" : 210,
             "panel_width" : 6
@@ -2081,8 +2085,8 @@
               "config" : {
                 "title" : "CPU Basic"
               },
-              "data_source_ref" : "ds_79522ae02f794933b5cbc47326437ef4",
-              "id" : "viz_4d1037d4aaa946c19bb908fb6c66fd81",
+              "data_source_ref" : "ds_e7409d55e59540b3be4e1b218f4b2ede",
+              "id" : "viz_1a69ce217cf64ed4bdefbcaa6be48157",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2114,13 +2118,13 @@
             {
               "id" : "viz_78_col_0",
               "viz_ids" : [
-                "viz_db42a93f53d84b84aacb303484a78a18"
+                "viz_a317eaa9b95a4273821ff73077c44967"
               ],
               "width" : 12
             }
           ],
           "description" : "RAM and swap usage overview, including caches",
-          "id" : "panel_eb183fba97cb4702b08f7675569058f0",
+          "id" : "panel_5806617de5824e7385bb297ef8dc9c0d",
           "layout" : {
             "height" : 210,
             "panel_width" : 6
@@ -2130,8 +2134,8 @@
               "config" : {
                 "title" : "Memory Basic"
               },
-              "data_source_ref" : "ds_88ff863ac94246648bfc83bb501be2d6",
-              "id" : "viz_db42a93f53d84b84aacb303484a78a18",
+              "data_source_ref" : "ds_52ce41d86dd141a8854cc12db572a368",
+              "id" : "viz_a317eaa9b95a4273821ff73077c44967",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2162,13 +2166,13 @@
             {
               "id" : "viz_74_col_0",
               "viz_ids" : [
-                "viz_4da92c3152104e60ae8c6bc5da36049a"
+                "viz_df696315887c4fc7aaa34194fac86b60"
               ],
               "width" : 12
             }
           ],
           "description" : "Per-interface network traffic (receive and transmit) in bits per second",
-          "id" : "panel_b904c3e91b7b4b52a33a5da59eab5b84",
+          "id" : "panel_d7af9b600f8d4380a595e8098108782b",
           "layout" : {
             "height" : 210,
             "panel_width" : 6
@@ -2178,8 +2182,8 @@
               "config" : {
                 "title" : "Network Traffic Basic"
               },
-              "data_source_ref" : "ds_5af59539da6e4bb8809c11324efaa466",
-              "id" : "viz_4da92c3152104e60ae8c6bc5da36049a",
+              "data_source_ref" : "ds_68b3caf531a348139136f964e2d7ae42",
+              "id" : "viz_df696315887c4fc7aaa34194fac86b60",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2210,13 +2214,13 @@
             {
               "id" : "viz_152_col_0",
               "viz_ids" : [
-                "viz_36dd4cfa5f1f47eea0ecdd7159446894"
+                "viz_9b527ed7cbfb4961bb4b3bda38a44030"
               ],
               "width" : 12
             }
           ],
           "description" : "Percentage of filesystem space used for each mounted device",
-          "id" : "panel_2f4136158f944b4d8dcb200e98250fce",
+          "id" : "panel_dd3d62001efb404cb9f0ac25396fbce6",
           "layout" : {
             "height" : 210,
             "panel_width" : 6
@@ -2226,8 +2230,8 @@
               "config" : {
                 "title" : "Disk Space Used Basic"
               },
-              "data_source_ref" : "ds_5c08fa12ad2142638d436e2a6f81cd37",
-              "id" : "viz_36dd4cfa5f1f47eea0ecdd7159446894",
+              "data_source_ref" : "ds_b4700c404ad74587aa50bd6c4b9861d0",
+              "id" : "viz_9b527ed7cbfb4961bb4b3bda38a44030",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2258,7 +2262,7 @@
       "title" : "Basic CPU \/ Mem \/ Net \/ Disk"
     },
     {
-      "id" : "row_1a09610db9cf4a519e427b66b59d3c1c",
+      "id" : "row_ed012381f11a45778e535b4efe258286",
       "layout" : {
         "collapsed" : true
       },
@@ -2268,13 +2272,13 @@
             {
               "id" : "viz_3_col_0",
               "viz_ids" : [
-                "viz_9710d0440ea24cc5be7fbe67ca00a3a6"
+                "viz_47bdf2f085bf4f8b988a8c5206e289fd"
               ],
               "width" : 12
             }
           ],
           "description" : "CPU time usage split by state, normalized across all CPU cores",
-          "id" : "panel_d66a328b0dea43e38c82bb589dd95def",
+          "id" : "panel_de4d3e96e6b14f58a2f448d70d8fabd4",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -2284,8 +2288,8 @@
               "config" : {
                 "title" : "CPU"
               },
-              "data_source_ref" : "ds_44fa4a8700474175b8d1bc010bda007f",
-              "id" : "viz_9710d0440ea24cc5be7fbe67ca00a3a6",
+              "data_source_ref" : "ds_87615e30fb414157b518e531dbc56e6a",
+              "id" : "viz_47bdf2f085bf4f8b988a8c5206e289fd",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2317,13 +2321,13 @@
             {
               "id" : "viz_24_col_0",
               "viz_ids" : [
-                "viz_751f4fe38c5545a49cf6418f68213bd6"
+                "viz_895ae53ddca142d7ae93b38ac48ec299"
               ],
               "width" : 12
             }
           ],
           "description" : "Breakdown of physical memory and swap usage. Hardware-detected memory errors are also displayed",
-          "id" : "panel_c400d5c0d9d64d8b9ad0509ad69d0648",
+          "id" : "panel_c63c2c497a4b441d8fba5b45f958e469",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -2333,8 +2337,8 @@
               "config" : {
                 "title" : "Memory"
               },
-              "data_source_ref" : "ds_e018dfbc03a24f3387b5e3ac5f23b2f5",
-              "id" : "viz_751f4fe38c5545a49cf6418f68213bd6",
+              "data_source_ref" : "ds_4cddc4388ad4409ab79e02481724a08b",
+              "id" : "viz_895ae53ddca142d7ae93b38ac48ec299",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2364,7 +2368,7 @@
       "title" : "CPU \/ Memory \/ Net \/ Disk"
     },
     {
-      "id" : "row_9d358436fa8f4bfabc80b0e9fa5699bc",
+      "id" : "row_13d3712d440243ab844f7187f561fed9",
       "layout" : {
         "collapsed" : true
       },
@@ -2374,13 +2378,13 @@
             {
               "id" : "viz_135_col_0",
               "viz_ids" : [
-                "viz_10053ffbad2b43ad8730b817de0c1846"
+                "viz_f024f47b31a04390b64b9c2f62a9f2ef"
               ],
               "width" : 12
             }
           ],
           "description" : "Displays committed memory usage versus the system's commit limit. Exceeding the limit is allowed under Linux overcommit policies but may increase OOM risks under high load",
-          "id" : "panel_6d8285cfe0ad44c8939bf2f414683996",
+          "id" : "panel_f2ca1e845bb14d39a5ad8c4bab04e311",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2390,8 +2394,8 @@
               "config" : {
                 "title" : "Memory Committed"
               },
-              "data_source_ref" : "ds_076e1c4f0a7d4e99ad208d86dc6023c5",
-              "id" : "viz_10053ffbad2b43ad8730b817de0c1846",
+              "data_source_ref" : "ds_9e43c53dbc8d4d609837b6a53577dd1b",
+              "id" : "viz_f024f47b31a04390b64b9c2f62a9f2ef",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2422,13 +2426,13 @@
             {
               "id" : "viz_130_col_0",
               "viz_ids" : [
-                "viz_becc68dc7f2d4e20afd904f3d8ad0da7"
+                "viz_ecadf04b5b9b4ee0bd08a69ded8d336b"
               ],
               "width" : 12
             }
           ],
           "description" : "Memory currently dirty (modified but not yet written to disk), being actively written back, or held by writeback buffers. High dirty or writeback memory may indicate disk I\/O pressure or delayed flushing",
-          "id" : "panel_45d62d61f90b412995efd2b25389ad24",
+          "id" : "panel_c5992f317f504c08b60bf5efdb329a1c",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2438,8 +2442,8 @@
               "config" : {
                 "title" : "Memory Writeback and Dirty"
               },
-              "data_source_ref" : "ds_7aa01eddc9044321bd57b1d69b12f443",
-              "id" : "viz_becc68dc7f2d4e20afd904f3d8ad0da7",
+              "data_source_ref" : "ds_24f65faa747e4e139128764f0005b1c0",
+              "id" : "viz_ecadf04b5b9b4ee0bd08a69ded8d336b",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2468,7 +2472,7 @@
       "title" : "Memory Meminfo"
     },
     {
-      "id" : "row_ee62574aa84d4c6793cbd64400ddc5c4",
+      "id" : "row_9e0d276a15b748e7a72970459f54f546",
       "layout" : {
         "collapsed" : true
       },
@@ -2478,13 +2482,13 @@
             {
               "id" : "viz_176_col_0",
               "viz_ids" : [
-                "viz_dc8806b35ad84ca6acb7d3295bc27e53"
+                "viz_ab1b93477e444f12bad80eb859c14343"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of memory pages being read from or written to disk (page-in and page-out operations). High page-out may indicate memory pressure or swapping activity",
-          "id" : "panel_6347231298f04152ae3194a95492c095",
+          "id" : "panel_281479b5f54f4dd2a9648bef8e8228eb",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2494,8 +2498,8 @@
               "config" : {
                 "title" : "Memory Pages In \/ Out"
               },
-              "data_source_ref" : "ds_48ae8f6e6837426d8600960f05893301",
-              "id" : "viz_dc8806b35ad84ca6acb7d3295bc27e53",
+              "data_source_ref" : "ds_c19cb4a6b9fc4ed384329bb2eb874a21",
+              "id" : "viz_ab1b93477e444f12bad80eb859c14343",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2525,13 +2529,13 @@
             {
               "id" : "viz_22_col_0",
               "viz_ids" : [
-                "viz_26ba35e3074544c7ab83c2816d6fdd78"
+                "viz_d1d86b1be666467b92c2995335704672"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate at which memory pages are being swapped in from or out to disk. High swap-out activity may indicate memory pressure",
-          "id" : "panel_58c8f0bca360441ba67b067aa75b227c",
+          "id" : "panel_1aff14d93a944c23bcc354f6136c9d25",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2541,8 +2545,8 @@
               "config" : {
                 "title" : "Memory Pages Swap In \/ Out"
               },
-              "data_source_ref" : "ds_5ae0d21d200341b4a130a1000f14b503",
-              "id" : "viz_26ba35e3074544c7ab83c2816d6fdd78",
+              "data_source_ref" : "ds_461b6945655d47a5a78afb3ba928b5b0",
+              "id" : "viz_d1d86b1be666467b92c2995335704672",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2571,7 +2575,7 @@
       "title" : "Memory Vmstat"
     },
     {
-      "id" : "row_598b95edd9e1473f92c1602db4e68f3b",
+      "id" : "row_4e50c15795c74090a56fafa960e6789f",
       "layout" : {
         "collapsed" : true
       },
@@ -2581,13 +2585,13 @@
             {
               "id" : "viz_260_col_0",
               "viz_ids" : [
-                "viz_1b5a1d1549674784a6925c0f88161d6a"
+                "viz_4810f2aba0b9466e8b662b9fe1a191ee"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks the system clock's estimated and maximum error, as well as its offset from the reference clock (e.g., via NTP). Useful for detecting synchronization drift",
-          "id" : "panel_3969199d5fe84e9999c1921346c9fd4b",
+          "id" : "panel_0c8c33e93ff94956b6ac27c49ed2998d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2597,8 +2601,8 @@
               "config" : {
                 "title" : "Time Synchronized Drift"
               },
-              "data_source_ref" : "ds_dcc1cc2fdcd84d6daeeb95832ce58343",
-              "id" : "viz_1b5a1d1549674784a6925c0f88161d6a",
+              "data_source_ref" : "ds_0cb16d6bc58a49cf97127e2fdba70e20",
+              "id" : "viz_4810f2aba0b9466e8b662b9fe1a191ee",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2627,13 +2631,13 @@
             {
               "id" : "viz_291_col_0",
               "viz_ids" : [
-                "viz_9397ecf6f0334f798e948b61e5af6681"
+                "viz_71103485d6e14121bc8a486a0b92b721"
               ],
               "width" : 12
             }
           ],
           "description" : "NTP phase-locked loop (PLL) time constant used by the kernel to control time adjustments. Lower values mean faster correction but less stability",
-          "id" : "panel_d3c8fcb98308455386e4911c792d2b9e",
+          "id" : "panel_08510ee9731e45bc855ce6bae1a1e2d2",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2643,8 +2647,8 @@
               "config" : {
                 "title" : "Time PLL Adjust"
               },
-              "data_source_ref" : "ds_037914ba21924486b55dcb72e7bc8502",
-              "id" : "viz_9397ecf6f0334f798e948b61e5af6681",
+              "data_source_ref" : "ds_67933d0ceacf411b89f3d35a06423073",
+              "id" : "viz_71103485d6e14121bc8a486a0b92b721",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2671,20 +2675,20 @@
       "title" : "System Timesync"
     },
     {
-      "id" : "row_5b7c2469e35e42efa8da9c6b1122c134",
+      "id" : "row_2defa085dd014b76a13818a0ba25ccea",
       "panels" : [
         {
           "columns" : [
             {
               "id" : "viz_62_col_0",
               "viz_ids" : [
-                "viz_7cdae7e550e44a8c8fcec78d3a6e4447"
+                "viz_dc13cd9a5e7645058f654a816ddfe729"
               ],
               "width" : 12
             }
           ],
           "description" : "Processes currently in runnable or blocked states. Helps identify CPU contention or I\/O wait bottlenecks.",
-          "id" : "panel_2e507f620ef4402cafbc129b6fbfe6de",
+          "id" : "panel_bffb08fee4f24e5f8fe752acb6454df9",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2694,8 +2698,8 @@
               "config" : {
                 "title" : "Processes Status"
               },
-              "data_source_ref" : "ds_06ed261ef5314b51b476dd8ddb2730c9",
-              "id" : "viz_7cdae7e550e44a8c8fcec78d3a6e4447",
+              "data_source_ref" : "ds_065823579ebd451988577aa4dda841be",
+              "id" : "viz_dc13cd9a5e7645058f654a816ddfe729",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2724,13 +2728,13 @@
             {
               "id" : "viz_315_col_0",
               "viz_ids" : [
-                "viz_d1a4e99067174fbca091b04bd7c618d0"
+                "viz_11f46588e6fe443a857c986791d66d18"
               ],
               "width" : 12
             }
           ],
           "description" : "Current number of processes in each state (e.g., running, sleeping, zombie). Requires --collector.processes to be enabled in node_exporter",
-          "id" : "panel_03b1f95acd8f4a56b34c6d14bb8466e8",
+          "id" : "panel_c2f8e78f0a4e4f249d4c96e663df1e48",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2740,8 +2744,8 @@
               "config" : {
                 "title" : "Processes Detailed States"
               },
-              "data_source_ref" : "ds_48b2b82f2a8d432f834f288b87786337",
-              "id" : "viz_d1a4e99067174fbca091b04bd7c618d0",
+              "data_source_ref" : "ds_deaad04b5b31425499404a9a7d3663a9",
+              "id" : "viz_11f46588e6fe443a857c986791d66d18",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2772,13 +2776,13 @@
             {
               "id" : "viz_175_col_0",
               "viz_ids" : [
-                "viz_46c0b2b4333144169bec9dddddc34994"
+                "viz_bcb327670f604b1fbb1e64ff08abd738"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of memory page faults, split into total, major (disk-backed), and derived minor (non-disk) faults. High major fault rates may indicate memory pressure or insufficient RAM",
-          "id" : "panel_f015b42f6d4543cdaf4e53cfdffe592e",
+          "id" : "panel_aa4d718e5ff549f5a7f07ec41f90694b",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2788,8 +2792,8 @@
               "config" : {
                 "title" : "Memory Page Faults"
               },
-              "data_source_ref" : "ds_32748ba59c56490bbeecc9aa2c0b82a4",
-              "id" : "viz_46c0b2b4333144169bec9dddddc34994",
+              "data_source_ref" : "ds_0ea255db3651471793df2adcde4ab2e0",
+              "id" : "viz_bcb327670f604b1fbb1e64ff08abd738",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2820,13 +2824,13 @@
             {
               "id" : "viz_307_col_0",
               "viz_ids" : [
-                "viz_ef742f494cb94242bce9eed9f37d9213"
+                "viz_d515eca943a5462381a5c3138cd7d7a0"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of Out-of-Memory (OOM) kill events. A non-zero value indicates the kernel has terminated one or more processes due to memory exhaustion",
-          "id" : "panel_610d11811ee7471b92913b4e520da10a",
+          "id" : "panel_56d54a98e1e14468bb163ddf143c00ea",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2836,8 +2840,8 @@
               "config" : {
                 "title" : "OOM Killer"
               },
-              "data_source_ref" : "ds_c68c09374e934ae082726f801657b19e",
-              "id" : "viz_ef742f494cb94242bce9eed9f37d9213",
+              "data_source_ref" : "ds_a429db7263374bf7b7da26e1ca072a56",
+              "id" : "viz_d515eca943a5462381a5c3138cd7d7a0",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2868,13 +2872,13 @@
             {
               "id" : "viz_148_col_0",
               "viz_ids" : [
-                "viz_0f88bc875f094870a6c213437dfaa49e"
+                "viz_e8548dea15c740048663b6d4c572f94f"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of new processes being created on the system (forks\/sec).",
-          "id" : "panel_a89198b946da45b68f0d6217def165b8",
+          "id" : "panel_527de482d0f94aeaaa3a9f9bc12bd43e",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2884,8 +2888,8 @@
               "config" : {
                 "title" : "Processes Forks"
               },
-              "data_source_ref" : "ds_ad5be8aeaabc48bcb7a1c6937da97b88",
-              "id" : "viz_0f88bc875f094870a6c213437dfaa49e",
+              "data_source_ref" : "ds_c717de7cb4bf426f8a46ce8f1c53e2a8",
+              "id" : "viz_e8548dea15c740048663b6d4c572f94f",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2915,13 +2919,13 @@
             {
               "id" : "viz_305_col_0",
               "viz_ids" : [
-                "viz_ee1dbbf8c255464fb959eef67f287481"
+                "viz_8d2214bc0b344089b8a04632c2f161c9"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows CPU saturation per core, calculated as the proportion of time spent waiting to run relative to total time demanded (running + waiting).",
-          "id" : "panel_2ce2f8151daf403b99590e123d3731eb",
+          "id" : "panel_892a4a222a5b420f831428f9b4ac0144",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2931,8 +2935,8 @@
               "config" : {
                 "title" : "CPU Saturation per Core"
               },
-              "data_source_ref" : "ds_57ae574a8d8c489c9b8a094230bc8d2f",
-              "id" : "viz_ee1dbbf8c255464fb959eef67f287481",
+              "data_source_ref" : "ds_22000da13cf84a5891c9be01054a11b1",
+              "id" : "viz_8d2214bc0b344089b8a04632c2f161c9",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -2964,13 +2968,13 @@
             {
               "id" : "viz_313_col_0",
               "viz_ids" : [
-                "viz_8d35bc4b4d4f4b97ae9e35e2d2f03316"
+                "viz_8011aad836e94c049f83a23556e93372"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of active PIDs on the system and the configured maximum allowed. Useful for detecting PID exhaustion risk. Requires --collector.processes in node_exporter",
-          "id" : "panel_e19696a401034f5a8693f2e70beca4c7",
+          "id" : "panel_fae87b3be9d54ac6a04fd54d4d1d287e",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -2980,8 +2984,8 @@
               "config" : {
                 "title" : "PIDs Number and Limit"
               },
-              "data_source_ref" : "ds_984e081b40794b47aa33269f4d49bdb8",
-              "id" : "viz_8d35bc4b4d4f4b97ae9e35e2d2f03316",
+              "data_source_ref" : "ds_03156590fb9640529b049b5cc9f0eb17",
+              "id" : "viz_8011aad836e94c049f83a23556e93372",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3011,13 +3015,13 @@
             {
               "id" : "viz_314_col_0",
               "viz_ids" : [
-                "viz_ec51fb711be0450ca0481604435fc26f"
+                "viz_dbd5536ccbe04c76bd2ca5cbe6515520"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of active threads on the system and the configured thread limit. Useful for monitoring thread pressure. Requires --collector.processes in node_exporter",
-          "id" : "panel_ed3a5e3ac8c04b2d89cdbe1730c456e7",
+          "id" : "panel_6b053f53631042d5bf072bc42b1cb8b2",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3027,8 +3031,8 @@
               "config" : {
                 "title" : "Threads Number and Limit"
               },
-              "data_source_ref" : "ds_9f11d83650454e519d3435cb3b3e1be9",
-              "id" : "viz_ec51fb711be0450ca0481604435fc26f",
+              "data_source_ref" : "ds_3ca3874e6d0045358bb535411bda96d3",
+              "id" : "viz_dbd5536ccbe04c76bd2ca5cbe6515520",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3057,7 +3061,7 @@
       "title" : "System Processes"
     },
     {
-      "id" : "row_672589e2fa1e440baf4faad4aa7f1d0b",
+      "id" : "row_580d8da4c5e743cc840b2c0e4caac188",
       "layout" : {
         "collapsed" : true
       },
@@ -3067,13 +3071,13 @@
             {
               "id" : "viz_8_col_0",
               "viz_ids" : [
-                "viz_6b91fe7cff4448b5b102190f39c74af8"
+                "viz_2abfa265da214229b93e73270dcc274a"
               ],
               "width" : 12
             }
           ],
           "description" : "Per-second rate of context switches and hardware interrupts. High values may indicate intense CPU or I\/O activity",
-          "id" : "panel_30ce01d9c6bd483ebb376b56eaf43d82",
+          "id" : "panel_147ebc584d2c4e0c867f892357a300ec",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3083,8 +3087,8 @@
               "config" : {
                 "title" : "Context Switches \/ Interrupts"
               },
-              "data_source_ref" : "ds_c3998f2e69f149f5a62144b03f0f9022",
-              "id" : "viz_6b91fe7cff4448b5b102190f39c74af8",
+              "data_source_ref" : "ds_cd7c727c2fb844f9a21f3d1111e83f61",
+              "id" : "viz_2abfa265da214229b93e73270dcc274a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3114,13 +3118,13 @@
             {
               "id" : "viz_7_col_0",
               "viz_ids" : [
-                "viz_d1cc25fd01be414eb37a104e7309f4ae"
+                "viz_9cd358f1cc8e45fba5656cf7e39aa599"
               ],
               "width" : 12
             }
           ],
           "description" : "System load average over 1, 5, and 15 minutes. Reflects the number of active or waiting processes. Values above CPU core count may indicate overload",
-          "id" : "panel_8abaf3a90e9547acb41994267d6e94d5",
+          "id" : "panel_a4de11d52fc448cfa305df6dbea9f039",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3130,8 +3134,8 @@
               "config" : {
                 "title" : "System Load"
               },
-              "data_source_ref" : "ds_2d2b0a1b63d14fa6801a1885216ad788",
-              "id" : "viz_d1cc25fd01be414eb37a104e7309f4ae",
+              "data_source_ref" : "ds_5d343a89730e42efa0c1e40e26871356",
+              "id" : "viz_9cd358f1cc8e45fba5656cf7e39aa599",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3160,7 +3164,7 @@
       "title" : "System Misc"
     },
     {
-      "id" : "row_8881489d37a842ef9e3bab46abae95e4",
+      "id" : "row_8be7d95d25d245bc9e2fa5d384821b55",
       "layout" : {
         "collapsed" : true
       },
@@ -3170,13 +3174,13 @@
             {
               "id" : "viz_158_col_0",
               "viz_ids" : [
-                "viz_c2656e9dd08549628803d1926b2f816b"
+                "viz_4577636ab5934b4eb06cd8432077687a"
               ],
               "width" : 12
             }
           ],
           "description" : "Monitors hardware sensor temperatures and critical thresholds as exposed by Linux hwmon. Includes CPU, GPU, and motherboard sensors where available",
-          "id" : "panel_7f4f2edb0e1f4728ac49e6d7252a5c5f",
+          "id" : "panel_e49356a7cbc74be9bcdfef48639a4919",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3186,8 +3190,8 @@
               "config" : {
                 "title" : "Hardware Temperature Monitor"
               },
-              "data_source_ref" : "ds_b712e58b99c547f197ec4c2a45fd8636",
-              "id" : "viz_c2656e9dd08549628803d1926b2f816b",
+              "data_source_ref" : "ds_0f3ba5c60e6a46a5b06ec3fbd6f63ac3",
+              "id" : "viz_4577636ab5934b4eb06cd8432077687a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3219,13 +3223,13 @@
             {
               "id" : "viz_300_col_0",
               "viz_ids" : [
-                "viz_11d4d8e7248448f3ad7078e792dcac2f"
+                "viz_56432936db94460ca2bd01f87f36a24a"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows how hard each cooling device (fan\/throttle) is working relative to its maximum capacity",
-          "id" : "panel_c35d509ed25b4c888844dae89efa1020",
+          "id" : "panel_8c1935afab614ac4b2f2da51127d3fcc",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3235,8 +3239,8 @@
               "config" : {
                 "title" : "Cooling Device Utilization"
               },
-              "data_source_ref" : "ds_e0a14237a30445af86d66136cfb35d46",
-              "id" : "viz_11d4d8e7248448f3ad7078e792dcac2f",
+              "data_source_ref" : "ds_defca92826b2415a81ad34ea331c8c3f",
+              "id" : "viz_56432936db94460ca2bd01f87f36a24a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3266,7 +3270,7 @@
       "title" : "Hardware Misc"
     },
     {
-      "id" : "row_244b614eb3b647b1bc5c532d6cf80010",
+      "id" : "row_dc80e7c94aff42db85452415fa485a84",
       "layout" : {
         "collapsed" : true
       },
@@ -3276,13 +3280,13 @@
             {
               "id" : "viz_298_col_0",
               "viz_ids" : [
-                "viz_0b8dd4f8e9df4aaab9b72fe0231bd888"
+                "viz_15ff190a57804e449255f75d2b910a43"
               ],
               "width" : 12
             }
           ],
           "description" : "Current number of systemd units in each operational state, such as active, failed, inactive, or transitioning",
-          "id" : "panel_60f745d2cda84570bedfee4e80323842",
+          "id" : "panel_e7d15a96cb7a4061ab4cf97e2bd216c6",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3292,8 +3296,8 @@
               "config" : {
                 "title" : "Systemd Units State"
               },
-              "data_source_ref" : "ds_a3147ec15d4a4070a8dd1b435c7313a0",
-              "id" : "viz_0b8dd4f8e9df4aaab9b72fe0231bd888",
+              "data_source_ref" : "ds_ea712b82c52e457f8294e73772bb657f",
+              "id" : "viz_15ff190a57804e449255f75d2b910a43",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3322,13 +3326,13 @@
             {
               "id" : "viz_331_col_0",
               "viz_ids" : [
-                "viz_d95701fc06464485a5b732805d75912b"
+                "viz_a1be4982678148c18662adc15f4fe671"
               ],
               "width" : 12
             }
           ],
           "description" : "Current number of active connections per systemd socket, as reported by the Node Exporter systemd collector",
-          "id" : "panel_6dda1d675a2547a8af823f0260e0ce1d",
+          "id" : "panel_7428dbc4fa75469ba85daf21c45881f7",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3338,8 +3342,8 @@
               "config" : {
                 "title" : "Systemd Sockets Current"
               },
-              "data_source_ref" : "ds_da0216660c914614a7e7122944ac9ca5",
-              "id" : "viz_d95701fc06464485a5b732805d75912b",
+              "data_source_ref" : "ds_b651527afab8404db8d3bb01c72c0d2b",
+              "id" : "viz_a1be4982678148c18662adc15f4fe671",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3368,7 +3372,7 @@
       "title" : "Systemd"
     },
     {
-      "id" : "row_502805ddab0e497c87efb733f4303dc0",
+      "id" : "row_03b7abc70f954066973115fac9a4b8e8",
       "layout" : {
         "collapsed" : true
       },
@@ -3378,13 +3382,13 @@
             {
               "id" : "viz_9_col_0",
               "viz_ids" : [
-                "viz_909c34a885e74cda844f8b9d45503f08"
+                "viz_b65fac36ee1c484bbe26af835f7248fb"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of I\/O operations completed per second for the device (after merges), including both reads and writes",
-          "id" : "panel_6e6b092cfa394a52b027901461b3ee40",
+          "id" : "panel_168190662daa41c49ffec7c17b3d0a75",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3394,8 +3398,8 @@
               "config" : {
                 "title" : "Disk Read\/Write IOps"
               },
-              "data_source_ref" : "ds_d5e2c12edeee448ca653b65736ff2efd",
-              "id" : "viz_909c34a885e74cda844f8b9d45503f08",
+              "data_source_ref" : "ds_aae1b7396a4d440da0b025c75e80ce0f",
+              "id" : "viz_b65fac36ee1c484bbe26af835f7248fb",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3426,13 +3430,13 @@
             {
               "id" : "viz_33_col_0",
               "viz_ids" : [
-                "viz_5ececc31277f4b4a95cae4d109a685a9"
+                "viz_e72013d78d634caa8af1460deb6c5b42"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of bytes read from or written to the device per second",
-          "id" : "panel_d0b6a504d9794b158351262e241892d7",
+          "id" : "panel_4fbb4b357e334c829e30f797a987c68d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3442,8 +3446,8 @@
               "config" : {
                 "title" : "Disk Read\/Write Data"
               },
-              "data_source_ref" : "ds_e6edb5d236414c9b8b87f4396c9d2854",
-              "id" : "viz_5ececc31277f4b4a95cae4d109a685a9",
+              "data_source_ref" : "ds_9744dd76417649f38f07828dc20f04db",
+              "id" : "viz_e72013d78d634caa8af1460deb6c5b42",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3473,7 +3477,7 @@
       "title" : "Storage Disk"
     },
     {
-      "id" : "row_5ad6338e2e0e49b7b46e8ca5fabef988",
+      "id" : "row_afd8a44cc581471ca96fcb7cd58fd699",
       "layout" : {
         "collapsed" : true
       },
@@ -3483,13 +3487,13 @@
             {
               "id" : "viz_28_col_0",
               "viz_ids" : [
-                "viz_e75c72ebdaa64c1886fd05059dfe9c37"
+                "viz_cfea21c26128424faaf2aa0bf3477e3d"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of file descriptors currently allocated system-wide versus the system limit. Important for detecting descriptor exhaustion risks",
-          "id" : "panel_b9dc428d9dce4a279f562af6240b399a",
+          "id" : "panel_1a80322b1ded482084dd86edb4c8cb54",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3499,8 +3503,8 @@
               "config" : {
                 "title" : "File Descriptor"
               },
-              "data_source_ref" : "ds_72300b2417d147128787344d235608b8",
-              "id" : "viz_e75c72ebdaa64c1886fd05059dfe9c37",
+              "data_source_ref" : "ds_61ac5a7c6f49479eb11293f2abf75751",
+              "id" : "viz_cfea21c26128424faaf2aa0bf3477e3d",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3530,13 +3534,13 @@
             {
               "id" : "viz_41_col_0",
               "viz_ids" : [
-                "viz_b52ca0829ad74fa2bea1a4937da569c9"
+                "viz_1fa6a7df8d7a4647a1df328575fecff4"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of free file nodes (inodes) available per mounted filesystem. A low count may prevent file creation even if disk space is available",
-          "id" : "panel_8f0d403bcdd54a15a2f41762c73ae20f",
+          "id" : "panel_1acda3e41fe440eeb917190f938aa5e5",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3546,8 +3550,8 @@
               "config" : {
                 "title" : "File Nodes Free"
               },
-              "data_source_ref" : "ds_c7a5355e92534004bd1b09486aea8d5d",
-              "id" : "viz_b52ca0829ad74fa2bea1a4937da569c9",
+              "data_source_ref" : "ds_5e0b887543914e469ceb2bb4bbd48f17",
+              "id" : "viz_1fa6a7df8d7a4647a1df328575fecff4",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3576,7 +3580,7 @@
       "title" : "Storage Filesystem"
     },
     {
-      "id" : "row_ecad6739130744bb8fc47401008e9657",
+      "id" : "row_e1a49cf090d8414f818fc1b4eddd91c8",
       "layout" : {
         "collapsed" : true
       },
@@ -3586,13 +3590,13 @@
             {
               "id" : "viz_60_col_0",
               "viz_ids" : [
-                "viz_dd9c5014d4e94cfba498d456fca0b4af"
+                "viz_ec87c473349c46549c43a498c5814363"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of network packets received and transmitted per second, by interface.",
-          "id" : "panel_c8c164c8885543b6860d563662696ef6",
+          "id" : "panel_afb5788e4fd84961b7b7431e11572be3",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3602,8 +3606,8 @@
               "config" : {
                 "title" : "Network Traffic by Packets"
               },
-              "data_source_ref" : "ds_d0b359714d064740a931705ac9311ed6",
-              "id" : "viz_dd9c5014d4e94cfba498d456fca0b4af",
+              "data_source_ref" : "ds_efe6a2449b954e8585207b82674902a3",
+              "id" : "viz_ec87c473349c46549c43a498c5814363",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3634,13 +3638,13 @@
             {
               "id" : "viz_142_col_0",
               "viz_ids" : [
-                "viz_738614627ee94e96a85cace6c94a90eb"
+                "viz_a4cda5d944b7433abc2ec72da478733e"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of packet-level errors for each network interface. Receive errors may indicate physical or driver issues; transmit errors may reflect collisions or hardware faults",
-          "id" : "panel_6194caa3ec274c6e8fe5a049d8b96230",
+          "id" : "panel_83c11d600f1f4be8abd829b42cf10cfa",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3650,8 +3654,8 @@
               "config" : {
                 "title" : "Network Traffic Errors"
               },
-              "data_source_ref" : "ds_13d354e8e2d34cfdbc78b94f20ca2276",
-              "id" : "viz_738614627ee94e96a85cace6c94a90eb",
+              "data_source_ref" : "ds_db74d03ef6914ae49753810bdf2612bb",
+              "id" : "viz_a4cda5d944b7433abc2ec72da478733e",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3672,6 +3676,7 @@
                 "unit" : "pps",
                 "y_axis_title" : "out (-) \/ in (+)"
               },
+              "title" : "Network Traffic Errors",
               "type" : "chart",
               "width" : 12
             }
@@ -3681,7 +3686,7 @@
       "title" : "Network Traffic"
     },
     {
-      "id" : "row_7216b56d7efe40859888ee71841bc6cc",
+      "id" : "row_c685d2e9b17c4e6c89f7efecb14f977a",
       "layout" : {
         "collapsed" : true
       },
@@ -3691,13 +3696,13 @@
             {
               "id" : "viz_63_col_0",
               "viz_ids" : [
-                "viz_1a3d9bb8d6584a4ea3b2feb2a9d268a4"
+                "viz_1e874bed05a24d66ae871e48a45b43da"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks TCP socket usage and memory per node",
-          "id" : "panel_edebf4e16c2b43b6b181377031827034",
+          "id" : "panel_bfd7c5ee53cf40138fbb3a19f7631717",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3707,8 +3712,8 @@
               "config" : {
                 "title" : "Sockstat TCP"
               },
-              "data_source_ref" : "ds_d405d2e396194e95bc7b2ec67cefd77d",
-              "id" : "viz_1a3d9bb8d6584a4ea3b2feb2a9d268a4",
+              "data_source_ref" : "ds_85c0f75b810745f183566e496e348d4f",
+              "id" : "viz_1e874bed05a24d66ae871e48a45b43da",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3737,13 +3742,13 @@
             {
               "id" : "viz_124_col_0",
               "viz_ids" : [
-                "viz_753cace332874cc9a01c10b40b05fddc"
+                "viz_cf50f66c11a84a86b6bb5c29304c3bf7"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of UDP and UDPLite sockets currently in use",
-          "id" : "panel_795a7211b6ac44c88694ca1e746db189",
+          "id" : "panel_a077be66f9a043e995e7c3e9ebecf3b4",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3753,8 +3758,8 @@
               "config" : {
                 "title" : "Sockstat UDP"
               },
-              "data_source_ref" : "ds_0065e71f37f84d189aa57985fa4ea387",
-              "id" : "viz_753cace332874cc9a01c10b40b05fddc",
+              "data_source_ref" : "ds_c3c7326cfa0f4b47919ddbf9c339bba7",
+              "id" : "viz_cf50f66c11a84a86b6bb5c29304c3bf7",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3782,7 +3787,7 @@
       "title" : "Network Sockstat"
     },
     {
-      "id" : "row_486c149731f244a89f0ead4672ce46d6",
+      "id" : "row_ec1849ea88c4487db1bf62a8b70e67a9",
       "layout" : {
         "collapsed" : true
       },
@@ -3792,13 +3797,13 @@
             {
               "id" : "viz_221_col_0",
               "viz_ids" : [
-                "viz_c7fc3caa05824f49be8732dde2c62c69"
+                "viz_77f97207aa51419981401af74d71b260"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of octets sent and received at the IP layer, as reported by \/proc\/net\/netstat",
-          "id" : "panel_46fafacd1afc40a28b03aff1c0499d6a",
+          "id" : "panel_8bff6f766a434b56a130852b3cf25583",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3808,8 +3813,8 @@
               "config" : {
                 "title" : "Netstat IP In \/ Out Octets"
               },
-              "data_source_ref" : "ds_e1cf77b8725748eb9c403245576c93a4",
-              "id" : "viz_c7fc3caa05824f49be8732dde2c62c69",
+              "data_source_ref" : "ds_bc027079e97a4e6a952349d81e29bb2c",
+              "id" : "viz_77f97207aa51419981401af74d71b260",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3839,13 +3844,13 @@
             {
               "id" : "viz_299_col_0",
               "viz_ids" : [
-                "viz_5a32a6300aae4e3ca67a7907727bbfc1"
+                "viz_07391532464343b6913872aca8bbe0f9"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of TCP segments sent and received per second, including data and control segments",
-          "id" : "panel_a7ac617dffae41a9ae9a323ff734aaa9",
+          "id" : "panel_774884f7fcc74fd4aad5da1858a4c391",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3855,8 +3860,8 @@
               "config" : {
                 "title" : "TCP In \/ Out"
               },
-              "data_source_ref" : "ds_124f211a15f44c8aa92ab9a5089183d1",
-              "id" : "viz_5a32a6300aae4e3ca67a7907727bbfc1",
+              "data_source_ref" : "ds_1328a0103b1b4faea623ec99ebcfc7bc",
+              "id" : "viz_07391532464343b6913872aca8bbe0f9",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3885,7 +3890,7 @@
       "title" : "Network Netstat"
     },
     {
-      "id" : "row_c37b4076135241babdfca30e36f5a6cf",
+      "id" : "row_2b96375192cc49ca91eaf9a102f4589e",
       "layout" : {
         "collapsed" : true
       },
@@ -3895,13 +3900,13 @@
             {
               "id" : "viz_40_col_0",
               "viz_ids" : [
-                "viz_5a7e55f162254628b1d202898a85260c"
+                "viz_e7cc93b8494b4c639b1fe8101e0d109c"
               ],
               "width" : 12
             }
           ],
           "description" : "Duration of each individual collector executed during a Node Exporter scrape. Useful for identifying slow or failing collectors",
-          "id" : "panel_b2b255c2286b44498bab18e2a0c7a2ba",
+          "id" : "panel_e6400404af8b4c44a99fdd613c464565",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3911,8 +3916,8 @@
               "config" : {
                 "title" : "Node Exporter Scrape Time"
               },
-              "data_source_ref" : "ds_863fa6d37a2d4dc4825490dc3173434b",
-              "id" : "viz_5a7e55f162254628b1d202898a85260c",
+              "data_source_ref" : "ds_6fb256fb40bf4f70916af7f841f03a3a",
+              "id" : "viz_e7cc93b8494b4c639b1fe8101e0d109c",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3942,13 +3947,13 @@
             {
               "id" : "viz_308_col_0",
               "viz_ids" : [
-                "viz_00f6392f97ee48eaa60e75216b9d44db"
+                "viz_e7a121172b354872bf83c2ac4de758f5"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of CPU time used by the process exposing this metric (user + system mode)",
-          "id" : "panel_280d8de03ab5470086a1be05ce723fa9",
+          "id" : "panel_9f24eb9934434599a95b3adf1b16e6d4",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -3958,8 +3963,8 @@
               "config" : {
                 "title" : "Exporter Process CPU Usage"
               },
-              "data_source_ref" : "ds_b458a3ea457f45c58869ddd983a59185",
-              "id" : "viz_00f6392f97ee48eaa60e75216b9d44db",
+              "data_source_ref" : "ds_c87aacada2514e1db85261468880e464",
+              "id" : "viz_e7a121172b354872bf83c2ac4de758f5",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -3989,13 +3994,13 @@
             {
               "id" : "viz_321_col_0",
               "viz_ids" : [
-                "viz_598cd247a1b343c8874d17fbdf2d0b84"
+                "viz_d90ed8250a674672b233b15aa732d999"
               ],
               "width" : 12
             }
           ],
           "description" : "Real-time CPU frequency scaling per core, including average minimum and maximum allowed scaling frequencies",
-          "id" : "panel_f61d4634b9db4122a611002acda83866",
+          "id" : "panel_87e76412eb6e4dc29473f833844c3604",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4005,8 +4010,8 @@
               "config" : {
                 "title" : "CPU Frequency Scaling"
               },
-              "data_source_ref" : "ds_b9ce65fcfc5a4a57a05191268f9bdcd4",
-              "id" : "viz_598cd247a1b343c8874d17fbdf2d0b84",
+              "data_source_ref" : "ds_16fe832f6ad14122be31b656983d5692",
+              "id" : "viz_d90ed8250a674672b233b15aa732d999",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4037,13 +4042,13 @@
             {
               "id" : "viz_306_col_0",
               "viz_ids" : [
-                "viz_2c77f217651a41b2a51784e5601d852c"
+                "viz_e63e426471e94973b57af95c0b355006"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of scheduling timeslices executed per CPU. Reflects how frequently the scheduler switches tasks on each core",
-          "id" : "panel_03539af8716441e88eb14b4f61af19e8",
+          "id" : "panel_570d88b549244567a46784be88852a8c",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4053,8 +4058,8 @@
               "config" : {
                 "title" : "CPU Schedule Timeslices"
               },
-              "data_source_ref" : "ds_a51301483e974dd593292f5036829067",
-              "id" : "viz_2c77f217651a41b2a51784e5601d852c",
+              "data_source_ref" : "ds_2af64afcd8fb48a78734d3e4ef8121ee",
+              "id" : "viz_e63e426471e94973b57af95c0b355006",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4084,13 +4089,13 @@
             {
               "id" : "viz_302_col_0",
               "viz_ids" : [
-                "viz_5d78039e01b7468b976a32227a5e9ea8"
+                "viz_86759c5c1fb34cc0b2f60f9f6efd7f8b"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows the online status of power supplies (e.g., AC, battery). A value of 1-Yes indicates the power supply is active\/online",
-          "id" : "panel_f4c6e4689f0341f1a7ca343bfaf1643f",
+          "id" : "panel_b875342b98194d42b5db76e3b4443baa",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4100,8 +4105,8 @@
               "config" : {
                 "title" : "Power Supply"
               },
-              "data_source_ref" : "ds_a34469d68e224499bb754b47f478be13",
-              "id" : "viz_5d78039e01b7468b976a32227a5e9ea8",
+              "data_source_ref" : "ds_1aeac17a5eaf499f88874c2aee1f148c",
+              "id" : "viz_86759c5c1fb34cc0b2f60f9f6efd7f8b",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4131,13 +4136,13 @@
             {
               "id" : "viz_325_col_0",
               "viz_ids" : [
-                "viz_ce3b13509dde4bd694f5321b97ac6375"
+                "viz_737fa7f07bf346f8afb3264eeb24da49"
               ],
               "width" : 12
             }
           ],
           "description" : "Displays the current fan speeds (RPM) from hardware sensors via the hwmon interface",
-          "id" : "panel_078c0c8abe9842c58b6db1b8ca736b37",
+          "id" : "panel_c76b8bacd7d3455bbcb662ac1d862754",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4147,8 +4152,8 @@
               "config" : {
                 "title" : "Hardware Fan Speed"
               },
-              "data_source_ref" : "ds_da90cf2ed53646ef9d1029e904c967ec",
-              "id" : "viz_ce3b13509dde4bd694f5321b97ac6375",
+              "data_source_ref" : "ds_b85e46a9e9f947698ec190fdb68d1a77",
+              "id" : "viz_737fa7f07bf346f8afb3264eeb24da49",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4179,13 +4184,13 @@
             {
               "id" : "viz_297_col_0",
               "viz_ids" : [
-                "viz_bedea2596b4d4163a9d074a09a7df352"
+                "viz_3070010d3a544ac784bf08198c8d51fa"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of accepted connections per second for each systemd socket",
-          "id" : "panel_55a33e58f01048c7bcdcbd0fab4180e8",
+          "id" : "panel_d6773d8dcf274070b49d4287c3278553",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4195,8 +4200,8 @@
               "config" : {
                 "title" : "Systemd Sockets Accepted"
               },
-              "data_source_ref" : "ds_f3ba61c159944528a09bd0ecc08df435",
-              "id" : "viz_bedea2596b4d4163a9d074a09a7df352",
+              "data_source_ref" : "ds_1f047b0b7e0c48a6aa087ad9825f1bcc",
+              "id" : "viz_3070010d3a544ac784bf08198c8d51fa",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4227,13 +4232,13 @@
             {
               "id" : "viz_332_col_0",
               "viz_ids" : [
-                "viz_2947d89031a34ce8adad619c4f9e12d0"
+                "viz_7d2b5f14ebc94e829b0faab9e613a620"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of systemd socket connection refusals per second, typically due to service unavailability or backlog overflow",
-          "id" : "panel_3ea4f4cda804497c9d4b51df8ce09b8f",
+          "id" : "panel_0ab56f318c0d4352bc36b03a24800599",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4243,8 +4248,8 @@
               "config" : {
                 "title" : "Systemd Sockets Refused"
               },
-              "data_source_ref" : "ds_978180aa95304934a576d2c7cc2e9127",
-              "id" : "viz_2947d89031a34ce8adad619c4f9e12d0",
+              "data_source_ref" : "ds_dc6b8e4162724139915049537fde7625",
+              "id" : "viz_7d2b5f14ebc94e829b0faab9e613a620",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4275,13 +4280,13 @@
             {
               "id" : "viz_126_col_0",
               "viz_ids" : [
-                "viz_526cbf6f1d564f9294b6da661881a52d"
+                "viz_e6333cf9796b49fb8467a58443339cf9"
               ],
               "width" : 12
             }
           ],
           "description" : "Total number of sockets currently in use across all protocols (TCP, UDP, UNIX, etc.), as reported by \/proc\/net\/sockstat",
-          "id" : "panel_6afe7e2473374c69b0679761ffff65ba",
+          "id" : "panel_cd80dd3df855497cad7680f7b857e346",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4291,8 +4296,8 @@
               "config" : {
                 "title" : "Sockstat Used"
               },
-              "data_source_ref" : "ds_713c5fb8d2b04ea19be554af9778c395",
-              "id" : "viz_526cbf6f1d564f9294b6da661881a52d",
+              "data_source_ref" : "ds_2bf688e19984412cb91f23164bbdc328",
+              "id" : "viz_e6333cf9796b49fb8467a58443339cf9",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4321,13 +4326,13 @@
             {
               "id" : "viz_125_col_0",
               "viz_ids" : [
-                "viz_33f3e89b768f40dd99840e687a8ce81e"
+                "viz_43c4aa4d2643448481e01a5bd6147230"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of FRAG and RAW sockets currently in use. RAW sockets are used for custom protocols or tools like ping; FRAG sockets are used internally for IP packet defragmentation",
-          "id" : "panel_e6faeadcb1aa4b75bb55fc823625ccf3",
+          "id" : "panel_6fdc87f9797f4f0b8a33559e1f72bea8",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4337,8 +4342,8 @@
               "config" : {
                 "title" : "Sockstat FRAG \/ RAW"
               },
-              "data_source_ref" : "ds_acc0b71f6cb448a79892a2566c67c4ee",
-              "id" : "viz_33f3e89b768f40dd99840e687a8ce81e",
+              "data_source_ref" : "ds_7faabf2b06e64af0914069720c8fea7b",
+              "id" : "viz_43c4aa4d2643448481e01a5bd6147230",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4367,13 +4372,13 @@
             {
               "id" : "viz_149_col_0",
               "viz_ids" : [
-                "viz_472c165404e04055a97a58e81cfdc519"
+                "viz_3289a459504f409294e6e717820c3da4"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks the memory usage of the process exposing this metric (e.g., node_exporter), including current virtual memory and maximum virtual memory limit",
-          "id" : "panel_c03e1070fea640ce8a5249d3a09fa489",
+          "id" : "panel_c77bc4022d2e4f67bccd9ffd930cbf90",
           "layout" : {
             "height" : 300,
             "panel_width" : 5
@@ -4383,8 +4388,8 @@
               "config" : {
                 "title" : "Exporter Processes Memory"
               },
-              "data_source_ref" : "ds_ebaa3c55e30a4bd6a53cb77cbfc69d03",
-              "id" : "viz_472c165404e04055a97a58e81cfdc519",
+              "data_source_ref" : "ds_9f24b38553a741b096e7839c5421823e",
+              "id" : "viz_3289a459504f409294e6e717820c3da4",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4415,13 +4420,13 @@
             {
               "id" : "viz_64_col_0",
               "viz_ids" : [
-                "viz_676f14dd079c4547a5e056030029b49f"
+                "viz_ab936f857ed04df5b30b6d13c54044b6"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of file descriptors used by the exporter process versus its configured limit",
-          "id" : "panel_43c54cc477a0457299a413ee6363a778",
+          "id" : "panel_3c3bf9e80f624d8cbe7213213b14030c",
           "layout" : {
             "height" : 300,
             "panel_width" : 5
@@ -4431,8 +4436,8 @@
               "config" : {
                 "title" : "Exporter File Descriptor Usage"
               },
-              "data_source_ref" : "ds_a314b2306fc546f4892ac9b1d6a604cc",
-              "id" : "viz_676f14dd079c4547a5e056030029b49f",
+              "data_source_ref" : "ds_369ecab4f41443ff962a969a1383d2ce",
+              "id" : "viz_ab936f857ed04df5b30b6d13c54044b6",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4462,13 +4467,13 @@
             {
               "id" : "viz_157_col_0",
               "viz_ids" : [
-                "viz_0fa28d4bdd0f4466b41f59fca32f7ed1"
+                "viz_0bb17915c703461d8dff631daa85a5ba"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows whether each Node Exporter collector scraped successfully (1 = success, 0 = failure), and whether the textfile collector returned an error.",
-          "id" : "panel_913720df51f94f13967cfd7f054783cb",
+          "id" : "panel_1353ce935bd94cceb4407c629ea7c2bb",
           "layout" : {
             "height" : 300,
             "panel_width" : 2
@@ -4478,8 +4483,8 @@
               "config" : {
                 "title" : "Node Exporter Scrape"
               },
-              "data_source_ref" : "ds_04d6c3ef22794ec3878e5eb0021a24b6",
-              "id" : "viz_0fa28d4bdd0f4466b41f59fca32f7ed1",
+              "data_source_ref" : "ds_0026928d5778455180b5279ef66ace1b",
+              "id" : "viz_0bb17915c703461d8dff631daa85a5ba",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "linear",
@@ -4499,13 +4504,13 @@
             {
               "id" : "viz_259_col_0",
               "viz_ids" : [
-                "viz_8a612b1b72b64ef28835f5f3ed4df755"
+                "viz_f59bebca8aa84e7e8e04ac60f140f09d"
               ],
               "width" : 12
             }
           ],
           "description" : "Breaks down hardware interrupts by type and device. Useful for diagnosing IRQ load on network, disk, or CPU interfaces. Requires --collector.interrupts to be enabled in node_exporter",
-          "id" : "panel_6d4591c6e1104ddda029de5a3a1d0868",
+          "id" : "panel_71eb708eb8b844fd890109362bd0b1b3",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4515,8 +4520,8 @@
               "config" : {
                 "title" : "IRQ Detail"
               },
-              "data_source_ref" : "ds_1a4598306c204ad08f0bb8598706c6c7",
-              "id" : "viz_8a612b1b72b64ef28835f5f3ed4df755",
+              "data_source_ref" : "ds_47344d0d1f594486be25fe1d0faa2a59",
+              "id" : "viz_f59bebca8aa84e7e8e04ac60f140f09d",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4547,13 +4552,13 @@
             {
               "id" : "viz_151_col_0",
               "viz_ids" : [
-                "viz_25f18491319d487e86ea494f69d919bd"
+                "viz_2b213463af5e48fabb3909ef94d46660"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of bits of entropy currently available to the system's random number generators (e.g., \/dev\/random). Low values may indicate that random number generation could block or degrade performance of cryptographic operations",
-          "id" : "panel_440c87bbbe154375a65953496b0f407b",
+          "id" : "panel_0c775032609d4acaa44e0e68cb248d1d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4563,8 +4568,8 @@
               "config" : {
                 "title" : "Entropy"
               },
-              "data_source_ref" : "ds_5902e9c2bfb54049ba1d06d5b94c7485",
-              "id" : "viz_25f18491319d487e86ea494f69d919bd",
+              "data_source_ref" : "ds_03a836b5834c4cdb919515da374dc8ea",
+              "id" : "viz_2b213463af5e48fabb3909ef94d46660",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4595,13 +4600,13 @@
             {
               "id" : "viz_220_col_0",
               "viz_ids" : [
-                "viz_354b884def4742ad862fd258c3cd2a77"
+                "viz_eb6f771af3b3498db870c2d5f60f2dfc"
               ],
               "width" : 12
             }
           ],
           "description" : "Kernel memory used by TCP, UDP, and IP fragmentation buffers",
-          "id" : "panel_d12c38d6aa7d4260bd6604b2ecfebf9a",
+          "id" : "panel_5ad8514aca434931b69f53ec0c1dbb4d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4611,8 +4616,8 @@
               "config" : {
                 "title" : "Sockstat Memory Size"
               },
-              "data_source_ref" : "ds_e2ff3013e94a4fd785106d3fe94610ea",
-              "id" : "viz_354b884def4742ad862fd258c3cd2a77",
+              "data_source_ref" : "ds_da1e8a2e42a44728b6b86d9584daef2e",
+              "id" : "viz_eb6f771af3b3498db870c2d5f60f2dfc",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4642,13 +4647,13 @@
             {
               "id" : "viz_339_col_0",
               "viz_ids" : [
-                "viz_f53db2dd41904ccf863d3b41a74d9c8c"
+                "viz_bd77bdff0b47471d9f38cbcd9162af85"
               ],
               "width" : 12
             }
           ],
           "description" : "Average memory used per socket (TCP\/UDP). Helps tune net.ipv4.tcp_rmem \/ tcp_wmem",
-          "id" : "panel_39929f58c6424b24be358f2e059efda7",
+          "id" : "panel_578826c94e3845799c6608095c7f804d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4658,8 +4663,8 @@
               "config" : {
                 "title" : "Sockstat Average Socket Memory"
               },
-              "data_source_ref" : "ds_087fdb1a3fa744e58343280267da1fc7",
-              "id" : "viz_f53db2dd41904ccf863d3b41a74d9c8c",
+              "data_source_ref" : "ds_4a041597e9464fee845b13188d6077be",
+              "id" : "viz_bd77bdff0b47471d9f38cbcd9162af85",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4689,13 +4694,13 @@
             {
               "id" : "viz_336_col_0",
               "viz_ids" : [
-                "viz_b0ac11adce4c4c5f9fab2d7bbaf5d699"
+                "viz_6148715b5bd04f419f5b38b091d6a317"
               ],
               "width" : 12
             }
           ],
           "description" : "TCP\/UDP socket memory usage in kernel (in pages)",
-          "id" : "panel_595c2d123c824a70a108d328364bb07e",
+          "id" : "panel_f8cc40c7d16f4c478ce48f795141c1a7",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4705,8 +4710,8 @@
               "config" : {
                 "title" : "TCP\/UDP Kernel Buffer Memory Pages"
               },
-              "data_source_ref" : "ds_3be5cbd31fb74170bd1c93a7adc644ab",
-              "id" : "viz_b0ac11adce4c4c5f9fab2d7bbaf5d699",
+              "data_source_ref" : "ds_19de32f90a104d308aedd108ce10480b",
+              "id" : "viz_6148715b5bd04f419f5b38b091d6a317",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4735,13 +4740,13 @@
             {
               "id" : "viz_290_col_0",
               "viz_ids" : [
-                "viz_daeb64fe0a2d42dfa395add94bb28da6"
+                "viz_4109877e994347c79323930c43811aa6"
               ],
               "width" : 12
             }
           ],
           "description" : "Packets processed and dropped by the softnet network stack per CPU. Drops may indicate CPU saturation or network driver limitations",
-          "id" : "panel_ae574dae76dd43a298900a69db4e51b9",
+          "id" : "panel_ae1c9708715c4b3f8eb57d28ed966ce3",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4751,8 +4756,8 @@
               "config" : {
                 "title" : "Softnet Packets"
               },
-              "data_source_ref" : "ds_b68b4a6c2d3f4ebf9b5081b00133e01c",
-              "id" : "viz_daeb64fe0a2d42dfa395add94bb28da6",
+              "data_source_ref" : "ds_3ff332b71f5348339bd3798dc81c47a5",
+              "id" : "viz_4109877e994347c79323930c43811aa6",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4783,13 +4788,13 @@
             {
               "id" : "viz_55_col_0",
               "viz_ids" : [
-                "viz_065a04c8d8074dd49c43f91e7466775f"
+                "viz_7d67f7ace95d42d7be5abf282b2abfc1"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of UDP datagrams sent and received per second, based on \/proc\/net\/netstat",
-          "id" : "panel_1b57574aed794382aee6284b860b959e",
+          "id" : "panel_df75870173af4a3d93e338a5cef5a9bd",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4799,8 +4804,8 @@
               "config" : {
                 "title" : "UDP In \/ Out"
               },
-              "data_source_ref" : "ds_4cb4ea04a62144cda9b7b84efc44fff9",
-              "id" : "viz_065a04c8d8074dd49c43f91e7466775f",
+              "data_source_ref" : "ds_4ce32fb7fab946b0994dd079c68d80dc",
+              "id" : "viz_7d67f7ace95d42d7be5abf282b2abfc1",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4830,13 +4835,13 @@
             {
               "id" : "viz_115_col_0",
               "viz_ids" : [
-                "viz_8517a09e0ef24913984b9a707339cb36"
+                "viz_fb53d24c55854d5d96b6b19438746857"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of ICMP messages sent and received per second, including error and control messages",
-          "id" : "panel_be7e411960754679a87e342e78ea6eb6",
+          "id" : "panel_92b08ebe37974a03b499044a054f8e4d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4846,8 +4851,8 @@
               "config" : {
                 "title" : "ICMP In \/ Out"
               },
-              "data_source_ref" : "ds_fddabf833fc843c5bdf3a007d27e2a19",
-              "id" : "viz_8517a09e0ef24913984b9a707339cb36",
+              "data_source_ref" : "ds_c7cae9dd609341fc802506f6878516e4",
+              "id" : "viz_fb53d24c55854d5d96b6b19438746857",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4877,13 +4882,13 @@
             {
               "id" : "viz_310_col_0",
               "viz_ids" : [
-                "viz_83861f2a25ef4253bf78e802126215ad"
+                "viz_bbffe7f811ad48b7a10b63e21156c862"
               ],
               "width" : 12
             }
           ],
           "description" : "How often the kernel was unable to process all packets in the softnet queue before time ran out. Frequent squeezes may indicate CPU contention or driver inefficiency",
-          "id" : "panel_aaf74046fc2143d3b06fde32c53b1c87",
+          "id" : "panel_e7b6323580104baf9593239839f165c7",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4893,8 +4898,8 @@
               "config" : {
                 "title" : "Softnet Out of Quota"
               },
-              "data_source_ref" : "ds_a590c843600b406ba5acd8400f4d7b83",
-              "id" : "viz_83861f2a25ef4253bf78e802126215ad",
+              "data_source_ref" : "ds_e7ab16af9368403b88f22e7c111651f6",
+              "id" : "viz_bbffe7f811ad48b7a10b63e21156c862",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4924,13 +4929,13 @@
             {
               "id" : "viz_330_col_0",
               "viz_ids" : [
-                "viz_2e9ce6bb3a904d9bb5c129cc2d2d6f76"
+                "viz_be68b1eb06cb42beae9acc90fd2aa723"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks the number of packets processed or dropped by Receive Packet Steering (RPS), a mechanism to distribute packet processing across CPUs",
-          "id" : "panel_18fad6d298d348f497fa5462c361c157",
+          "id" : "panel_8ac974894c934878a9235fd1670ec788",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4940,8 +4945,8 @@
               "config" : {
                 "title" : "Softnet RPS"
               },
-              "data_source_ref" : "ds_79bab612ecd14fc4b093a578a3d46e08",
-              "id" : "viz_2e9ce6bb3a904d9bb5c129cc2d2d6f76",
+              "data_source_ref" : "ds_f76b3937f8ae4d21a01df626a5b5dee5",
+              "id" : "viz_be68b1eb06cb42beae9acc90fd2aa723",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -4972,13 +4977,13 @@
             {
               "id" : "viz_104_col_0",
               "viz_ids" : [
-                "viz_c5621751e82d46b0a95018d3b8c51648"
+                "viz_ede9e35fb09c49b0b3a29142cb360fbb"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks various TCP error and congestion-related events, including retransmissions, timeouts, dropped connections, and buffer issues",
-          "id" : "panel_da98f3b5177a48f79ee4af4494847d51",
+          "id" : "panel_e400e208499e4d4da7d7edd937b09406",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -4988,8 +4993,8 @@
               "config" : {
                 "title" : "TCP Errors"
               },
-              "data_source_ref" : "ds_ba2ae8142373410090b4a35e765ec6df",
-              "id" : "viz_c5621751e82d46b0a95018d3b8c51648",
+              "data_source_ref" : "ds_8dc5856c3c26463f9af21da28819b1ef",
+              "id" : "viz_ede9e35fb09c49b0b3a29142cb360fbb",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5019,13 +5024,13 @@
             {
               "id" : "viz_109_col_0",
               "viz_ids" : [
-                "viz_c5624c4ebdf444ed8a86f68786310f3d"
+                "viz_9fc57193ae6e4e42a0bfa0d12a0b008b"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of UDP and UDPLite datagram delivery errors, including missing listeners, buffer overflows, and protocol-specific issues",
-          "id" : "panel_e07c53a30af8433896948c240af0a1ed",
+          "id" : "panel_16e93616729a4da19b813663890fcd24",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5035,8 +5040,8 @@
               "config" : {
                 "title" : "UDP Errors"
               },
-              "data_source_ref" : "ds_a64ed99203134d1a9624288511b53fdb",
-              "id" : "viz_c5624c4ebdf444ed8a86f68786310f3d",
+              "data_source_ref" : "ds_b184858391c84404b0965a1053505cc8",
+              "id" : "viz_9fc57193ae6e4e42a0bfa0d12a0b008b",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5065,13 +5070,13 @@
             {
               "id" : "viz_50_col_0",
               "viz_ids" : [
-                "viz_d693e025af75487cb1ccf2ebd68219be"
+                "viz_d3e79ac1518c4a1a9817636b819b4c9d"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of incoming ICMP messages that contained protocol-specific errors, such as bad checksums or invalid lengths",
-          "id" : "panel_0f3180d3fbab43ab8bc1c553c7048347",
+          "id" : "panel_b2ba77f5aae94adfad35f3c14178b87a",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5081,8 +5086,8 @@
               "config" : {
                 "title" : "ICMP Errors"
               },
-              "data_source_ref" : "ds_efca39c361ae43b990393fb6920fbb76",
-              "id" : "viz_d693e025af75487cb1ccf2ebd68219be",
+              "data_source_ref" : "ds_89a733ffa02d4748bad36bcc86d15054",
+              "id" : "viz_d3e79ac1518c4a1a9817636b819b4c9d",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5111,13 +5116,13 @@
             {
               "id" : "viz_91_col_0",
               "viz_ids" : [
-                "viz_bfcb0469ad2d4ad2a18f85c086e34029"
+                "viz_f6a8eaf9dac74215a7dcfa3bb947d089"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of TCP SYN cookies sent, validated, and failed. These are used to protect against SYN flood attacks and manage TCP handshake resources under load",
-          "id" : "panel_115893e5894f4be08e841e513368db38",
+          "id" : "panel_97fe043a6a234f4795352fe4b519a97d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5127,8 +5132,8 @@
               "config" : {
                 "title" : "TCP SynCookie"
               },
-              "data_source_ref" : "ds_8ec4d653129c4781969c0e78b9ae61b4",
-              "id" : "viz_bfcb0469ad2d4ad2a18f85c086e34029",
+              "data_source_ref" : "ds_3efcea44ddee460790f74db3862da7a5",
+              "id" : "viz_f6a8eaf9dac74215a7dcfa3bb947d089",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5158,13 +5163,13 @@
             {
               "id" : "viz_85_col_0",
               "viz_ids" : [
-                "viz_12c024ff66a047f18171fdedb159efd5"
+                "viz_c2f5cb5072b14d659da2ccd49b9c5b5a"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of currently established TCP connections and the system's max supported limit. On Linux, MaxConn may return -1 to indicate a dynamic\/unlimited configuration",
-          "id" : "panel_41d34c8e3eae467c808639fd3b39b432",
+          "id" : "panel_39004a6e8ebf460fb5b4b6a09ec1df13",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5174,8 +5179,8 @@
               "config" : {
                 "title" : "TCP Connections"
               },
-              "data_source_ref" : "ds_aefbad073586405a9360a6d6b10b3396",
-              "id" : "viz_12c024ff66a047f18171fdedb159efd5",
+              "data_source_ref" : "ds_b2bfe4c74c184fc2a1c7c94288b3e793",
+              "id" : "viz_c2f5cb5072b14d659da2ccd49b9c5b5a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5205,13 +5210,13 @@
             {
               "id" : "viz_337_col_0",
               "viz_ids" : [
-                "viz_819a4694f132413e92e78e2b8fea9ce8"
+                "viz_47bb1652c59c4724bb3906d24374c084"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of UDP packets currently queued in the receive (RX) and transmit (TX) buffers. A growing queue may indicate a bottleneck",
-          "id" : "panel_5efff64eeaad455f8dc6ca94191d9d2f",
+          "id" : "panel_d2d113f8e29d44b3aa6a4734538ea586",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5221,8 +5226,8 @@
               "config" : {
                 "title" : "UDP Queue"
               },
-              "data_source_ref" : "ds_6b9c846d3678455783286182e4150f67",
-              "id" : "viz_819a4694f132413e92e78e2b8fea9ce8",
+              "data_source_ref" : "ds_36313260d4024b41b5bd13ccef716020",
+              "id" : "viz_47bb1652c59c4724bb3906d24374c084",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5250,13 +5255,13 @@
             {
               "id" : "viz_82_col_0",
               "viz_ids" : [
-                "viz_d79493c7c7834ba49fea13eddce58cee"
+                "viz_3199b301e5b94cdf97a7fd5d30181abf"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of TCP connection initiations per second. 'Active' opens are initiated by this host. 'Passive' opens are accepted from incoming connections",
-          "id" : "panel_707b9f823b234b0e96ba760cb0de4650",
+          "id" : "panel_17da2145cf57441396f26f7b4a517323",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5266,8 +5271,8 @@
               "config" : {
                 "title" : "TCP Direct Transition"
               },
-              "data_source_ref" : "ds_5844ece253744eda9bf83f281c353003",
-              "id" : "viz_d79493c7c7834ba49fea13eddce58cee",
+              "data_source_ref" : "ds_c9de5df56aa0496cae54c43f305a1179",
+              "id" : "viz_3199b301e5b94cdf97a7fd5d30181abf",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5297,13 +5302,13 @@
             {
               "id" : "viz_320_col_0",
               "viz_ids" : [
-                "viz_debfba80752643d39050228eefff6f23"
+                "viz_d6bab822c86a40109a0704c4d6f6e81c"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of TCP sockets in key connection states. Requires the --collector.tcpstat flag on node_exporter",
-          "id" : "panel_c100e2f43ad44aadb376838d8a492ec7",
+          "id" : "panel_fd9bd8eef8674ffd90fe3a1023b5a472",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5313,8 +5318,8 @@
               "config" : {
                 "title" : "TCP Stat Persistent"
               },
-              "data_source_ref" : "ds_80dadff3ca71408caf0abdcec4b2447f",
-              "id" : "viz_debfba80752643d39050228eefff6f23",
+              "data_source_ref" : "ds_0a85cc09720c48a8bbe415db8dd0e7d9",
+              "id" : "viz_d6bab822c86a40109a0704c4d6f6e81c",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5344,13 +5349,13 @@
             {
               "id" : "viz_341_col_0",
               "viz_ids" : [
-                "viz_daee75b7dc164100a1966fca70826fad"
+                "viz_6c1c75e0f24e4f788c5688ef4d2a2263"
               ],
               "width" : 12
             }
           ],
           "description" : "Transient TCP connection states. These are typically short-lived during connection establishment and teardown",
-          "id" : "panel_406906f377cd4ee094e9501402181a72",
+          "id" : "panel_c1a62fd8e809464885adc47ba64ce903",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5360,8 +5365,8 @@
               "config" : {
                 "title" : "TCP Stat Transient"
               },
-              "data_source_ref" : "ds_5548dc0f9dfd4442ad9cfe3d4d86c1cd",
-              "id" : "viz_daee75b7dc164100a1966fca70826fad",
+              "data_source_ref" : "ds_a3a4dc1e5f944387bb204410feb242bc",
+              "id" : "viz_6c1c75e0f24e4f788c5688ef4d2a2263",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5391,13 +5396,13 @@
             {
               "id" : "viz_340_col_0",
               "viz_ids" : [
-                "viz_11002ab5da6e40ffb70e4632a8f8f7b6"
+                "viz_4e17cf04d1e14945a121a3516351e63b"
               ],
               "width" : 12
             }
           ],
           "description" : "TCP socket queue sizes. High rx_queued_bytes indicates application not reading fast enough. High tx_queued_bytes indicates network congestion or slow receiver",
-          "id" : "panel_b8864df8fa91402fb9599119fb3517fd",
+          "id" : "panel_ad88d5eb018a4a29baf9624336d11618",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5407,8 +5412,8 @@
               "config" : {
                 "title" : "TCP Socket Queue"
               },
-              "data_source_ref" : "ds_263e3ad2ff5d4436ab39a3fa6c87fbf5",
-              "id" : "viz_11002ab5da6e40ffb70e4632a8f8f7b6",
+              "data_source_ref" : "ds_cc106eb58b5b4089b7f42b0df9d028a2",
+              "id" : "viz_4e17cf04d1e14945a121a3516351e63b",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5438,13 +5443,13 @@
             {
               "id" : "viz_168_col_0",
               "viz_ids" : [
-                "viz_c79dfd3cb0f54922b693504de0a80902"
+                "viz_24fdd49f0915468a86b3bda009be2452"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows whether the system clock is synchronized to a reliable time source, and the current frequency correction ratio applied by the kernel to maintain synchronization",
-          "id" : "panel_d4b48172f5b94b0299c79438de7b13dc",
+          "id" : "panel_1cc72a3467de4d60aa5e0c1531c90ae9",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5454,8 +5459,8 @@
               "config" : {
                 "title" : "Time Synchronized Status"
               },
-              "data_source_ref" : "ds_22bc16f85af44d379b4247fcad3a2d7a",
-              "id" : "viz_c79dfd3cb0f54922b693504de0a80902",
+              "data_source_ref" : "ds_3e10387af78d4775b34621abdf6a6f5a",
+              "id" : "viz_24fdd49f0915468a86b3bda009be2452",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5483,13 +5488,13 @@
             {
               "id" : "viz_333_col_0",
               "viz_ids" : [
-                "viz_0296271c758246bc97b302071b46ccf1"
+                "viz_2629c67fe4d1472389f6eaef411f185f"
               ],
               "width" : 12
             }
           ],
           "description" : "Displays the PPS signal's frequency offset and stability (jitter) in hertz. Useful for monitoring high-precision time sources like GPS or atomic clocks",
-          "id" : "panel_7d363aa501ef48c5af365da60dd151d8",
+          "id" : "panel_b6997d9ca9e64979ab4f6a1759c78308",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5499,8 +5504,8 @@
               "config" : {
                 "title" : "PPS Frequency \/ Stability"
               },
-              "data_source_ref" : "ds_0bcb8b1dcca04f348e27bbb960c4630c",
-              "id" : "viz_0296271c758246bc97b302071b46ccf1",
+              "data_source_ref" : "ds_71dfc0e026af491fa828d619c95fe3a6",
+              "id" : "viz_2629c67fe4d1472389f6eaef411f185f",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5529,13 +5534,13 @@
             {
               "id" : "viz_334_col_0",
               "viz_ids" : [
-                "viz_8459dba69a004affbdc61646fe72dec4"
+                "viz_adfce566cb6340eea1b59c3d67543f21"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks PPS signal timing jitter and shift compared to system clock",
-          "id" : "panel_1a9c67726c5d44a59277fac7e9c808ff",
+          "id" : "panel_6b9ac308405a46088407292b74a96f65",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5545,8 +5550,8 @@
               "config" : {
                 "title" : "PPS Time Accuracy"
               },
-              "data_source_ref" : "ds_3eabc9ad9a674a078fffba66f9eaa094",
-              "id" : "viz_8459dba69a004affbdc61646fe72dec4",
+              "data_source_ref" : "ds_c8896b8d05074268862b5472c8d356a3",
+              "id" : "viz_adfce566cb6340eea1b59c3d67543f21",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5575,13 +5580,13 @@
             {
               "id" : "viz_335_col_0",
               "viz_ids" : [
-                "viz_9461ee16beb340f7b2eafd907f7606a8"
+                "viz_18263e959cbf475f9895cfb375c12a8b"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of PPS synchronization diagnostics including calibration events, jitter violations, errors, and frequency stability exceedances",
-          "id" : "panel_bb0eb0d1e61244fd94b8a8ceadc3e2d5",
+          "id" : "panel_502611e055e2459b8fa912cbcdda962a",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5591,8 +5596,8 @@
               "config" : {
                 "title" : "PPS Sync Events"
               },
-              "data_source_ref" : "ds_7b0eeef84edc478188cdb88ea7869412",
-              "id" : "viz_9461ee16beb340f7b2eafd907f7606a8",
+              "data_source_ref" : "ds_fd74d7da0cea4f0d8417c9d1bd913677",
+              "id" : "viz_18263e959cbf475f9895cfb375c12a8b",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5621,13 +5626,13 @@
             {
               "id" : "viz_131_col_0",
               "viz_ids" : [
-                "viz_8f4ecd75604e47f5a446e73a7b2d0b2f"
+                "viz_58a54745f2c14ea488428bcd2bdcb3c9"
               ],
               "width" : 12
             }
           ],
           "description" : "Kernel slab memory usage, separated into reclaimable and non-reclaimable categories. Reclaimable memory can be freed under memory pressure (e.g., caches), while unreclaimable memory is locked by the kernel for core functions",
-          "id" : "panel_f84f91f24dff4edd8609742a0780f077",
+          "id" : "panel_f544ead5bc1a40e4b10dafb16b98bfef",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5637,8 +5642,8 @@
               "config" : {
                 "title" : "Memory Slab"
               },
-              "data_source_ref" : "ds_16dbc9bb1d534a39a63d57ec9f72da5e",
-              "id" : "viz_8f4ecd75604e47f5a446e73a7b2d0b2f",
+              "data_source_ref" : "ds_0a9976f7ae414a0dbb32597cf40071e4",
+              "id" : "viz_58a54745f2c14ea488428bcd2bdcb3c9",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5668,13 +5673,13 @@
             {
               "id" : "viz_138_col_0",
               "viz_ids" : [
-                "viz_74e9abc5c65e47349f72c0a85e3da43d"
+                "viz_d8d35b0ada7a430cb9d20644a61e5b0f"
               ],
               "width" : 12
             }
           ],
           "description" : "Memory used for mapped files (such as libraries) and shared memory (shmem and tmpfs), including variants backed by huge pages",
-          "id" : "panel_bdf5294a16db43bbbbb747e50b624198",
+          "id" : "panel_cec06c8e48a14d318b66ccde3a8806c6",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5684,8 +5689,8 @@
               "config" : {
                 "title" : "Memory Shared and Mapped"
               },
-              "data_source_ref" : "ds_43d15312d31c464a8ab7e76eaef02ae4",
-              "id" : "viz_74e9abc5c65e47349f72c0a85e3da43d",
+              "data_source_ref" : "ds_bce88d2ba24b460eba7723b8db63e5c9",
+              "id" : "viz_d8d35b0ada7a430cb9d20644a61e5b0f",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5715,13 +5720,13 @@
             {
               "id" : "viz_136_col_0",
               "viz_ids" : [
-                "viz_4d27199a2561444b8d48344ce4868542"
+                "viz_c06d7421c9cf429893e07ff8892b6487"
               ],
               "width" : 12
             }
           ],
           "description" : "Proportion of memory pages in the kernel's active and inactive LRU lists relative to total RAM. Active pages have been recently used, while inactive pages are less recently accessed but still resident in memory",
-          "id" : "panel_274b363ae67a47cba9c24793b95abc4b",
+          "id" : "panel_9416aba04a774cd394eaf55da200ab9c",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5731,8 +5736,8 @@
               "config" : {
                 "title" : "Memory LRU Active \/ Inactive (%)"
               },
-              "data_source_ref" : "ds_4dad71f9e9b24723987e0b50dd2cd371",
-              "id" : "viz_4d27199a2561444b8d48344ce4868542",
+              "data_source_ref" : "ds_f941c1329c8d479a899cf4e18424b37f",
+              "id" : "viz_c06d7421c9cf429893e07ff8892b6487",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5764,13 +5769,13 @@
             {
               "id" : "viz_191_col_0",
               "viz_ids" : [
-                "viz_4cb66cc53cb24be794f137a6fe74269e"
+                "viz_8e461331d634476f987b2bf2151fc63c"
               ],
               "width" : 12
             }
           ],
           "description" : "Breakdown of memory pages in the kernel's active and inactive LRU lists, separated by anonymous (heap, tmpfs) and file-backed (caches, mmap) pages.",
-          "id" : "panel_828da4ca755c4a5d970e448b467f2953",
+          "id" : "panel_530b3d6b76124e498e41f8262890d4be",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5780,8 +5785,8 @@
               "config" : {
                 "title" : "Memory LRU Active \/ Inactive Detail"
               },
-              "data_source_ref" : "ds_6be07a59e2284eb69eac219843cbbbc0",
-              "id" : "viz_4cb66cc53cb24be794f137a6fe74269e",
+              "data_source_ref" : "ds_45e66b900e46477090d746b9985c46a4",
+              "id" : "viz_8e461331d634476f987b2bf2151fc63c",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5811,13 +5816,13 @@
             {
               "id" : "viz_160_col_0",
               "viz_ids" : [
-                "viz_473de8e9e73e4f868e82a7be8929df63"
+                "viz_74a9dfa1c3504f4d9fd89f38d9479dde"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks kernel memory used for CPU-local structures, per-thread stacks, and bounce buffers used for I\/O on DMA-limited devices. These areas are typically small but critical for low-level operations",
-          "id" : "panel_1e6c0ef617bd4804a7bfa9e219088cd1",
+          "id" : "panel_96d515c925b542deb0667c7d1b56b83b",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5827,8 +5832,8 @@
               "config" : {
                 "title" : "Memory Kernel \/ CPU \/ IO"
               },
-              "data_source_ref" : "ds_26c997f1188c4beda615dcde39d3488c",
-              "id" : "viz_473de8e9e73e4f868e82a7be8929df63",
+              "data_source_ref" : "ds_3806a8a2c8be4d1ba658cb3c5382fa83",
+              "id" : "viz_74a9dfa1c3504f4d9fd89f38d9479dde",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5858,13 +5863,13 @@
             {
               "id" : "viz_70_col_0",
               "viz_ids" : [
-                "viz_3be958ad0e2a4540ab4d9ae2690314b4"
+                "viz_0e57d3ed5aef412eabbdf71ed04abcf5"
               ],
               "width" : 12
             }
           ],
           "description" : "Usage of the kernel's vmalloc area, which provides virtual memory allocations for kernel modules and drivers. Includes total, used, and largest free block sizes",
-          "id" : "panel_3276815a222f4167ae38ad420c0eb915",
+          "id" : "panel_ba7481556a9249c5b88b13f3b91c3318",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5874,8 +5879,8 @@
               "config" : {
                 "title" : "Memory Vmalloc"
               },
-              "data_source_ref" : "ds_f90a0d01b5e44f56bee102f962cea334",
-              "id" : "viz_3be958ad0e2a4540ab4d9ae2690314b4",
+              "data_source_ref" : "ds_7bd064ded78343bdb6709f2aba4396cc",
+              "id" : "viz_0e57d3ed5aef412eabbdf71ed04abcf5",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5906,13 +5911,13 @@
             {
               "id" : "viz_129_col_0",
               "viz_ids" : [
-                "viz_5b85892ba1fd488d883ad1d19feaad21"
+                "viz_1dfbb26bea1448cd8be74027d2736d6d"
               ],
               "width" : 12
             }
           ],
           "description" : "Memory used by anonymous pages (not backed by files), including standard and huge page allocations. Includes heap, stack, and memory-mapped anonymous regions",
-          "id" : "panel_c855b2a5a7094540a0c0f8302335d53d",
+          "id" : "panel_2d9fe10a07254822b79714b4b1784faf",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5922,8 +5927,8 @@
               "config" : {
                 "title" : "Memory Anonymous"
               },
-              "data_source_ref" : "ds_ce14decdc4064ac2b7978bf26e743ed5",
-              "id" : "viz_5b85892ba1fd488d883ad1d19feaad21",
+              "data_source_ref" : "ds_a9b63b8c467d49b68785561ad90cedb4",
+              "id" : "viz_1dfbb26bea1448cd8be74027d2736d6d",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -5953,13 +5958,13 @@
             {
               "id" : "viz_137_col_0",
               "viz_ids" : [
-                "viz_8196189ce36d487a811ef1b13c4d07f7"
+                "viz_7dc0d1b1278c4b028b6154f9f42bc764"
               ],
               "width" : 12
             }
           ],
           "description" : "Memory that is locked in RAM and cannot be swapped out. Includes both kernel-unevictable memory and user-level memory locked with mlock()",
-          "id" : "panel_3e51438ca7824319a6bcab26de8b0d13",
+          "id" : "panel_e3b43f9ca836427fba3acb70e25650d2",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -5969,8 +5974,8 @@
               "config" : {
                 "title" : "Memory Unevictable and MLocked"
               },
-              "data_source_ref" : "ds_31cdf8df395f4a7e8ad30f1c3fab13d0",
-              "id" : "viz_8196189ce36d487a811ef1b13c4d07f7",
+              "data_source_ref" : "ds_f35116e34fb148dfb4d99eeb7060d121",
+              "id" : "viz_7dc0d1b1278c4b028b6154f9f42bc764",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6000,13 +6005,13 @@
             {
               "id" : "viz_128_col_0",
               "viz_ids" : [
-                "viz_8da6ee0954534bb088191c9b33f737a8"
+                "viz_590b2af4b6344109ba2a1b7bf1e3ac4a"
               ],
               "width" : 12
             }
           ],
           "description" : "How much memory is directly mapped in the kernel using different page sizes (4K, 2M, 1G). Helps monitor large page utilization in the direct map region",
-          "id" : "panel_d2ac00965b874325b3547e15e2a9becc",
+          "id" : "panel_10b01392b96043a5a009ddf94eb82354",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6016,8 +6021,8 @@
               "config" : {
                 "title" : "Memory DirectMap"
               },
-              "data_source_ref" : "ds_3cbbdeb2acf343a5bca65c2aa5370685",
-              "id" : "viz_8da6ee0954534bb088191c9b33f737a8",
+              "data_source_ref" : "ds_aed5d593a88145488f095526c2534b5a",
+              "id" : "viz_590b2af4b6344109ba2a1b7bf1e3ac4a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6047,13 +6052,13 @@
             {
               "id" : "viz_140_col_0",
               "viz_ids" : [
-                "viz_a93477efd49e43678ee963247870f1e6"
+                "viz_2404953855744026b40ea421367ebac0"
               ],
               "width" : 12
             }
           ],
           "description" : "Displays HugePages memory usage in bytes, including allocated, free, reserved, and surplus memory. All values are calculated based on the number of huge pages multiplied by their configured size",
-          "id" : "panel_414af2b7201d409192d4d42f3f7bda29",
+          "id" : "panel_93528f60ff444d3fa5c685270909d087",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6063,8 +6068,8 @@
               "config" : {
                 "title" : "Memory HugePages"
               },
-              "data_source_ref" : "ds_53e2cc62da834c549bc2fbb1128584fa",
-              "id" : "viz_a93477efd49e43678ee963247870f1e6",
+              "data_source_ref" : "ds_2048f0c73abc4489ad50704f751586b3",
+              "id" : "viz_2404953855744026b40ea421367ebac0",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6094,13 +6099,13 @@
             {
               "id" : "viz_143_col_0",
               "viz_ids" : [
-                "viz_27c9cd70e0264fecae34f6ee4f7a6aa5"
+                "viz_91d3f32744e345eeb405746ecfe7874c"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of dropped packets per network interface. Receive drops can indicate buffer overflow or driver issues; transmit drops may result from outbound congestion or queuing limits",
-          "id" : "panel_33229a40b8ca4bd5ab92b7319194e000",
+          "id" : "panel_ed1b946808c842fb854c50e3219eb332",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6110,8 +6115,8 @@
               "config" : {
                 "title" : "Network Traffic Drop"
               },
-              "data_source_ref" : "ds_e4d8f8f2933b427aa77bbc2e265c851f",
-              "id" : "viz_27c9cd70e0264fecae34f6ee4f7a6aa5",
+              "data_source_ref" : "ds_a06661a2b3874cc6ad542739c81439b7",
+              "id" : "viz_91d3f32744e345eeb405746ecfe7874c",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6142,13 +6147,13 @@
             {
               "id" : "viz_141_col_0",
               "viz_ids" : [
-                "viz_c367e610e62847ca8723d6be17071478"
+                "viz_35d6b53d2b3e462b86b598f4fbe699e7"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of compressed network packets received and transmitted per interface. These are common in low-bandwidth or special interfaces like PPP or SLIP",
-          "id" : "panel_76b1a38b5c4a48efa7f250662fee865d",
+          "id" : "panel_f1b103a2ab6148e498cc759ea1c2c15d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6158,8 +6163,8 @@
               "config" : {
                 "title" : "Network Traffic Compressed"
               },
-              "data_source_ref" : "ds_9fc54e23943a422f84e65112b8cd9647",
-              "id" : "viz_c367e610e62847ca8723d6be17071478",
+              "data_source_ref" : "ds_0105e54fffcc47b5951658c20b0508ab",
+              "id" : "viz_35d6b53d2b3e462b86b598f4fbe699e7",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6190,13 +6195,13 @@
             {
               "id" : "viz_146_col_0",
               "viz_ids" : [
-                "viz_2704ca705ec84bfcaae6ac2f47da99e2"
+                "viz_fe0d87fa7bee4daa9f164ef889adc8d3"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of incoming multicast packets received per network interface. Multicast is used by protocols such as mDNS, SSDP, and some streaming or cluster services",
-          "id" : "panel_b2137c5407774d998fb0d86c16e19f65",
+          "id" : "panel_23bbb9ded7544eef934c40f0054ea94e",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6206,8 +6211,8 @@
               "config" : {
                 "title" : "Network Traffic Multicast"
               },
-              "data_source_ref" : "ds_3bcdd4eb3ffb4c0f87def521860da2d1",
-              "id" : "viz_2704ca705ec84bfcaae6ac2f47da99e2",
+              "data_source_ref" : "ds_3ca017b1895c46fd9bbe2157376b7546",
+              "id" : "viz_fe0d87fa7bee4daa9f164ef889adc8d3",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6237,13 +6242,13 @@
             {
               "id" : "viz_327_col_0",
               "viz_ids" : [
-                "viz_31e2676361f645cca2c5e9ea9ff5e513"
+                "viz_0f9a3e0dfcb84d23be10e36469d810b5"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of received packets that could not be processed due to missing protocol or handler in the kernel. May indicate unsupported traffic or misconfiguration",
-          "id" : "panel_e991b2911e1d4740880b69df6f5a64ad",
+          "id" : "panel_1da78fc7efb54e6085ff3ce0d90d535b",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6253,8 +6258,8 @@
               "config" : {
                 "title" : "Network Traffic NoHandler"
               },
-              "data_source_ref" : "ds_d2dcba966cd54b47824eecee687296fb",
-              "id" : "viz_31e2676361f645cca2c5e9ea9ff5e513",
+              "data_source_ref" : "ds_4b6559de5cb34af7b6e16abc6da6f4d2",
+              "id" : "viz_0f9a3e0dfcb84d23be10e36469d810b5",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6284,13 +6289,13 @@
             {
               "id" : "viz_145_col_0",
               "viz_ids" : [
-                "viz_8d773a27858f4220b72bc7e5fd11856f"
+                "viz_6f1e3851226e4a3394762983fce00390"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of frame errors on received packets, typically caused by physical layer issues such as bad cables, duplex mismatches, or hardware problems",
-          "id" : "panel_689042d7900b43fb9eaf9a4689b0a2c5",
+          "id" : "panel_ce91b195aff34bf6b4ee7229195132a2",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6300,8 +6305,8 @@
               "config" : {
                 "title" : "Network Traffic Frame"
               },
-              "data_source_ref" : "ds_f8c190de82944daf9cfa11fd609b6aaa",
-              "id" : "viz_8d773a27858f4220b72bc7e5fd11856f",
+              "data_source_ref" : "ds_20382d061fda4924aa2423b69a1ea9e0",
+              "id" : "viz_6f1e3851226e4a3394762983fce00390",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6331,13 +6336,13 @@
             {
               "id" : "viz_144_col_0",
               "viz_ids" : [
-                "viz_146ce3cddf5c48cc85a891d250c434ee"
+                "viz_8216648df32d4625b57150f260ec683a"
               ],
               "width" : 12
             }
           ],
           "description" : "Tracks FIFO buffer overrun errors on network interfaces. These occur when incoming or outgoing packets are dropped due to queue or buffer overflows, often indicating congestion or hardware limits",
-          "id" : "panel_d7b85173f0e04eb79d0964274fc467ca",
+          "id" : "panel_dc365b7f3a074d58bf24367ce6e6b80f",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6347,8 +6352,8 @@
               "config" : {
                 "title" : "Network Traffic Fifo"
               },
-              "data_source_ref" : "ds_b58593cb555242d48a4ba0d401962867",
-              "id" : "viz_146ce3cddf5c48cc85a891d250c434ee",
+              "data_source_ref" : "ds_e3258439b6ad4ecaa4f35b753780088d",
+              "id" : "viz_8216648df32d4625b57150f260ec683a",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6379,13 +6384,13 @@
             {
               "id" : "viz_232_col_0",
               "viz_ids" : [
-                "viz_c7f6285bf9414dcdb93bd166cf6befcd"
+                "viz_eedc76ef431e4991b0aafc4e96be3861"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of packet collisions detected during transmission. Mostly relevant on half-duplex or legacy Ethernet networks",
-          "id" : "panel_8648e1c9afa4458184b0558271a36756",
+          "id" : "panel_02ee3e770226443c8cebb1ac58d8c233",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6395,8 +6400,8 @@
               "config" : {
                 "title" : "Network Traffic Collision"
               },
-              "data_source_ref" : "ds_65be6b482e9c4941af082ce8a4643ea5",
-              "id" : "viz_c7f6285bf9414dcdb93bd166cf6befcd",
+              "data_source_ref" : "ds_f230c33eee6c4dafad66d5a00d9a6188",
+              "id" : "viz_eedc76ef431e4991b0aafc4e96be3861",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6427,13 +6432,13 @@
             {
               "id" : "viz_231_col_0",
               "viz_ids" : [
-                "viz_3d415fd2fe5e411ba14b1ecc8ceffd8c"
+                "viz_298bfaeb9dca493fb8054b60c9ae9792"
               ],
               "width" : 12
             }
           ],
           "description" : "Rate of carrier errors during transmission. These typically indicate physical layer issues like faulty cabling or duplex mismatches",
-          "id" : "panel_3e8fc3bde30d46caac23a21aeb9ba360",
+          "id" : "panel_b5dd84d2d1294ee989ca4ec99eaeb963",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6443,8 +6448,8 @@
               "config" : {
                 "title" : "Network Traffic Carrier Errors"
               },
-              "data_source_ref" : "ds_b8447a0cb6bd4055bc5161c7b17d9324",
-              "id" : "viz_3d415fd2fe5e411ba14b1ecc8ceffd8c",
+              "data_source_ref" : "ds_43a9f0c4412b4033bf1041aa46b0339f",
+              "id" : "viz_298bfaeb9dca493fb8054b60c9ae9792",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6474,13 +6479,13 @@
             {
               "id" : "viz_230_col_0",
               "viz_ids" : [
-                "viz_cb865a187a474fc5b64637a063781916"
+                "viz_9b5f162b6bd64f9d9ba2256abe715aed"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of ARP entries per interface. Useful for detecting excessive ARP traffic or table growth due to scanning or misconfiguration",
-          "id" : "panel_0d3ff60b38044b728a8f3a9f11ea43a8",
+          "id" : "panel_a6bcdb2243884f7e9be5732d968b7170",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6490,8 +6495,8 @@
               "config" : {
                 "title" : "ARP Entries"
               },
-              "data_source_ref" : "ds_e87497049dc345ddaa4b327b2c9a5936",
-              "id" : "viz_cb865a187a474fc5b64637a063781916",
+              "data_source_ref" : "ds_cce7aba490304ade933d65fe6606cd74",
+              "id" : "viz_9b5f162b6bd64f9d9ba2256abe715aed",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6521,13 +6526,13 @@
             {
               "id" : "viz_61_col_0",
               "viz_ids" : [
-                "viz_96c108966566430c96e9fd1b97097632"
+                "viz_e68bc093def54a959da63bf0eda2b3c2"
               ],
               "width" : 12
             }
           ],
           "description" : "Current and maximum connection tracking entries used by Netfilter (nf_conntrack). High usage approaching the limit may cause packet drops or connection issues",
-          "id" : "panel_5f8a9841c33e4f398956d16e52d07aa6",
+          "id" : "panel_621ff3490b4846ca8b77467f9b012fc9",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6537,8 +6542,8 @@
               "config" : {
                 "title" : "NF Conntrack"
               },
-              "data_source_ref" : "ds_436eced4967348c7abdca047dfbc7782",
-              "id" : "viz_96c108966566430c96e9fd1b97097632",
+              "data_source_ref" : "ds_153fbfd5c3ed4abc8d1dece45049d93e",
+              "id" : "viz_e68bc093def54a959da63bf0eda2b3c2",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6568,13 +6573,13 @@
             {
               "id" : "viz_309_col_0",
               "viz_ids" : [
-                "viz_05ed228a9ed24d8ba87aa3dfe843275a"
+                "viz_2bca406c4f1a4f998d37d2d78491ad94"
               ],
               "width" : 12
             }
           ],
           "description" : "Operational and physical link status of each network interface. Values are Yes for 'up' or link present, and No for 'down' or no carrier.",
-          "id" : "panel_ba25fb981634450da93e82496baf19e1",
+          "id" : "panel_9cb46232c5dd4c7a92431919d4133d4d",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6584,8 +6589,8 @@
               "config" : {
                 "title" : "Network Operational Status"
               },
-              "data_source_ref" : "ds_4cc01e09ea4c4e78b641948cc9e7748f",
-              "id" : "viz_05ed228a9ed24d8ba87aa3dfe843275a",
+              "data_source_ref" : "ds_aced1d0226be4fe58ac84adfb5ba4431",
+              "id" : "viz_2bca406c4f1a4f998d37d2d78491ad94",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6615,13 +6620,13 @@
             {
               "id" : "viz_280_col_0",
               "viz_ids" : [
-                "viz_4f0439bde7334a4f8b069678d6fdde65"
+                "viz_30e82cf670404f42bc141c0fe750a145"
               ],
               "width" : 12
             }
           ],
           "description" : "Maximum speed of each network interface as reported by the operating system. This is a static hardware capability, not current throughput",
-          "id" : "panel_fe61ac489cc044bb9ca936ad40e29282",
+          "id" : "panel_95732549d2984cb0a1c3e3e528b350b7",
           "layout" : {
             "height" : 300,
             "panel_width" : 3
@@ -6631,8 +6636,8 @@
               "config" : {
                 "title" : "Speed"
               },
-              "data_source_ref" : "ds_7f7eacaef4354177aa973d9714e78d7f",
-              "id" : "viz_4f0439bde7334a4f8b069678d6fdde65",
+              "data_source_ref" : "ds_d8cfffc16ec84af199b2e962fe45d305",
+              "id" : "viz_30e82cf670404f42bc141c0fe750a145",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "linear",
@@ -6655,13 +6660,13 @@
             {
               "id" : "viz_288_col_0",
               "viz_ids" : [
-                "viz_8a5e297c8ca54409918ada1136c11c62"
+                "viz_8c6720da765b40119a6dffa3db80715c"
               ],
               "width" : 12
             }
           ],
           "description" : "MTU (Maximum Transmission Unit) in bytes for each network interface. Affects packet size and transmission efficiency",
-          "id" : "panel_6726167eb5bf431a8377bcf9a33fb579",
+          "id" : "panel_145dc167c6974ae4b1d360cea0b88025",
           "layout" : {
             "height" : 300,
             "panel_width" : 3
@@ -6671,8 +6676,8 @@
               "config" : {
                 "title" : "MTU"
               },
-              "data_source_ref" : "ds_397625dfad0a4564849fcf50023ffd3c",
-              "id" : "viz_8a5e297c8ca54409918ada1136c11c62",
+              "data_source_ref" : "ds_fdcd8b9675e0402d88cb3e9e7ba811b3",
+              "id" : "viz_8c6720da765b40119a6dffa3db80715c",
               "layer" : 1,
               "options" : {
                 "gauge_type" : "linear",
@@ -6694,13 +6699,13 @@
             {
               "id" : "viz_44_col_0",
               "viz_ids" : [
-                "viz_e42db8d358aa4992a641c533cea0f23f"
+                "viz_29ec18750394451e9fc92e4a1b4ce868"
               ],
               "width" : 12
             }
           ],
           "description" : "Indicates filesystems mounted in read-only mode or reporting device-level I\/O errors.",
-          "id" : "panel_009716edd1cb49b0b3a5add4b908c8bc",
+          "id" : "panel_e9032fab0cd84003b748f9b1f659d34f",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6710,8 +6715,8 @@
               "config" : {
                 "title" : "Filesystem in ReadOnly \/ Error"
               },
-              "data_source_ref" : "ds_21ec67c070574372afb7db008ce70c5d",
-              "id" : "viz_e42db8d358aa4992a641c533cea0f23f",
+              "data_source_ref" : "ds_a42176a7b71141afade840a05264b031",
+              "id" : "viz_29ec18750394451e9fc92e4a1b4ce868",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6743,13 +6748,13 @@
             {
               "id" : "viz_219_col_0",
               "viz_ids" : [
-                "viz_19da66ce8a1c4bc483880edbb4622c84"
+                "viz_47e5695768284c7ab7308801b073c986"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of file nodes (inodes) available per mounted filesystem. Reflects maximum file capacity regardless of disk size",
-          "id" : "panel_1c386cc963824afab17c983cd21be57d",
+          "id" : "panel_1f59b3e8f67b445794461d96a88c9870",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6759,8 +6764,8 @@
               "config" : {
                 "title" : "File Nodes Size"
               },
-              "data_source_ref" : "ds_d5cd48aa669448108c3a2c0ee3c10278",
-              "id" : "viz_19da66ce8a1c4bc483880edbb4622c84",
+              "data_source_ref" : "ds_645d7d500b08407eaad136ba6f7efc62",
+              "id" : "viz_47e5695768284c7ab7308801b073c986",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6790,13 +6795,13 @@
             {
               "id" : "viz_37_col_0",
               "viz_ids" : [
-                "viz_71f6227639ee4bdfbdf63eab1801d175"
+                "viz_f9a098a7ec4c45179763478ce5fcb4b2"
               ],
               "width" : 12
             }
           ],
           "description" : "Average time for requests issued to the device to be served. This includes the time spent by the requests in queue and the time spent servicing them.",
-          "id" : "panel_a6a074205e3c43e9b9ae143801aa3a27",
+          "id" : "panel_b9b311f574b946eb9d626961c6ea4ca4",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6806,8 +6811,8 @@
               "config" : {
                 "title" : "Disk Average Wait Time"
               },
-              "data_source_ref" : "ds_4f9543b51d9048f98e5565a350939da7",
-              "id" : "viz_71f6227639ee4bdfbdf63eab1801d175",
+              "data_source_ref" : "ds_375f46a2c6e9456e96673d8d59bb99c2",
+              "id" : "viz_f9a098a7ec4c45179763478ce5fcb4b2",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6838,13 +6843,13 @@
             {
               "id" : "viz_35_col_0",
               "viz_ids" : [
-                "viz_b78b688b0cd44469ad9b5f80070425aa"
+                "viz_17599861048643a3a2806d281dff42c2"
               ],
               "width" : 12
             }
           ],
           "description" : "Average queue length of the requests that were issued to the device",
-          "id" : "panel_6d3140ee8b5349b29ab6925a4339ab6c",
+          "id" : "panel_343a28f7c3a24565aa576f2774043e7e",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6854,8 +6859,8 @@
               "config" : {
                 "title" : "Average Queue Size"
               },
-              "data_source_ref" : "ds_2c4026848343492f9ab764ee6c23d473",
-              "id" : "viz_b78b688b0cd44469ad9b5f80070425aa",
+              "data_source_ref" : "ds_a43f09627ba743d0a04944664dac2719",
+              "id" : "viz_17599861048643a3a2806d281dff42c2",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6886,13 +6891,13 @@
             {
               "id" : "viz_133_col_0",
               "viz_ids" : [
-                "viz_c8902d9de78e417694ed7646966fec9a"
+                "viz_0781863f925c46ae96fba623fb2faba3"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of read and write requests merged per second that were queued to the device",
-          "id" : "panel_99990f029e5f4c9d925ed64a3177decf",
+          "id" : "panel_9347d3ded7f0440794a08c8b75c41d26",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6902,8 +6907,8 @@
               "config" : {
                 "title" : "Disk R\/W Merged"
               },
-              "data_source_ref" : "ds_a4f83984b0114cdca5180ed1f1f7dbc5",
-              "id" : "viz_c8902d9de78e417694ed7646966fec9a",
+              "data_source_ref" : "ds_afc8f6ef71714f83bf7dabf388297e56",
+              "id" : "viz_0781863f925c46ae96fba623fb2faba3",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6934,13 +6939,13 @@
             {
               "id" : "viz_36_col_0",
               "viz_ids" : [
-                "viz_77989934ff7d4567ad0ac9ec12e4d6c0"
+                "viz_026f25c66249460884f2a7a185304a7f"
               ],
               "width" : 12
             }
           ],
           "description" : "Percentage of time the disk spent actively processing I\/O operations, including general I\/O, discards (TRIM), and write cache flushes",
-          "id" : "panel_68a7160a9d0440d6978ae9f8d396ff26",
+          "id" : "panel_ccf65f61599741c084eed2a5a6e0d5b7",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -6950,8 +6955,8 @@
               "config" : {
                 "title" : "Time Spent Doing I\/Os"
               },
-              "data_source_ref" : "ds_fb29e0c0859c450fa27a0bf10a58d3d9",
-              "id" : "viz_77989934ff7d4567ad0ac9ec12e4d6c0",
+              "data_source_ref" : "ds_93caa6a897e44ec4bc642975c1b4a9e0",
+              "id" : "viz_026f25c66249460884f2a7a185304a7f",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -6984,13 +6989,13 @@
             {
               "id" : "viz_84_col_0",
               "viz_ids" : [
-                "viz_df1de7ae9c864c86be63c5cc690e2d8c"
+                "viz_972bec08cb494b74b44dc72858d97dae"
               ],
               "width" : 12
             }
           ],
           "description" : "Incoming and outgoing network traffic per interface",
-          "id" : "panel_00a38555fd3c44e2bb3f379d48845458",
+          "id" : "panel_0c75b788c97f4f048d5304a234009860",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7000,8 +7005,8 @@
               "config" : {
                 "title" : "Network Traffic"
               },
-              "data_source_ref" : "ds_24362425d80b46d3ba59f8405ce87f5d",
-              "id" : "viz_df1de7ae9c864c86be63c5cc690e2d8c",
+              "data_source_ref" : "ds_316d5ea3edf741b5ba1e2f67019853ab",
+              "id" : "viz_972bec08cb494b74b44dc72858d97dae",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7032,13 +7037,13 @@
             {
               "id" : "viz_338_col_0",
               "viz_ids" : [
-                "viz_b74c14270a3d4215866218a3b58e67ec"
+                "viz_a0bd5257908b4a3eb81026a6719d60ca"
               ],
               "width" : 12
             }
           ],
           "description" : "Network interface utilization as a percentage of its maximum capacity",
-          "id" : "panel_638dd3e157d44898a61be286d053c5a6",
+          "id" : "panel_0a1b1efb420c4770bb20e85f89993958",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7048,8 +7053,8 @@
               "config" : {
                 "title" : "Network Saturation"
               },
-              "data_source_ref" : "ds_b4795cf6331d400da0854c4b5455abcd",
-              "id" : "viz_b74c14270a3d4215866218a3b58e67ec",
+              "data_source_ref" : "ds_3464d0572aff4c118a4018e6b262e274",
+              "id" : "viz_a0bd5257908b4a3eb81026a6719d60ca",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7081,13 +7086,13 @@
             {
               "id" : "viz_301_col_0",
               "viz_ids" : [
-                "viz_2b78480727794f8784fb311a5c00db69"
+                "viz_ffd9bf36c1ab45f4a496f6123b2b7149"
               ],
               "width" : 12
             }
           ],
           "description" : "Per-second rate of discard (TRIM) and flush (write cache) operations. Useful for monitoring low-level disk activity on SSDs and advanced storage",
-          "id" : "panel_80ff98b6cc154317baeffda2858ead90",
+          "id" : "panel_0fb9fcb6a39f49b1bcacb165f3f03582",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -7097,8 +7102,8 @@
               "config" : {
                 "title" : "Disk Ops Discards \/ Flush"
               },
-              "data_source_ref" : "ds_00fc150947d14c1d80d620d1cde5a913",
-              "id" : "viz_2b78480727794f8784fb311a5c00db69",
+              "data_source_ref" : "ds_7012693ad0c3480fbbd0d0c3bfcb4ede",
+              "id" : "viz_ffd9bf36c1ab45f4a496f6123b2b7149",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7129,13 +7134,13 @@
             {
               "id" : "viz_326_col_0",
               "viz_ids" : [
-                "viz_3cf3b1c1080b44219b854ff34b0a9c8c"
+                "viz_1db5e5585cbb4e3aa8bfd79f08ab8211"
               ],
               "width" : 12
             }
           ],
           "description" : "Shows how many disk sectors are discarded (TRIMed) per second. Useful for monitoring SSD behavior and storage efficiency",
-          "id" : "panel_45b04157083349f4a492393792825747",
+          "id" : "panel_a3537988631045939925d7b239030fb2",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -7145,8 +7150,8 @@
               "config" : {
                 "title" : "Disk Sectors Discarded Successfully"
               },
-              "data_source_ref" : "ds_14188de8ab7e4e858a3b94d5b85e2094",
-              "id" : "viz_3cf3b1c1080b44219b854ff34b0a9c8c",
+              "data_source_ref" : "ds_14a56e8e7bbd4f57a78f81953687f039",
+              "id" : "viz_1db5e5585cbb4e3aa8bfd79f08ab8211",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7176,13 +7181,13 @@
             {
               "id" : "viz_229_col_0",
               "viz_ids" : [
-                "viz_0fd5d231663a4ce2b44e5aea1ca1f0f2"
+                "viz_0110a7fd11c04157b05e44ae86afc7d5"
               ],
               "width" : 12
             }
           ],
           "description" : "Disk I\/O operations per second for each device",
-          "id" : "panel_437a31c364cd4aebbaeb044e2f465644",
+          "id" : "panel_b40f5004d4604bebb1af948443733f53",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7192,8 +7197,8 @@
               "config" : {
                 "title" : "Disk IOps"
               },
-              "data_source_ref" : "ds_db9c104ded5d4a3f8f2ce79e45b56ba5",
-              "id" : "viz_0fd5d231663a4ce2b44e5aea1ca1f0f2",
+              "data_source_ref" : "ds_39e510f30c4840bdb05094e6ae108777",
+              "id" : "viz_0110a7fd11c04157b05e44ae86afc7d5",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7224,13 +7229,13 @@
             {
               "id" : "viz_42_col_0",
               "viz_ids" : [
-                "viz_9c7f4df5b4d543c5b1f6877fbe00a0df"
+                "viz_b9b0218715304e6d840f991a36597d87"
               ],
               "width" : 12
             }
           ],
           "description" : "Disk I\/O throughput per device",
-          "id" : "panel_f2e3ff16569a4b928c7f3b6ae7aae447",
+          "id" : "panel_4380afc649e74a9d9cb16685effa636b",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7240,8 +7245,8 @@
               "config" : {
                 "title" : "Disk Throughput"
               },
-              "data_source_ref" : "ds_dac1ad8147794e278fb3c891f41e0082",
-              "id" : "viz_9c7f4df5b4d543c5b1f6877fbe00a0df",
+              "data_source_ref" : "ds_5d633187e2d3409aa0c2fb9557a93556",
+              "id" : "viz_b9b0218715304e6d840f991a36597d87",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7272,13 +7277,13 @@
             {
               "id" : "viz_34_col_0",
               "viz_ids" : [
-                "viz_a4c9c8d7e6ab44c4bd8f84c1b0b2fb20"
+                "viz_18c9f8a2b2e243e7a3804cb1b396ceea"
               ],
               "width" : 12
             }
           ],
           "description" : "Number of in-progress I\/O requests at the time of sampling (active requests in the disk queue)",
-          "id" : "panel_5fb2cc87a86945a3beebb1c5f215ba5a",
+          "id" : "panel_813b154373cd4c9aa6c773c4f1f1f54e",
           "layout" : {
             "height" : 300,
             "panel_width" : 6
@@ -7288,8 +7293,8 @@
               "config" : {
                 "title" : "Instantaneous Queue Size"
               },
-              "data_source_ref" : "ds_65681e92b6e14c1694ba53b3a2097799",
-              "id" : "viz_a4c9c8d7e6ab44c4bd8f84c1b0b2fb20",
+              "data_source_ref" : "ds_47a25ebe1cc7435f8caef4a422fc8f76",
+              "id" : "viz_18c9f8a2b2e243e7a3804cb1b396ceea",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7320,13 +7325,13 @@
             {
               "id" : "viz_43_col_0",
               "viz_ids" : [
-                "viz_8932af69c532475084dd507ab0c32fa5"
+                "viz_3cf9dbb49ec14f6ebb0c77a3a08424d0"
               ],
               "width" : 12
             }
           ],
           "description" : "Amount of available disk space per mounted filesystem, excluding rootfs. Based on block availability to non-root users",
-          "id" : "panel_c0f2a4a7030b4c1e9878e5d115a012d2",
+          "id" : "panel_6e1c0fa205a948c2b2dfc459dd94993c",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7336,8 +7341,8 @@
               "config" : {
                 "title" : "Filesystem Space Available"
               },
-              "data_source_ref" : "ds_457f9dadc00e403abbfb03963e22e094",
-              "id" : "viz_8932af69c532475084dd507ab0c32fa5",
+              "data_source_ref" : "ds_068441b396364738a8f93a3889123825",
+              "id" : "viz_3cf9dbb49ec14f6ebb0c77a3a08424d0",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7368,13 +7373,13 @@
             {
               "id" : "viz_156_col_0",
               "viz_ids" : [
-                "viz_4649e6da3a214eadabe338a08eaa125e"
+                "viz_1220fa1ef35643619c04019efbe49669"
               ],
               "width" : 12
             }
           ],
           "description" : "Disk usage (used = total - available) per mountpoint",
-          "id" : "panel_5470ce9cf98d4db99204dd6c9f090066",
+          "id" : "panel_37e4d34ab177434aac2acca6f84229b3",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7384,8 +7389,8 @@
               "config" : {
                 "title" : "Filesystem Used"
               },
-              "data_source_ref" : "ds_63029df89aeb4f3ea4af99e273e8ecd5",
-              "id" : "viz_4649e6da3a214eadabe338a08eaa125e",
+              "data_source_ref" : "ds_86a2106c9ccd459abd929365bf6e7594",
+              "id" : "viz_1220fa1ef35643619c04019efbe49669",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7416,13 +7421,13 @@
             {
               "id" : "viz_127_col_0",
               "viz_ids" : [
-                "viz_ee9f01ed7d7046198e3ece0f044e9d5b"
+                "viz_791d1b7ef61b49e2a1031a73470285a1"
               ],
               "width" : 12
             }
           ],
           "description" : "Percentage of time the disk was actively processing I\/O operations",
-          "id" : "panel_f461280761dd4d5b8556c63ba3b65cba",
+          "id" : "panel_d6d3c740ff624145b2115cd518a2c861",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7432,8 +7437,8 @@
               "config" : {
                 "title" : "Disk I\/O Utilization"
               },
-              "data_source_ref" : "ds_b1d18084c68c4846a377762fda3855b7",
-              "id" : "viz_ee9f01ed7d7046198e3ece0f044e9d5b",
+              "data_source_ref" : "ds_928d44b20f3340738b0797218a895187",
+              "id" : "viz_791d1b7ef61b49e2a1031a73470285a1",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",
@@ -7465,13 +7470,13 @@
             {
               "id" : "viz_322_col_0",
               "viz_ids" : [
-                "viz_ea2d6bd777cb4b6488d0d7a64c4da194"
+                "viz_4c11840ef8dc49ff83a0ea9a2010cde4"
               ],
               "width" : 12
             }
           ],
           "description" : "How often tasks experience CPU, memory, or I\/O delays. 'Some' indicates partial slowdown; 'Full' indicates all tasks are stalled. Based on Linux PSI metrics:\nhttps:\/\/docs.kernel.org\/accounting\/psi.html",
-          "id" : "panel_f1987076e1124713a26ac6867c8b9219",
+          "id" : "panel_1f78443b37f347c18f0f9f20010069cd",
           "layout" : {
             "height" : 360,
             "panel_width" : 6
@@ -7481,8 +7486,8 @@
               "config" : {
                 "title" : "Pressure Stall Information"
               },
-              "data_source_ref" : "ds_6e833b3592b148df95d766fc7b08118a",
-              "id" : "viz_ea2d6bd777cb4b6488d0d7a64c4da194",
+              "data_source_ref" : "ds_2937cbfaf5a743beaf86e086b4179bf6",
+              "id" : "viz_4c11840ef8dc49ff83a0ea9a2010cde4",
               "layer" : 1,
               "options" : {
                 "chart_type" : "line",

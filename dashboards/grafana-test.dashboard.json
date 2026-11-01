@@ -23,7 +23,7 @@
   "layout_type" : "bootstrap",
   "name" : "Grafana Test",
   "provenance" : {
-    "imported_at" : "2026-09-29T10:34:21Z",
+    "imported_at" : "2026-10-17T08:03:44Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -32,6 +32,10 @@
   "rows" : [
     {
       "id" : "row_c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3",
+      "layout" : {
+        "fill" : true,
+        "fill_min" : 460
+      },
       "panels" : [
         {
           "columns" : [

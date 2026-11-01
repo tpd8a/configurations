@@ -62,6 +62,7 @@
         ],
         "default" : "Last 7 Days",
         "display_location" : "top",
+        "help" : "Sets the earliest time and a label used by the searches.",
         "label" : "Select a time range",
         "location" : {
           "global" : {

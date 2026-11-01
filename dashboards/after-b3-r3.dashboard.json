@@ -1,0 +1,259 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_4a1c7e2b9d3f4e5a8b6c0d1e2f3a4b5c",
+      "query" : {
+        "name" : "actions_by_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT user, SUM(CASE WHEN action = 'login' THEN 1 ELSE 0 END) AS login, SUM(CASE WHEN action = 'view' THEN 1 ELSE 0 END) AS view, SUM(CASE WHEN action = 'search' THEN 1 ELSE 0 END) AS search, SUM(CASE WHEN action = 'purchase' THEN 1 ELSE 0 END) AS purchase, SUM(CASE WHEN action = 'logout' THEN 1 ELSE 0 END) AS logout FROM construct_examples.jsonl(path := 'bench\/events.jsonl') WHERE ctx LIKE '%\"region\":\"$region$\"%' GROUP BY user"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9b8e7d6c5a4f43b2a1c0e9d8f7b6a5c4",
+      "query" : {
+        "name" : "events_for_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT ts, user, action, level, latency_ms, ctx FROM construct_examples.jsonl(path := 'bench\/events.jsonl') WHERE user = '$pick_user$' AND ctx LIKE '%\"region\":\"$region$\"%' ORDER BY latency_ms DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Actions per user (stacked) from bench\/events.jsonl; click a user to see their events by latency.",
+  "id" : "dash_cc8f975977f644e58b255732d08e33e6",
+  "inputs" : [
+    {
+      "config" : {
+        "default" : "bob",
+        "display_location" : "top",
+        "help" : "Set by clicking a bar in \"Actions per user\"; you can also type a user.",
+        "label" : "User",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_fdf97fb7d4a64df0ba6c641a42436622",
+      "token" : "pick_user"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "label" : "All regions",
+            "value" : "%"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "eu-west",
+            "value" : "eu-west"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "us-east",
+            "value" : "us-east"
+          }
+        ],
+        "default" : "%",
+        "display_location" : "top",
+        "help" : "Filters both the chart and the events table on ctx.region.",
+        "label" : "Region",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_7530a958369342ca9c6fc41ffadc2e43",
+      "token" : "region"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b3 r3",
+  "provenance" : {
+    "imported_at" : "2026-10-30T21:09:27Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_2f4e6a8c0b1d4f3e9a7c5b3d1e0f2a4c",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1a2b3c4d5e6f47a8b9c0d1e2f3a4b5c6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7c9e1a3b5d2f4a6c8e0b2d4f6a8c0e1b",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Actions per user",
+          "visualizations" : [
+            {
+              "chart" : {
+                "fieldOverrides" : {
+                  "login" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "login"
+                  },
+                  "logout" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "logout"
+                  },
+                  "purchase" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "purchase"
+                  },
+                  "search" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "search"
+                  },
+                  "view" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "view"
+                  }
+                },
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJzdGFja01vZGUiOiJzdGFja2VkIn0="
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "login",
+                  "view",
+                  "search",
+                  "purchase",
+                  "logout"
+                ],
+                "timeField" : "user"
+              },
+              "data_source_ref" : "ds_4a1c7e2b9d3f4e5a8b6c0d1e2f3a4b5c",
+              "id" : "viz_1a2b3c4d5e6f47a8b9c0d1e2f3a4b5c6",
+              "layer" : 1,
+              "title" : "Actions per user (click a bar)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6c5b4a3f2e1d40c9b8a7f6e5d4c3b2a1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3e5a7c9b1d0f4e2a8c6b4d2f0e8a6c4b",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Events for the clicked user",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_9b8e7d6c5a4f43b2a1c0e9d8f7b6a5c4",
+              "id" : "viz_6c5b4a3f2e1d40c9b8a7f6e5d4c3b2a1",
+              "layer" : 1,
+              "options" : {
+                "fields" : "ts,user,action,level,latency_ms,ctx"
+              },
+              "title" : "Events for $pick_user$ (slowest first)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Users"
+    }
+  ]
+}

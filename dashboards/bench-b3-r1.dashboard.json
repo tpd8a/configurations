@@ -1,0 +1,165 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a1c4e7f02b3d4e5f8a9b0c1d2e3f4a51",
+      "query" : {
+        "name" : "actions_by_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT user, action, COUNT(*) AS events FROM construct_examples.jsonl(path := 'bench\/events.jsonl') GROUP BY user, action ORDER BY user"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b2d5f8a13c4e4f60a9b1c2d3e4f5a6b2",
+      "query" : {
+        "name" : "user_events",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT ts, user, action, level, latency_ms FROM construct_examples.jsonl(path := 'bench\/events.jsonl') WHERE user = '$user$' ORDER BY latency_ms DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c3e6a9b24d5f4a71b0c2d3e4f5a6b7c3",
+      "query" : {
+        "name" : "user_choices",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT DISTINCT user FROM construct_examples.jsonl(path := 'bench\/events.jsonl') ORDER BY user"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "App events from construct_examples bench\/events.jsonl: actions per user (stacked), pick a user to see their events by latency, slowest first.",
+  "id" : "dash_9e8d441579ab4aa496ff2896edc0255c",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_c3e6a9b24d5f4a71b0c2d3e4f5a6b7c3",
+          "field_for_label" : "user",
+          "field_for_value" : "user"
+        },
+        "default" : "alice",
+        "display_location" : "top",
+        "help" : "Selects the user whose events are listed, slowest first.",
+        "label" : "User",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_33d5e3be6f7c49be97f794a9ad8f39c2",
+      "token" : "user"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Bench b3 r1",
+  "provenance" : {
+    "imported_at" : "2026-10-30T12:58:56Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d4f7b0c35e6a4b82c1d3e4f5a6b7c8d4",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f6b9d2e57a8c4da4e3f5a6b7c8d9e0f6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e5a8c1d46f7b4c93d2e4f5a6b7c8d9e5",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Actions per user",
+          "visualizations" : [
+            {
+              "chart" : {
+                "dimensionFields" : [
+                  "action"
+                ],
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJzdGFja01vZGUiOiJzdGFja2VkIiwiaG9yaXpvbnRhbCI6ZmFsc2V9"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "events"
+                ],
+                "timeField" : "user"
+              },
+              "data_source_ref" : "ds_a1c4e7f02b3d4e5f8a9b0c1d2e3f4a51",
+              "id" : "viz_f6b9d2e57a8c4da4e3f5a6b7c8d9e0f6",
+              "layer" : 1,
+              "title" : "Actions per user",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b8d1f4a79c0e4fc6a5b7c8d9e0f1a2b8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a7c0e3f68b9d4eb5f4a6b7c8d9e0f1a7",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Events for $user$ (slowest first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_b2d5f8a13c4e4f60a9b1c2d3e4f5a6b2",
+              "id" : "viz_b8d1f4a79c0e4fc6a5b7c8d9e0f1a2b8",
+              "layer" : 1,
+              "options" : {
+                "fields" : "ts,user,action,level,latency_ms"
+              },
+              "title" : "Events by latency",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "App events"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f90",
+      "query" : {
+        "name" : "actions_by_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT regexp_extract(_raw, '\"user\": \"([^\"]+)\"', ARRAY['usr']) AS usr, SUM(CASE WHEN _raw LIKE '%\"action\": \"login\"%' THEN 1 ELSE 0 END) AS login, SUM(CASE WHEN _raw LIKE '%\"action\": \"logout\"%' THEN 1 ELSE 0 END) AS logout, SUM(CASE WHEN _raw LIKE '%\"action\": \"purchase\"%' THEN 1 ELSE 0 END) AS purchase, SUM(CASE WHEN _raw LIKE '%\"action\": \"search\"%' THEN 1 ELSE 0 END) AS search, SUM(CASE WHEN _raw LIKE '%\"action\": \"view\"%' THEN 1 ELSE 0 END) AS views FROM construct_examples.lines(path := 'bench\/events.jsonl') WHERE _raw LIKE '%\"region\": \"$region$\"%' GROUP BY usr"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+      "query" : {
+        "name" : "user_events",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT regexp_extract(_raw, '\"ts\": \"([^\"]+)\".*\"level\": \"([^\"]+)\", \"user\": \"([^\"]+)\", \"action\": \"([^\"]+)\", \"latency_ms\": ([0-9.]+).*\"region\": \"([^\"]+)\", \"version\": \"([^\"]+)\"', ARRAY['ts','level','usr','act','lat','region','version']) AS x, ts, usr, act, level, CAST(lat AS INTEGER) AS latency_ms, region, version FROM construct_examples.lines(path := 'bench\/events.jsonl') WHERE _raw LIKE '%\"user\": \"$user$\"%' AND _raw LIKE '%\"region\": \"$region$\"%' ORDER BY latency_ms DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Actions per user from construct_examples bench\/events.jsonl; click a user to list their events by latency.",
+  "id" : "dash_479ec8b0831c498c86bc5297836fbac1",
+  "inputs" : [
+    {
+      "config" : {
+        "default" : "bob",
+        "display_location" : "top",
+        "help" : "Set by clicking a user in the Actions per user chart.",
+        "label" : "User",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_ab283a26596043c79a339cf5ca489f24",
+      "token" : "user"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "label" : "All regions",
+            "value" : "%"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "eu-west",
+            "value" : "eu-west"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "us-east",
+            "value" : "us-east"
+          }
+        ],
+        "default" : "%",
+        "display_location" : "top",
+        "help" : "Filters both panels by ctx.region.",
+        "label" : "Region",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_5ede9cfa3b844ea2b35d5b1a18369dea",
+      "token" : "region"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b3 r1",
+  "provenance" : {
+    "imported_at" : "2026-10-30T16:14:10Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7d3e1f2a4b5c6d7e8f9a0b1c2d3e4f5a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3c5e7a9b1d2f4a6c8e0b2d4f6a8c0e2b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Actions per user",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "login",
+                  "logout",
+                  "purchase",
+                  "search",
+                  "views"
+                ],
+                "timeField" : "usr"
+              },
+              "data_source_ref" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f90",
+              "id" : "viz_3c5e7a9b1d2f4a6c8e0b2d4f6a8c0e2b",
+              "layer" : 1,
+              "options" : {
+                "stacking_mode" : "normal"
+              },
+              "title" : "Actions per user",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b2d4f6a8c0e2b4d6f8a0c2e4b6d8f0a1"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9f8e7d6c5b4a39281706f5e4d3c2b1a0",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Events for $user$ — slowest first",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+              "id" : "viz_b2d4f6a8c0e2b4d6f8a0c2e4b6d8f0a1",
+              "layer" : 1,
+              "options" : {
+                "fields" : "ts,usr,act,level,latency_ms,region,version"
+              },
+              "title" : "Events for $user$",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Actions per user"
+    }
+  ]
+}

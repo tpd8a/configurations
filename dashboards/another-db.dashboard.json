@@ -1,0 +1,699 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_5cd6cb4f9fcc44f58f25388ecb638828",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_231b7b6af1d14da1ac9749876ad14020",
+          "query" : "| dedup source"
+        },
+        "name" : "ds_5",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_705cad4134394b2c9f778b5f2a25184e",
+      "query" : {
+        "name" : "chart wrap=true",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '| stats max(_time) as _time sum(count) by source | sort - sum(count)\n|  eval _time=now()', namespace := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_df7c722a83c44f52879cd1895686b228",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_231b7b6af1d14da1ac9749876ad14020",
+          "query" : "| stats max(_time) as _time sum(count) by source \n| sort - sum(count)\n| eval _time=now()"
+        },
+        "name" : "chart wrap=true",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_61affde11a4b4d70a0ef29cc0e64a67e",
+      "query" : {
+        "name" : "timeline wrap=true",
+        "refresh_seconds" : 120,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_internal | stats latest(_time) as _time count by sourcetype|  eval _time=now()\n| table count sourcetype\n| eval count=(count%100)', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "$earliest_tok$",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_582eeefd740d4b8daa16c00c8e500cd6",
+      "query" : {
+        "name" : "wrap=true",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=\"_internal\" source=* \n| stats latest(_time) as _time count count(eval(match(_raw,\"INFO\"))) as info  count(eval(match(_raw,\"ERROR\"))) as error count(eval(match(_raw,\"WARN\"))) as warn by source host | sort - error |  head 4 |  eval _time=now()', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "$earliest_tok$",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_581e08f4ae6b48feb8f01edcf5ea7997",
+      "query" : {
+        "name" : "wrap=false",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=\"_internal\" source=*| stats latest(_time) as _time count count(eval(match(_raw,\"INFO\"))) as info  count(eval(match(_raw,\"ERROR\"))) as error count(eval(match(_raw,\"WARN\"))) as warn by source host | sort - error |  head 4 |  eval _time=now()', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "$earliest_tok$",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_231b7b6af1d14da1ac9749876ad14020",
+      "query" : {
+        "name" : "table wrap=true",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '| tstats count where index=* OR index=_* by _time index source span=10m\n| search $text_tok$ |  eval _time=now()', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-1h",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c8e302bde34c441f95e9af712f96a46d",
+      "query" : {
+        "name" : "netcool wrap=true (but we are an Event)",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.saved_search_flow(name := 'netcool', app := 'search')"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Check2",
+  "id" : "dash_e1b5de48dcb244f596fce43057c6fcf7",
+  "inputs" : [
+    {
+      "config" : {
+        "change_handler" : {
+          "groups" : [
+            {
+              "actions" : [
+                {
+                  "token" : "date_label",
+                  "type" : "set",
+                  "value" : "$label$"
+                },
+                {
+                  "token" : "earliest_tok",
+                  "type" : "set",
+                  "value" : "$value$"
+                }
+              ]
+            }
+          ]
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 24 Hours",
+            "value" : "-24h@h"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 7 Days",
+            "value" : "-7d@d"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Last 30 Days",
+            "value" : "-30d@d"
+          }
+        ],
+        "default" : "Last 24 Hours",
+        "display_location" : "top",
+        "label" : "Select a time range",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_db9965a2828f4899a0541f2fe3037c64",
+      "token" : "period_tok"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_5cd6cb4f9fcc44f58f25388ecb638828",
+          "field_for_label" : "source",
+          "field_for_value" : "source"
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "all",
+            "value" : "*.log"
+          }
+        ],
+        "default" : "*.log",
+        "display_location" : "top",
+        "label" : "File Chooser",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_95e44e952a88427197a8707102d8f2cf",
+      "token" : "filename"
+    },
+    {
+      "config" : {
+        "default" : "*",
+        "display_location" : "top",
+        "formatting" : {
+          "prefix" : "index=",
+          "suffix" : "*"
+        },
+        "label" : "MyTextInput",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_4bdab0edd80843f981f6d67d73cf088d",
+      "token" : "text_tok"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "one",
+            "value" : "1"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "two",
+            "value" : "2"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "three",
+            "value" : "3"
+          }
+        ],
+        "display_location" : "top",
+        "formatting" : {
+          "delimiter" : ",",
+          "prefix" : "IN(",
+          "suffix" : ")",
+          "value_prefix" : "vp=",
+          "value_suffix" : "!vs"
+        },
+        "label" : "mulitselect",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "presentation" : "pills",
+          "shape" : "capsule",
+          "tint" : "accent"
+        },
+        "type" : "multiselect"
+      },
+      "id" : "input_8e9238f28d2043328489c6b1a954f8b0",
+      "token" : "multiselect_tok"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Auto Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_04716fa60fda40848b5b1abcc5a8e88d",
+      "token" : "_fieldset_autoRun"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Another DB",
+  "provenance" : {
+    "imported_at" : "2026-10-24T12:25:57Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_4a857c5f10c14a6ea40b21d6bd19603b",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_beeb0efb536248bfa4f56af5db5c15a6",
+                "viz_ecce41d95bab4e89bd1f44b8ab31f1e2"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7a3f166b3394403f8e8273ae13292cee",
+          "layout" : {
+            "height" : 780,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "chart wrap=true"
+              },
+              "data_source_ref" : "ds_705cad4134394b2c9f778b5f2a25184e",
+              "id" : "viz_beeb0efb536248bfa4f56af5db5c15a6",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "marker"
+              },
+              "title" : "chart wrap=true",
+              "type" : "gauge",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : "chart wrap=true"
+              },
+              "data_source_ref" : "ds_df7c722a83c44f52879cd1895686b228",
+              "id" : "viz_ecce41d95bab4e89bd1f44b8ab31f1e2",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "none",
+                "refresh.display" : "progressbar"
+              },
+              "title" : "chart wrap=true",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_cd12fd7b09384e64bbae6e3c63f1522f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c3859b5d97174917a04b9c3f30d2750c",
+          "layout" : {
+            "height" : 780,
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "timeline wrap=true"
+              },
+              "data_source_ref" : "ds_61affde11a4b4d70a0ef29cc0e64a67e",
+              "id" : "viz_cd12fd7b09384e64bbae6e3c63f1522f",
+              "layer" : 1,
+              "options" : {
+                "gauge_type" : "radial",
+                "refresh.display" : "progressbar"
+              },
+              "title" : "timeline wrap=true",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_41600ac143774beabb47dbd971434ca4",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2d93cdb3ff294816b93e84c7c8b03723"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ba9ad6b812a142eaa58b4aeca8a43c97",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Headline",
+          "visualizations" : [
+            {
+              "config" : {
+                "formats" : [
+                  {
+                    "colorPalette" : "[#118832,#1182F3,#CBA700,#D94E17,#D41F1F]",
+                    "colorPalette_colors" : [
+                      "#118832",
+                      "#1182F3",
+                      "#CBA700",
+                      "#D94E17",
+                      "#D41F1F"
+                    ],
+                    "colorPalette_type" : "list",
+                    "field" : "error",
+                    "scale" : "0,30,70,100",
+                    "scale_type" : "threshold",
+                    "scale_values" : [
+                      0,
+                      30,
+                      70,
+                      100
+                    ],
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette_maxColor" : "#118832",
+                    "colorPalette_minColor" : "#FFFFFF",
+                    "colorPalette_type" : "minMidMax",
+                    "field" : "count",
+                    "scale_type" : "minMidMax",
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette_type" : "sharedList",
+                    "field" : "info",
+                    "scale_type" : "sharedCategory",
+                    "type" : "color"
+                  },
+                  {
+                    "field" : "count",
+                    "type" : "number",
+                    "unit" : "£",
+                    "unitPosition" : "before"
+                  },
+                  {
+                    "colorPalette" : "{\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log\":#D94E17,\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log\":#602CA1}",
+                    "colorPalette_mapping" : {
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log" : "#602CA1",
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log" : "#D94E17"
+                    },
+                    "colorPalette_type" : "map",
+                    "field" : "source",
+                    "type" : "color"
+                  }
+                ],
+                "title" : "wrap=true"
+              },
+              "data_source_ref" : "ds_582eeefd740d4b8daa16c00c8e500cd6",
+              "id" : "viz_2d93cdb3ff294816b93e84c7c8b03723",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "refresh.display" : "progressbar",
+                "rowNumbers" : "false",
+                "totalsRow" : "false",
+                "wrap" : "true"
+              },
+              "title" : "wrap=true",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_edb03ce1d1194547bf280e3b79ee309c",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_09a2d6192a1d48c79cc5985dfe507da4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ac1a6e116e374d769ff7a580b1135c8d",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Headline",
+          "visualizations" : [
+            {
+              "config" : {
+                "formats" : [
+                  {
+                    "colorPalette" : "[#118832,#1182F3,#CBA700,#D94E17,#D41F1F]",
+                    "colorPalette_colors" : [
+                      "#118832",
+                      "#1182F3",
+                      "#CBA700",
+                      "#D94E17",
+                      "#D41F1F"
+                    ],
+                    "colorPalette_type" : "list",
+                    "field" : "error",
+                    "scale" : "0,30,70,100",
+                    "scale_type" : "threshold",
+                    "scale_values" : [
+                      0,
+                      30,
+                      70,
+                      100
+                    ],
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette_maxColor" : "#118832",
+                    "colorPalette_minColor" : "#FFFFFF",
+                    "colorPalette_type" : "minMidMax",
+                    "field" : "count",
+                    "scale_type" : "minMidMax",
+                    "type" : "color"
+                  },
+                  {
+                    "colorPalette_type" : "sharedList",
+                    "field" : "info",
+                    "scale_type" : "sharedCategory",
+                    "type" : "color"
+                  },
+                  {
+                    "field" : "count",
+                    "type" : "number",
+                    "unit" : "£",
+                    "unitPosition" : "before"
+                  },
+                  {
+                    "colorPalette" : "{\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log\":#D94E17,\"\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log\":#602CA1}",
+                    "colorPalette_mapping" : {
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/search_messages.log" : "#602CA1",
+                      "\/nfs\/nfsmount\/splunk\/var\/log\/splunk\/splunkd.log" : "#D94E17"
+                    },
+                    "colorPalette_type" : "map",
+                    "field" : "source",
+                    "type" : "color"
+                  }
+                ],
+                "title" : "wrap=false"
+              },
+              "data_source_ref" : "ds_581e08f4ae6b48feb8f01edcf5ea7997",
+              "id" : "viz_09a2d6192a1d48c79cc5985dfe507da4",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "rowNumbers" : "false",
+                "totalsRow" : "false",
+                "wrap" : "false"
+              },
+              "title" : "wrap=false",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_8cc9b2f9b076489d87e893b665e83b8d",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1c8cbf307df8460ea1d3a93d9f987ade"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4cef5033fd2f42f1a889e937e019123c",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Indexes",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "table wrap=true"
+              },
+              "data_source_ref" : "ds_231b7b6af1d14da1ac9749876ad14020",
+              "id" : "viz_1c8cbf307df8460ea1d3a93d9f987ade",
+              "layer" : 1,
+              "options" : {
+                "count" : "5",
+                "dataOverlayMode" : "none",
+                "drilldown" : "none",
+                "percentagesRow" : "false",
+                "rowNumbers" : "false",
+                "totalsRow" : "false",
+                "wrap" : "true"
+              },
+              "title" : "table wrap=true",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_a7e2f5359e164655b97978e21c960f89",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f097a10469204a08a549d9884bcf06b8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a8954a9983484a6f85cd0d482e818ec7",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "netcool wrap=true (but we are an Event)"
+              },
+              "data_source_ref" : "ds_c8e302bde34c441f95e9af712f96a46d",
+              "id" : "viz_f097a10469204a08a549d9884bcf06b8",
+              "layer" : 1,
+              "options" : {
+                "list.drilldown" : "none",
+                "table.drilldown" : "none",
+                "type" : "table"
+              },
+              "title" : "netcool wrap=true (but we are an Event)",
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

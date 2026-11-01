@@ -58,8 +58,14 @@
   {
     "base_url" : "https:\/\/api.binance.com",
     "config_version" : 2,
+    "enabled" : true,
     "id" : "6EA80C8F-F8E3-47E3-9253-F92DA5187E94",
     "name" : "Binance Spot",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
     "specId" : "binance_spot",
     "type" : "custom"
   },
@@ -78,11 +84,8 @@
   },
   {
     "base_url" : "https:\/\/pop-os.local:8089",
-    "config" : {
-      "namespace" : "search",
-      "owner" : "super"
-    },
     "config_version" : 2,
+    "enabled" : true,
     "id" : "A8D4BD62-FAD5-4EC1-AC75-87D320710163",
     "name" : "Splunk Enterprise REST API",
     "options" : {
@@ -144,6 +147,7 @@
   {
     "base_url" : "http:\/\/mini.local:3000",
     "config_version" : 2,
+    "enabled" : true,
     "health_check" : {
       "enabled" : true,
       "interval_seconds" : 60,
@@ -158,6 +162,164 @@
     },
     "specId" : "grafana.v2",
     "specVersion" : 1,
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.anthropic.com",
+    "config_version" : 2,
+    "id" : "C3D35868-5CE4-42FC-BDCC-545AD42C0419",
+    "name" : "Anthropic",
+    "specId" : "anthropic",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-1976e432-0e75-4b5c-a43b-48289458b676",
+    "config" : {
+      "folder" : "\/Users\/peter\/Library\/Logs\/AppAnalytics"
+    },
+    "config_version" : 2,
+    "id" : "files-1976e432-0e75-4b5c-a43b-48289458b676",
+    "name" : "AppAnalytics",
+    "specId" : "files",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-27d2f732-7900-497f-b647-e5442ca8c3e7",
+    "config" : {
+      "folder" : "\/Users\/peter\/Downloads\/GlobalBank_GSO_Splunk_FullSuite"
+    },
+    "config_version" : 2,
+    "id" : "files-27d2f732-7900-497f-b647-e5442ca8c3e7",
+    "name" : "GlobalBank_GSO_Splunk_FullSuite",
+    "specId" : "files",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-f260f07b-c9ee-405a-bea6-e4ed1907d475",
+    "config" : {
+      "folder" : "\/tmp\/construct_examples"
+    },
+    "config_version" : 2,
+    "id" : "files-f260f07b-c9ee-405a-bea6-e4ed1907d475",
+    "name" : "construct_examples",
+    "specId" : "files",
+    "streams" : [
+      {
+        "columns" : [
+
+        ],
+        "description" : "App event JSON lines: ts is the event time, ctx is split into ctx_region \/ ctx_version.",
+        "dynamicSchema" : true,
+        "format" : "ndjson",
+        "globalTimeField" : "ts",
+        "id" : "app_events",
+        "method" : "GET",
+        "name" : "App events",
+        "path" : "\/events",
+        "transforms" : [
+          {
+            "unwrap" : {
+              "field" : "_raw"
+            }
+          },
+          {
+            "lift" : {
+              "path" : [
+                "_raw"
+              ]
+            }
+          },
+          {
+            "flatten" : {
+              "depth" : 2
+            }
+          },
+          {
+            "parseTime" : {
+              "field" : "ts",
+              "format" : "iso8601"
+            }
+          },
+          {
+            "coerceTypes" : {
+              "fields" : {
+                "latency_ms" : "integer",
+                "ts_ms" : "integer"
+              }
+            }
+          }
+        ],
+        "userParams" : [
+          {
+            "default" : "app\/*.jsonl",
+            "key" : "path",
+            "label" : "Files",
+            "location" : "query",
+            "required" : false
+          },
+          {
+            "key" : "earliest",
+            "label" : "Earliest",
+            "location" : "query",
+            "required" : false,
+            "role" : "timeStart",
+            "time" : {
+              "format" : "epoch_seconds"
+            }
+          },
+          {
+            "key" : "latest",
+            "label" : "Latest",
+            "location" : "query",
+            "required" : false,
+            "role" : "timeEnd",
+            "time" : {
+              "format" : "epoch_seconds"
+            }
+          },
+          {
+            "default" : "{{config.root_max_files}}",
+            "key" : "max_files",
+            "label" : "Max files",
+            "location" : "query",
+            "required" : false,
+            "role" : "limit"
+          },
+          {
+            "default" : "{{config.root_tail_bytes}}",
+            "key" : "tail_bytes",
+            "label" : "Max bytes read",
+            "location" : "query",
+            "required" : false,
+            "role" : "limit"
+          },
+          {
+            "default" : "{{config.root_max_events}}",
+            "key" : "max_events",
+            "label" : "Max events",
+            "location" : "query",
+            "required" : false,
+            "role" : "limit"
+          },
+          {
+            "default" : "{{config.root_max_follow_files}}",
+            "key" : "max_follow_files",
+            "label" : "Max files followed (real time)",
+            "location" : "query",
+            "required" : false,
+            "role" : "limit"
+          },
+          {
+            "default" : "65536",
+            "key" : "max_event_bytes",
+            "label" : "Max bytes per event",
+            "location" : "query",
+            "required" : false,
+            "role" : "limit"
+          }
+        ]
+      }
+    ],
     "type" : "custom"
   }
 ]

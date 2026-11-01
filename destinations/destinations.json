@@ -8,12 +8,12 @@
             "limit" : "1",
             "query" : "node_load1"
           },
-          "id" : "0C48CACD-15D5-427C-B663-B9912B3CD486",
+          "id" : "40D8C678-2986-4DC5-BF6D-8C84AFC5C0EF",
           "inputMap" : {
 
           },
           "provider" : "4430DF34-0930-4D0D-840C-16653E27F3C4",
-          "stream" : "query"
+          "stream" : "instant"
         }
       ],
       "id" : "cpu",

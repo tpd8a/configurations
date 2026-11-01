@@ -5,32 +5,20 @@
       "items" : [
         {
           "dashboardId" : "dash_c866b3ba72f64db78d55703f972604d8",
-          "durationSeconds" : 60
+          "durationSeconds" : 30
         },
         {
           "dashboardId" : "dash_124026d013ac424199d5a7f0e075ba78",
-          "durationSeconds" : 60
+          "durationSeconds" : 30
         },
         {
           "dashboardId" : "dash_f519ad6ce0074d95b045fb857f374431",
-          "durationSeconds" : 60
+          "durationSeconds" : 30
         },
         {
           "dashboardId" : "dash_40e812d574bb413699ce8373fe06fddf",
-          "durationSeconds" : 60
+          "durationSeconds" : 30
         }
-      ],
-      "mode" : "cycle",
-      "name" : "New Playlist",
-      "play" : "loop",
-      "slots" : [
-
-      ]
-    },
-    {
-      "id" : "ps_A9720B51-570",
-      "items" : [
-
       ],
       "mode" : "cycle",
       "name" : "New Playlist",

@@ -1,0 +1,152 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7c1e2a9b4f3d4e6a8b0c1d2e3f4a5b6c",
+      "query" : {
+        "name" : "failures_by_path",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT url, SUM(CASE WHEN status = 404 AND ('$status_class$' = '4xx' OR '$status_class$' = '*') THEN 1 ELSE 0 END) AS e404, SUM(CASE WHEN status = 500 AND ('$status_class$' = '5xx' OR '$status_class$' = '*') THEN 1 ELSE 0 END) AS e500, COUNT(*) AS requests, SUM(CASE WHEN (status >= 400 AND status < 500 AND ('$status_class$' = '4xx' OR '$status_class$' = '*')) OR (status >= 500 AND status < 600 AND ('$status_class$' = '5xx' OR '$status_class$' = '*')) THEN 1 ELSE 0 END) * 100.0 \/ COUNT(*) AS pct_failed FROM construct_examples.combined_access(path := 'bench\/access.log') GROUP BY url ORDER BY pct_failed DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "404 \/ 500 counts and % failed per request path from bench\/access.log (construct_examples files root), filterable by status class.",
+  "id" : "dash_f09936f3041c4c48b469e55c6105574e",
+  "inputs" : [
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : true,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "*"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "4xx",
+            "value" : "4xx"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "5xx",
+            "value" : "5xx"
+          }
+        ],
+        "default" : "*",
+        "display_location" : "top",
+        "help" : "Which failures count: 4xx (client errors), 5xx (server errors) or all. Request totals always include every status.",
+        "label" : "Status",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "presentation" : "segmented"
+        },
+        "type" : "radio"
+      },
+      "id" : "input_211dc7561b704818b4c7f1cc8115e35d",
+      "token" : "status_class"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b1 r2",
+  "provenance" : {
+    "imported_at" : "2026-10-30T15:30:02Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_3a8f1c2d9e7b4a6c8d0e1f2a3b4c5d6e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9d4c2b1a7e3f4a5b8c6d0e1f2a3b4c5d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5b2e7d1a3c9f4e8b9a0d1c2e3f4b5a6d",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "404 \/ 500 by path (worst first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7c1e2a9b4f3d4e6a8b0c1d2e3f4a5b6c",
+              "id" : "viz_9d4c2b1a7e3f4a5b8c6d0e1f2a3b4c5d",
+              "layer" : 1,
+              "options" : {
+                "fields" : "url,e404,e500,requests,pct_failed"
+              },
+              "title" : "Path failures",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2f6a8c0e1b3d4f5a9c7e0b1d2f3a4c5e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8e1f3a2b4c5d4e6f9a7b0c1d2e3f4a5b",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "404s vs 500s per path",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "e404",
+                  "e500"
+                ],
+                "timeField" : "url"
+              },
+              "data_source_ref" : "ds_7c1e2a9b4f3d4e6a8b0c1d2e3f4a5b6c",
+              "id" : "viz_2f6a8c0e1b3d4f5a9c7e0b1d2f3a4c5e",
+              "layer" : 1,
+              "title" : "404 vs 500 by path",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Failures by path"
+    }
+  ]
+}

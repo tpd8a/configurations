@@ -1,0 +1,1 @@
+{"id":"fedsearch_2ddaee57c9db488cb80fcf5bf7df0aed","name":"file_app","sql":"SELECT * FROM appanalytics.jsonl(path := '*.json') WHERE earliest = '-110d'","config_version":2}

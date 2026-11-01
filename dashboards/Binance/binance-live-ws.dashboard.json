@@ -1,4 +1,5 @@
 {
+  "absolute_geometry_version" : 1,
   "config_version" : 2,
   "data_sources" : [
     {
@@ -20,10 +21,7 @@
       "query" : {
         "name" : "Live 24h Ticker — BTC\/ETH\/SOL\/XRP",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "tql" : "pivot  "
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
         "sql" : {
@@ -41,7 +39,7 @@
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "select * from binance_spot.ws_ticker(symbols:='ETHUSDT')"
+          "query" : "select * from binance_spot.ws_ticker(symbols:='SOLUSDT')"
         },
         "type" : "ds.sql"
       }
@@ -54,7 +52,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Live (WS)",
   "provenance" : {
-    "imported_at" : "2026-09-22T17:33:55Z",
+    "imported_at" : "2026-10-29T19:29:33Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -155,7 +153,6 @@
                         "optionsJSON" : "e30="
                       }
                     ],
-                    "shapeId" : "table",
                     "slotBindings" : {
                       "storage" : [
 
@@ -256,8 +253,8 @@
           ],
           "id" : "panel_51cf6c851a33435880b2c7cae40e0c55",
           "layout" : {
-            "absolute_h" : 408,
-            "absolute_w" : 792,
+            "absolute_h" : 720,
+            "absolute_w" : 1296,
             "absolute_x" : 0,
             "absolute_y" : 336,
             "panel_width" : 12
@@ -267,7 +264,14 @@
               "data_source_ref" : "ds_03d3b85614d34b2ab3ad714819ba4fd6",
               "id" : "viz_ae7c236be29b431bb5f40fa4c9a1bdb8",
               "layer" : 1,
-              "type" : "table",
+              "options" : {
+                "columns" : "7",
+                "delta_pct_field" : "priceChangePercent",
+                "font_sizing" : "manual:2.5",
+                "price_field" : "askPrice",
+                "symbol_field" : "symbol"
+              },
+              "type" : "kpi_mosaic",
               "width" : 12
             }
           ]
@@ -292,7 +296,7 @@
           "layout" : {
             "absolute_h" : 312,
             "absolute_w" : 480,
-            "absolute_x" : 912,
+            "absolute_x" : 816,
             "absolute_y" : 0,
             "panel_width" : 12
           },

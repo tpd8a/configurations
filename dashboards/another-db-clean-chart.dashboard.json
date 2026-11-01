@@ -1,0 +1,603 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a7e9eecc7277400585216f5cc6f97e65",
+      "query" : {
+        "name" : "top",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_internal | bin span=5m _time | stats count by source _time', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-6h",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0ff48f4b47f543c59871b784c3c53f71",
+      "query" : {
+        "name" : "2nd left",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_internal | timechart count span=5m by source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-24h",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_3947a238eed5437db568636d6420d978",
+      "query" : {
+        "name" : "2nd right",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_internal | timechart count span=5m by source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-24h",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_716fd87aa0f54d46974f4079bd46791a",
+      "query" : {
+        "name" : "3rd left",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '| stats count\n| eval count = 66', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-60m@m",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_a526d24a0055406a904b4e076fff3055",
+      "query" : {
+        "name" : "ds_5",
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_* \n|  stats count as value by source \n| head 1\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-60m@m",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_4e3b6afd05a74d248a1fd9aa09ca998b",
+      "query" : {
+        "name" : "3rd right",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_* \n|  stats count as value by source \n| head 3\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-60m@m",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9d9c60ff60334110aa57af528e1ab06e",
+      "query" : {
+        "name" : "random",
+        "refresh_seconds" : 30,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := 'index=_* \n|  stats count as value by source \n| head 3\n| eval source=mvindex(split(source,\"\/\"),-1)\n|  table value source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-60m@m",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "",
+  "id" : "dash_319dac43921e472f9284868f800b59f9",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Another DB Clean Chart",
+  "provenance" : {
+    "imported_at" : "2026-10-25T16:09:09Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7c6160eac39047a591b2ff79ce6a8d06",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_777bb3bfdfa746a2ad4ae2be80004d10"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_53b56a725fcf4c369962627ef0ff45bc",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "F40C6FE2-6223-4CAB-977D-A607BFFB5883",
+                        "kind" : "area",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "stacked-area-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ],
+                        "stack",
+                        [
+                          "source"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "top"
+              },
+              "data_source_ref" : "ds_a7e9eecc7277400585216f5cc6f97e65",
+              "id" : "viz_777bb3bfdfa746a2ad4ae2be80004d10",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "area",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.drilldown" : "none",
+                "charting.legend.mode" : "seriesCompare",
+                "height" : "425",
+                "legend_position" : "right",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stackMode" : "stacked",
+                "stacking_mode" : "normal",
+                "trellis_enabled" : "true",
+                "trellis_size" : "large",
+                "trellis_split_by" : "source"
+              },
+              "title" : "top",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_b68eedf9cbcc45f8af13c8cbaebc12da",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_bb2d40c3ba774e5b916e362de440da74"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_694b0f2081f84e3ea23fa763baf224e9",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "2nd left"
+              },
+              "data_source_ref" : "ds_0ff48f4b47f543c59871b784c3c53f71",
+              "id" : "viz_bb2d40c3ba774e5b916e362de440da74",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "bar",
+                "charting.axisTitleY2.visibility" : "collapsed",
+                "charting.drilldown" : "none",
+                "height" : "425",
+                "legend_position" : "none",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "false",
+                "show_y_axis_title" : "false",
+                "stacking_mode" : "none",
+                "trellis_enabled" : "true"
+              },
+              "title" : "2nd left",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_31a272be4c4847458b48d0143546e1e9"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_618fd80f41bd42ed818ad4db0e7696e2",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "2nd right"
+              },
+              "data_source_ref" : "ds_3947a238eed5437db568636d6420d978",
+              "id" : "viz_31a272be4c4847458b48d0143546e1e9",
+              "layer" : 1,
+              "options" : {
+                "chart_type" : "bar",
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.drilldown" : "none",
+                "height" : "425",
+                "legend_position" : "bottom",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "percent"
+              },
+              "title" : "2nd right",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_f19c2084e1504c84acf3b55f373b6ba2",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9de4fa4439674015a266aba6413fd5eb",
+                "viz_45548aa5fa924db7b7d2e4f46e063b8d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9a027c1582cd4733800fdcf319099a13",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "3rd left"
+              },
+              "data_source_ref" : "ds_716fd87aa0f54d46974f4079bd46791a",
+              "id" : "viz_9de4fa4439674015a266aba6413fd5eb",
+              "layer" : 1,
+              "options" : {
+                "numberPrecision" : "0.00",
+                "rangeColors" : "[\"0x53a051\",\"0x0877a6\",\"0xf8be34\",\"0xf1813f\",\"0xdc4e41\"]",
+                "refresh.display" : "none",
+                "underLabel" : "My Piggy Bank",
+                "unit" : "£",
+                "unitPosition" : "before",
+                "useColors" : "1"
+              },
+              "title" : "3rd left",
+              "type" : "table",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_a526d24a0055406a904b4e076fff3055",
+              "id" : "viz_45548aa5fa924db7b7d2e4f46e063b8d",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "gauge_type" : "marker",
+                "height" : "425",
+                "legend_position" : "right",
+                "max" : "4000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x118832,30:0xcba700,70:0x1182f3,100:0xd94e17,1000:0xd41f1f"
+              },
+              "title" : "",
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ba43c3e0ac524bacb918f9775daa42fb",
+                "viz_42fba0d5fcd946979bb189c1531d35be"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_95ec92f4b93e407a8f6da44dffcd0260",
+          "layout" : {
+            "panel_width" : 6,
+            "visibility" : {
+
+            }
+          },
+          "title" : "New Rows",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "3rd right"
+              },
+              "data_source_ref" : "ds_4e3b6afd05a74d248a1fd9aa09ca998b",
+              "id" : "viz_ba43c3e0ac524bacb918f9775daa42fb",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "gauge_type" : "radial",
+                "height" : "425",
+                "legend_position" : "bottom",
+                "max" : "1000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x118832,50:0xcba700,70:0xd94e17,100:0xd41f1f"
+              },
+              "title" : "3rd right",
+              "type" : "gauge",
+              "width" : 12
+            },
+            {
+              "config" : {
+                "title" : "random"
+              },
+              "data_source_ref" : "ds_9d9c60ff60334110aa57af528e1ab06e",
+              "id" : "viz_42fba0d5fcd946979bb189c1531d35be",
+              "layer" : 1,
+              "options" : {
+                "charting.axisTitleY2.visibility" : "visible",
+                "charting.chart.nullValueMode" : "gaps",
+                "gauge_type" : "linear",
+                "height" : "425",
+                "legend_position" : "none",
+                "max" : "2000",
+                "min" : "0",
+                "refresh.display" : "none",
+                "show_x_axis_title" : "true",
+                "show_y_axis_title" : "true",
+                "stacking_mode" : "normal",
+                "thresholds" : "0:0x1182f3,303:0x118832,700:0xd94e17,1000:0xd41f1f"
+              },
+              "title" : "random",
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

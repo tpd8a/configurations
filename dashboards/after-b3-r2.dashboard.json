@@ -1,0 +1,273 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7c1a2e4b9d3f4a5e8b6c0d1e2f3a4b51",
+      "query" : {
+        "name" : "actions_by_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT user, SUM(CASE WHEN action = 'login' THEN 1 ELSE 0 END) AS login, SUM(CASE WHEN action = 'logout' THEN 1 ELSE 0 END) AS logout, SUM(CASE WHEN action = 'purchase' THEN 1 ELSE 0 END) AS purchase, SUM(CASE WHEN action = 'search' THEN 1 ELSE 0 END) AS search, SUM(CASE WHEN action = 'view' THEN 1 ELSE 0 END) AS view FROM construct_examples.app_events(path := 'bench\/events.jsonl') WHERE (ctx_region IN ($region$) OR '$form.region$' = '*') GROUP BY user ORDER BY user"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_8d2b3f5c0e4a4b6f9c7d1e2f3a4b5c62",
+      "query" : {
+        "name" : "events_for_user",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT ts, user, action, latency_ms, level, ctx_region FROM construct_examples.app_events(path := 'bench\/events.jsonl') WHERE user = '$pick_user$' AND (ctx_region IN ($region$) OR '$form.region$' = '*') ORDER BY latency_ms DESC"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_e58b9fbc6e0a4bcfd17d8e9fa0b1c2c8",
+      "query" : {
+        "name" : "region_choices",
+        "refresh_seconds" : 300,
+        "sql" : {
+          "query" : "SELECT DISTINCT ctx_region FROM construct_examples.app_events(path := 'bench\/events.jsonl')"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Actions per user from construct_examples bench\/events.jsonl; click a user to see their events by latency.",
+  "id" : "dash_2033e183225a45af95fa15284db6e829",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_7c1a2e4b9d3f4a5e8b6c0d1e2f3a4b51",
+          "field_for_label" : "user",
+          "field_for_value" : "user"
+        },
+        "default" : "alice",
+        "display_location" : "top",
+        "help" : "Set by clicking a bar in \"Actions by user\", or pick here.",
+        "label" : "User",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_4ecb529b764e4ac58191bc8c2d08baf0",
+      "token" : "pick_user"
+    },
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_e58b9fbc6e0a4bcfd17d8e9fa0b1c2c8",
+          "field_for_label" : "ctx_region",
+          "field_for_value" : "ctx_region"
+        },
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "*"
+          }
+        ],
+        "default" : "*",
+        "display_location" : "top",
+        "formatting" : {
+          "escape" : "sql_quote",
+          "value_prefix" : "'",
+          "value_suffix" : "'"
+        },
+        "help" : "Filters the chart and the events table by ctx.region.",
+        "label" : "Region",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "multiselect"
+      },
+      "id" : "input_eb005723863e46b9a78b0b0a35e60c4c",
+      "token" : "region"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "After b3 r2",
+  "provenance" : {
+    "imported_at" : "2026-10-30T16:17:57Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_9e3c4a6d1f5b4c7a8d2e3f4a5b6c7d73",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b25e6c8f3b7d4e9cae4a5b6c7d8e9f95"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a14d5b7e2a6c4d8b9e3f4a5b6c7d8e84",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Actions by user",
+          "visualizations" : [
+            {
+              "chart" : {
+                "fieldOverrides" : {
+                  "login" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "login"
+                  },
+                  "logout" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "logout"
+                  },
+                  "purchase" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "purchase"
+                  },
+                  "search" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "search"
+                  },
+                  "view" : {
+                    "dataLinks" : [
+                      {
+                        "label" : "Show this user",
+                        "setTokens" : [
+                          {
+                            "name" : "pick_user",
+                            "value" : "$field._x$"
+                          }
+                        ]
+                      }
+                    ],
+                    "fieldId" : "view"
+                  }
+                },
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "bar",
+                        "optionsJSON" : "eyJzdGFja01vZGUiOiJzdGFja2VkIn0="
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "login",
+                  "logout",
+                  "purchase",
+                  "search",
+                  "view"
+                ],
+                "timeField" : "user"
+              },
+              "data_source_ref" : "ds_7c1a2e4b9d3f4a5e8b6c0d1e2f3a4b51",
+              "id" : "viz_b25e6c8f3b7d4e9cae4a5b6c7d8e9f95",
+              "layer" : 1,
+              "title" : "Actions by user (click a bar)",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d47a8eab5d9f4abec06c7d8e9fa0b1b7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c36f7d9a4c8e4fadbf5b6c7d8e9fa0a6",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Events for the clicked user",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8d2b3f5c0e4a4b6f9c7d1e2f3a4b5c62",
+              "id" : "viz_d47a8eab5d9f4abec06c7d8e9fa0b1b7",
+              "layer" : 1,
+              "options" : {
+                "fields" : "ts,user,action,latency_ms,level,ctx_region"
+              },
+              "title" : "Events for $pick_user$ (slowest first)",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Users"
+    }
+  ]
+}

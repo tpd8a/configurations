@@ -1,0 +1,203 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_ed50d587ea294a569c6e8bf9693f6efa",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_abf3f27ebdd74e0586ce93234cf66acd",
+          "query" : "| search source=*$my_token$*"
+        },
+        "name" : "ds_1",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_107cda96f29e46ea8c77448f50caff4f",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_abf3f27ebdd74e0586ce93234cf66acd",
+          "query" : "|  table source"
+        },
+        "name" : "ds_2",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    },
+    {
+      "id" : "ds_abf3f27ebdd74e0586ce93234cf66acd",
+      "query" : {
+        "name" : "my_base_search",
+        "refresh_seconds" : 600,
+        "sql" : {
+          "query" : "SELECT * FROM splunk_enterprise_rest_api.search_job_flow(query := '|  tstats count where index=_internal by source', namespace := 'search')"
+        },
+        "time_mode" : {
+          "earliest" : "-24h@h",
+          "latest" : "now",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_a77471154d5b446dab9ec3991655ef21",
+  "inputs" : [
+    {
+      "config" : {
+        "choice_search" : {
+          "data_source_ref" : "ds_107cda96f29e46ea8c77448f50caff4f",
+          "field_for_label" : "source",
+          "field_for_value" : "source"
+        },
+        "display_location" : "top",
+        "label" : "field1",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_9f2acc9b84c34db4a0a4ccbe48b17996",
+      "token" : "my_tokenZ"
+    },
+    {
+      "config" : {
+        "default" : "",
+        "display_location" : "top",
+        "label" : "override",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_3ce33a23f33d43abb8b2238e633226a5",
+      "token" : "my_token"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Auto Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "checkbox"
+      },
+      "id" : "input_d0b5b1dea30d4a889347f47b82b05b94",
+      "token" : "_fieldset_autoRun"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Test PostProcess",
+  "provenance" : {
+    "imported_at" : "2026-10-22T18:25:44Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_f92fb01577ef48dd8008206ffe193a0c",
+      "layout" : {
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_a447aac211a047d1b3f345f59770cac6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_fd9c1366fdd748bfa4a1583c1f21f159",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_abf3f27ebdd74e0586ce93234cf66acd",
+              "id" : "viz_a447aac211a047d1b3f345f59770cac6",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "none",
+                "refresh.display" : "progressbar"
+              },
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_48b963a9d88c4f6fad404d868f80287a",
+      "layout" : {
+        "fill" : true,
+        "visibility" : {
+
+        }
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4bdf8a06b9c745f78c400305d610a6d9"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e11dc8f71f8344e9b53d341c68a9b3ac",
+          "layout" : {
+            "panel_width" : 12,
+            "visibility" : {
+
+            }
+          },
+          "title" : "Chained",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : ""
+              },
+              "data_source_ref" : "ds_ed50d587ea294a569c6e8bf9693f6efa",
+              "id" : "viz_4bdf8a06b9c745f78c400305d610a6d9",
+              "layer" : 1,
+              "options" : {
+                "drilldown" : "none",
+                "refresh.display" : "progressbar"
+              },
+              "title" : "",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

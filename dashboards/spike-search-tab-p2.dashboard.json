@@ -1,0 +1,50 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+
+  ],
+  "id" : "dash_72de2b7dee7048dabc8925ea05f8659f",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "SPIKE search tab p2",
+  "provenance" : {
+    "imported_at" : "2026-10-10T20:02:43Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_354527deed7d47f8b49790b4c5356805",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c0b019bc41b542339a0cd03565951927"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5c0644d6e70745039f16bd105674f6e4",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_c0b019bc41b542339a0cd03565951927",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

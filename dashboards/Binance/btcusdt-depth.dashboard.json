@@ -1,0 +1,269 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_2b80863c492c4a73be6fa807394c252b",
+      "query" : {
+        "description" : "OrderBook",
+        "group_by_fields" : [
+          "level"
+        ],
+        "name" : "BTCUSDT Depth",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT * FROM binance_spot.depth(limit := '100', symbols := 'BTCUSDT', symbolStatus := 'TRADING') "
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_ae982b2bece048df96f161780cc19cfe",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_2b80863c492c4a73be6fa807394c252b",
+          "query" : "SELECT * FROM {{input}} WHERE level = 1 ORDER BY ask "
+        },
+        "name" : "ds_EC77A206",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
+    }
+  ],
+  "id" : "dash_bee521cf9148461a887207eee611af77",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "BTCUSDT Depth",
+  "provenance" : {
+    "imported_at" : "2026-10-29T19:57:44Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_2f7de675229f4165a97b46384435a773",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_cb9844c9f6b047eab5cadffbfcb913c1"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "OrderBook",
+          "id" : "panel_a9541b345efb4ccbb2ed8d2fe69ea051",
+          "layout" : {
+            "height" : 520,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "16989616-F03E-4882-8BFF-A3ADA051983F",
+                        "kind" : "bar",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "horizontal-bar",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "ask",
+                          "bid"
+                        ],
+                        "x",
+                        [
+                          "level"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "BTCUSDT Depth"
+              },
+              "data_source_ref" : "ds_2b80863c492c4a73be6fa807394c252b",
+              "id" : "viz_cb9844c9f6b047eab5cadffbfcb913c1",
+              "layer" : 1,
+              "options" : {
+                "data_overlay_mode" : "heatmap",
+                "stackMode" : "none"
+              },
+              "title" : "BTCUSDT Depth",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "row_b85ef7ac0433492fbee017ef95a1139a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_dcd891948cd4457c8d09f918c66e280c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_7caf317b581f4ae0974ce557472f1e58",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_ae982b2bece048df96f161780cc19cfe",
+              "id" : "viz_dcd891948cd4457c8d09f918c66e280c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 2"
+    }
+  ]
+}

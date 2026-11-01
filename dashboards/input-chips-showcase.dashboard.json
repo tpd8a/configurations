@@ -1,0 +1,2204 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+
+  ],
+  "description" : "Every input type on every chip surface: top strip, toolbar, sidebar, panel title band, single-viz title bar, +N overflow, untitled row, typed and long values.",
+  "id" : "dash_cdc3237dc90b48a591ab22d2d2d25eb6",
+  "inputs" : [
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "prod",
+            "value" : "prod"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "staging",
+            "value" : "staging"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "dev",
+            "value" : "dev"
+          }
+        ],
+        "default" : "prod",
+        "display_location" : "top",
+        "label" : "Env",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_f29d10360c7d4a45b07f29faf93eca00",
+      "token" : "env"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-01",
+            "value" : "web-01"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-02",
+            "value" : "web-02"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-03",
+            "value" : "web-03"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "db-01",
+            "value" : "db-01"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "cache-01",
+            "value" : "cache-01"
+          }
+        ],
+        "default" : "web-01,web-02,web-03",
+        "display_location" : "top",
+        "label" : "Hosts",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "multiselect"
+      },
+      "id" : "input_e09ece1890e04d7b99de525878a6dd8b",
+      "token" : "hosts"
+    },
+    {
+      "config" : {
+        "default" : "false",
+        "display_location" : "top",
+        "label" : "Errors only",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_acd5cb3345554aa9b9ff544148a46df8",
+      "token" : "errors_only"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "All",
+            "value" : "All"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Critical",
+            "value" : "Critical"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Warning",
+            "value" : "Warning"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Info",
+            "value" : "Info"
+          }
+        ],
+        "default" : "All",
+        "display_location" : "top",
+        "label" : "Severity",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_bf3950a48b4f47928f6b2d2e340a1986",
+      "token" : "severity"
+    },
+    {
+      "config" : {
+        "default" : "",
+        "display_location" : "top",
+        "label" : "Search",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_3f9ea5b57bec4d2f8703f85f0a689dfa",
+      "token" : "search"
+    },
+    {
+      "config" : {
+        "default" : "100",
+        "display_location" : "top",
+        "entry" : {
+          "kind" : "integer",
+          "required" : false
+        },
+        "label" : "Limit",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_844054890e3c426e933cd6cc7e103e91",
+      "token" : "limit"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-6h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_0be487b673564325870f24434fdf4ff2",
+      "token" : "t"
+    },
+    {
+      "config" : {
+        "default" : "",
+        "display_location" : "top",
+        "entry" : {
+          "kind" : "multiline",
+          "required" : false
+        },
+        "label" : "Notes (multi-line → label above)",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_ed6bd2e03fee4d03800505d435f378be",
+      "token" : "notes"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "eu-west",
+            "value" : "eu-west"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "us-east",
+            "value" : "us-east"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "ap-south",
+            "value" : "ap-south"
+          }
+        ],
+        "default" : "eu-west",
+        "display_location" : "top",
+        "label" : "Region",
+        "location" : {
+          "container" : {
+            "containerID" : "toolbar",
+            "type" : {
+              "toolbar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_3c222a828c4d4c0693197076341478bc",
+      "token" : "region"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "top",
+        "label" : "Live",
+        "location" : {
+          "container" : {
+            "containerID" : "toolbar",
+            "type" : {
+              "toolbar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_9bc93bd713314b35bd6d816bbf89f9d7",
+      "token" : "live"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Toolbar time",
+        "location" : {
+          "container" : {
+            "containerID" : "toolbar",
+            "type" : {
+              "toolbar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-1h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_0bfb670e0fc14d2084a0b548ff9f94fa",
+      "token" : "tb_time"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "a",
+            "value" : "a"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "b",
+            "value" : "b"
+          }
+        ],
+        "default" : "a",
+        "display_location" : "top",
+        "label" : "Overflow menu item",
+        "location" : {
+          "container" : {
+            "containerID" : "toolbar",
+            "type" : {
+              "toolbar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_07149fd6b94941a8bafc84ebcde98bea",
+      "token" : "tb_extra"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "payments",
+            "value" : "payments"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "search",
+            "value" : "search"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "platform",
+            "value" : "platform"
+          }
+        ],
+        "default" : "payments",
+        "display_location" : "top",
+        "label" : "Team (sidebar)",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_049265ff99c94e3f9093fe442a443cb3",
+      "token" : "sb_team"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Summary",
+            "value" : "Summary"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Detail",
+            "value" : "Detail"
+          }
+        ],
+        "default" : "Summary",
+        "display_location" : "top",
+        "label" : "Mode (sidebar)",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "radio"
+      },
+      "id" : "input_723267915f7c46f194ef4cb0c93b866c",
+      "token" : "sb_mode"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "eu-west",
+            "value" : "eu-west"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "us-east",
+            "value" : "us-east"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "ap-south",
+            "value" : "ap-south"
+          }
+        ],
+        "default" : "eu-west",
+        "display_location" : "inline",
+        "label" : "Region",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_f4f3e78283e444b3aed83c15fe95e630"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_dff9995cdbde4139bdd3ce9a13c13986",
+      "token" : "band_region"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "status",
+            "value" : "status"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "host",
+            "value" : "host"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "method",
+            "value" : "method"
+          }
+        ],
+        "default" : "status",
+        "display_location" : "inline",
+        "label" : "Split",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_f4f3e78283e444b3aed83c15fe95e630"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_609ba7b01c3544d989cc50937ee06b4c",
+      "token" : "band_split"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Time",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_f4f3e78283e444b3aed83c15fe95e630"
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-6h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_2c082ecd2ae44c0e81de638fe1a8fb54",
+      "token" : "band_time"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "eu-west",
+            "value" : "eu-west"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "us-east",
+            "value" : "us-east"
+          }
+        ],
+        "default" : "eu-west",
+        "display_location" : "inline",
+        "label" : "Region",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_0eb07f0186624dcaa5b0b1119f909199"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_a60da32d99244fcdb7688c7d72c838ff",
+      "token" : "wide_region"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "status",
+            "value" : "status"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "host",
+            "value" : "host"
+          }
+        ],
+        "default" : "status",
+        "display_location" : "inline",
+        "label" : "Split",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_0eb07f0186624dcaa5b0b1119f909199"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_146e70f2922b4beab1917bbec7a5d9ab",
+      "token" : "wide_split"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Time",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_0eb07f0186624dcaa5b0b1119f909199"
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-6h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_e0901e195c404ed3baa564218bce94ca",
+      "token" : "wide_time"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "prod",
+            "value" : "prod"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "staging",
+            "value" : "staging"
+          }
+        ],
+        "default" : "prod",
+        "display_location" : "inline",
+        "label" : "Env",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_9f0e356c2bf047948d9b3051464af13f"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_3269b7edb9244f24a7959ea93f2988ad",
+      "token" : "n_env"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-01",
+            "value" : "web-01"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-02",
+            "value" : "web-02"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "web-03",
+            "value" : "web-03"
+          }
+        ],
+        "default" : "web-01,web-02",
+        "display_location" : "inline",
+        "label" : "Host",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_9f0e356c2bf047948d9b3051464af13f"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "multiselect"
+      },
+      "id" : "input_8fd9eca3a62d43fe8ed5aee30f9014e8",
+      "token" : "n_host"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "status",
+            "value" : "status"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "host",
+            "value" : "host"
+          }
+        ],
+        "default" : "status",
+        "display_location" : "inline",
+        "label" : "Split",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_9f0e356c2bf047948d9b3051464af13f"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_d28ef96cb28d410dbbb982798900c075",
+      "token" : "n_split"
+    },
+    {
+      "config" : {
+        "default" : "false",
+        "display_location" : "inline",
+        "label" : "Errors only",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_9f0e356c2bf047948d9b3051464af13f"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_9cfb2d0113b6400884567747c0908ab9",
+      "token" : "n_errors"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Time",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_9f0e356c2bf047948d9b3051464af13f"
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-6h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_cfff8338ce20427c8c1f1e5d923efcd5",
+      "token" : "n_time"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "alpha",
+            "value" : "alpha"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "beta",
+            "value" : "beta"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "gamma",
+            "value" : "gamma"
+          }
+        ],
+        "default" : "alpha",
+        "display_location" : "inline",
+        "label" : "Pick",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_201af70149ca43ba9a2d71cba31051b8"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_784fb49ad96e44cda0203318d2ca2785",
+      "token" : "untitled_pick"
+    },
+    {
+      "config" : {
+        "default" : "true",
+        "display_location" : "inline",
+        "label" : "Flag",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_201af70149ca43ba9a2d71cba31051b8"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "checkbox"
+      },
+      "id" : "input_9eca69e9b35c4045a24290a9bcf69630",
+      "token" : "untitled_flag"
+    },
+    {
+      "config" : {
+        "default" : "0.75",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "number",
+          "required" : false
+        },
+        "label" : "Threshold",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_b1e5263f5600421f8406d5b72f93bce7"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_fc3d7b93bfaf403c92ec0ee940193181",
+      "token" : "typed_num"
+    },
+    {
+      "config" : {
+        "default" : "2026-10-01",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "date",
+          "required" : false
+        },
+        "label" : "Since",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_b1e5263f5600421f8406d5b72f93bce7"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_0de7348e1c974ad98428271ccfde339d",
+      "token" : "typed_date"
+    },
+    {
+      "config" : {
+        "default" : "",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "secure",
+          "required" : false
+        },
+        "label" : "Token",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_b1e5263f5600421f8406d5b72f93bce7"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_36bfcaf926f44411a7c5d49bf0eb3b83",
+      "token" : "typed_secure"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "ip-10-0-12-187.eu-west-1.compute.internal.example-cluster-prod-a",
+            "value" : "ip-10-0-12-187.eu-west-1.compute.internal.example-cluster-prod-a"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "short",
+            "value" : "short"
+          }
+        ],
+        "default" : "ip-10-0-12-187.eu-west-1.compute.internal.example-cluster-prod-a",
+        "display_location" : "inline",
+        "label" : "Long",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_b1e5263f5600421f8406d5b72f93bce7"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_eeefae36c40f48339a3de3addfd35e06",
+      "token" : "typed_long"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Viz time",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_6dbeb133844e487ea21c9c5e86a9a42a"
+          }
+        },
+        "search_when_changed" : true,
+        "time_config" : {
+          "default_earliest" : "-24h@h",
+          "default_latest" : "now",
+          "presets" : [
+            {
+              "earliest" : "-15m",
+              "label" : "Last 15 minutes",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-1h",
+              "label" : "Last hour",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-6h",
+              "label" : "Last 6 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-24h@h",
+              "label" : "Last 24 hours",
+              "latest" : "now"
+            },
+            {
+              "earliest" : "-7d@d",
+              "label" : "Last 7 days",
+              "latest" : "now"
+            }
+          ]
+        },
+        "type" : "time"
+      },
+      "id" : "input_31d29e6056d544909b01b1c4a72e0503",
+      "token" : "ov_t"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "plain button, regular size.",
+        "label" : "Plain",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_8c25bfdbf7ce43a79f584f7940270022"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "regular",
+          "variant" : "plain"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_765b5bf7467e495b8af65d18cf64beea",
+      "token" : "btn_regular_plain"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "bordered button, regular size.",
+        "label" : "Bordered",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_8c25bfdbf7ce43a79f584f7940270022"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "regular",
+          "variant" : "bordered"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_bcb6e6b3f3d6457c83c99762888c57fc",
+      "token" : "btn_regular_bordered"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "tinted button, regular size.",
+        "label" : "Tinted",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_8c25bfdbf7ce43a79f584f7940270022"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "regular",
+          "variant" : "tinted"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_30e4091ad813451c9914bcbd7ff31020",
+      "token" : "btn_regular_tinted"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "filled button, regular size.",
+        "label" : "Filled",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_8c25bfdbf7ce43a79f584f7940270022"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "regular",
+          "variant" : "filled"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_97abc92c2ce04fd0b53cc2316a976c8a",
+      "token" : "btn_regular_filled"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "destructive button, regular size.",
+        "label" : "Destructive",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_8c25bfdbf7ce43a79f584f7940270022"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "regular",
+          "variant" : "destructive"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_9ad75846e8dc4e33b4d18f9da08530ad",
+      "token" : "btn_regular_destructive"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "plain button, compact size.",
+        "label" : "Plain",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_7f87d750cb1747a4979f0600b0c007e6"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "compact",
+          "variant" : "plain"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_cecf7d41dc4948a8a59862197d3e37d0",
+      "token" : "btn_compact_plain"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "bordered button, compact size.",
+        "label" : "Bordered",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_7f87d750cb1747a4979f0600b0c007e6"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "compact",
+          "variant" : "bordered"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_578c420693e64bf9b1e8ca9f5f416983",
+      "token" : "btn_compact_bordered"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "tinted button, compact size.",
+        "label" : "Tinted",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_7f87d750cb1747a4979f0600b0c007e6"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "compact",
+          "variant" : "tinted"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_fb7c3ebf1bcf48c6a8eebed334f3cba0",
+      "token" : "btn_compact_tinted"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "filled button, compact size.",
+        "label" : "Filled",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_7f87d750cb1747a4979f0600b0c007e6"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "compact",
+          "variant" : "filled"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_15c166170b3c4b2bb6e4e4a7732785bf",
+      "token" : "btn_compact_filled"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "help" : "destructive button, compact size.",
+        "label" : "Destructive",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_7f87d750cb1747a4979f0600b0c007e6"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "size" : "compact",
+          "variant" : "destructive"
+        },
+        "symbol" : "bolt.fill",
+        "type" : "button"
+      },
+      "id" : "input_8e47d810335a49a1b3b49b23cb0564c1",
+      "token" : "btn_compact_destructive"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Settings",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "label" : "icon",
+          "variant" : "plain"
+        },
+        "symbol" : "gearshape",
+        "type" : "button"
+      },
+      "id" : "input_20e33eab9c404d3fa3c513d8f9f47f99",
+      "token" : "btn_settings"
+    },
+    {
+      "config" : {
+        "destructive" : true,
+        "display_location" : "inline",
+        "label" : "Delete all",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "label" : "icon"
+        },
+        "symbol" : "trash",
+        "type" : "button"
+      },
+      "id" : "input_9a40eed898854cf6984f133723f201c8",
+      "token" : "btn_trash"
+    },
+    {
+      "config" : {
+        "default" : "false",
+        "display_location" : "inline",
+        "help" : "Toggle: flips $live_on$ between true and false.",
+        "label" : "Live",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "toggle" : true,
+          "variant" : "bordered"
+        },
+        "symbol" : "dot.radiowaves.left.and.right",
+        "type" : "button"
+      },
+      "id" : "input_e8d1129e4e6c40b180e4b6103b940ddc",
+      "token" : "live_on"
+    },
+    {
+      "config" : {
+        "default" : "3",
+        "display_location" : "inline",
+        "help" : "Drives the Inbox badge. 0 or empty hides it; over 99 shows 99+.",
+        "label" : "Pending",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_4fea9c3dbb4f41b98d59754f2afda6c4",
+      "token" : "pending"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Inbox",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "style" : {
+          "badge" : "pending",
+          "variant" : "tinted"
+        },
+        "symbol" : "tray",
+        "type" : "button"
+      },
+      "id" : "input_dad2cfec8b5b40438ba4a3d8dd069701",
+      "token" : "btn_inbox"
+    },
+    {
+      "config" : {
+        "choices" : [
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Production",
+            "value" : "prod"
+          },
+          {
+            "default" : false,
+            "disabled" : false,
+            "label" : "Staging",
+            "value" : "stage"
+          }
+        ],
+        "default" : "prod",
+        "display_location" : "inline",
+        "help" : "Which environment the searches target. Shows token, default and how many searches use it.",
+        "label" : "Env",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "dropdown"
+      },
+      "id" : "input_231120ff2e2e49a4acc94037a9941bae",
+      "token" : "help_env"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Run",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_4aa5725601964b769502896c5ccec202"
+          }
+        },
+        "search_when_changed" : true,
+        "symbol" : "play.fill",
+        "type" : "button"
+      },
+      "id" : "input_2df953c6388642f19b1d2ad9bef91502",
+      "token" : "cb_run_spl"
+    },
+    {
+      "config" : {
+        "default" : "index=main sourcetype=access_combined status>=500\n| stats count by host\n| statz count\n| sort -count",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "query",
+          "language" : "spl",
+          "required" : false,
+          "submit_button" : "input_2df953c6388642f19b1d2ad9bef91502",
+          "time_input" : "input_a848d22f2ece42e7932e605480c889aa"
+        },
+        "help" : "SPL command bar showcase.",
+        "label" : "SPL",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_4aa5725601964b769502896c5ccec202"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_af8f56bb3dda496ab17fa19ed06cbc64",
+      "token" : "cb_q_spl"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Run",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_c020d9d8a37e4d219ad04a3425531128"
+          }
+        },
+        "search_when_changed" : true,
+        "symbol" : "play.fill",
+        "type" : "button"
+      },
+      "id" : "input_d378427bd6864d6cbdf7555fdd4217ab",
+      "token" : "cb_run_tql"
+    },
+    {
+      "config" : {
+        "default" : "where status >= 500 | stats count by host | sort -count",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "query",
+          "language" : "tql",
+          "required" : false,
+          "submit_button" : "input_d378427bd6864d6cbdf7555fdd4217ab"
+        },
+        "help" : "TQL command bar showcase.",
+        "label" : "TQL",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_c020d9d8a37e4d219ad04a3425531128"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_31780ff2ab874829b16e697eb1488896",
+      "token" : "cb_q_tql"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Run",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_d5a6fede6fd04570b7991fba17e0f6dd"
+          }
+        },
+        "search_when_changed" : true,
+        "symbol" : "play.fill",
+        "type" : "button"
+      },
+      "id" : "input_0264c72b94774a2db8a208f909e419c7",
+      "token" : "cb_run_sql"
+    },
+    {
+      "config" : {
+        "default" : "SELECT host, COUNT(*) AS n FROM ds_web WHERE env = '$help_env$' GROUP BY host",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "query",
+          "language" : "sql",
+          "required" : false,
+          "submit_button" : "input_0264c72b94774a2db8a208f909e419c7"
+        },
+        "help" : "SQL command bar showcase.",
+        "label" : "SQL",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_d5a6fede6fd04570b7991fba17e0f6dd"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_1e6fdf2b873349149979460ddc9a6eb0",
+      "token" : "cb_q_sql"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Run",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_90372eab137d4537b98fb6704bb55fb7"
+          }
+        },
+        "search_when_changed" : true,
+        "symbol" : "play.fill",
+        "type" : "button"
+      },
+      "id" : "input_85220a5e80484799b8478343965a1ead",
+      "token" : "cb_run_promql"
+    },
+    {
+      "config" : {
+        "default" : "sum(rate(http_requests_total{job=\"api\"}[5m])) by (instance)",
+        "display_location" : "inline",
+        "entry" : {
+          "kind" : "query",
+          "language" : "promql",
+          "required" : false,
+          "submit_button" : "input_85220a5e80484799b8478343965a1ead"
+        },
+        "help" : "PromQL command bar showcase.",
+        "label" : "PromQL",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_90372eab137d4537b98fb6704bb55fb7"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_4af49fe5fdb54bdc80fbd3d85ef3fe95",
+      "token" : "cb_q_promql"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Time",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_4aa5725601964b769502896c5ccec202"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_a848d22f2ece42e7932e605480c889aa",
+      "token" : "cb_time_spl"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Host",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_0d02b115899a41fea71c6b435e9a3963",
+      "token" : "jump_host"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Side",
+        "location" : {
+          "container" : {
+            "containerID" : "sidebar",
+            "type" : {
+              "sidebar" : {
+
+              }
+            }
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_6df1c726d3a847ec90d9859a6903a053",
+      "token" : "jump_side"
+    },
+    {
+      "config" : {
+        "display_location" : "inline",
+        "label" : "Hidden",
+        "location" : {
+          "visualization" : {
+            "vizID" : "viz_365ebbfc2612495597139e8906e8b61c"
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_ee9b32b1e8cd44eabffcd7581a543314",
+      "token" : "jump_hidden"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Input Chips Showcase",
+  "provenance" : {
+    "imported_at" : "2026-10-13T08:58:11Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7fbb577205684d7f92c6bbbbf5e38c7b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f89a5f23c4b04dc7844883fc986f315e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a20e47d5a79e40a5887a078f84f5613c",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "What to look at"
+              },
+              "id" : "viz_f89a5f23c4b04dc7844883fc986f315e",
+              "layer" : 1,
+              "options" : {
+                "content" : "**Top strip**: every type as a chip, wrapping — `Env · prod ⌄`, `Hosts · web-01 +2 ⌄`, `● Errors only`, `Severity · All ⌄` (radio), `Search · [ ] ×`, `Limit · [100]` (typed integer), `◷ Last 6 hours`, and **Notes** (multi-line → keeps label above, min width).\n\n**Toolbar** (window toolbar): first three inputs are chips; the 4th sits in the toolbar's **Inputs** menu (legacy, unchanged).\n\n**Sidebar**: Team \/ Mode keep the label-above look (unchanged).\n\nTurn **auto-run off** to see the staged ● dot on chips until Run.",
+                "render_mode" : "markdown"
+              },
+              "title" : "What to look at",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d19c9442706342d08649a35ce96bfa8c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_56543dfed22e4b5e9d0621e1bf3d3f8f",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Token values"
+              },
+              "id" : "viz_d19c9442706342d08649a35ce96bfa8c",
+              "layer" : 1,
+              "options" : {
+                "content" : "**Live token values** — change any chip and watch this update.\n\n| token | value |\n|---|---|\n| `env` | `$env$` |\n| `hosts` | `$hosts$` |\n| `errors_only` | `$errors_only$` |\n| `severity` | `$severity$` |\n| `search` | `$search$` |\n| `limit` | `$limit$` |\n| `t.earliest` | `$t.earliest$` |\n| `t.latest` | `$t.latest$` |\n| `notes` | `$notes$` |\n| `region` | `$region$` |\n| `live` | `$live$` |\n| `tb_time.earliest` | `$tb_time.earliest$` |\n| `sb_team` | `$sb_team$` |\n| `sb_mode` | `$sb_mode$` |\n| `band_region` | `$band_region$` |\n| `band_split` | `$band_split$` |\n| `band_time.earliest` | `$band_time.earliest$` |\n| `wide_region` | `$wide_region$` |\n| `wide_split` | `$wide_split$` |\n| `wide_time.earliest` | `$wide_time.earliest$` |\n| `n_env` | `$n_env$` |\n| `n_host` | `$n_host$` |\n| `n_split` | `$n_split$` |\n| `n_errors` | `$n_errors$` |\n| `n_time.earliest` | `$n_time.earliest$` |\n| `untitled_pick` | `$untitled_pick$` |\n| `untitled_flag` | `$untitled_flag$` |\n| `typed_num` | `$typed_num$` |\n| `typed_date` | `$typed_date$` |\n| `typed_secure` | `$typed_secure$` |",
+                "render_mode" : "markdown"
+              },
+              "title" : "Token values",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6c61cb847eef4af59d34d515397e5a22"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ca001b613b1c45f78ebe11caab455dc8",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_6c61cb847eef4af59d34d515397e5a22",
+              "layer" : 1,
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "1 · Top strip, toolbar, sidebar"
+    },
+    {
+      "id" : "row_271bdc03c7cc4cb3a26e32318d5bac74",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f4f3e78283e444b3aed83c15fe95e630"
+              ],
+              "width" : 6
+            },
+            {
+              "id" : "col_1",
+              "viz_ids" : [
+                "viz_5431e481aca3429997af90a0920ed8ba"
+              ],
+              "width" : 6
+            }
+          ],
+          "id" : "panel_01d0563417cf4ae0968fc2058464729e",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Requests by status — two vizzes",
+          "visualizations" : [
+            {
+              "id" : "viz_f4f3e78283e444b3aed83c15fe95e630",
+              "layer" : 1,
+              "options" : {
+                "content" : "**Viz A** — this panel holds two vizzes, so its inputs sit in the **panel title band**, right of the title.\n\nNarrow the window: chips collapse into **+N**; click it for the overflow row.",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            },
+            {
+              "id" : "viz_5431e481aca3429997af90a0920ed8ba",
+              "layer" : 1,
+              "options" : {
+                "content" : "**Viz B** — band values: region `$band_region$`, split `$band_split$`, from `$band_time.earliest$`.",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "2 · Panel title band (multi-viz panel)"
+    },
+    {
+      "id" : "row_3831ec69d0fb4c00b2dbe62b2f363a65",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_0eb07f0186624dcaa5b0b1119f909199"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d29dc67dbb454e128150d60adefd5866",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Errors by host (single viz, wide)"
+              },
+              "id" : "viz_0eb07f0186624dcaa5b0b1119f909199",
+              "layer" : 1,
+              "options" : {
+                "content" : "Single-viz panel: chips sit **in the viz's own title bar**, right of the title.\n\nregion `$wide_region$` · split `$wide_split$` · from `$wide_time.earliest$`\n\nHover the title bar: ⤢ maximise appears after the chips.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Errors by host (single viz, wide)",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9f0e356c2bf047948d9b3051464af13f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5cf5810072cf4fa3a89bbd41cde03404",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Error rate (narrow)"
+              },
+              "id" : "viz_9f0e356c2bf047948d9b3051464af13f",
+              "layer" : 1,
+              "options" : {
+                "content" : "**2.4%**\n\nNarrow single-viz panel with 5 inputs → most collapse into **+N**; the title keeps its room.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Error rate (narrow)",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "3 · Single-viz title bar + overflow"
+    },
+    {
+      "id" : "row_6661daf9f8244aa787d345012d831fdc",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_201af70149ca43ba9a2d71cba31051b8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_e5b4ea7d7fb8459ab53eb1170f7df1e3",
+          "layout" : {
+            "panel_width" : 5
+          },
+          "visualizations" : [
+            {
+              "id" : "viz_201af70149ca43ba9a2d71cba31051b8",
+              "layer" : 1,
+              "options" : {
+                "content" : "**Untitled single viz** — no title bar, so its chips stay in a **row above** the content.\n\npick `$untitled_pick$` · flag `$untitled_flag$`",
+                "render_mode" : "markdown"
+              },
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_b1e5263f5600421f8406d5b72f93bce7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5a0e129135514c44875c6d07778ea994",
+          "layout" : {
+            "panel_width" : 7
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Typed fields + a long value"
+              },
+              "id" : "viz_b1e5263f5600421f8406d5b72f93bce7",
+              "layer" : 1,
+              "options" : {
+                "content" : "Typed single-line chips: number, date, secure. The **Long** dropdown's value is 60+ characters — it ellipsises at 240pt, label stays whole.\n\nnum `$typed_num$` · date `$typed_date$`",
+                "render_mode" : "markdown"
+              },
+              "title" : "Typed fields + a long value",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "4 · Untitled row, typed chips, long values"
+    },
+    {
+      "id" : "row_84a3a5432b7d43e984accfc9668ee369",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6dbeb133844e487ea21c9c5e86a9a42a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4a8feb98202745cebd554ec6ec121b08",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Time override (single viz)"
+              },
+              "id" : "viz_6dbeb133844e487ea21c9c5e86a9a42a",
+              "layer" : 1,
+              "options" : {
+                "content" : "**5 · Time — viz overrides the dashboard.** This viz has its own time chip (`ov_t`, default Last 24 hours). The dashboard time is the top-strip **Time** (`t`). When they differ, the chip shows an amber **override** tag.\n\nviz from `$ov_t.earliest$` · dashboard from `$t.earliest$`\n\nTry the toolbar capsule `◷ │ ‹ │ › │ ⟳` (shift, ⌥ zoom, refresh → Live), the popover chips (Today = live \"Today so far\"), From\/To `-1d@d` → `@d` = Yesterday, and Recent.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Time override (single viz)",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "5 · Time cluster + override"
+    },
+    {
+      "id" : "row_ce9a7f0d5e8a4be28f944f0a77773447",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8c25bfdbf7ce43a79f584f7940270022"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Showcase Variants · regular: hover\/click the ⓘ to see this text.",
+          "id" : "panel_2688eb8efdb14a498ca8a4d2cdf3aae3",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Variants · regular",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Variants · regular"
+              },
+              "id" : "viz_8c25bfdbf7ce43a79f584f7940270022",
+              "layer" : 1,
+              "options" : {
+                "content" : "**6a** — plain · bordered · tinted · filled · destructive at **regular** size.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Variants · regular",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7f87d750cb1747a4979f0600b0c007e6"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Showcase Variants · compact: hover\/click the ⓘ to see this text.",
+          "id" : "panel_3991c78261e34f04b903fcdfcb7b3d77",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Variants · compact",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Variants · compact"
+              },
+              "id" : "viz_7f87d750cb1747a4979f0600b0c007e6",
+              "layer" : 1,
+              "options" : {
+                "content" : "**6b** — the same five variants at **compact** size.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Variants · compact",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_365ebbfc2612495597139e8906e8b61c"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Showcase Icon · toggle · badge: hover\/click the ⓘ to see this text.",
+          "id" : "panel_bccb252612f1429d9dc940b2831f14f5",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Icon · toggle · badge",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Icon · toggle · badge"
+              },
+              "id" : "viz_365ebbfc2612495597139e8906e8b61c",
+              "layer" : 1,
+              "options" : {
+                "content" : "**6c** — icon-only buttons (hover for the tooltip), a **toggle** (`live_on` flips true\/false), a **badge** button counting `$pending$` (change the Pending number), and an Env dropdown with help (click its ⓘ).",
+                "render_mode" : "markdown"
+              },
+              "title" : "Icon · toggle · badge",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9d2fdd6fb332413d88f5bedd6412fb34"
+              ],
+              "width" : 12
+            }
+          ],
+          "description" : "Showcase Viz ⓘ: hover\/click the ⓘ to see this text.",
+          "id" : "panel_22e6da74a11545828f4165a872b5f295",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Viz ⓘ",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "Viz ⓘ"
+              },
+              "id" : "viz_9d2fdd6fb332413d88f5bedd6412fb34",
+              "layer" : 1,
+              "options" : {
+                "content" : "**6d** — this panel has a description, so the title shows an ⓘ: description, data source, last updated, health.",
+                "render_mode" : "markdown"
+              },
+              "title" : "Viz ⓘ",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "6 · Buttons + ⓘ"
+    },
+    {
+      "id" : "row_e5f3c78f943f4f88818a99e4df550446",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4aa5725601964b769502896c5ccec202"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_79f36a797afe429ea3e6d75decf3b804",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "SPL command bar",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "SPL command bar"
+              },
+              "id" : "viz_4aa5725601964b769502896c5ccec202",
+              "layer" : 1,
+              "options" : {
+                "content" : "**7 · SPL** — click the pill to expand over the dashboard. ⏎ runs, ⇧⏎ newline, Esc collapses. Errors block Run (⌥-click forces).",
+                "render_mode" : "markdown"
+              },
+              "title" : "SPL command bar",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c020d9d8a37e4d219ad04a3425531128"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_42dcf3889c144d21b96236a6aaad501e",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "TQL command bar",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "TQL command bar"
+              },
+              "id" : "viz_c020d9d8a37e4d219ad04a3425531128",
+              "layer" : 1,
+              "options" : {
+                "content" : "**7 · TQL** — click the pill to expand over the dashboard. ⏎ runs, ⇧⏎ newline, Esc collapses. Errors block Run (⌥-click forces).",
+                "render_mode" : "markdown"
+              },
+              "title" : "TQL command bar",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d5a6fede6fd04570b7991fba17e0f6dd"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_9c8a4209727b4d9da34e1fe74f2fcf88",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "SQL command bar",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "SQL command bar"
+              },
+              "id" : "viz_d5a6fede6fd04570b7991fba17e0f6dd",
+              "layer" : 1,
+              "options" : {
+                "content" : "**7 · SQL** — click the pill to expand over the dashboard. ⏎ runs, ⇧⏎ newline, Esc collapses. Errors block Run (⌥-click forces).",
+                "render_mode" : "markdown"
+              },
+              "title" : "SQL command bar",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_90372eab137d4537b98fb6704bb55fb7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3ecf375e39aa4e90952c925202438f35",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "PromQL command bar",
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "PromQL command bar"
+              },
+              "id" : "viz_90372eab137d4537b98fb6704bb55fb7",
+              "layer" : 1,
+              "options" : {
+                "content" : "**7 · PromQL** — click the pill to expand over the dashboard. ⏎ runs, ⇧⏎ newline, Esc collapses. Errors block Run (⌥-click forces).",
+                "render_mode" : "markdown"
+              },
+              "title" : "PromQL command bar",
+              "type" : "text",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "7 · Command bar"
+    }
+  ]
+}

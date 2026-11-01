@@ -1,0 +1,214 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f01",
+      "query" : {
+        "name" : "btc_ticker_24h",
+        "refresh_seconds" : 5,
+        "sql" : {
+          "query" : "SELECT symbol, lastPrice, priceChange, priceChangePercent, highPrice, lowPrice FROM ticker_24hr WHERE symbol = 'BTCUSDT'"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_b2c3d4e5f60718293a4b5c6d7e8f0a12",
+      "query" : {
+        "name" : "btc_kline_1m_60",
+        "refresh_seconds" : 15,
+        "sql" : {
+          "query" : "SELECT time, close FROM klines(symbol := 'BTCUSDT', interval := '1m', limit := 60)"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_c3d4e5f60718293a4b5c6d7e8f0a1b23",
+      "query" : {
+        "name" : "btc_last_20_trades",
+        "refresh_seconds" : 5,
+        "sql" : {
+          "query" : "SELECT time, id, price, qty, isBuyerMaker FROM trades(symbol := 'BTCUSDT', limit := 20) ORDER BY id DESC LIMIT 20"
+        },
+        "time_mode" : {
+          "mode" : "none"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live BTCUSDT: price + 24h change, recent price sparkline, last 20 ticks.",
+  "id" : "dash_1c43a415aa704e8bab5f521538901b73",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Bench b2 r1",
+  "provenance" : {
+    "imported_at" : "2026-10-30T12:56:50Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d4e5f60718293a4b5c6d7e8f0a1b2c34",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f60718293a4b5c6d7e8f0a1b2c3d4e56"
+              ],
+              "width" : 12
+            },
+            {
+              "id" : "col_1",
+              "viz_ids" : [
+                "viz_0718293a4b5c6d7e8f0a1b2c3d4e5f67"
+              ],
+              "width" : 6
+            },
+            {
+              "id" : "col_2",
+              "viz_ids" : [
+                "viz_18293a4b5c6d7e8f0a1b2c3d4e5f6078"
+              ],
+              "width" : 6
+            }
+          ],
+          "id" : "panel_e5f60718293a4b5c6d7e8f0a1b2c3d45",
+          "layout" : {
+            "panel_width" : 4
+          },
+          "title" : "Price & 24h change",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f01",
+              "id" : "viz_f60718293a4b5c6d7e8f0a1b2c3d4e56",
+              "layer" : 1,
+              "options" : {
+                "fields" : "lastPrice",
+                "unit" : "USDT"
+              },
+              "title" : "BTCUSDT last price",
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f01",
+              "id" : "viz_0718293a4b5c6d7e8f0a1b2c3d4e5f67",
+              "layer" : 1,
+              "options" : {
+                "fields" : "priceChangePercent",
+                "unit" : "%"
+              },
+              "title" : "24h change %",
+              "type" : "single_value",
+              "width" : 12
+            },
+            {
+              "data_source_ref" : "ds_a1b2c3d4e5f60718293a4b5c6d7e8f01",
+              "id" : "viz_18293a4b5c6d7e8f0a1b2c3d4e5f6078",
+              "layer" : 1,
+              "options" : {
+                "fields" : "priceChange",
+                "unit" : "USDT"
+              },
+              "title" : "24h change",
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3a4b5c6d7e8f0a1b2c3d4e5f6071829a"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_293a4b5c6d7e8f0a1b2c3d4e5f607189",
+          "layout" : {
+            "panel_width" : 8
+          },
+          "title" : "Recent price (1m closes, last 60)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "kind" : "line"
+                      }
+                    ]
+                  }
+                ],
+                "seriesFields" : [
+                  "close"
+                ],
+                "timeField" : "time"
+              },
+              "data_source_ref" : "ds_b2c3d4e5f60718293a4b5c6d7e8f0a12",
+              "id" : "viz_3a4b5c6d7e8f0a1b2c3d4e5f6071829a",
+              "layer" : 1,
+              "title" : "BTCUSDT sparkline",
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "BTCUSDT"
+    },
+    {
+      "id" : "row_4b5c6d7e8f0a1b2c3d4e5f6071829a3b",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6d7e8f0a1b2c3d4e5f6071829a3b4c5d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5c6d7e8f0a1b2c3d4e5f6071829a3b4c",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Last 20 ticks (newest first)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_c3d4e5f60718293a4b5c6d7e8f0a1b23",
+              "id" : "viz_6d7e8f0a1b2c3d4e5f6071829a3b4c5d",
+              "layer" : 1,
+              "options" : {
+                "fields" : "time,id,price,qty,isBuyerMaker"
+              },
+              "title" : "Last 20 BTCUSDT trades",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Ticks"
+    }
+  ]
+}
