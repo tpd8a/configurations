@@ -1,15 +1,125 @@
 {
-  "authType" : "apiKey",
-  "baseUrl" : "",
-  "config_version" : 2,
+  "authType" : "none",
+  "baseUrl" : "https:\/\/query1.finance.yahoo.com",
   "headers" : {
-
+    "Accept" : "application\/json",
+    "User-Agent" : "Mozilla\/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/17.0 Safari\/605.1.15"
   },
   "icon" : "",
   "id" : "yahoo-finance",
   "name" : "Yahoo Finance",
   "streams" : [
+    {
+      "columns" : [
 
+      ],
+      "dynamicSchema" : true,
+      "fieldManifest" : {
+        "entries" : [
+          {
+            "name" : "timestamp",
+            "type" : "time",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "timestamp"
+            ]
+          },
+          {
+            "name" : "open",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "open"
+            ]
+          },
+          {
+            "name" : "high",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "high"
+            ]
+          },
+          {
+            "name" : "low",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "low"
+            ]
+          },
+          {
+            "name" : "close",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "close"
+            ]
+          },
+          {
+            "name" : "volume",
+            "valuePath" : [
+              "chart",
+              "result",
+              "0",
+              "indicators",
+              "quote",
+              "0",
+              "volume"
+            ]
+          }
+        ],
+        "path" : [
+
+        ]
+      },
+      "format" : "json",
+      "id" : "chart",
+      "method" : "GET",
+      "name" : "Chart (OHLCV history)",
+      "path" : "\/v8\/finance\/chart\/{{ config.symbol }}",
+      "userParams" : [
+        {
+          "key" : "symbol",
+          "label" : "Symbol",
+          "location" : "path",
+          "required" : true,
+          "role" : "value"
+        },
+        {
+          "key" : "range",
+          "label" : "Range",
+          "location" : "query",
+          "required" : false,
+          "role" : "value"
+        },
+        {
+          "key" : "interval",
+          "label" : "Interval",
+          "location" : "query",
+          "required" : false,
+          "role" : "value"
+        }
+      ]
+    }
   ],
   "version" : 1
 }
