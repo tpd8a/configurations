@@ -1,0 +1,37 @@
+[
+  {
+    "base_url" : "http:\/\/pop-os.local:9090",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/-\/healthy"
+    },
+    "id" : "C3444D46-CB79-4EB4-9BE5-ED726709828F",
+    "name" : "Prometheus",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "prometheus"
+  },
+  {
+    "base_url" : "https:\/\/pop-os.local:8089",
+    "config_version" : 2,
+    "health_check" : {
+      "enabled" : true,
+      "interval_seconds" : 60,
+      "path" : "\/services\/server\/health\/splunkd"
+    },
+    "id" : "E0083C14-3BF6-4721-8B58-DC624E092EAB",
+    "name" : "Splunk",
+    "options" : {
+      "default_stream_mode" : "preview",
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "splunk"
+  }
+]
