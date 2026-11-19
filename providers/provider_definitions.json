@@ -35,6 +35,11 @@
     "config_version" : 2,
     "id" : "44FEC2C5-A1E5-4560-9FB7-E06838408D61",
     "name" : "GitHub",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
     "specId" : "github",
     "specVersion" : 1,
     "type" : "custom"
