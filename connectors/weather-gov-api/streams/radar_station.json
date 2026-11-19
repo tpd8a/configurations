@@ -1,0 +1,64 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns metadata about a given radar station",
+  "format" : "json",
+  "id" : "radar_station",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "radar_station",
+  "path" : "\/radar\/stations\/{stationId}",
+  "userParams" : [
+    {
+      "default" : "TEWR",
+      "key" : "stationId",
+      "label" : "Radar station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "reportingHost",
+      "label" : "Show RDA and latency info from specific reporting host",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "host",
+      "label" : "Show latency info from specific LDM host",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

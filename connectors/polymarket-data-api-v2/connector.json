@@ -1,0 +1,157 @@
+{
+  "authType" : "none",
+  "baseUrl" : "https:\/\/data-api.polymarket.com",
+  "commonDefaults" : {
+    "user" : "0x6ac5bb06a9eb05641fd5e82640268b92f3ab4b6e"
+  },
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "",
+  "id" : "polymarket-data-api-v2",
+  "name" : "Polymarket Data API v2",
+  "parameterIndex" : {
+    "connectorId" : "polymarket-data-api-v2",
+    "entries" : [
+      {
+        "generators" : [
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/v2\/biggest-winners",
+            "evidence" : "Field 'condition_id' on generator is the id of consumer param 'condition'",
+            "field" : "condition_id"
+          },
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/v2\/oi",
+            "evidence" : "Field 'condition_id' on generator is the id of consumer param 'condition'",
+            "field" : "condition_id"
+          },
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/v2\/positions",
+            "evidence" : "Field 'condition_id' on generator is the id of consumer param 'condition'",
+            "field" : "condition_id"
+          }
+        ],
+        "paramKey" : "condition"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/biggest-winners",
+            "evidence" : "Field 'event_id' on generator exactly matches consumer param key",
+            "field" : "event_id"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/positions",
+            "evidence" : "Field 'event_id' on generator exactly matches consumer param key",
+            "field" : "event_id"
+          }
+        ],
+        "paramKey" : "event_id"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/trades",
+            "evidence" : "Field 'side' on generator exactly matches consumer param key",
+            "field" : "side"
+          }
+        ],
+        "paramKey" : "side"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/positions",
+            "evidence" : "Field 'status' on generator exactly matches consumer param key",
+            "field" : "status"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/resolutions",
+            "evidence" : "Field 'status' on generator exactly matches consumer param key",
+            "field" : "status"
+          }
+        ],
+        "paramKey" : "status"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/v2\/trades",
+            "evidence" : "Field 'title' on generator exactly matches consumer param key",
+            "field" : "title"
+          }
+        ],
+        "paramKey" : "title"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/v2\/positions",
+            "evidence" : "Field 'token_id' on generator exactly matches consumer param key; param is required",
+            "field" : "token_id"
+          },
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/v2\/trades",
+            "evidence" : "Field 'token_id' on generator exactly matches consumer param key; param is required",
+            "field" : "token_id"
+          }
+        ],
+        "paramKey" : "token_id"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/v2\/biggest-winners",
+            "evidence" : "Field 'user_id' on generator is the id of consumer param 'user'",
+            "field" : "user_id"
+          },
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/v2\/leaderboard",
+            "evidence" : "Field 'user_id' on generator is the id of consumer param 'user'",
+            "field" : "user_id"
+          }
+        ],
+        "paramKey" : "user"
+      }
+    ]
+  },
+  "sourceURL" : "https:\/\/data-api.polymarket.com\/v2\/openapi.json",
+  "streams" : [
+    "get_approvals",
+    "get_biggest_winners",
+    "get_builders_leaderboard",
+    "get_builders_volume",
+    "get_leaderboard",
+    "get_oi",
+    "get_positions",
+    "get_resolutions",
+    "get_status",
+    "get_trades",
+    "get_user_pnl_v2",
+    "get_activity",
+    "get_combos",
+    "get_holders",
+    "get_live_volume",
+    "get_combo_positions",
+    "get_user_stats",
+    "get_user_volume",
+    "get_value",
+    "get_prices_history",
+    "get_tokens"
+  ],
+  "version" : 1
+}

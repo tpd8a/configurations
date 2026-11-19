@@ -3,35 +3,30 @@
   "data_sources" : [
     {
       "id" : "ds_ef8fb2dcebc847c98a509f148b2033c6",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Dataflow Test CSV",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "dataflow_test.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 3,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'dataflow_test.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_30c6fa96241f4353804a36cbb768d943",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_5BAAE45F",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "txt",
-            "maxRows" : "10000",
-            "path" : "*"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT _source, _offset, _raw AS line FROM workspace.lines(path := '*', max_events := 10000)"
+        },
+        "type" : "ds.sql"
       }
     },
     {

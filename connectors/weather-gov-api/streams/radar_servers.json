@@ -1,0 +1,102 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "@type",
+      "type" : "string"
+    },
+    {
+      "name" : "active",
+      "type" : "boolean"
+    },
+    {
+      "name" : "aggregate",
+      "type" : "boolean"
+    },
+    {
+      "name" : "collectionTime",
+      "type" : "string"
+    },
+    {
+      "name" : "command",
+      "type" : "string"
+    },
+    {
+      "name" : "hardware",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "ingestHost",
+      "type" : "string"
+    },
+    {
+      "name" : "ldm",
+      "type" : "string"
+    },
+    {
+      "name" : "locked",
+      "type" : "boolean"
+    },
+    {
+      "name" : "network",
+      "type" : "string"
+    },
+    {
+      "name" : "ping",
+      "type" : "string"
+    },
+    {
+      "name" : "primary",
+      "type" : "boolean"
+    },
+    {
+      "name" : "radarNetworkUp",
+      "type" : "boolean"
+    },
+    {
+      "name" : "reportingHost",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of radar servers",
+  "format" : "json",
+  "id" : "radar_servers",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 6,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "radar_servers",
+  "path" : "\/radar\/servers",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "reportingHost",
+      "label" : "Show records from specific reporting host",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

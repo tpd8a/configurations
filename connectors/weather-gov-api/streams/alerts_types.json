@@ -1,0 +1,32 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "eventTypes",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of alert types",
+  "format" : "json",
+  "id" : "alerts_types",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "alerts_types",
+  "path" : "\/alerts\/types",
+  "userParams" : [
+
+  ]
+}

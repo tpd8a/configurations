@@ -1,0 +1,295 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "archived",
+      "type" : "boolean"
+    },
+    {
+      "name" : "avg_price",
+      "type" : "number"
+    },
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "current_price",
+      "type" : "number"
+    },
+    {
+      "name" : "current_size",
+      "type" : "number"
+    },
+    {
+      "name" : "current_value",
+      "type" : "number"
+    },
+    {
+      "name" : "end_date",
+      "type" : "string"
+    },
+    {
+      "name" : "entry_cost_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "entry_fees_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "event_id",
+      "type" : "string"
+    },
+    {
+      "name" : "event_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "first_entry_at",
+      "type" : "integer"
+    },
+    {
+      "name" : "icon",
+      "type" : "string"
+    },
+    {
+      "name" : "last_event_at",
+      "type" : "integer"
+    },
+    {
+      "name" : "mergeable",
+      "type" : "boolean"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "negative_risk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "opposite_outcome",
+      "type" : "string"
+    },
+    {
+      "name" : "opposite_token_id",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "percent_pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "percent_realized_pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "proxy_wallet",
+      "type" : "string"
+    },
+    {
+      "name" : "realized_pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "redeemable",
+      "type" : "boolean"
+    },
+    {
+      "name" : "slug",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    },
+    {
+      "name" : "token_id",
+      "type" : "string"
+    },
+    {
+      "name" : "total_cost_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "total_pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "total_size",
+      "type" : "number"
+    },
+    {
+      "name" : "unrealized_pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "verified",
+      "type" : "boolean"
+    }
+  ],
+  "description" : "A keyset page of positions in the standard\n`{ data, pagination }` envelope. One route serves a user's open book, their\nclosed book (`status=CLOSED`), and a market's holders (market anchor).\n\nAt least one of `user`\/`condition` is required. Supplying both anchors on the\nuser and applies `condition` as a narrowing filter.\n\n`status` defaults to `OPEN`, which is the **superset**: a\nsettled-but-unredeemed winner still holds its tokens, so it is an open\nposition whose condition resolved. `REDEEMABLE` narrows to that subset, and\neach row echoes its own `status`.\n\nResume contract: a `next_cursor` binds the `status`\/`sortBy`\/`sortDirection`\nthe walk started with. To follow it, send `cursor` together with the same\n`user` or `condition` anchor used on the first page; a bare `?cursor=` request\nreturns 400. The token is the authority on the spine and the total order,\nand the handler adopts all three from it. Restating them is allowed and\nmust agree;\n**explicitly** contradicting one is a 400, because replaying an anchor under\na different spine or order would silently walk a different result set.\nOmitting them is not a contradiction; a defaulted `status` is the absence of\na choice, not a request for `OPEN`.\nUser CLOSED residual sorts bind their realized-PnL ranking in the signed\ncursor kind. Earlier cursors for those sorts return 400 and require restarting\npagination without `cursor`, because their numeric anchor has ambiguous units.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_positions",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "400: {\"error\":\"required query param 'user' or 'condition' not provided\",\"code\":\"invalid_request\",\"retryable\":false,\"trace_id\"",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "List positions for a user or market",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/positions",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The wallet to anchor on. At least one of `user`\/`condition` is required.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Condition id(s), comma-separated (at most 20 distinct values). With\n`user`, narr",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied (the cursor's size wins).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`. It\ncarries the p",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "OPEN",
+      "key" : "status",
+      "label" : "One of `OPEN`, `REDEEMABLE`, `REDEEMABLE_LOST`, `MERGEABLE`, or `CLOSED`;\ndefaul",
+      "location" : "query",
+      "options" : [
+        "OPEN",
+        "REDEEMABLE",
+        "REDEEMABLE_LOST",
+        "MERGEABLE",
+        "CLOSED"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "event_id",
+      "label" : "Event id(s), comma-separated (at most 20 distinct values).\nUser-anchored only.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "title",
+      "label" : "Case-insensitive market-title substring filter, honoured on every\nanchor and sta",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "TOKENS",
+      "key" : "filter_type",
+      "label" : "`CASH` or `TOKENS`; defaults to `TOKENS` (the \/v2\/trades-homogenized\nfilter pair",
+      "location" : "query",
+      "options" : [
+        "CASH",
+        "TOKENS"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "filter_amount",
+      "label" : "The filter floor. `TOKENS`: minimum CURRENT holding in shares\n(defaults to the 0",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "false",
+      "key" : "include_archived",
+      "label" : "Also include positions on archived markets; defaults to `false`.\n`OPEN`\/`REDEEMA",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sort_by",
+      "label" : "One of `CURRENT_VALUE`, `PRICE`, `TOKENS`, `UNREALIZED_PNL`,\n`REALIZED_PNL`, `TO",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Inclusive lower bound on `last_event_at`, epoch seconds; omit or `0` for\nunbound",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "Inclusive upper bound on `last_event_at`, epoch seconds; omit or `0` for\nunbound",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "default" : "DESC",
+      "key" : "sort_direction",
+      "label" : "`ASC` or `DESC`; defaults to `DESC`.",
+      "location" : "query",
+      "options" : [
+        "ASC",
+        "DESC"
+      ],
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

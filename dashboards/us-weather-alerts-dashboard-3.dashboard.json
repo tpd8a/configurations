@@ -1,0 +1,265 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_69facdffb1b5485d940987d05f84bfd7",
+      "query" : {
+        "name" : "Glossary Alerts",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT term, definition FROM weather.glossary ORDER BY term LIMIT 100"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2dee83a17b7b4e25a1f36d4f8876a54c",
+      "query" : {
+        "name" : "Total Alerts Count",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT COUNT(*) as total_alerts FROM weather.glossary"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_ba42637cfe5f4013972494103c71efd0",
+      "query" : {
+        "name" : "Alerts by Severity",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT \n  (SUM(term LIKE '%hurricane%' OR definition LIKE '%hurricane%') +\n   SUM(term LIKE '%tornado%' OR definition LIKE '%tornado%') +\n   SUM(term LIKE '%blizzard%' OR definition LIKE '%blizzard%')) as severe,\n  (SUM(term LIKE '%thunderstorm%' OR definition LIKE '%thunderstorm%') +\n   SUM(term LIKE '%rain%' OR definition LIKE '%rain%')) as moderate,\n  (SUM(term LIKE '%cloudy%' OR definition LIKE '%cloudy%') +\n   SUM(term LIKE '%fog%' OR definition LIKE '%fog%')) as mild\nFROM weather.glossary"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_72ff0c462697470fbb6dc330cd1ac283",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "US Weather Alerts Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-17T19:06:35Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d3f6e52a170843b3ad64ab3a350cde76",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_cadfdc1d19c9443e90a09f22a20fb358"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_cd92d05cbcad4d1bafa52978b72f98b6",
+          "layout" : {
+            "height" : 580,
+            "panel_width" : 6
+          },
+          "title" : "Active Weather Alerts (Glossary Terms)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_69facdffb1b5485d940987d05f84bfd7",
+              "id" : "viz_cadfdc1d19c9443e90a09f22a20fb358",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f27b5f57dced40788d0d4222497b77ba"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_c1d762d2312f4d548759026a63b87c91",
+          "layout" : {
+            "height" : 580,
+            "panel_width" : 6
+          },
+          "title" : "Active Alerts by Severity Level",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "FB166AFB-4194-4AFF-9934-5768BA0E729F",
+                        "kind" : "pie",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "pie",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "severe",
+                          "moderate",
+                          "mild"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_ba42637cfe5f4013972494103c71efd0",
+              "id" : "viz_f27b5f57dced40788d0d4222497b77ba",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none",
+                "yAxisUnit" : "percent"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

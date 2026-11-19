@@ -1,0 +1,70 @@
+{
+  "columns" : [
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of Center Weather Advisories from a CWSU",
+  "format" : "json",
+  "id" : "cwas",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:42Z",
+    "keyless" : true,
+    "rows" : 26,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "cwas",
+  "path" : "\/aviation\/cwsus\/{cwsuId}\/cwas",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "cwsuId",
+      "label" : "NWS CWSU ID",
+      "location" : "path",
+      "options" : [
+        "ZAB",
+        "ZAN",
+        "ZAU",
+        "ZBW",
+        "ZDC",
+        "ZDV",
+        "ZFA",
+        "ZFW",
+        "ZHU",
+        "ZID",
+        "ZJX",
+        "ZKC",
+        "ZLA",
+        "ZLC",
+        "ZMA",
+        "ZME",
+        "ZMP",
+        "ZNY",
+        "ZOA",
+        "ZOB",
+        "ZSE",
+        "ZTL"
+      ],
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

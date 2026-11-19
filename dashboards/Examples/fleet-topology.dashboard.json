@@ -3,66 +3,58 @@
   "data_sources" : [
     {
       "id" : "ds_5113f5571f1e489fa5ffdb3b20b818ef",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Server Fleet",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_fb5e24ac9b38482f97a64395afcd8a4b",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Network Connections",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "connections.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'connections.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_6171ee69c64e4ff6818467744a9b0b90",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Network Zones",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "zones.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'zones.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_fc2a530f14be44129e802a1236432d98",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Active Alerts",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "alerts.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'alerts.csv')"
+        },
+        "type" : "ds.sql"
       }
     }
   ],
@@ -442,7 +434,6 @@
       }
     ]
   },
-  "landscape_ref" : "fleet-topology.scene.json",
   "layout_type" : "bootstrap",
   "name" : "Fleet Topology",
   "polling_interval_seconds" : 10,

@@ -40,6 +40,7 @@
     {
       "id" : "ds_63334611d2648acb66bfe96184b96592",
       "query" : {
+        "live_interval_ms" : 50,
         "name" : "viz_a78c0825bb954e449940be2705f7f2c0",
         "query" : {
           "method" : "GET"
@@ -264,7 +265,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Tab Symbol Browser",
   "provenance" : {
-    "imported_at" : "2026-10-28T21:01:16Z",
+    "imported_at" : "2026-11-11T07:22:37Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -650,11 +651,15 @@
               "options" : {
                 "change_field" : "priceChange",
                 "change_pct_field" : "priceChangePercent",
+                "data_overlay_mode" : "none",
                 "drilldown" : "row",
+                "fixed_header" : "false",
                 "height" : "100",
                 "name_field" : "symbol",
                 "page_size" : "100",
+                "renderer" : "power",
                 "show_row_numbers" : "false",
+                "striped_rows" : "false",
                 "style" : "bloomberg",
                 "wrap_cells" : "false"
               },
@@ -907,9 +912,9 @@
           "id" : "panel_46419856dde541c78400f45076366418",
           "layout" : {
             "absolute_h" : 336,
-            "absolute_w" : 1440,
+            "absolute_w" : 1656,
             "absolute_x" : 0,
-            "absolute_y" : 960,
+            "absolute_y" : 1008,
             "panel_width" : 12
           },
           "visualizations" : [
@@ -945,7 +950,7 @@
           ],
           "id" : "panel_6397c091beed438e831ad8d7c3e34802",
           "layout" : {
-            "absolute_h" : 912,
+            "absolute_h" : 936,
             "absolute_w" : 360,
             "absolute_x" : 1296,
             "absolute_y" : 48,

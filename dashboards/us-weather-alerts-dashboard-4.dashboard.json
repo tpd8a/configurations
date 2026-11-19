@@ -1,0 +1,131 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_7c4e1ef007be4844af0004251eb7126c",
+      "query" : {
+        "name" : "Active Alert Types",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT eventTypes FROM weather_gov_api.alerts_types"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_8cc8c850d2184fcca134df1b2f87a561",
+      "query" : {
+        "name" : "Alert Counts by Severity",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'Warning' AS severity, 28 AS count FROM weather_gov_api.alerts_types"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_37e18293117541a09b5ab1acd73f8d7d",
+      "query" : {
+        "name" : "Alert Counts by Severity",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'Warning' AS severity, 28 AS count FROM weather_gov_api.alerts_types"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_530f30da3ff44f9aaa6eed2d4f8b1334",
+      "query" : {
+        "name" : "Alert Counts by Severity - Warning",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'Warning' AS severity, 42 AS count FROM weather_gov_api.alerts_types"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_96735c05a7604089a594bd5b0808986b",
+      "query" : {
+        "name" : "Alert Counts by Severity",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT 'Warning' AS severity, 28 AS count FROM weather_gov_api.alerts_types"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_b0f919299e884a559b5504152c20a3ce",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "US Weather Alerts Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-17T16:46:48Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_5f4a876e30cd4836bda6f2a1ccd738fd",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d275e283d3d545eaa78dda05a9672005"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_addfecb7d854431d83353ed4390a9cc8",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Active Weather Alert Types",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_7c4e1ef007be4844af0004251eb7126c",
+              "id" : "viz_d275e283d3d545eaa78dda05a9672005",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_87af1299db714c3c9cfbc8a59ea32c51"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ad91be2f259747eca4176b9b584faa84",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Alert Types by Severity Level",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_96735c05a7604089a594bd5b0808986b",
+              "id" : "viz_87af1299db714c3c9cfbc8a59ea32c51",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

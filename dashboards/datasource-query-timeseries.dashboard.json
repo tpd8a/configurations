@@ -165,7 +165,7 @@
   "layout_type" : "bootstrap",
   "name" : "Datasource Query (timeseries)",
   "provenance" : {
-    "imported_at" : "2026-10-25T14:50:43Z",
+    "imported_at" : "2026-11-07T11:05:07Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -175,7 +175,8 @@
     {
       "id" : "row_e25ad258e7c4418788c6f7a39f22455f",
       "layout" : {
-        "fill" : true
+        "fill" : true,
+        "fill_min" : 700
       },
       "panels" : [
         {
@@ -190,7 +191,7 @@
           ],
           "id" : "panel_bedf5099fe484857822f417a6a7ed565",
           "layout" : {
-            "height" : 320,
+            "height" : 880,
             "panel_width" : 12
           },
           "visualizations" : [
@@ -355,10 +356,16 @@
               "id" : "viz_a6022e40618e488590896ae7934aa629",
               "layer" : 1,
               "options" : {
-                "stackMode" : "stacked"
+                "data_overlay_mode" : "highLow",
+                "fixed_header" : "true",
+                "show_percentages_row" : "true",
+                "show_row_numbers" : "true",
+                "show_totals_row" : "true",
+                "stackMode" : "stacked",
+                "striped_rows" : "false"
               },
               "title" : "Datasource Query (timeseries)",
-              "type" : "chart",
+              "type" : "table",
               "width" : 12
             }
           ]

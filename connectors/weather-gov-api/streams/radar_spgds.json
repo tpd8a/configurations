@@ -1,0 +1,81 @@
+{
+  "columns" : [
+    {
+      "name" : "@type",
+      "type" : "string"
+    },
+    {
+      "name" : "appRunning",
+      "type" : "string"
+    },
+    {
+      "name" : "connectQ",
+      "type" : "string"
+    },
+    {
+      "name" : "dataflow",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "ldm",
+      "type" : "string"
+    },
+    {
+      "name" : "secondHD",
+      "type" : "string"
+    },
+    {
+      "name" : "spg",
+      "type" : "string"
+    },
+    {
+      "name" : "spgdsUpSince",
+      "type" : "string"
+    },
+    {
+      "name" : "throughput",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of radar spgds",
+  "format" : "json",
+  "id" : "radar_spgds",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "jsonText"
+    ],
+    "rows" : 8,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "radar_spgds",
+  "path" : "\/radar\/spgds",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "published",
+      "label" : "Range for publish time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

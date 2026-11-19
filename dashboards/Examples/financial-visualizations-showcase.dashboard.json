@@ -4,106 +4,101 @@
   "data_sources" : [
     {
       "id" : "ds_9030462a98b74c099d7ed3890670493b",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Market Data",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "financial_market_data.csv",
             "tql" : "rowkey symbol"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'financial_market_data.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_a02bd66fb650429086e62731c7aed660",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "AAPL OHLCV",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "financial_ohlcv.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'financial_ohlcv.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_29fdb56a1a214f2c9be846d31c7b79ad",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_47CCDFE0",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_ohlcv.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'financial_ohlcv.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_ca72da77dcac4e679549d963d423f847",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_C16E8C7F",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_market_data.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'financial_market_data.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_8b2d35b4d433401da42d076b85f675d1",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_7BBFD307",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_ohlcv.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_62b3e504caba4559a3f21deb5e43fa4c",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_EA0EBC31",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv",
-            "tql" : "ta bollinger(open, 12, 3) as bb20"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_ohlcv.csv')"
+        },
+        "steps" : [
+          {
+            "alias" : "bb20",
+            "args" : {
+              "k" : "3",
+              "period" : "12",
+              "source" : "open"
+            },
+            "id" : "st_bb20",
+            "library" : "bollinger"
+          }
+        ],
+        "type" : "ds.sql"
       }
     }
   ],
@@ -115,7 +110,7 @@
   "layout_type" : "absolute",
   "name" : "Financial Visualizations Showcase",
   "provenance" : {
-    "imported_at" : "2026-10-18T15:48:10Z",
+    "imported_at" : "2026-11-02T14:56:19Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -428,24 +423,24 @@
                       },
                       {
                         "derivedFromIndicatorId" : "bb20",
-                        "id" : "2665145E-F296-4446-893A-AF92F9593791",
+                        "id" : "A7CEE327-6D13-413C-A9D8-969D16448629",
                         "kind" : "indicator_band",
-                        "optionsJSON" : "eyJmaWVsZCI6ImJiMjAiLCJmaWxsT3BhY2l0eSI6MC4xNX0="
+                        "optionsJSON" : "eyJmaWVsZCI6IiIsImZpbGxPcGFjaXR5IjowLjE0OTk5OTk5OTk5OTk5OTk5LCJsb3dlckZpZWxkIjoiYmIyMF9sb3dlciIsIm1pZEZpZWxkIjoiYmIyMF9taWQiLCJ1cHBlckZpZWxkIjoiYmIyMF91cHBlciJ9"
                       }
                     ],
                     "shapeId" : "candlestick",
                     "slotBindings" : {
                       "storage" : [
+                        "x",
+                        [
+                          "_time"
+                        ],
                         "y",
                         [
                           "open",
                           "high",
                           "low",
                           "close"
-                        ],
-                        "x",
-                        [
-                          "_time"
                         ]
                       ]
                     },
@@ -951,7 +946,7 @@
             "absolute_h" : 384,
             "absolute_w" : 1032,
             "absolute_x" : 0,
-            "absolute_y" : 696,
+            "absolute_y" : 720,
             "panel_width" : 12
           },
           "visualizations" : [

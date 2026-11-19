@@ -3,172 +3,172 @@
   "data_sources" : [
     {
       "id" : "ds_b99c8d0ef6d14d8db22a35d1d31ce8ac",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "where — degraded servers",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "where status != \"healthy\""
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_4654943c65f34d2594b981308efeaee6",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "sort + head — top 10 CPU",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "sort cpu_percent desc | head 10"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_d52c51ca65ca425ba2a5db5ec3c9ec30",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "select — essentials only",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "select hostname, status, cpu_percent, memory_percent, region"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_9b3b10ae6b6d49309a4458cb6f12e1a1",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "eval — derived pressure",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "eval pressure = cpu_percent + memory_percent * 0.5 | select hostname, cpu_percent, memory_percent, pressure | sort pressure desc | head 12"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_f0240d601378485ba81e749dabda9315",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "stats — fleet by region",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "stats count(servers), avg(cpu_percent) as avg_cpu, avg(memory_percent) as avg_mem, max(disk_percent) as max_disk by region"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_139ba8283a894199b074b89c0ae91ed0",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "extract — alert hash",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "alerts.csv",
             "tql" : "extract alert_id \/alert-(?<alert_hash>[a-f0-9]+)\/ | select alert_hash, hostname, severity, message | head 15"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'alerts.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_af7bf1bb8eca4460be05b20340d0747e",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "pivot — CPU by host",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "chart_longform.csv",
             "tql" : "pivot host cpu"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_longform.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_b8536a7f8bd145ba8295e8dbfd65edb8",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "parsetime — typed timestamps",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "alerts.csv",
             "tql" : "parsetime timestamp iso8601 | sort timestamp desc | select timestamp, severity, hostname, message | head 15"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'alerts.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_e94cb2c88b954a57981e23ae721c6dc5",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "pivot — composite key (region+role)",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "stats avg(cpu_percent) as avg_cpu by region, role | pivot region+role avg_cpu"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_8c1e6b664bde4c23989d91bb0b8f3562",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "stats — chart-friendly long form",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv",
             "tql" : "stats avg(cpu_percent) as avg_cpu by region, role"
           }
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     }
   ],

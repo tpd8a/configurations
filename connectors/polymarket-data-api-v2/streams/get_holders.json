@@ -1,0 +1,78 @@
+{
+  "columns" : [
+    {
+      "name" : "holders",
+      "type" : "string"
+    },
+    {
+      "name" : "token_id",
+      "type" : "string"
+    }
+  ],
+  "description" : "Top holders of a market, netted per user and grouped by\noutcome token.\n\n`?condition=` (CSV of `condition_id`) is required (400 otherwise). `?limit=`\n(default 100, max 1000; v2 family-uniform) sizes the page **per outcome\ntoken**; `?min_balance=` filters the served amount.\n\n`?include_pnl=true` opts each holder row into the position economics\n(entry price and cost, current price and value, realized, unrealized and\ntotal profit) and switches the amounts to per-side gross balances, so a\nwallet holding both outcomes appears under both tokens. The default\nresponse is unchanged. This mode serves one market's table at a time:\nexactly one `condition` and `limit` at most 100 (400 otherwise, including\nvia a cursor that carries a wider window).\n\nA malformed condition id is a `400` naming the value; a well-formed one\nthat resolves to no holdings serves an empty `data` array, which is the\nmeaningful zero-state.\n\nDeeper pages come only from `?cursor=` (which carries the page window and\noverrides `limit`).\n\nPage walks advance every token group together, so a group leaves `data`\nonce its token is exhausted while others keep paging; no rows are lost,\nbut merge pages by `token_id`, not by array position.",
+  "format" : "json",
+  "id" : "get_holders",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "bigCell"
+    ],
+    "rows" : 2,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "List a market's top holders",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/holders",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "condition",
+      "label" : "Comma-separated `condition_id`s (at most 20 distinct values; exactly\none with `i",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Rows per outcome token; defaults to 100, maximum 1000 (100 with\n`include_pnl=tru",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`; carries\nthe per-",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "min_balance",
+      "label" : "Minimum net balance in shares (default 0), applied post-netting. With\n`include_p",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_pnl",
+      "label" : "Opt into per-holder position economics (default `false`; `includePnl`\nis an acce",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

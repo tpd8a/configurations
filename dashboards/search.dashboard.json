@@ -1,0 +1,133 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8c3c158eb85e41ae96266d1c67f5c044",
+      "query" : {
+        "name" : "search",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "$search_q$"
+        },
+        "time_mode" : {
+          "earliest" : "$search_time.earliest$",
+          "latest" : "$search_time.latest$",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_2a6d65af31db45758dcc47694b790880",
+  "inputs" : [
+    {
+      "config" : {
+        "display_location" : "top",
+        "entry" : {
+          "kind" : "query",
+          "language" : "sql",
+          "modes" : [
+            "simple",
+            "sql"
+          ],
+          "required" : false,
+          "run_source" : "ds_8c3c158eb85e41ae96266d1c67f5c044",
+          "submit_button" : "input_4366a8b430074e1096069b36d99abf82",
+          "time_input" : "input_700b93ab318a4a2ba6d2435a43f8d470"
+        },
+        "label" : "Search",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "type" : "text"
+      },
+      "id" : "input_a7d06e2a90a74fc0a583f820f526e58d",
+      "token" : "search_q"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Run",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "submit" : true,
+        "symbol" : "magnifyingglass",
+        "type" : "button"
+      },
+      "id" : "input_4366a8b430074e1096069b36d99abf82",
+      "token" : "search_run"
+    },
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Time",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : false,
+        "time_config" : {
+          "default_earliest" : "-24h@h",
+          "default_latest" : "now"
+        },
+        "type" : "time"
+      },
+      "id" : "input_700b93ab318a4a2ba6d2435a43f8d470",
+      "token" : "search_time"
+    }
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Search",
+  "provenance" : {
+    "imported_at" : "2026-11-03T13:10:06Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_20496351839d411683bc67935f165e87",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_fe3991b1f05b45d38f494f2757164985"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_27596ab387734de8a9c04583ce4998d8",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Results",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8c3c158eb85e41ae96266d1c67f5c044",
+              "id" : "viz_fe3991b1f05b45d38f494f2757164985",
+              "layer" : 1,
+              "title" : "Results",
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Search"
+    }
+  ]
+}

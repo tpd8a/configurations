@@ -1,0 +1,119 @@
+{
+  "columns" : [
+    {
+      "name" : "pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "rank",
+      "type" : "integer"
+    },
+    {
+      "name" : "user_id",
+      "type" : "string"
+    },
+    {
+      "name" : "user_name",
+      "type" : "string"
+    },
+    {
+      "name" : "verified",
+      "type" : "boolean"
+    },
+    {
+      "name" : "volume",
+      "type" : "number"
+    },
+    {
+      "name" : "x_username",
+      "type" : "string"
+    }
+  ],
+  "description" : "The ranked board of realized PnL, combos included.\n\n`?time_period=` is `day` (default), `week`, `month` or `all`; `?category=`\nis `overall` (default) or a market category; `?sort_by=` picks the `PNL`\n(default) or `VOLUME` board. Deeper pages come only from `?cursor=`.\n\nA cursor **pins the board it was minted on**; sort, window and category;\nso following it needs no params at all, and restating a different one is a\n`400` rather than a silent re-point (the builders-board pattern).\n\n`?user=` answers a different question; one wallet's standing, carrying\n**both** the PnL and volume ranks in a single object rather than a page. A\nrank of `0` there means unranked for that board, not first. `sort_by`,\n`limit` and `cursor` do not apply to that arm.\n\n**`rank` ties and skips**: tied users share a rank and the next one jumps,\nso a partition's highest rank approaches its row count. Page with the\ncursor; never compute a page from a rank.\n\nFinite windows (day\/week\/month) serve the MARKED equity change net of\nflows; they move with unrealized marks; `all` is the realized-only\nlifetime ledger. `volume` is in shares, not USDC.",
+  "format" : "json",
+  "id" : "get_leaderboard",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 100,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get the trader leaderboard",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/leaderboard",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "default" : "day",
+      "key" : "time_period",
+      "label" : "Window: `day` | `week` | `month` | `all`. Defaults to `day`.",
+      "location" : "query",
+      "options" : [
+        "day",
+        "week",
+        "month",
+        "all"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "overall",
+      "key" : "category",
+      "label" : "`overall` (default), a Gamma market category (e.g. `sports`), or a\nsynthetic cat",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "PNL",
+      "key" : "sort_by",
+      "label" : "Which board: `PNL` (default) or `VOLUME`.",
+      "location" : "query",
+      "options" : [
+        "PNL",
+        "VOLUME"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "user",
+      "label" : "Look up one wallet's standing instead of reading the board. Returns a\nsingle obj",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "expected_settlement_time",
+      "type" : "string"
+    },
+    {
+      "name" : "extended_review",
+      "type" : "boolean"
+    },
+    {
+      "name" : "last_update_timestamp",
+      "type" : "string"
+    },
+    {
+      "name" : "log_index",
+      "type" : "string"
+    },
+    {
+      "name" : "market_type",
+      "type" : "string"
+    },
+    {
+      "name" : "new_version_q",
+      "type" : "boolean"
+    },
+    {
+      "name" : "payouts",
+      "type" : "string"
+    },
+    {
+      "name" : "price",
+      "type" : "string"
+    },
+    {
+      "name" : "proposed_price",
+      "type" : "string"
+    },
+    {
+      "name" : "question_id",
+      "type" : "string"
+    },
+    {
+      "name" : "reporter",
+      "type" : "string"
+    },
+    {
+      "name" : "reproposed_price",
+      "type" : "string"
+    },
+    {
+      "name" : "resolution_source",
+      "type" : "string"
+    },
+    {
+      "name" : "resolved_at",
+      "type" : "string"
+    },
+    {
+      "name" : "resolved_block",
+      "type" : "integer"
+    },
+    {
+      "name" : "settlement_time_basis",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    },
+    {
+      "name" : "transaction_hash",
+      "type" : "string"
+    },
+    {
+      "name" : "was_arbitrated",
+      "type" : "boolean"
+    },
+    {
+      "name" : "was_disputed",
+      "type" : "boolean"
+    }
+  ],
+  "description" : "Complete resolution state by one selector family.\n\nSupply exactly one of `question_id`, `condition`, or `event_id`. Condition and\nevent selectors accept comma-separated values and return condition-grain\nrows in deterministic order, preferring native V2 lifecycle, then UMA\nlifecycle, then terminal CTF state. Misses return `{ \"data\": [] }`.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_resolutions",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "400: {\"error\":\"provide exactly one of 'question_id', 'condition', or 'event_id'\",\"code\":\"invalid_request\",\"retryable\":false,\"",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "Get resolution state",
+  "path" : "\/v2\/resolutions",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "question_id",
+      "label" : "One UMA question identifier (`0x` plus 64 hexadecimal characters).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Comma-separated condition identifiers (at most 20 distinct values): the\nGamma co",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "event_id",
+      "label" : "Comma-separated positive Gamma event IDs (at most 20 distinct values).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

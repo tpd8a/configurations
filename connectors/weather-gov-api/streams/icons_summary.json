@@ -1,0 +1,31 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "icons",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of icon codes and textual descriptions. Icon services in API are deprecated.",
+  "format" : "json",
+  "id" : "icons_summary",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "icons_summary",
+  "path" : "\/icons",
+  "userParams" : [
+
+  ]
+}

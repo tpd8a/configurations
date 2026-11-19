@@ -1,0 +1,28 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "How fresh the data behind this API is.\n\n`\/readyz` answers whether this pod can reach its datastore; this answers how\nfar behind chain head what you are reading is. Two halves, because each is\nblind exactly where the other sees:\n\n* `serving`; the projections that turn ingested rows into what the feeds\n  read (`activity_feed` enrichment, `custody_balances` ingestion, the PnL\n  engine).\n  Each carries its own clock, so this is the only half that can see\n  \"everything stopped\". `lag_seconds` is the worst age across them and\n  `worst` names which one, so a single stalled projection cannot hide behind\n  two healthy ones.\n* `ingestion`; one crawl cursor per `(contract, event)`, summarised as the\n  tail, the furthest-behind block, and the worst few cursors BY NAME. Every\n  reading here is relative or positional, so under a total stall it reads\n  green; that is why `serving` exists alongside it.\n\nStreams that are dormant by design are dropped from `ingestion` rather than\nreported, because they sit arbitrarily far back forever and would otherwise\nfill the list and push the stream you care about off it.\n\nTakes no parameters and is not paginated. Served from a snapshot refreshed\nin the background, never computed on the request: `computed_at` and\n`age_seconds` say how old it is, so a stalled refresher or a datastore\noutage shows up as a growing age rather than a 500. Before the first refresh\nlands there is nothing to serve and this answers `503`; \"not measured yet\"\nand \"measured, no lag\" are different claims.",
+  "format" : "json",
+  "id" : "get_status",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get data freshness",
+  "path" : "\/v2\/status",
+  "userParams" : [
+
+  ]
+}

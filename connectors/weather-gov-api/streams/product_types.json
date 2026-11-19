@@ -1,0 +1,36 @@
+{
+  "columns" : [
+    {
+      "name" : "productCode",
+      "type" : "string"
+    },
+    {
+      "name" : "productName",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of valid text product types and codes",
+  "format" : "json",
+  "id" : "product_types",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 338,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "product_types",
+  "path" : "\/products\/types",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

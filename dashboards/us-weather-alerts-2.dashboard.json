@@ -1,0 +1,98 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_8d0a7ef74c7a46faa1262209a56fbb4a",
+      "query" : {
+        "name" : "Active Alerts",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT headline, event, severity, urgency, status, category, description FROM weather_gov_api.alerts_active ORDER BY effective DESC"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_2ec5370498384a0ebfc4691a2cb90348",
+      "query" : {
+        "name" : "Alerts by Severity",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT severity, COUNT(*) AS alert_count FROM weather_gov_api.alerts_active GROUP BY severity ORDER BY alert_count DESC"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_55cf0abab98b48b887139f2b732e7881",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "US Weather Alerts",
+  "provenance" : {
+    "imported_at" : "2026-11-17T15:33:34Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_54b3f669a96f492fa7badd8cc8cf643d",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_608b78ffba254127937e35d90e2f649c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_8d5caea1e65741b1b882a44e26111956",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Active Weather Alerts",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_8d0a7ef74c7a46faa1262209a56fbb4a",
+              "id" : "viz_608b78ffba254127937e35d90e2f649c",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_da0bf81d8e924a128d4ff50dbc248877"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_a3e8bd88dab9481196f0548c59b51ce4",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Active Alerts by Severity",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_2ec5370498384a0ebfc4691a2cb90348",
+              "id" : "viz_da0bf81d8e924a128d4ff50dbc248877",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

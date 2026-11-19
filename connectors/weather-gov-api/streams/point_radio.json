@@ -1,0 +1,40 @@
+{
+  "columns" : [
+    {
+      "name" : "speak",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns NOAA Weather Radio broadcast script for a latitude\/longitude point",
+  "format" : "json",
+  "id" : "point_radio",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "point_radio",
+  "path" : "\/points\/{latitude},{longitude}\/radio",
+  "userParams" : [
+    {
+      "key" : "latitude",
+      "label" : "Latitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "longitude",
+      "label" : "Longitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns a list of observation stations for a given zone",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "zone_stations",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "diagnosis" : "500: {",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "zone_stations",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/zones\/forecast\/{zoneId}\/stations",
+  "userParams" : [
+    {
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "default" : "500",
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Pagination cursor",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

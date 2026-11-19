@@ -1,0 +1,193 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "combo_condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "combo_position_id",
+      "type" : "string"
+    },
+    {
+      "name" : "current_size",
+      "type" : "number"
+    },
+    {
+      "name" : "entry_avg_price_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "entry_cost_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "entry_fees_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "first_entry_at",
+      "type" : "string"
+    },
+    {
+      "name" : "first_entry_at_micros",
+      "type" : "integer"
+    },
+    {
+      "name" : "gross_entry_cost_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "legs",
+      "type" : "string"
+    },
+    {
+      "name" : "legs_pending",
+      "type" : "integer"
+    },
+    {
+      "name" : "legs_resolved",
+      "type" : "integer"
+    },
+    {
+      "name" : "legs_total",
+      "type" : "integer"
+    },
+    {
+      "name" : "outcome_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "outcome_label",
+      "type" : "string"
+    },
+    {
+      "name" : "proxy_wallet",
+      "type" : "string"
+    },
+    {
+      "name" : "realized_payout_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "redeemable",
+      "type" : "boolean"
+    },
+    {
+      "name" : "resolved_at",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    },
+    {
+      "name" : "updated_at",
+      "type" : "string"
+    },
+    {
+      "name" : "updated_at_micros",
+      "type" : "integer"
+    }
+  ],
+  "description" : "Combo positions for a user, in the standard\n`{ data, pagination }` envelope.\n\nSorts: `FIRST_ENTRY` (default) | `ENTRY_COST` (+ `CURRENT_VALUE` alias) |\n`UPDATED`, each with `sort_direction`. `FIRST_ENTRY DESC` pages by the\ntwo-state keyset anchor `(first_entry_at_micros, combo_condition_id,\noutcome_index)` (NULL micros = the NULL tail); `UPDATED ASC` by the\nsingle-state `(updated_at_micros, …)` anchor; every other combination by an\noffset-shaped token. The cursor binds sort + direction and the resume\nADOPTS them, so a replay cannot flip or re-sort the walk mid-stream.\n\nIt binds the cohort; `user`\/`status`\/`condition`\/`updated_after`\/\n`updated_before`; the same way: following a\npage needs nothing but `?user=` (always required here) and `?cursor=`, and\nrestating a filter is allowed but must agree. Omitting one is not a\ncontradiction, it is the absence of a choice; **contradicting** one is a\n400, because the token's walk state only means anything against the cohort\nit was minted on.\n\nIncremental sync: `updated_after`\/`updated_before` are an INCLUSIVE\nepoch-second window on `updated_at`. Without a `status` filter, either\nbound switches the response to the mirror-complete sync view (every live\nrow, not only held ones); a `status` filter keeps its own visibility. The\nupper end is always capped by a short stability ceiling (~90s behind now)\nso a mirror never reads rows that may still move. Pair with\n`sortBy=UPDATED&sortDirection=ASC` for the stable sync order.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_combo_positions",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "0 rows — no array of rows found",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "List combo positions",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/positions\/combos",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The wallet to anchor on. Required; combo positions are user-anchored.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied (the cursor's size wins).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Combo condition id(s), comma-separated (at most 20 distinct values).\n`condition_",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "status",
+      "label" : "One of `OPEN`, `REDEEMABLE`, `PARTIAL`, `RESOLVED_WIN`, `RESOLVED_LOSS`,\n`RESOLV",
+      "location" : "query",
+      "options" : [
+        "OPEN",
+        "REDEEMABLE",
+        "PARTIAL",
+        "RESOLVED_WIN",
+        "RESOLVED_LOSS",
+        "RESOLVED_PARTIAL"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sort_by",
+      "label" : "`FIRST_ENTRY` (default, except under `status=REDEEMABLE`, which defaults\nto `ENT",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sort_direction",
+      "label" : "`ASC` or `DESC` (default `DESC`).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "updated_after",
+      "label" : "Incremental-sync watermark: INCLUSIVE lower bound on `updated_at`,\nepoch seconds",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "updated_before",
+      "label" : "Incremental-sync watermark: INCLUSIVE upper bound on `updated_at`,\nepoch seconds",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

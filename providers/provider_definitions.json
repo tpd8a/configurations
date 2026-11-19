@@ -321,5 +321,60 @@
       }
     ],
     "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-ee246bc7-de78-4f73-bfe5-42455149f3cb",
+    "config" : {
+      "folder" : "\/Users\/peter\/.lmstudio\/server-logs"
+    },
+    "config_version" : 2,
+    "id" : "files-ee246bc7-de78-4f73-bfe5-42455149f3cb",
+    "name" : "server-logs",
+    "specId" : "files",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-builtin-workspace",
+    "config" : {
+      "folder" : "construct:workspace\/user"
+    },
+    "config_version" : 2,
+    "id" : "files-builtin-workspace",
+    "name" : "workspace",
+    "specId" : "files",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "construct-file:\/\/files-builtin-samples",
+    "config" : {
+      "folder" : "construct:bundle\/samples"
+    },
+    "config_version" : 2,
+    "id" : "files-builtin-samples",
+    "name" : "samples",
+    "specId" : "files",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/api.weather.gov",
+    "config_version" : 2,
+    "id" : "AE093BF5-0285-43ED-8E0F-915B44628B5E",
+    "name" : "weather.gov API",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "weather-gov-api",
+    "sql_alias" : "weather",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "https:\/\/data-api.polymarket.com",
+    "config_version" : 2,
+    "id" : "0E462E98-5906-4DD2-A07E-38C4772217EB",
+    "name" : "Polymarket Data API v2",
+    "specId" : "polymarket-data-api-v2",
+    "type" : "custom"
   }
 ]

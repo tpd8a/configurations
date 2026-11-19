@@ -1,0 +1,37 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@graph",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns Terminal Aerodrome Forecasts for the specified airport station.",
+  "format" : "json",
+  "id" : "tafs",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "tafs",
+  "path" : "\/stations\/{stationId}\/tafs",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Observation station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

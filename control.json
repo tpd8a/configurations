@@ -1,4 +1,11 @@
 {
+  "focus" : {
+    "color" : "#000000",
+    "enabled" : true,
+    "glow" : true,
+    "lineWidth" : 5,
+    "style" : "ring"
+  },
   "playSets" : [
     {
       "id" : "ps_3339C40B-9F7",

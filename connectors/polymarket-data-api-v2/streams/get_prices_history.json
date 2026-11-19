@@ -1,0 +1,102 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "resolution_seconds",
+      "type" : "integer"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    }
+  ],
+  "description" : "The price-history series for one outcome token, or\na single point-in-time observation.\n\nThree window forms, exactly one per request: `start` (with optional `end`),\n`interval`, or `as_of`. Points are served oldest-first; pass `?cursor=` from\na prior response's `next_cursor` for the next page.\n\n`interval=max` (or `all`) serves the market's whole life, back to 2022 for\nthe oldest markets, at 12-hour buckets unless `bucket_seconds` says\notherwise; explicit `start`\/`end` windows cap at 15 days, so the presets\nare the long-range path.\n\nThe series ends with a **terminal point**: the latest observation inside the\nwindow, which is a real tick and so can fall between bucket boundaries.\nNothing may assume uniform spacing (sparse data already forbids that), and\neach point's `resolution_seconds` says what window it was observed in.\n\n**Availability is graded by resolution.** The 3-hour and 12-hour series are\npermanent (back to 2022-11-18); the fine grains are windowed, with these\nMINIMUMS: 1-minute data at least 7 days, 5-minute at least 60, 30-minute at\nleast 90. Floors, not exact horizons: data expires in multi-day chunks, so a\ngrain usually reaches a few days further back than its minimum. Coverage is\nmeasured per request, never assumed from a table, so `bucket_seconds=60`\nover a window starting a month ago is an incompatible pair: both values are\nvalid, and there is no data at their intersection.\n\nThe two ways of asking behave differently on purpose:\n\n* **`bucket_seconds` sent** is served exactly as asked, so over a window\n  whose resolution has expired you get an empty page rather than a silent\n  substitution.\n* **`bucket_seconds` omitted** lets the server choose a width that can\n  actually serve the window: the finest tier grain whose series stays under\n  ~2,500 points, except that a window wider than 12 hours never defaults to\n  the 60-second grain (ask for `bucket_seconds=60` explicitly when you want\n  it over a longer window), and\n  coarsened further if that grain does not reach the window's start. A\n  window up to 12 hours keeps 1-minute detail (an hour 60 points, 12 hours\n  720); beyond that it moves to a materialized tier (a day 288, three days\n  864, a week 2,016, fifteen days 720). Send `bucket_seconds` when you want\n  a specific density instead.\n\nA RESOLVED market's series ends with one settlement point: the on-chain\npayout of the requested token (0 lost, 1 won, fractional for voided or\nsplit resolutions) at `resolution_seconds` 0, placed one bucket edge past\nthe last stored row and clamped to an explicit window's `end`. It appears\nonly on the final page of a paginated walk, and only once the resolution\nis settled on-chain; an unresolved market's series is unchanged.\n\n`resolution_seconds` on every point reports what it was served at, so read it\ninstead of assuming the width a recent window would have given you. For a\nmulti-day window prefer a grain-aligned `bucket_seconds` (300, 1800, 10800,\n43200) or omit it; a 60-second width over days is the one shape that is both\nslow and, past 7 days, empty.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_prices_history",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "needs `token_id`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "Get a token's price history",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/prices-history",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "token_id",
+      "label" : "Outcome token id (the CLOB asset id the chart is keyed by). Required.\n`tokenId` ",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Window start, epoch seconds, INCLUSIVE. Alone it means \"up to the\npresent\", and ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "Window end, epoch seconds, EXCLUSIVE. Requires `start`; on its own it\nwould ask ",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "interval",
+      "label" : "Relative window INSTEAD of `start`\/`end`: `max`, `all`, `1m`, `1w`,\n`1d`, `6h`, ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "bucket_seconds",
+      "label" : "Bucket width in SECONDS (60…86400). `bucketSeconds` is an accepted alias.\n\nOMIT ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "as_of",
+      "label" : "Point-in-time read, epoch seconds, INCLUSIVE: the latest observation at\nor befor",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size; defaults to the cap (10,000). Ignored when `cursor` is\nsupplied",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

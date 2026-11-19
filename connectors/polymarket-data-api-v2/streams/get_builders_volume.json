@@ -1,0 +1,80 @@
+{
+  "columns" : [
+    {
+      "name" : "active_users",
+      "type" : "integer"
+    },
+    {
+      "name" : "builder_code",
+      "type" : "string"
+    },
+    {
+      "name" : "builder_name",
+      "type" : "string"
+    },
+    {
+      "name" : "date",
+      "type" : "string"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "rank",
+      "type" : "integer"
+    },
+    {
+      "name" : "verified",
+      "type" : "boolean"
+    },
+    {
+      "name" : "volume",
+      "type" : "number"
+    }
+  ],
+  "description" : "The per-builder volume time series.\n\n`?interval=` is the **bucket width**, not a window: `day` (default) returns\nevery day on record bucketed daily, `week` and `month` bucket accordingly,\nand `all` buckets by calendar YEAR. `?limit=` bounds how many of the most\nrecent buckets come back (default 30); buckets, not rows, so a period is\nnever returned half-populated. `timePeriod` is accepted as an alias for\n`interval`.\n\n`rank` is the builder's placing **within its own bucket**, so it moves along\nthe series. `volume` is in SHARES; see `\/v2\/builders\/leaderboard`.\n\nNot paginated: `data` is the array with no `pagination`, the `\/v2\/oi` shape.\nRows arrive newest bucket first, ranked within each.",
+  "format" : "json",
+  "id" : "get_builders_volume",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 6297,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get builder volume over time",
+  "path" : "\/v2\/builders\/volume",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "default" : "day",
+      "key" : "interval",
+      "label" : "Bucket width: `day` | `week` | `month` | `all`. Defaults to `day`.\n`timePeriod` ",
+      "location" : "query",
+      "options" : [
+        "day",
+        "week",
+        "month",
+        "all"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "How many of the most recent buckets to return. Defaults to 30, capped at\n90; a l",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

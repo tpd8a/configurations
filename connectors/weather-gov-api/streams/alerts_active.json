@@ -1,0 +1,267 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "affectedZones",
+      "type" : "string"
+    },
+    {
+      "name" : "areaDesc",
+      "type" : "string"
+    },
+    {
+      "name" : "category",
+      "type" : "string"
+    },
+    {
+      "name" : "certainty",
+      "type" : "string"
+    },
+    {
+      "name" : "code",
+      "type" : "string"
+    },
+    {
+      "name" : "description",
+      "type" : "string"
+    },
+    {
+      "name" : "effective",
+      "type" : "string"
+    },
+    {
+      "name" : "ends",
+      "type" : "string"
+    },
+    {
+      "name" : "event",
+      "type" : "string"
+    },
+    {
+      "name" : "eventCode",
+      "type" : "string"
+    },
+    {
+      "name" : "expires",
+      "type" : "string"
+    },
+    {
+      "name" : "geocode",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry.type",
+      "type" : "string"
+    },
+    {
+      "name" : "headline",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "instruction",
+      "type" : "string"
+    },
+    {
+      "name" : "language",
+      "type" : "string"
+    },
+    {
+      "name" : "messageType",
+      "type" : "string"
+    },
+    {
+      "name" : "note",
+      "type" : "string"
+    },
+    {
+      "name" : "onset",
+      "type" : "string"
+    },
+    {
+      "name" : "parameters",
+      "type" : "string"
+    },
+    {
+      "name" : "references",
+      "type" : "string"
+    },
+    {
+      "name" : "response",
+      "type" : "string"
+    },
+    {
+      "name" : "scope",
+      "type" : "string"
+    },
+    {
+      "name" : "sender",
+      "type" : "string"
+    },
+    {
+      "name" : "senderName",
+      "type" : "string"
+    },
+    {
+      "name" : "sent",
+      "type" : "string"
+    },
+    {
+      "name" : "severity",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "urgency",
+      "type" : "string"
+    },
+    {
+      "name" : "web",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns all currently active alerts",
+  "format" : "json",
+  "id" : "alerts_active",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "bigCell"
+    ],
+    "rows" : 502,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "alerts_active",
+  "path" : "\/alerts\/active",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "id",
+          "geometry"
+        ],
+        "path" : [
+          "features",
+          "[]",
+          "properties"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "@type" : "type"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "status",
+      "label" : "Status (actual, exercise, system, test, draft)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "message_type",
+      "label" : "Message type (alert, update, cancel)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "event",
+      "label" : "Event name",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "code",
+      "label" : "Event code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "area",
+      "label" : "State\/territory code or marine area code\nThis parameter is incompatible with the",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "point",
+      "label" : "Point (latitude,longitude)\nThis parameter is incompatible with the following par",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "region",
+      "label" : "Marine region code\nThis parameter is incompatible with the following parameters:",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "region_type",
+      "label" : "Region type (land or marine)\nThis parameter is incompatible with the following p",
+      "location" : "query",
+      "options" : [
+        "land",
+        "marine"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "zone",
+      "label" : "Zone ID (forecast or county)\nThis parameter is incompatible with the following p",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "urgency",
+      "label" : "Urgency (immediate, expected, future, past, unknown)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "severity",
+      "label" : "Severity (extreme, severe, moderate, minor, unknown)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "certainty",
+      "label" : "Certainty (observed, likely, possible, unlikely, unknown)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

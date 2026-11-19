@@ -1,0 +1,115 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "clob_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "closed",
+      "type" : "boolean"
+    },
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "event_id",
+      "type" : "integer"
+    },
+    {
+      "name" : "event_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "final_price",
+      "type" : "number"
+    },
+    {
+      "name" : "market_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "module",
+      "type" : "string"
+    },
+    {
+      "name" : "neg_risk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "neg_risk_market_id",
+      "type" : "string"
+    },
+    {
+      "name" : "opposite_token_id",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "question_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "resolved",
+      "type" : "boolean"
+    },
+    {
+      "name" : "structural_condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    },
+    {
+      "name" : "token_id",
+      "type" : "string"
+    }
+  ],
+  "description" : "Resolves token ids, or the tokens of conditions, to their condition,\nmodule, outcome, market, event and neg-risk question index in one call.\nExactly one selector per request.\n\n`?token_id=`: a comma-separated list of up to 50 decimal token ids (alias\n`token_ids`); elements are trimmed, leading zeros stripped and duplicates\ncollapsed to their first position. `data` holds one row per known id in\nrequest order; an unknown id is simply absent (never a `404`), and an\nall-unknown request returns an empty array.\n\n`?condition=`: a comma-separated list of up to 10 condition selectors\n(aliases `condition_id`, `conditionId`), each `0x` plus 62 or 64 hex\ndigits, lower-cased and deduplicated. A ConditionalTokens condition id\nreturns the market's tokens (for a market carried over to polymarket-v2,\nits whole family: the ConditionalTokens pair, then the polymarket-v2\npair); a neg-risk market id returns every market of the structure; a\npolymarket-v2 condition id (the value a combo leg carries as\n`leg_condition_id`) returns that condition only; the 66-character\ncondition id of a native polymarket-v2 market returns that market; the\non-chain event id of a polymarket-v2 neg-risk structure returns every\nquestion of it. `data` holds the rows grouped by selector in request\norder, then by question index, market, module and outcome slot; an\nunknown value contributes nothing.\n\nA malformed value, more values than the cap, both selectors or neither is\na `400`. `condition_id` is the market's condition id in its 66-character\nform, the value the other routes carry; `structural_condition_id` is the\non-chain polymarket-v2 condition id in the same 66-character form, filled\non every polymarket-v2 token, null on `v1_ctf`, and accepted back as a\n`condition` selector. `module` names the contract family: `v1_ctf` is the\nConditionalTokens market (module 0) and every other value is a\npolymarket-v2 module. Reference fields never change; `closed`,\n`resolved`, `final_price` and `outcome` may lag by up to a minute. Not\npaginated: `data` is the row array with no `pagination`.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_tokens",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "needs `token_id`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "Look up tokens",
+  "path" : "\/v2\/tokens",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "token_id",
+      "label" : "Token id(s), comma-separated (at most 50 distinct values): decimal\nERC-1155 ids ",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Condition selector(s), comma-separated (at most 10 distinct values),\neach `0x` f",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

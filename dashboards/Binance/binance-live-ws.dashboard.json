@@ -33,13 +33,14 @@
     {
       "id" : "ds_060afb805cf840589e35f4033aa22608",
       "query" : {
+        "live_interval_ms" : 50,
         "name" : "Last Price",
         "query" : {
           "method" : "GET"
         },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "select * from binance_spot.ws_ticker(symbols:='SOLUSDT')"
+          "query" : "select * from binance_spot.ws_ticker where symbols='BTCUSDT'"
         },
         "type" : "ds.sql"
       }
@@ -52,7 +53,7 @@
   "layout_type" : "absolute",
   "name" : "Binance Live (WS)",
   "provenance" : {
-    "imported_at" : "2026-10-29T19:29:33Z",
+    "imported_at" : "2026-11-11T08:11:56Z",
     "source" : "local"
   },
   "provider_refs" : [

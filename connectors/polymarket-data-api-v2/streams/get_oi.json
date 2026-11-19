@@ -1,0 +1,45 @@
+{
+  "columns" : [
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "value",
+      "type" : "number"
+    }
+  ],
+  "description" : "Priced gross open interest per market.\n\nPass `?condition=` as a comma-separated list of condition ids (aliases `condition_id` \/ `conditionId`, matching the feeds); omit it for the single\nglobal figure (`condition_id = \"GLOBAL\"`, still a one-element array).\nEvery requested id that resolves to a servable market (indexed, active,\nnot archived; any id family) returns a row, with `value: 0` when\nnothing is held; an id absent from `data` did not resolve to a servable\nmarket. A malformed id is a `400` naming the value, so absence carries that\none meaning and nothing else. Unlike the feeds this is not paginated;\n`data` is the row array with no `pagination`.",
+  "format" : "json",
+  "id" : "get_oi",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get open interest",
+  "path" : "\/v2\/oi",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "condition",
+      "label" : "Condition id(s), comma-separated (at most 20 distinct values).\n`condition` is th",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_39c9270a67b84ac78f95898f30561713",
+      "query" : {
+        "live_interval_ms" : 50,
+        "name" : "ds_7E650314",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM binance_spot.ws_aggtrade(symbols:='BTCUSDT') ORDER BY time DESC LIMIT 1"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_89320afa4615421e92ee2c99760f92df",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Simple BTC",
+  "provenance" : {
+    "imported_at" : "2026-11-11T10:08:17Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_f9ea3869e6004e9c9cd06fe9b888ac5a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4050983568944b768b911545f1294e0b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_69ce5cb75e634afe84c3fbd56555fa94",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "config" : {
+                "title" : "BTC"
+              },
+              "data_source_ref" : "ds_39c9270a67b84ac78f95898f30561713",
+              "id" : "viz_4050983568944b768b911545f1294e0b",
+              "layer" : 1,
+              "options" : {
+                "delta_field" : "quantity",
+                "price_field" : "price",
+                "renderer" : "power",
+                "symbol_field" : "symbol"
+              },
+              "title" : "BTC",
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    },
+    {
+      "id" : "row_407b7d618c614acab5f1cf9c2243ce56",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e128d12f0c1e4be7a9e2c2a7afb6b93c"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_721d87b0bcb340cab297a3bd9cdb6e91",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_39c9270a67b84ac78f95898f30561713",
+              "id" : "viz_e128d12f0c1e4be7a9e2c2a7afb6b93c",
+              "layer" : 1,
+              "options" : {
+                "renderer" : "power"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 2"
+    }
+  ]
+}

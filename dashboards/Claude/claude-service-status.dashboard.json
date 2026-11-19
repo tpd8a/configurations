@@ -13,6 +13,9 @@
       "id" : "ds_7aee4ef7dacd4129a64bad43d714cc3e",
       "query" : {
         "name" : "claude_status",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
           "query" : "select * from FS.claude_check_status"
@@ -28,7 +31,7 @@
   "layout_type" : "bootstrap",
   "name" : "Claude Service Status",
   "provenance" : {
-    "imported_at" : "2026-09-15T04:29:49Z",
+    "imported_at" : "2026-11-13T09:52:59Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -37,6 +40,9 @@
   "rows" : [
     {
       "id" : "row_caf374e5f3b348e39fb24cac7230b82a",
+      "layout" : {
+        "fill" : true
+      },
       "panels" : [
         {
           "columns" : [
@@ -50,7 +56,6 @@
           ],
           "id" : "panel_80023f3fd4a649f694732330e5d7465f",
           "layout" : {
-            "height" : 640,
             "panel_width" : 12
           },
           "visualizations" : [
@@ -58,6 +63,10 @@
               "data_source_ref" : "ds_7aee4ef7dacd4129a64bad43d714cc3e",
               "id" : "viz_1aadee9cefd34bf99851edb77420650d",
               "layer" : 1,
+              "options" : {
+                "renderer" : "power",
+                "wrap_cells" : "true"
+              },
               "type" : "table",
               "width" : 12
             }

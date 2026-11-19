@@ -1,0 +1,61 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a specific SIGMET\/AIRMET",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "sigmet",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `atsu`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "sigmet",
+  "path" : "\/aviation\/sigmets\/{atsu}\/{date}\/{time}",
+  "userParams" : [
+    {
+      "key" : "atsu",
+      "label" : "ATSU identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Date (YYYY-MM-DD format)",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "time",
+      "label" : "Time (HHMM format). This time is always specified in UTC (Zulu) time.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "issuanceTime",
+      "type" : "string"
+    },
+    {
+      "name" : "issuingOffice",
+      "type" : "string"
+    },
+    {
+      "name" : "productCode",
+      "type" : "string"
+    },
+    {
+      "name" : "productName",
+      "type" : "string"
+    },
+    {
+      "name" : "productText",
+      "type" : "string"
+    },
+    {
+      "name" : "wmoCollectiveId",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a specific text product",
+  "format" : "json",
+  "id" : "product",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "product",
+  "path" : "\/products\/{productId}",
+  "userParams" : [
+    {
+      "key" : "productId",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

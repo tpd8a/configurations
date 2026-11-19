@@ -1,0 +1,48 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "One wallet's trading volume over a window, in both\nunits side by side.\n\n`?user=` is required. `?start=` \/ `?end=` are epoch seconds, inclusive and\noptional: omitted or `0` disables a bound (full history). Volume is tracked in\nwhole UTC days, so each bound is floored to its UTC day; the served window\nis the smallest whole-day window containing `[start, end]`.\n\nReturns `{ data: { volume, volume_usdc, trade_count } }`; exactly one row\nby construction (the view aggregates with no GROUP BY), zeros for a wallet\nwith no trades in the window. An inverted window is zeros too, not an error.\n\n`volume` is both-sides SHARES; `volume_usdc` is the same measure in USD;\nthe endpoint that shows the unit convention side by side: the bare name is\nthe natural unit, `_usdc` is the denomination, the same pairing as\n`current_size` \/ `entry_cost_usdc` on `\/v2\/positions`.",
+  "format" : "json",
+  "id" : "get_user_volume",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get a user's trading volume",
+  "path" : "\/v2\/user-volume",
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The wallet whose volume to return. Required.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Window start, epoch seconds, inclusive. Omitted or `0` disables the\nbound (the f",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "Window end, epoch seconds, inclusive, floored to its UTC day. Omitted\nor `0` dis",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "actions" : [
+    {
+      "kind" : "notification"
+    }
+  ],
+  "enabled" : false,
+  "id" : "job_4b1206db5c54",
+  "message" : "Engine test job ran ({{rowCount}} rows) — Construct can be quit.",
+  "name" : "Engine test — every 2 min",
+  "schedule" : "every 2m",
+  "target" : {
+    "dashboardId" : "dash_124026d013ac424199d5a7f0e075ba78",
+    "datasourceId" : "ds_59a8cb30d91d8c00e42f7f387f6e57b8"
+  },
+  "trigger" : {
+    "kind" : "everyRun"
+  }
+}

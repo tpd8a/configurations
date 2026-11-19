@@ -5,7 +5,7 @@
   "headers" : {
     "Authorization" : "Bearer {{ config.token }}"
   },
-  "icon" : "network",
+  "icon" : "",
   "id" : "lm-studio",
   "name" : "LM Studio",
   "sourceURL" : "file:\/\/\/tmp\/streambuilder-build\/Build\/Products\/Debug\/ConstructTv.app\/Contents\/Resources\/ConstructPlatform_ConstructConnectors.bundle\/Contents\/Resources\/lmstudio.openapi.json",

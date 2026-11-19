@@ -3,18 +3,16 @@
   "data_sources" : [
     {
       "id" : "ds_db46ebf46c7e4b13b5171dc581aaba9e",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Server Fleet",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "server_fleet.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 30,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
@@ -109,7 +107,6 @@
       }
     ]
   },
-  "landscape_ref" : "fleet-csv.scene.json",
   "layout_type" : "bootstrap",
   "name" : "Fleet CSV",
   "polling_interval_seconds" : 30,

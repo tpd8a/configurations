@@ -1,0 +1,1 @@
+{"sql":"SELECT tool, arg_names, ok, ms FROM construct_mcp_calls ORDER BY at DESC LIMIT 100","description":"MCP requests","id":"fedsearch_31052f3260ee4aa4b96432f28fc61d84","name":"tool_usage","config_version":2}

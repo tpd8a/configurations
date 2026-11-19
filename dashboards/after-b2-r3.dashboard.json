@@ -9,6 +9,9 @@
           "retention" : "1h"
         },
         "name" : "btc_ticker_live",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
           "query" : "SELECT time, symbol, close, priceChange, priceChangePercent, high, low, volume FROM ws_ticker WHERE symbol = 'BTCUSDT'"
@@ -45,6 +48,9 @@
           "retention" : "1h"
         },
         "name" : "eth_ticker_live",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
           "query" : "SELECT time, symbol, close, priceChange, priceChangePercent, high, low, volume FROM ws_ticker WHERE symbol = 'ETHUSDT'"
@@ -82,7 +88,7 @@
   "layout_type" : "bootstrap",
   "name" : "After b2 r3",
   "provenance" : {
-    "imported_at" : "2026-10-30T15:55:50Z",
+    "imported_at" : "2026-11-15T18:04:15Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -104,6 +110,7 @@
           ],
           "id" : "panel_d4f7b0e53c6a4b1f8e9d0a7f6e5d4c04",
           "layout" : {
+            "height" : 240,
             "panel_width" : 4
           },
           "title" : "Price (24h change)",
@@ -142,24 +149,189 @@
           "visualizations" : [
             {
               "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "close" : {
+                    "color" : "#8E24AA",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "close",
+                    "fillOpacity" : 0.5,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "dotted",
+                    "lineWidth" : 3,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
                 "panes" : [
                   {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
                     "id" : "main",
                     "marks" : [
                       {
-                        "kind" : "line"
+                        "id" : "60F939B1-2632-4AB7-8AB7-93F5E9177B9B",
+                        "kind" : "area",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY2xvc2UiOnsibmVnYXRlIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNSwiaGlkZGVuIjpmYWxzZSwibGluZUludGVycG9sYXRpb24iOiJzbW9vdGgiLCJsaW5lU3R5bGUiOiJkb3R0ZWQiLCJjb2xvdXIiOnsiaGV4Ijp7Il8wIjoiIzhFMjRBQSJ9fSwiaGlkZUZyb21MZWdlbmQiOmZhbHNlLCJleGNsdWRlRnJvbVN0YWNrIjpmYWxzZSwibGluZVdpZHRoIjozfX19"
                       }
-                    ]
+                    ],
+                    "shapeId" : "stacked-area-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "arrival_ts"
+                        ],
+                        "stack",
+                        [
+
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
                   }
                 ],
                 "seriesFields" : [
                   "close"
                 ],
-                "timeField" : "time"
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+                    "y",
+                    [
+                      "close"
+                    ],
+                    "x",
+                    [
+                      "time"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "timeField" : "time",
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "BTCUSDT sparkline (last hour)"
               },
               "data_source_ref" : "ds_a1c4e7b20f3d4e8c9b6a5d4c3b2a1f01",
               "id" : "viz_a7c0e3b86f9d4e4c9b2a3d0c9b8a7f07",
               "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
               "title" : "BTCUSDT sparkline (last hour)",
               "type" : "chart",
               "width" : 12
@@ -184,6 +356,7 @@
           ],
           "id" : "panel_6c9d2f5b8e1a44c0d3f6b9e2a5c8d114",
           "layout" : {
+            "height" : 240,
             "panel_width" : 4
           },
           "title" : "Price (24h change)",
@@ -222,20 +395,177 @@
           "visualizations" : [
             {
               "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+                  "close" : {
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "close",
+                    "fillOpacity" : 0.5,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "solid",
+                    "lineWidth" : 3.5,
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
                 "panes" : [
                   {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
                     "id" : "main",
                     "marks" : [
                       {
-                        "kind" : "line"
+                        "id" : "4CE9E9A5-D9AD-4F92-9D1E-FE759F1860E8",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsiY2xvc2UiOnsibmVnYXRlIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNSwiaGlkZGVuIjpmYWxzZSwibGluZVN0eWxlIjoic29saWQiLCJsaW5lSW50ZXJwb2xhdGlvbiI6InNtb290aCIsImV4Y2x1ZGVGcm9tU3RhY2siOmZhbHNlLCJoaWRlRnJvbUxlZ2VuZCI6ZmFsc2UsImxpbmVXaWR0aCI6My41fX19"
                       }
-                    ]
+                    ],
+                    "shapeId" : "line-over-time",
+                    "slotBindings" : {
+                      "storage" : [
+                        "y",
+                        [
+                          "close"
+                        ],
+                        "x",
+                        [
+                          "arrival_ts"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
                   }
                 ],
                 "seriesFields" : [
                   "close"
                 ],
-                "timeField" : "time"
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+                    "y",
+                    [
+                      "close"
+                    ],
+                    "x",
+                    [
+                      "time"
+                    ]
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "timeField" : "time",
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 1,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "config" : {
+                "title" : "ETHUSDT sparkline (last hour)"
               },
               "data_source_ref" : "ds_3f6a9c2e5b8d41f7a0c3e6b9d2f5a811",
               "id" : "viz_9f2a5c8e1b4d47f3a6c9e2b5d8f1a417",

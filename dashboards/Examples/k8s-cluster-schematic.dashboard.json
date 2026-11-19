@@ -3,85 +3,75 @@
   "data_sources" : [
     {
       "id" : "ds_7323ce9c29e142a0b3203acf6d3f575b",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Server Fleet",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "server_fleet.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'server_fleet.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_566c4d2069be4c34b6a61de7b03e826d",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Network Connections",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "connections.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'connections.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_05af03ec82a84ef79bbb66fb34e5dea3",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Network Zones",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "zones.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'zones.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_0d48ab20a5e64f0d82a03adfad4af17b",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Active Alerts",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "alerts.csv",
             "tql" : "select hostname, ttl_seconds"
           }
         },
         "refresh_seconds" : 10,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'alerts.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_1f6a5d4a7b65494883c0079beec1534c",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Service Mesh",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "path" : "service_mesh.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 0,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'service_mesh.csv')"
+        },
+        "type" : "ds.sql"
       }
     }
   ],

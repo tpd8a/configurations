@@ -1,0 +1,79 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "@type",
+      "type" : "string"
+    },
+    {
+      "name" : "callSign",
+      "type" : "string"
+    },
+    {
+      "name" : "counties",
+      "type" : "string"
+    },
+    {
+      "name" : "sameCodes",
+      "type" : "string"
+    },
+    {
+      "name" : "setId",
+      "type" : "string"
+    },
+    {
+      "name" : "siteCity",
+      "type" : "string"
+    },
+    {
+      "name" : "siteName",
+      "type" : "string"
+    },
+    {
+      "name" : "siteState",
+      "type" : "string"
+    },
+    {
+      "name" : "transmitterFrequency",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a collection of transmitters",
+  "format" : "json",
+  "id" : "transmitters",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 500,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "transmitters",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/radio",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "cursor",
+      "label" : "Pagination cursor",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

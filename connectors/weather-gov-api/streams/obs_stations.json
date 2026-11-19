@@ -1,0 +1,126 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "county",
+      "type" : "string"
+    },
+    {
+      "name" : "elevation",
+      "type" : "string"
+    },
+    {
+      "name" : "fireWeatherZone",
+      "type" : "string"
+    },
+    {
+      "name" : "forecast",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry.type",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "provider",
+      "type" : "string"
+    },
+    {
+      "name" : "stationIdentifier",
+      "type" : "string"
+    },
+    {
+      "name" : "subProvider",
+      "type" : "string"
+    },
+    {
+      "name" : "timeZone",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of observation stations.",
+  "format" : "json",
+  "id" : "obs_stations",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 500,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "obs_stations",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/stations",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "id",
+          "geometry"
+        ],
+        "path" : [
+          "features",
+          "[]",
+          "properties"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "@type" : "type"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "id",
+      "label" : "Filter by observation station ID",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "state",
+      "label" : "Filter by state\/marine area code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "500",
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Pagination cursor",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

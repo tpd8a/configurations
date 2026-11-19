@@ -1,0 +1,62 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "issuanceTime",
+      "type" : "string"
+    },
+    {
+      "name" : "issuingOffice",
+      "type" : "string"
+    },
+    {
+      "name" : "productCode",
+      "type" : "string"
+    },
+    {
+      "name" : "productName",
+      "type" : "string"
+    },
+    {
+      "name" : "wmoCollectiveId",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of text products of a given type",
+  "format" : "json",
+  "id" : "products_type",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "rows" : 1313,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "products_type",
+  "path" : "\/products\/types\/{typeId}",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "typeId",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

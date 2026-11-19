@@ -1,0 +1,74 @@
+{
+  "columns" : [
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of SIGMET\/AIRMETs",
+  "format" : "json",
+  "id" : "sigmetquery",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 960,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "sigmetQuery",
+  "path" : "\/aviation\/sigmets",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "start",
+      "label" : "Start time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "End time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "date",
+      "label" : "Date (YYYY-MM-DD format)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "atsu",
+      "label" : "ATSU identifier",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sequence",
+      "label" : "SIGMET sequence number",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

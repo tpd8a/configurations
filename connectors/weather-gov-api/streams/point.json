@@ -1,0 +1,56 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns metadata about a given latitude\/longitude point",
+  "format" : "json",
+  "id" : "point",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "point",
+  "path" : "\/points\/{latitude},{longitude}",
+  "userParams" : [
+    {
+      "key" : "latitude",
+      "label" : "Latitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "longitude",
+      "label" : "Longitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

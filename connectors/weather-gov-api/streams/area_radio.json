@@ -1,0 +1,33 @@
+{
+  "columns" : [
+    {
+      "name" : "speak",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns NOAA Weather Radio broadcast script for a transmitter",
+  "format" : "json",
+  "id" : "area_radio",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "area_radio",
+  "path" : "\/radio\/{callSign}\/broadcast",
+  "userParams" : [
+    {
+      "key" : "callSign",
+      "label" : "The call sign identifier for a NOAA transmitter station.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

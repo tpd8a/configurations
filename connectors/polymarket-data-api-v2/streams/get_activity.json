@@ -1,0 +1,206 @@
+{
+  "columns" : [
+    {
+      "name" : "bio",
+      "type" : "string"
+    },
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "event_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "icon",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "profile_image_optimized",
+      "type" : "string"
+    },
+    {
+      "name" : "proxy_wallet",
+      "type" : "string"
+    },
+    {
+      "name" : "pseudonym",
+      "type" : "string"
+    },
+    {
+      "name" : "side",
+      "type" : "string"
+    },
+    {
+      "name" : "size",
+      "type" : "number"
+    },
+    {
+      "name" : "slug",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    },
+    {
+      "name" : "token_id",
+      "type" : "string"
+    },
+    {
+      "name" : "transaction_hash",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "usdc_size",
+      "type" : "number"
+    }
+  ],
+  "description" : "Keyset-paginated activity feed (trades, splits, merges,\nredeems, …) in the standard `{ data, pagination }` envelope.\n\nOrdering is `(block_timestamp, sequence_id)`, `DESC` by default or `ASC` via\n`sort_direction=ASC`; both keyset-seekable. Value sorts (`CASH`\/`TOKENS`)\nhave no seek anchor and are rejected with `400` rather than silently\nre-served as page one. The cursor binds the direction it was minted under\nand the resume ADOPTS it, so a replay cannot flip the walk mid-stream.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+  "format" : "json",
+  "id" : "get_activity",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 100,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "List account activity",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/activity",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "Required; the feed is user-anchored.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Page size; default 100, max 1000, past-cap rejected.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque cursor from a prior response's `next_cursor`; binds the sort\ndirection it",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Activity type(s), comma-separated. Accepted values: `TRADE`, `SPLIT`,\n`MERGE`, `",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Condition id(s), comma-separated (at most 20 distinct values).\n`condition_id` \/ ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "event_id",
+      "label" : "Gamma event id(s), comma-separated (at most 20 distinct values);\nresolves to the",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "side",
+      "label" : "BUY or SELL.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Window start on `block_timestamp`, epoch seconds (inclusive). Omitted\nor `0` flo",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "Window end, epoch seconds (inclusive); omitted or `0` means now plus\none day.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "sort_by",
+      "label" : "Only `TIMESTAMP` is supported (v2 pages by keyset).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "DESC",
+      "key" : "sort_direction",
+      "label" : "`ASC` or `DESC` (default). The keyset seeks in the chosen direction;\nthe minted ",
+      "location" : "query",
+      "options" : [
+        "ASC",
+        "DESC"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "true",
+      "key" : "exclude_deposits_withdrawals",
+      "label" : "Defaults to `true`, which drops `DEPOSIT` and `WITHDRAWAL` rows from\nthe page, i",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

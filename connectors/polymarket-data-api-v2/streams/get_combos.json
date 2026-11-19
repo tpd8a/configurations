@@ -1,0 +1,106 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "amount_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "block_number",
+      "type" : "integer"
+    },
+    {
+      "name" : "combo_condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "combo_position_id",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "legs",
+      "type" : "string"
+    },
+    {
+      "name" : "payout_usdc",
+      "type" : "number"
+    },
+    {
+      "name" : "proxy_wallet",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    },
+    {
+      "name" : "transaction_hash",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Keyset-paginated combo lifecycle + redemption\nfeed for a user, in the standard `{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page.\nUnlike the activity feed, the anchor behind the cursor is\n`(block_number, log_index)`; this endpoint's total order.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_combos",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "0 rows — no array of rows found",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "List combo activity",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/activity\/combos",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "Required; the feed is user-anchored.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Combo condition id(s), comma-separated (at most 20 distinct values).\n`condition_",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

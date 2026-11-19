@@ -1,0 +1,279 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_a2f4a396f80145e1a205e2588647e47c",
+      "query" : {
+        "name" : "Biggest Winners",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT user_name, kind, event_title, initial_value, final_value, pnl, win_rank FROM polymarket_data_api_v2.get_biggest_winners ORDER BY pnl DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_09680d4db46c48d0a47017355f59dc70",
+      "query" : {
+        "name" : "Leaderboard by Volume",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT user_name, rank, volume, pnl FROM polymarket_data_api_v2.get_leaderboard ORDER BY volume DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_02590e7a0dc940a59b7fc69eb9bb7f43",
+      "query" : {
+        "name" : "Volume Summary",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT SUM(volume) as total_volume FROM polymarket_data_api_v2.get_leaderboard"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_435f0fcb7d0344a78a3cbe015368d7e3",
+      "query" : {
+        "name" : "Builders Leaderboard",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT builder_name, active_users, volume FROM polymarket_data_api_v2.get_builders_leaderboard ORDER BY volume DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_2f72f240ae1c46eeb961fa32ee643b25",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Polymarket Winners & Leaderboard",
+  "provenance" : {
+    "imported_at" : "2026-11-16T21:10:14Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_c3a1f6ad508e41879931e24d67a03924",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_6304e51720b646c58eef8282bf2ed80d"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_09a3a8a287ce40f0934e3168bf3e45e1",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Biggest Winners",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_a2f4a396f80145e1a205e2588647e47c",
+              "id" : "viz_6304e51720b646c58eef8282bf2ed80d",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_ef5c43ef8040425fb2ee88ffbb950731"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_2e884eae6e9c4f7d8619b77306251f7f",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Leaderboard by Volume",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_09680d4db46c48d0a47017355f59dc70",
+              "id" : "viz_ef5c43ef8040425fb2ee88ffbb950731",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3ff914943de542029732cc1c5b4648b4"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_eb3ef47bb079419283c1abf88713bd35",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Top 10 by Volume (Chart)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_09680d4db46c48d0a47017355f59dc70",
+              "id" : "viz_3ff914943de542029732cc1c5b4648b4",
+              "layer" : 1,
+              "options" : {
+                "chartType" : "bar"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_97ba7139d7694ac2bbfbf226dfac2c21"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_08e2937ca12748909f45e3d4ce4d864e",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Top 10 by PnL (Chart)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_09680d4db46c48d0a47017355f59dc70",
+              "id" : "viz_97ba7139d7694ac2bbfbf226dfac2c21",
+              "layer" : 1,
+              "options" : {
+                "chartType" : "bar"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3e656964bd764cb58a1a63f2ed85edb3"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_3fa82265644c44108342aae77d43b0e7",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Total Leaderboard Volume",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_02590e7a0dc940a59b7fc69eb9bb7f43",
+              "id" : "viz_3e656964bd764cb58a1a63f2ed85edb3",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_2db4011c653e4b89b19b00956539cf12"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_0b656e3009b542ca88f17cf03ffd6809",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Total Leaderboard Volume (Gauge)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_02590e7a0dc940a59b7fc69eb9bb7f43",
+              "id" : "viz_2db4011c653e4b89b19b00956539cf12",
+              "layer" : 1,
+              "type" : "gauge",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3739d92611cd4929a2b77658ac42c9e7"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_d79eabaf06dc4a2c8b56f767f4d8bf1b",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Builders Leaderboard",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_435f0fcb7d0344a78a3cbe015368d7e3",
+              "id" : "viz_3739d92611cd4929a2b77658ac42c9e7",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4e47201c2709472281e4748684b65f60"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_dfb6fbde375a4e98b986a4c598017312",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Builders by Volume (Chart)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_435f0fcb7d0344a78a3cbe015368d7e3",
+              "id" : "viz_4e47201c2709472281e4748684b65f60",
+              "layer" : 1,
+              "options" : {
+                "chartType" : "bar"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

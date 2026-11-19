@@ -1,0 +1,195 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "barometricPressure",
+      "type" : "string"
+    },
+    {
+      "name" : "cloudLayers",
+      "type" : "string"
+    },
+    {
+      "name" : "dewpoint",
+      "type" : "string"
+    },
+    {
+      "name" : "elevation",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry.type",
+      "type" : "string"
+    },
+    {
+      "name" : "heatIndex",
+      "type" : "string"
+    },
+    {
+      "name" : "icon",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "maxTemperatureLast24Hours",
+      "type" : "string"
+    },
+    {
+      "name" : "minTemperatureLast24Hours",
+      "type" : "string"
+    },
+    {
+      "name" : "precipitationLast3Hours",
+      "type" : "string"
+    },
+    {
+      "name" : "presentWeather",
+      "type" : "string"
+    },
+    {
+      "name" : "rawMessage",
+      "type" : "string"
+    },
+    {
+      "name" : "relativeHumidity",
+      "type" : "string"
+    },
+    {
+      "name" : "seaLevelPressure",
+      "type" : "string"
+    },
+    {
+      "name" : "station",
+      "type" : "string"
+    },
+    {
+      "name" : "stationId",
+      "type" : "string"
+    },
+    {
+      "name" : "stationName",
+      "type" : "string"
+    },
+    {
+      "name" : "temperature",
+      "type" : "string"
+    },
+    {
+      "name" : "textDescription",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "visibility",
+      "type" : "string"
+    },
+    {
+      "name" : "windChill",
+      "type" : "string"
+    },
+    {
+      "name" : "windDirection",
+      "type" : "string"
+    },
+    {
+      "name" : "windGust",
+      "type" : "string"
+    },
+    {
+      "name" : "windSpeed",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of observations for a given station",
+  "format" : "json",
+  "id" : "station_observation_list",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "jsonText"
+    ],
+    "rows" : 500,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "station_observation_list",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/stations\/{stationId}\/observations",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "id",
+          "geometry"
+        ],
+        "path" : [
+          "features",
+          "[]",
+          "properties"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "@type" : "type"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Observation station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "End time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Pagination cursor",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

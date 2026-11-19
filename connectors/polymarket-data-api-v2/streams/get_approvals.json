@@ -1,0 +1,31 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "Polygon token\/operator approval state for one wallet.\n\n`?user=` must be an EVM address. The complete served catalog is returned in\ncanonical order under `{ data }`; this endpoint is not paginated.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_approvals",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "400: {\"error\":\"required query param 'user' not provided\",\"code\":\"invalid_request\",\"parameter\":\"user\",\"retryable\":false,\"trace",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "Get wallet approvals",
+  "path" : "\/v2\/approvals",
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The proxy wallet whose approval state to return. Required EVM address.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

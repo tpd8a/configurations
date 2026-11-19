@@ -1,0 +1,186 @@
+{
+  "columns" : [
+    {
+      "name" : "bio",
+      "type" : "string"
+    },
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "event_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "icon",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome",
+      "type" : "string"
+    },
+    {
+      "name" : "outcome_index",
+      "type" : "integer"
+    },
+    {
+      "name" : "price",
+      "type" : "number"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "profile_image_optimized",
+      "type" : "string"
+    },
+    {
+      "name" : "proxy_wallet",
+      "type" : "string"
+    },
+    {
+      "name" : "pseudonym",
+      "type" : "string"
+    },
+    {
+      "name" : "side",
+      "type" : "string"
+    },
+    {
+      "name" : "size",
+      "type" : "number"
+    },
+    {
+      "name" : "slug",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "integer"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    },
+    {
+      "name" : "token_id",
+      "type" : "string"
+    },
+    {
+      "name" : "transaction_hash",
+      "type" : "string"
+    }
+  ],
+  "description" : "Keyset-paginated trade feed in the standard\n`{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page;\nit carries both the page size and the `(block_timestamp, sequence_id)` seek\nanchor, so deep pages cost the same as shallow ones.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+  "format" : "json",
+  "id" : "get_trades",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 100,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "List trades",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/trades",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "Address to filter by; omit for the market\/event\/global feed.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied (the cursor's size wins).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "true",
+      "key" : "taker_only",
+      "label" : "Defaults to `true`: each fill is served once, on its taker side.\n`false` include",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "filter_type",
+      "label" : "CASH or TOKENS; defaults to TOKENS.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "filter_amount",
+      "label" : "Minimum trade size; defaults to 0.01, and 0 means the same.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Window start on `block_timestamp`, epoch seconds (inclusive); honored\non the `us",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "Window end, epoch seconds (inclusive); honored on the `user` shape\nonly; omitted",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "condition",
+      "label" : "Condition id(s), comma-separated (at most 20 distinct values).\n`condition_id` \/ ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "event_id",
+      "label" : "Event id(s), comma-separated (at most 20 distinct values).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "side",
+      "label" : "BUY or SELL.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

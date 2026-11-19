@@ -1,0 +1,71 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns metadata about a given zone",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "zone",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "404: { — parent list tried: \/zones (type, zoneId)",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "zone",
+  "path" : "\/zones\/{type}\/{zoneId}",
+  "userParams" : [
+    {
+      "key" : "type",
+      "label" : "Zone type",
+      "location" : "path",
+      "options" : [
+        "land",
+        "marine",
+        "forecast",
+        "public",
+        "coastal",
+        "offshore",
+        "fire",
+        "county"
+      ],
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "effective",
+      "label" : "Effective date\/time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

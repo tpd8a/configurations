@@ -1,0 +1,88 @@
+{
+  "columns" : [
+    {
+      "name" : "active_users",
+      "type" : "integer"
+    },
+    {
+      "name" : "builder_code",
+      "type" : "string"
+    },
+    {
+      "name" : "builder_name",
+      "type" : "string"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "rank",
+      "type" : "integer"
+    },
+    {
+      "name" : "verified",
+      "type" : "boolean"
+    },
+    {
+      "name" : "volume",
+      "type" : "number"
+    }
+  ],
+  "description" : "The ranked board of builders by volume.\n\n`?time_period=` is `day` (default), `week`, `month` or `all` and selects the\n**window**; one row per builder in it. Deeper pages come only from\n`?cursor=`.\n\nA cursor **pins the window it was minted on**, so following it needs no\n`?time_period=`; and passing a different one is a `400` rather than a\nsilent re-point, since an offset from one board means nothing on another.\n\n`volume` is in SHARES, not USDC, the same unit as `\/v2\/leaderboard`'s\n`volume`. `active_users` counts distinct makers in the window.\n\n`builder` is a display name that falls back to `builder_code` for a builder\nwith no profile, so key on `builder_code` and render `builder`.",
+  "format" : "json",
+  "id" : "get_builders_leaderboard",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 100,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get the builders leaderboard",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/builders\/leaderboard",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "default" : "day",
+      "key" : "time_period",
+      "label" : "Window: `day` | `week` | `month` | `all`. Defaults to `day`.",
+      "location" : "query",
+      "options" : [
+        "day",
+        "week",
+        "month",
+        "all"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

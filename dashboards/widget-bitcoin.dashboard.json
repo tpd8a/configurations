@@ -4,28 +4,11 @@
     {
       "id" : "ds_25cb04a849194d79ab04550d59192f93",
       "query" : {
-        "alerts" : [
-          {
-            "condition" : {
-              "kind" : "compare",
-              "op" : "gt",
-              "series" : "priceChange",
-              "value" : {
-                "number" : -57.98
-              }
-            },
-            "id" : "3550788B-8D3C-42C6-9478-822738195EDC",
-            "name" : "priceChange gt -57.98",
-            "severity" : "Notice",
-            "showOn" : [
-              "viz_efccaf8bea61405c9977fdba63c485c2"
-            ]
-          }
-        ],
         "keep_history" : {
           "mode" : "every",
           "retention" : "1h"
         },
+        "live_interval_ms" : 50,
         "name" : "ds_btcusdt_price",
         "query" : {
           "method" : "GET"
@@ -57,7 +40,7 @@
   "layout_type" : "bootstrap",
   "name" : "Widget Bitcoin",
   "provenance" : {
-    "imported_at" : "2026-10-31T17:36:52Z",
+    "imported_at" : "2026-11-11T07:45:30Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -201,19 +184,31 @@
                       {
                         "id" : "DEC3F594-C0C1-4037-B11B-5DE7899B7B66",
                         "kind" : "line",
-                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsicHJpY2VDaGFuZ2UiOnsibmVnYXRlIjpmYWxzZSwiaGlkZGVuIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNTUwMDAwMDAwMDAwMDAwMDQsImxpbmVJbnRlcnBvbGF0aW9uIjoic21vb3RoIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibGluZVdpZHRoIjoyLjV9fX0="
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsicHJpY2VDaGFuZ2UiOnsiaGlkZGVuIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNTUwMDAwMDAwMDAwMDAwMDQsIm5lZ2F0ZSI6ZmFsc2UsImxpbmVJbnRlcnBvbGF0aW9uIjoic21vb3RoIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibGluZVdpZHRoIjoyLjV9fX0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma",
+                        "id" : "19F013F5-F7E0-4067-8D37-44687ADD72EA",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJkYXNoZWQiOmZhbHNlLCJmaWVsZCI6InNtYSIsImluZGV4IjowfQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "ema",
+                        "id" : "7673B678-4D5D-4E66-94CD-AABC61380896",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJkYXNoZWQiOmZhbHNlLCJmaWVsZCI6ImVtYSIsImluZGV4IjowfQ=="
                       }
                     ],
                     "shapeId" : "line-over-time",
                     "slotBindings" : {
                       "storage" : [
-                        "y",
-                        [
-                          "priceChange"
-                        ],
                         "x",
                         [
                           "arrival_ts"
+                        ],
+                        "y",
+                        [
+                          "priceChange"
                         ]
                       ]
                     },

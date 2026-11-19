@@ -1,0 +1,55 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns the current zone forecast for a given zone",
+  "format" : "json",
+  "id" : "zone_forecast",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "bigCell",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "zone_forecast",
+  "path" : "\/zones\/{type}\/{zoneId}\/forecast",
+  "userParams" : [
+    {
+      "default" : "Feature",
+      "key" : "type",
+      "label" : "Zone type",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "default" : "AKZ317",
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

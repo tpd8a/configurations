@@ -1,0 +1,34 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "The profile card for one wallet in a single call.\n\n`?user=` is required. Returns `{ data: { trades, biggest_win, views,\njoin_date, all_time_pnl } }`, or `{ data: null }` when the wallet is not a\nknown user.\n\n**`data: null` and a row of zeros mean different things.** `null` is \"no such\nuser\"; zeros are \"this user exists but has never traded, never won and has no\nprofile views\".\n\n`trades` counts DISTINCT MARKETS traded, not individual trades. It is exact,\nnot estimated.\n\n`biggest_win` is the best single **resolved** position win in USDC, market\nand combo arms unified, and `0` when the wallet has no win over $1.\n\n`join_date` is epoch seconds, or `null` when unknown.\n\n`all_time_pnl` is the newest persisted cumulative `\/v2\/user-pnl` point at\nits actual observation timestamp. It is `null` when the user exists but no\nobservation has been published yet. For the composition card: trading\nrealized is `realized_market_pnl + realized_combo_pnl`; LP realized is\n`realized_lp_pnl`; rebates, yield, rewards, referral, and fees paid map to\ntheir same-named fields (`fees_paid` is refunds minus charges). `volume`,\n`volume_usdc`, and `trade_count` are cumulative maker-attributed canonical\nfill metrics.\n\nNot paginated: one row by construction, so `data` is the bare object with no\n`pagination`; the `\/v2\/value` shape.",
+  "format" : "json",
+  "id" : "get_user_stats",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get a user's profile stats",
+  "path" : "\/v2\/user-stats",
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The wallet whose profile stats to return. Required; `0x` followed by\n40 hexadeci",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

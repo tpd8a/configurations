@@ -23,7 +23,7 @@
   "layout_type" : "bootstrap",
   "name" : "Grafana Test",
   "provenance" : {
-    "imported_at" : "2026-10-17T08:03:44Z",
+    "imported_at" : "2026-11-15T08:28:00Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -122,24 +122,24 @@
                     "marks" : [
                       {
                         "id" : "CCCE0350-F423-450A-BF44-014A1069E542",
-                        "kind" : "line",
+                        "kind" : "area",
                         "optionsJSON" : "e30="
                       }
                     ],
-                    "shapeId" : "multi-line-over-time",
+                    "shapeId" : "stacked-area-over-time",
                     "slotBindings" : {
                       "storage" : [
-                        "y",
-                        [
-                          "Value"
-                        ],
                         "x",
                         [
                           "Time"
                         ],
-                        "group",
+                        "stack",
                         [
                           "cpu"
+                        ],
+                        "y",
+                        [
+                          "Value"
                         ]
                       ]
                     },
@@ -202,7 +202,7 @@
                   ],
                   "enabled" : false,
                   "sharedScales" : true,
-                  "size" : "medium"
+                  "size" : "large"
                 },
                 "version" : 1,
                 "xAxis" : {
@@ -210,12 +210,16 @@
                 }
               },
               "config" : {
-                "title" : "Grafana chart (idle CPU per core)"
+                "title" : "Idle CPU — via engine MCP"
               },
               "data_source_ref" : "ds_a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
               "id" : "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
               "layer" : 1,
-              "title" : "Grafana chart (idle CPU per core)",
+              "options" : {
+                "stackMode" : "stacked",
+                "yAxisUnit" : "percent"
+              },
+              "title" : "Idle CPU — via engine MCP",
               "type" : "chart",
               "width" : 12
             }

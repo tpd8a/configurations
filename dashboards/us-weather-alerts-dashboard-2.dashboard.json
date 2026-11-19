@@ -1,0 +1,247 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_73d2da97ad7a45e6ba2f1bb43f6c8bff",
+      "query" : {
+        "name" : "Alert Types Data Source",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT eventTypes FROM weather.alerts_types LIMIT 50"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_08ad5ce14aff4601842a275a7f99f502",
+      "query" : {
+        "name" : "Alerts by Severity Count",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT eventTypes, COUNT(*) as count FROM weather.alerts_types GROUP BY eventTypes ORDER BY count DESC LIMIT 20"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_a45b9c93aeb045a884b7c0403bd72f5f",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "US Weather Alerts Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-17T19:02:07Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_858e8ceda00a48e6bbc0239814da165e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_fccffd0c3faa4dc49c575154f2e96f77"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4eb77845bfef42928dfbb4c6aaf434bc",
+          "layout" : {
+            "height" : 640,
+            "panel_width" : 6
+          },
+          "title" : "Active Alert Types",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_73d2da97ad7a45e6ba2f1bb43f6c8bff",
+              "id" : "viz_fccffd0c3faa4dc49c575154f2e96f77",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d6007d1e8ea541b4897ea5861eb968f8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_ac6355e9f5914d9f8fe4270b539d6d6f",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Alert Types Count",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "DDBB7101-E4CA-448D-A4BB-69A72FE3EAB9",
+                        "kind" : "text",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "text",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "eventTypes"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_08ad5ce14aff4601842a275a7f99f502",
+              "id" : "viz_d6007d1e8ea541b4897ea5861eb968f8",
+              "layer" : 1,
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

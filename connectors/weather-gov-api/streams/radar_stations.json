@@ -1,0 +1,101 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "elevation",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry.type",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "latency",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "rda",
+      "type" : "string"
+    },
+    {
+      "name" : "stationType",
+      "type" : "string"
+    },
+    {
+      "name" : "timeZone",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of radar stations",
+  "format" : "json",
+  "id" : "radar_stations",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 208,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "radar_stations",
+  "path" : "\/radar\/stations",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "id",
+          "geometry"
+        ],
+        "path" : [
+          "features",
+          "[]",
+          "properties"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "@type" : "type"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "stationType",
+      "label" : "Limit results to a specific station type or types",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "reportingHost",
+      "label" : "Show RDA and latency info from specific reporting host",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "host",
+      "label" : "Show latency info from specific LDM host",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

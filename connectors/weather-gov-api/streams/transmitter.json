@@ -1,0 +1,72 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "@type",
+      "type" : "string"
+    },
+    {
+      "name" : "callSign",
+      "type" : "string"
+    },
+    {
+      "name" : "counties",
+      "type" : "string"
+    },
+    {
+      "name" : "sameCodes",
+      "type" : "string"
+    },
+    {
+      "name" : "setId",
+      "type" : "string"
+    },
+    {
+      "name" : "siteCity",
+      "type" : "string"
+    },
+    {
+      "name" : "siteName",
+      "type" : "string"
+    },
+    {
+      "name" : "siteState",
+      "type" : "string"
+    },
+    {
+      "name" : "transmitterFrequency",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a single transmitter",
+  "format" : "json",
+  "id" : "transmitter",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "transmitter",
+  "path" : "\/radio\/{callSign}",
+  "userParams" : [
+    {
+      "key" : "callSign",
+      "label" : "The call sign identifier for a NOAA transmitter station.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

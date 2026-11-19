@@ -46,25 +46,5 @@
       "location" : "body",
       "required" : false
     }
-  ],
-  "userParamsMeta" : {
-    "input" : {
-
-    },
-    "instructions" : {
-
-    },
-    "max_output_tokens" : {
-
-    },
-    "model" : {
-
-    },
-    "previous_response_id" : {
-
-    },
-    "store" : {
-
-    }
-  }
+  ]
 }

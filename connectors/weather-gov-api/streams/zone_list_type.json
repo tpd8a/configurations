@@ -1,0 +1,122 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of zones of a given type",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "zone_list_type",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "diagnosis" : "400: {",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "zone_list_type",
+  "path" : "\/zones\/{type}",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "type",
+      "label" : "Zone type",
+      "location" : "path",
+      "options" : [
+        "land",
+        "marine",
+        "forecast",
+        "public",
+        "coastal",
+        "offshore",
+        "fire",
+        "county"
+      ],
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "id",
+      "label" : "Zone ID (forecast or county)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "area",
+      "label" : "State\/marine area code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "region",
+      "label" : "Region code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Zone type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "point",
+      "label" : "Point (latitude,longitude)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_geometry",
+      "label" : "Include geometry in results (true\/false)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "effective",
+      "label" : "Effective date\/time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

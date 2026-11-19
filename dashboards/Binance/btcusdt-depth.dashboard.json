@@ -14,21 +14,9 @@
         },
         "refresh_seconds" : 60,
         "sql" : {
-          "query" : "SELECT * FROM binance_spot.depth(limit := '100', symbols := 'BTCUSDT', symbolStatus := 'TRADING') "
+          "query" : "SELECT * FROM binance_spot.ws_depth(levels := '10', symbols := 'BTCUSDT')"
         },
         "type" : "ds.sql"
-      }
-    },
-    {
-      "id" : "ds_ae982b2bece048df96f161780cc19cfe",
-      "query" : {
-        "chain" : {
-          "extend" : "ds_2b80863c492c4a73be6fa807394c252b",
-          "query" : "SELECT * FROM {{input}} WHERE level = 1 ORDER BY ask "
-        },
-        "name" : "ds_EC77A206",
-        "refresh_seconds" : 0,
-        "type" : "ds.chain"
       }
     }
   ],
@@ -39,7 +27,7 @@
   "layout_type" : "bootstrap",
   "name" : "BTCUSDT Depth",
   "provenance" : {
-    "imported_at" : "2026-10-29T19:57:44Z",
+    "imported_at" : "2026-11-10T08:37:43Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -224,7 +212,8 @@
               "id" : "viz_cb9844c9f6b047eab5cadffbfcb913c1",
               "layer" : 1,
               "options" : {
-                "data_overlay_mode" : "heatmap",
+                "data_overlay_mode" : "none",
+                "renderer" : "power",
                 "stackMode" : "none"
               },
               "title" : "BTCUSDT Depth",
@@ -234,36 +223,6 @@
           ]
         }
       ]
-    },
-    {
-      "id" : "row_b85ef7ac0433492fbee017ef95a1139a",
-      "panels" : [
-        {
-          "columns" : [
-            {
-              "id" : "col_0",
-              "viz_ids" : [
-                "viz_dcd891948cd4457c8d09f918c66e280c"
-              ],
-              "width" : 12
-            }
-          ],
-          "id" : "panel_7caf317b581f4ae0974ce557472f1e58",
-          "layout" : {
-            "panel_width" : 12
-          },
-          "visualizations" : [
-            {
-              "data_source_ref" : "ds_ae982b2bece048df96f161780cc19cfe",
-              "id" : "viz_dcd891948cd4457c8d09f918c66e280c",
-              "layer" : 1,
-              "type" : "table",
-              "width" : 12
-            }
-          ]
-        }
-      ],
-      "title" : "Row 2"
     }
   ]
 }

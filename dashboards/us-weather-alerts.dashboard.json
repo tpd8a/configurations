@@ -1,0 +1,76 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_6291db52dcdd409da5381b1434ee58b2",
+      "query" : {
+        "name" : "Active Alerts Table",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT headline, event, severity, category, urgency, affectedZones FROM weather_gov_api.alerts_query WHERE status = 'Actual' ORDER BY effective DESC LIMIT 50"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_bc5a618c9c374d69a8c919a13d43b3f6",
+      "query" : {
+        "name" : "Alerts by Severity",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT severity, COUNT(*) as alert_count FROM weather_gov_api.alerts_query WHERE status = 'Actual' GROUP BY severity ORDER BY alert_count DESC"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_b71fd228b8104c7a9715e3b8c20d9315",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "US Weather Alerts",
+  "provenance" : {
+    "imported_at" : "2026-11-17T19:49:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_61bab47091ba4f7cad0de1d77dd12967",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_56f2967164f84ec28cf3d2c5ee5a07d8"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_4997e08ca0a749aeaddcad23b22b9ffc",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Active Weather Alerts",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_6291db52dcdd409da5381b1434ee58b2",
+              "id" : "viz_56f2967164f84ec28cf3d2c5ee5a07d8",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

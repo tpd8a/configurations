@@ -3,21 +3,19 @@
   "data_sources" : [
     {
       "id" : "ds_c8d386c69cd54b8ca70f925e01918582",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_C977575F",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "txt",
-            "lineBreaker" : "([\\r\\n]+)\\[",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/.lmstudio\/server-logs\/2026-09\/2026-09-2*log",
-            "tql" : "extract line \/^.(?:\\S+\\s\\S+?)\\]\\[(?:\\w+)\\](?:[\\v\\V]+)\/ | parsetime _time \"yyyy-MM-dd HH:mm:ss\""
+            "tql" : "parsetime _time \"yyyy-MM-dd HH:mm:ss\""
           }
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT\n  REGEXP_EXTRACT(_raw, '^\\[([^\\]]+)\\]\\[([^\\]]+)\\](?:\\[([^\\]]+)\\])?\\s*([\\s\\S]*)$',\n                 ARRAY['_time', 'level', 'component', 'message']),\n  _time, level, component, message, _source, _offset, _raw\nFROM server_logs.lines(path := '2026-09\/2026-09-2*log', break := '^\\[', max_events := 10000)"
+        },
+        "type" : "ds.sql"
       }
     },
     {
@@ -48,7 +46,7 @@
   "layout_type" : "bootstrap",
   "name" : "LM Studio",
   "provenance" : {
-    "imported_at" : "2026-10-26T13:02:45Z",
+    "imported_at" : "2026-11-02T13:28:12Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -82,9 +80,9 @@
               "id" : "viz_3542e9cf8e504d77a6bd88dfd668f68f",
               "layer" : 1,
               "options" : {
-                "raw_field" : "event",
+                "raw_field" : "message",
                 "stats_mode" : "severity",
-                "time_field" : "time",
+                "time_field" : "_time",
                 "timeline_enabled" : "true"
               },
               "type" : "events",

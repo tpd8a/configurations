@@ -1,0 +1,63 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "Complete cumulative native-PnL atoms and compositions.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "get_user_pnl_v2",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "diagnosis" : "400: {\"error\":\"required query param 'user' not provided\",\"code\":\"invalid_request\",\"parameter\":\"user\",\"retryable\":false,\"trace",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "Get a user's PnL series",
+  "path" : "\/v2\/user-pnl",
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "Proxy wallet. The `user_address` spelling is accepted as an alias.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "1d",
+      "key" : "interval",
+      "label" : "Window: `max`, `all`, `1m`, `1w`, `1d`, `12h`, or `6h`. Defaults to `1d`.",
+      "location" : "query",
+      "options" : [
+        "max",
+        "all",
+        "1m",
+        "1w",
+        "1d",
+        "12h",
+        "6h"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "1h",
+      "key" : "fidelity",
+      "label" : "Output grid: `1d`, `18h`, `12h`, `3h`, or `1h`. Defaults to `1h`.",
+      "location" : "query",
+      "options" : [
+        "1d",
+        "18h",
+        "12h",
+        "3h",
+        "1h"
+      ],
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

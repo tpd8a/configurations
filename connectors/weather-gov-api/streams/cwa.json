@@ -1,0 +1,85 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of Center Weather Advisories from a CWSU",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "cwa",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `sequence`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "cwa",
+  "path" : "\/aviation\/cwsus\/{cwsuId}\/cwas\/{date}\/{sequence}",
+  "userParams" : [
+    {
+      "key" : "cwsuId",
+      "label" : "NWS CWSU ID",
+      "location" : "path",
+      "options" : [
+        "ZAB",
+        "ZAN",
+        "ZAU",
+        "ZBW",
+        "ZDC",
+        "ZDV",
+        "ZFA",
+        "ZFW",
+        "ZHU",
+        "ZID",
+        "ZJX",
+        "ZKC",
+        "ZLA",
+        "ZLC",
+        "ZMA",
+        "ZME",
+        "ZMP",
+        "ZNY",
+        "ZOA",
+        "ZOB",
+        "ZSE",
+        "ZTL"
+      ],
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Date (YYYY-MM-DD format)",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "sequence",
+      "label" : "Sequence number",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

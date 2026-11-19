@@ -1,0 +1,72 @@
+{
+  "columns" : [
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of observations for a given zone",
+  "format" : "json",
+  "id" : "zone_obs",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "keyless" : true,
+    "rows" : 500,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "zone_obs",
+  "path" : "\/zones\/forecast\/{zoneId}\/observations",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "default" : "AKZ317",
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start date\/time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "End date\/time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

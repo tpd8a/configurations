@@ -1,0 +1,21 @@
+{
+  "actions" : [
+    {
+      "kind" : "notification"
+    },
+    {
+      "kind" : "aiSummary",
+      "template" : ""
+    }
+  ],
+  "id" : "job_4bad207cd1b8",
+  "name" : "Yahoo AAPL",
+  "schedule" : "every 1h",
+  "target" : {
+    "dashboardId" : "dash_124026d013ac424199d5a7f0e075ba78",
+    "datasourceId" : "ds_59a8cb30d91d8c00e42f7f387f6e57b8"
+  },
+  "trigger" : {
+    "kind" : "everyRun"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns a single Terminal Aerodrome Forecast.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "taf",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "404: {",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "taf",
+  "path" : "\/stations\/{stationId}\/tafs\/{date}\/{time}",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Observation station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Date (YYYY-MM-DD format)",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "time",
+      "label" : "Time (HHMM format). This time is always specified in UTC (Zulu) time.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

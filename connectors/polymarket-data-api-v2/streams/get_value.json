@@ -1,0 +1,41 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    }
+  ],
+  "description" : "The user's portfolio value: single-market holdings marked to market plus\nunresolved combo positions at cost basis.\n\n`?user=` is required (400 otherwise). `?condition=` (CSV of `condition_id`)\nscopes the single-market term, and any condition filter excludes the\nportfolio-level combo term. `data` is a single object; a user\nwith no positions yields `{ \"data\": { \"proxy_wallet\": …, \"value\": 0 } }`.",
+  "format" : "json",
+  "id" : "get_value",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText",
+      "fewColumns"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "Get portfolio value",
+  "path" : "\/v2\/value",
+  "userParams" : [
+    {
+      "key" : "user",
+      "label" : "The wallet whose portfolio value to return. Required.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "condition",
+      "label" : "Comma-separated `condition_id`s (at most 20 distinct values); omit for\nthe full ",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

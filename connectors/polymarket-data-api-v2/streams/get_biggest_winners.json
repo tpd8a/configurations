@@ -1,0 +1,124 @@
+{
+  "columns" : [
+    {
+      "name" : "condition_id",
+      "type" : "string"
+    },
+    {
+      "name" : "event_id",
+      "type" : "integer"
+    },
+    {
+      "name" : "event_slug",
+      "type" : "string"
+    },
+    {
+      "name" : "event_title",
+      "type" : "string"
+    },
+    {
+      "name" : "final_value",
+      "type" : "number"
+    },
+    {
+      "name" : "initial_value",
+      "type" : "number"
+    },
+    {
+      "name" : "kind",
+      "type" : "string"
+    },
+    {
+      "name" : "pnl",
+      "type" : "number"
+    },
+    {
+      "name" : "position_id",
+      "type" : "string"
+    },
+    {
+      "name" : "profile_image",
+      "type" : "string"
+    },
+    {
+      "name" : "resolved_at",
+      "type" : "integer"
+    },
+    {
+      "name" : "user_id",
+      "type" : "string"
+    },
+    {
+      "name" : "user_name",
+      "type" : "string"
+    },
+    {
+      "name" : "win_rank",
+      "type" : "integer"
+    }
+  ],
+  "description" : "The biggest single winning positions.\n\nOne row per winning POSITION, not per user: `pnl` is\n`final_value - initial_value` for that position, and the window\n(`?time_period=`, default `day`) is on when it resolved. `?category=`\nnarrows to a market category. Deeper pages come only from `?cursor=`,\nwhich **pins the window and category it was minted on**; restating a\ndifferent one is a `400`, not a silent re-point.\n\nCombo wins are first-class rows here, tagged `kind = \"combo\"`. They carry a\n`' \/ '`-joined title of their legs and no Gamma event; `event_id` is `0`\nand `event_slug` empty; so **branch on `kind` before building an event\nlink**.",
+  "format" : "json",
+  "id" : "get_biggest_winners",
+  "lastTest" : {
+    "at" : "2026-11-17T21:28:13Z",
+    "keyless" : true,
+    "rows" : 100,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "List the biggest wins",
+  "pagination" : {
+    "cursorParam" : "cursor",
+    "cursorSource" : "body",
+    "strategy" : "cursor"
+  },
+  "path" : "\/v2\/biggest-winners",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "default" : "day",
+      "key" : "time_period",
+      "label" : "Window on `resolved_at`: `day` | `week` | `month` | `all`. Defaults to `day`.",
+      "location" : "query",
+      "options" : [
+        "day",
+        "week",
+        "month",
+        "all"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "default" : "overall",
+      "key" : "category",
+      "label" : "`overall` (default), a Gamma market category (e.g. `sports`), or a\nsynthetic cat",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "First-page size. Ignored when `cursor` is supplied.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "cursor",
+      "label" : "Opaque pagination cursor from a prior response's `next_cursor`.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

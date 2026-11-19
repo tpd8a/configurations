@@ -3,20 +3,28 @@
   "data_sources" : [
     {
       "id" : "ds_b887b489fce249d0829d90932f1d55cf",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "OHLCV",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_ohlcv.csv",
-            "tql" : "ta bollinger(close, 20, 2) as bb20"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_ohlcv.csv')"
+        },
+        "steps" : [
+          {
+            "alias" : "bb20",
+            "args" : {
+              "k" : "2",
+              "period" : "20",
+              "source" : "close"
+            },
+            "id" : "st_bb20",
+            "library" : "bollinger"
+          }
+        ],
+        "type" : "ds.sql"
       }
     }
   ],

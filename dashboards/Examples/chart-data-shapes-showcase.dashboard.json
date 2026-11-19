@@ -3,37 +3,40 @@
   "data_sources" : [
     {
       "id" : "ds_237b0db8fc24456aa4f224f4fb7d3c91",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Time Series (Wide)",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/chart_wide_multi.csv",
-            "tql" : "ta ema(api, 10) as ema_api_10"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_wide_multi.csv')"
+        },
+        "steps" : [
+          {
+            "alias" : "ema_api_10",
+            "args" : {
+              "period" : "10",
+              "source" : "api"
+            },
+            "id" : "st_ema_api_10",
+            "library" : "ema"
+          }
+        ],
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_9c044512994348e4b823581dc490a35d",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "OHLCV Candles",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_ohlcv.csv",
-            "tql" : "ta bollinger(close, 20, 2) as bb"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_ohlcv.csv')"
+        },
         "steps" : [
           {
             "alias" : "rsi",
@@ -43,249 +46,221 @@
             },
             "id" : "st_rsi",
             "library" : "rsi"
+          },
+          {
+            "alias" : "bb",
+            "args" : {
+              "k" : "2",
+              "period" : "20",
+              "source" : "close"
+            },
+            "id" : "st_bb",
+            "library" : "bollinger"
           }
         ],
-        "type" : "ds.search"
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_61d7041b0aa04424b1d26e3b5b4be117",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Categories",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_categories.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_categories.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_f70b58a19a4147e787e827d4027dec58",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Box Plot",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_boxplot.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_boxplot.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_b73abf350d0245fbb609ba0eac67061c",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Heatmap Grid",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_heatmap.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_heatmap.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_71609f20c4ff43039638aefdf18406cf",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Availability",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_availability.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_availability.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_8c9ba22e06d1451abb05c674ce9a96f7",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Long-Form (Pivot)",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_longform.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_longform.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_42d06df5417a449c83798d38a2180051",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Scatter\/Bubble",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_scatter.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_scatter.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_1907ea5aad444844bb88ef2b4676ce43",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Events",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_events.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_events.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_cb6e623b7882485f8cf073eb63b5d270",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Gauge Values",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_gauges.csv",
             "tql" : "rowkey label"
           }
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_gauges.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_3e9861cda05442f4bde55fe6dcd9e4b6",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Single Values",
         "query" : {
           "method" : "GET",
           "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_singlevalue.csv",
             "tql" : "rowkey metric"
           }
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_singlevalue.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_43588b464be04ee19f12aa327c57d154",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Trellis Data",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_trellis.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_trellis.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_d7f447794f134a16b95c93963472a5d9",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Wide Multi-Series",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_wide_multi.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_wide_multi.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_4778b6190ecb488c9d8f796f759715c1",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "Venn Diagram",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "chart_venn.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'chart_venn.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_6a4dbd3fec9f4dde8bf8ceb11c28b027",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_5890672A",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/schematic_zones.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'schematic_zones.csv')"
+        },
+        "type" : "ds.sql"
       }
     },
     {
       "id" : "ds_5a2ae47535594c80ac4c8bcf85155828",
-      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
       "query" : {
         "name" : "ds_127850D4",
         "query" : {
-          "method" : "GET",
-          "parameters" : {
-            "format" : "csv",
-            "maxRows" : "10000",
-            "path" : "\/Users\/peter\/Library\/Containers\/com.transparentd8a.Construct\/Data\/Documents\/ConstructTV\/workspace\/user\/financial_market_data.csv"
-          }
+          "method" : "GET"
         },
         "refresh_seconds" : 60,
-        "type" : "ds.search"
+        "sql" : {
+          "query" : "SELECT * FROM workspace.csv(path := 'financial_market_data.csv')"
+        },
+        "type" : "ds.sql"
       }
     }
   ],

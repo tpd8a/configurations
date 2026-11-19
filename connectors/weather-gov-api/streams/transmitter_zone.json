@@ -1,0 +1,38 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns transmitter object for a given zone",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "transmitter_zone",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "404: { — parent list tried: \/zones (type, zoneId)",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "transmitter_zone",
+  "path" : "\/zones\/{type}\/{zoneId}\/radio",
+  "userParams" : [
+    {
+      "key" : "type",
+      "label" : "Must be value 'county'.",
+      "location" : "path",
+      "options" : [
+        "county"
+      ],
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}
