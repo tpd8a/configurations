@@ -1,0 +1,1033 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_83486c3201944e58a298b8109b767514",
+      "query" : {
+        "name" : "Total Active Alerts Count",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT COUNT(*) as total FROM weather.alerts_active WHERE status = 'Actual' LIMIT 1"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_a71fd82341cd4c24b89ed2e4f9d4f712",
+      "query" : {
+        "name" : "Alerts by Severity",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT severity, COUNT(*) as count FROM weather.alerts_active WHERE status = 'Actual' GROUP BY severity ORDER BY count DESC LIMIT 20"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_d0bd77fa5fef4df0b95dfd2106e4c6fd",
+      "query" : {
+        "name" : "Top Alert Areas",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT areaDesc, COUNT(*) as count FROM weather.alerts_active WHERE status = 'Actual' GROUP BY areaDesc ORDER BY count DESC LIMIT 15"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_a36bd72cca3646808126b165a897fb83",
+      "query" : {
+        "name" : "Alerts by Event Type",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT event, COUNT(*) as count FROM weather.alerts_active WHERE status = 'Actual' GROUP BY event ORDER BY count DESC LIMIT 15"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_0c62fe6a837c485ab5c118466de5e15d",
+      "query" : {
+        "name" : "Recent Active Alerts Details",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT id, event, severity, status, areaDesc, headline FROM weather.alerts_active WHERE status = 'Actual' ORDER BY effective DESC LIMIT 10"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_2957a47972594157ba3dc51473496e4e",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Weather",
+  "provenance" : {
+    "imported_at" : "2026-11-17T10:46:31Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_60a57e3bbd9c4e9fab8a05802836b066",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_c41bffc6abb145adb82bcb0f40e0ed0f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bdb7b8936a124d87a1da10f6ee3c3baf",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Total Active Alerts",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_83486c3201944e58a298b8109b767514",
+              "id" : "viz_c41bffc6abb145adb82bcb0f40e0ed0f",
+              "layer" : 1,
+              "type" : "single_value",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_61c761e5a94d4d45b3ebe2bc143aca88"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_799bbe8de8b040c696cdba3824caf2ec",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Alerts by Severity",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "6C466DC8-B3E7-4210-A89B-635E003A8036",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "severity"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_a71fd82341cd4c24b89ed2e4f9d4f712",
+              "id" : "viz_61c761e5a94d4d45b3ebe2bc143aca88",
+              "layer" : 1,
+              "options" : {
+                "seriesType" : "bar",
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_f6d9fcfc2dce440faf23c6048f4cde3e"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bf1196e35719422aba646ecfba2c8098",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Top 15 Alert Areas (by count)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "CB7EB2CF-1386-476B-88AE-7F38B8FAE892",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "areaDesc"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_d0bd77fa5fef4df0b95dfd2106e4c6fd",
+              "id" : "viz_f6d9fcfc2dce440faf23c6048f4cde3e",
+              "layer" : 1,
+              "options" : {
+                "seriesType" : "bar",
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_9b5be8df32d540ecbb9a7018d7571962"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_f05f7e14ea654adb8c2bc6c5fdaa62e7",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Top 15 Alert Events (by count)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "FD28B6B4-943B-45DF-9AED-D09826E86A92",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "event"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_a36bd72cca3646808126b165a897fb83",
+              "id" : "viz_9b5be8df32d540ecbb9a7018d7571962",
+              "layer" : 1,
+              "options" : {
+                "seriesType" : "bar",
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_7eede858169e41628e20294c3a60fe35"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_cc2bcefb5a1040fb9c1c296f799df3ef",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Alert Events Distribution (Pie)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "C369898E-33D4-440E-9E46-44F0E898B676",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "event"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_a36bd72cca3646808126b165a897fb83",
+              "id" : "viz_7eede858169e41628e20294c3a60fe35",
+              "layer" : 1,
+              "options" : {
+                "seriesType" : "pie",
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_21f0c3f24a3e48c889fd57dcc4b106a9"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_77237d56b95b40af81db2aa6ba951d0e",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "title" : "Alert Events Distribution (Pie)",
+          "visualizations" : [
+            {
+              "chart" : {
+                "adaptMode" : "auto",
+                "alerts" : [
+
+                ],
+                "annotations" : [
+
+                ],
+                "colorPalette" : {
+                  "theme" : {
+
+                  }
+                },
+                "cursor" : {
+                  "shared" : true,
+                  "snapToBucket" : true
+                },
+                "dimensionFields" : [
+
+                ],
+                "direction" : "neutral",
+                "fieldOverrides" : {
+
+                },
+                "fitMode" : {
+                  "fit" : {
+
+                  }
+                },
+                "legend" : {
+                  "maxRows" : 4,
+                  "position" : "bottom",
+                  "showValues" : false,
+                  "sortBy" : "markOrder",
+                  "togglable" : true
+                },
+                "meta" : {
+                  "background" : {
+                    "clear" : {
+
+                    }
+                  }
+                },
+                "nullHandling" : "gap",
+                "panelLegend" : {
+                  "allowClickToggle" : true,
+                  "position" : "bottom",
+                  "showStats" : [
+
+                  ],
+                  "sortBy" : "none"
+                },
+                "panelXAxis" : {
+                  "hidden" : false,
+                  "scale" : "linear",
+                  "showGridlines" : true
+                },
+                "panes" : [
+                  {
+                    "heightRatio" : 1,
+                    "hiddenFields" : [
+
+                    ],
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "B5673CE1-8D70-4E95-BE42-274FE1068C84",
+                        "kind" : "column",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "column-by-category",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "event"
+                        ],
+                        "y",
+                        [
+                          "count"
+                        ]
+                      ]
+                    },
+                    "yAxis" : {
+                      "position" : "left",
+                      "primary" : {
+                        "hidden" : false,
+                        "scale" : "linear",
+                        "showGridlines" : true
+                      }
+                    }
+                  }
+                ],
+                "seriesFields" : [
+
+                ],
+                "severityCatalog" : {
+                  "terms" : [
+                    {
+                      "colourHex" : "#5AC8FA",
+                      "rank" : 1,
+                      "term" : "Notice"
+                    },
+                    {
+                      "colourHex" : "#FF9500",
+                      "rank" : 2,
+                      "term" : "Watch"
+                    },
+                    {
+                      "colourHex" : "#FF3B30",
+                      "rank" : 3,
+                      "term" : "Action"
+                    }
+                  ]
+                },
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "thresholds" : [
+
+                ],
+                "time" : {
+                  "bucketSize" : {
+                    "auto" : {
+
+                    }
+                  }
+                },
+                "tooltip" : {
+                  "mode" : "multi",
+                  "sort" : "descending",
+                  "sticky" : false
+                },
+                "trellis" : {
+                  "dimensionFields" : [
+
+                  ],
+                  "enabled" : false,
+                  "sharedScales" : true,
+                  "size" : "medium"
+                },
+                "version" : 2,
+                "xAxis" : {
+                  "gridLines" : true
+                }
+              },
+              "data_source_ref" : "ds_a36bd72cca3646808126b165a897fb83",
+              "id" : "viz_21f0c3f24a3e48c889fd57dcc4b106a9",
+              "layer" : 1,
+              "options" : {
+                "seriesType" : "pie",
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_1da049e595a14c7cb80e1c4e6db5caee"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_538c3f581e754d129da24f771d3c05b5",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "title" : "Most Recent Active Alerts (Last 10)",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_0c62fe6a837c485ab5c118466de5e15d",
+              "id" : "viz_1da049e595a14c7cb80e1c4e6db5caee",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}
