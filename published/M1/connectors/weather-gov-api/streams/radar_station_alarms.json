@@ -1,0 +1,41 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@graph",
+      "type" : "string"
+    },
+    {
+      "name" : "@id",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns metadata about a given radar station alarms",
+  "format" : "json",
+  "id" : "radar_station_alarms",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "radar_station_alarms",
+  "path" : "\/radar\/stations\/{stationId}\/alarms",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Radar station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

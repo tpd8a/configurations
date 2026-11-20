@@ -1,0 +1,48 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "features",
+      "type" : "string"
+    },
+    {
+      "name" : "title",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    },
+    {
+      "name" : "updated",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns active alerts for the given NWS public zone or county",
+  "format" : "json",
+  "id" : "alerts_active_zone",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:42Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "alerts_active_zone",
+  "path" : "\/alerts\/active\/zone\/{zoneId}",
+  "userParams" : [
+    {
+      "key" : "zoneId",
+      "label" : "NWS public zone\/county identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

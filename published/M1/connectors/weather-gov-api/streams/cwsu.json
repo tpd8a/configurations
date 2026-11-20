@@ -1,0 +1,96 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "@type",
+      "type" : "string"
+    },
+    {
+      "name" : "address",
+      "type" : "string"
+    },
+    {
+      "name" : "email",
+      "type" : "string"
+    },
+    {
+      "name" : "faxNumber",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "nwsRegion",
+      "type" : "string"
+    },
+    {
+      "name" : "sameAs",
+      "type" : "string"
+    },
+    {
+      "name" : "telephone",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns metadata about a Center Weather Service Unit",
+  "format" : "json",
+  "id" : "cwsu",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:42Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "cwsu",
+  "path" : "\/aviation\/cwsus\/{cwsuId}",
+  "userParams" : [
+    {
+      "key" : "cwsuId",
+      "label" : "NWS CWSU ID",
+      "location" : "path",
+      "options" : [
+        "ZAB",
+        "ZAN",
+        "ZAU",
+        "ZBW",
+        "ZDC",
+        "ZDV",
+        "ZFA",
+        "ZFW",
+        "ZHU",
+        "ZID",
+        "ZJX",
+        "ZKC",
+        "ZLA",
+        "ZLC",
+        "ZMA",
+        "ZME",
+        "ZMP",
+        "ZNY",
+        "ZOA",
+        "ZOB",
+        "ZSE",
+        "ZTL"
+      ],
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

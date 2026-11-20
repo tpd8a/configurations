@@ -1,0 +1,99 @@
+{
+  "columns" : [
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of zones",
+  "format" : "json",
+  "id" : "zone_list",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 11651,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "zone_list",
+  "path" : "\/zones",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "id",
+      "label" : "Zone ID (forecast or county)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "area",
+      "label" : "State\/marine area code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "region",
+      "label" : "Region code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Zone type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "point",
+      "label" : "Point (latitude,longitude)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_geometry",
+      "label" : "Include geometry in results (true\/false)",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "effective",
+      "label" : "Effective date\/time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

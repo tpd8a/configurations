@@ -1,0 +1,37 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "Use this route to subscribe to a comma separated list of configured streams.\n",
+  "format" : "json",
+  "id" : "get_v2-stream-streams",
+  "method" : "GET",
+  "name" : "Subscribe to one or multiple streams.",
+  "path" : "\/v2\/stream\/{streams}",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/{streams}",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "streams",
+      "label" : "Comma separated list of stream names to subscribe to.",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

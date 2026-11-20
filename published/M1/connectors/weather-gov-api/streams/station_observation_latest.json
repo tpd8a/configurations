@@ -1,0 +1,56 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns the latest observation for a station",
+  "format" : "json",
+  "id" : "station_observation_latest",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "station_observation_latest",
+  "path" : "\/stations\/{stationId}\/observations\/latest",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Observation station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "require_qc",
+      "label" : "Require QC",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

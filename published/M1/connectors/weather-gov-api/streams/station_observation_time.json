@@ -1,0 +1,35 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns a single observation.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "station_observation_time",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "404: {",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "station_observation_time",
+  "path" : "\/stations\/{stationId}\/observations\/{time}",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Observation station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "time",
+      "label" : "Timestamp of requested observation",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

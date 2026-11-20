@@ -1,0 +1,365 @@
+{
+  "apiKeyLocation" : "header",
+  "apiKeyParameterName" : "API-Key",
+  "authType" : "apiKey",
+  "baseUrl" : "https:\/\/api.weather.gov",
+  "commonDefaults" : {
+    "area" : "AL",
+    "callSign" : "KUT404",
+    "cwsuId" : "ZAB",
+    "id" : "urn:oid:2.49.0.1.840.0.7cbe84872fc69e5fd7c03dedf1e5e5eacb921273.001.1",
+    "latitude" : "40.593",
+    "longitude" : "-74.27",
+    "officeId" : "AKQ",
+    "set" : "nwr-transmitters-20251021123534-sozfyxcq",
+    "stationId" : "0007W",
+    "type" : "land",
+    "typeId" : "ABV",
+    "wfo" : "AKQ",
+    "zoneId" : "AKC013"
+  },
+  "config_version" : 2,
+  "headers" : {
+
+  },
+  "icon" : "cloud.fill",
+  "id" : "weather-gov-api",
+  "name" : "weather.gov API",
+  "parameterIndex" : {
+    "connectorId" : "weather-gov-api",
+    "entries" : [
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/radar\/servers",
+            "evidence" : "Field 'active' on generator exactly matches consumer param key",
+            "field" : "active"
+          }
+        ],
+        "paramKey" : "active"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.75,
+            "endpoint" : "\/radio",
+            "evidence" : "Field 'callSign' on generator exactly matches consumer param key; param is required",
+            "field" : "callSign"
+          }
+        ],
+        "paramKey" : "callSign"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'certainty' on generator exactly matches consumer param key",
+            "field" : "certainty"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'certainty' on generator exactly matches consumer param key",
+            "field" : "certainty"
+          }
+        ],
+        "paramKey" : "certainty"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'code' on generator exactly matches consumer param key",
+            "field" : "code"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'code' on generator exactly matches consumer param key",
+            "field" : "code"
+          }
+        ],
+        "paramKey" : "code"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'effective' on generator exactly matches consumer param key",
+            "field" : "effective"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'effective' on generator exactly matches consumer param key",
+            "field" : "effective"
+          }
+        ],
+        "paramKey" : "effective"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'event' on generator exactly matches consumer param key",
+            "field" : "event"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'event' on generator exactly matches consumer param key",
+            "field" : "event"
+          }
+        ],
+        "paramKey" : "event"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'id' on generator exactly matches consumer param key",
+            "field" : "id"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'id' on generator exactly matches consumer param key",
+            "field" : "id"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/products",
+            "evidence" : "Field 'id' on generator exactly matches consumer param key",
+            "field" : "id"
+          }
+        ],
+        "paramKey" : "id"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.69,
+            "endpoint" : "\/products",
+            "evidence" : "Field '@id' is the id of the product entities '\/products' lists",
+            "field" : "@id"
+          }
+        ],
+        "paramKey" : "productId"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/radar\/servers",
+            "evidence" : "Field 'reportingHost' on generator exactly matches consumer param key",
+            "field" : "reportingHost"
+          }
+        ],
+        "paramKey" : "reportingHost"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.73,
+            "endpoint" : "\/radio",
+            "evidence" : "Field 'setId' on generator is the id of consumer param 'set'; param is required",
+            "field" : "setId"
+          }
+        ],
+        "paramKey" : "set"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'severity' on generator exactly matches consumer param key",
+            "field" : "severity"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'severity' on generator exactly matches consumer param key",
+            "field" : "severity"
+          }
+        ],
+        "paramKey" : "severity"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.73,
+            "endpoint" : "\/stations",
+            "evidence" : "Field 'stationIdentifier' is the identifier consumer param 'stationId' takes; param is required",
+            "field" : "stationIdentifier"
+          },
+          {
+            "confidence" : 0.69,
+            "endpoint" : "\/radar\/stations",
+            "evidence" : "Field '@id' is the id of the station entities '\/radar\/stations' lists",
+            "field" : "@id"
+          }
+        ],
+        "paramKey" : "stationId"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'status' on generator exactly matches consumer param key",
+            "field" : "status"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'status' on generator exactly matches consumer param key",
+            "field" : "status"
+          }
+        ],
+        "paramKey" : "status"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/aviation\/sigmets",
+            "evidence" : "Field 'type' on generator exactly matches consumer param key",
+            "field" : "type"
+          }
+        ],
+        "paramKey" : "type"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.68,
+            "endpoint" : "\/products\/types",
+            "evidence" : "Field 'productCode' is the code of the type entries '\/products\/types' lists",
+            "field" : "productCode"
+          }
+        ],
+        "paramKey" : "typeId"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts",
+            "evidence" : "Field 'urgency' on generator exactly matches consumer param key",
+            "field" : "urgency"
+          },
+          {
+            "confidence" : 0.7,
+            "endpoint" : "\/alerts\/active",
+            "evidence" : "Field 'urgency' on generator exactly matches consumer param key",
+            "field" : "urgency"
+          }
+        ],
+        "paramKey" : "urgency"
+      },
+      {
+        "generators" : [
+          {
+            "confidence" : 0.69,
+            "endpoint" : "\/zones",
+            "evidence" : "Field 'id' is the id of the zone entities '\/zones' lists",
+            "field" : "id"
+          }
+        ],
+        "paramKey" : "zoneId"
+      }
+    ]
+  },
+  "sourceURL" : "https:\/\/api.weather.gov\/openapi.json",
+  "streams" : [
+    "alerts_query",
+    "alerts_active",
+    "alerts_active_count",
+    "alerts_types",
+    "sigmetquery",
+    "glossary",
+    "icons_summary",
+    "products_query",
+    "product_locations",
+    "product_types",
+    "radar_servers",
+    "radar_spgds",
+    "radar_stations",
+    "transmitters",
+    "obs_stations",
+    "zone_list",
+    "alerts_active_area",
+    "alerts_active_zone",
+    "alerts_single",
+    "cwsu",
+    "cwas",
+    "office",
+    "office_briefing",
+    "office_briefing_download_latest",
+    "office_headlines",
+    "office_weatherstory",
+    "point",
+    "point_radio",
+    "point_stations",
+    "products_type",
+    "products_type_locations",
+    "product",
+    "radar_profiler",
+    "radar_station_alarms",
+    "transmitter",
+    "area_radio",
+    "obs_station",
+    "station_observation_list",
+    "station_observation_latest",
+    "tafs",
+    "satellite_thumbnails",
+    "zone_stations",
+    "zone_list_type",
+    "radar_server",
+    "radar_station",
+    "station_observation_time",
+    "taf",
+    "zone_obs",
+    "zone",
+    "zone_forecast",
+    "transmitter_zone",
+    "alerts_active_region",
+    "cwa",
+    "sigmetsbyatsu",
+    "sigmetsbyatsubydate",
+    "sigmet",
+    "gridpoint",
+    "gridpoint_forecast",
+    "gridpoint_forecast_hourly",
+    "gridpoint_stations",
+    "icons",
+    "iconsdualcondition",
+    "office_briefing_download",
+    "office_headline",
+    "office_weatherstory_image",
+    "location_products",
+    "products_type_location",
+    "latest_product_type_location",
+    "radar_queue"
+  ],
+  "version" : 1
+}

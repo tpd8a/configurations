@@ -1,0 +1,79 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "issuanceTime",
+      "type" : "string"
+    },
+    {
+      "name" : "issuingOffice",
+      "type" : "string"
+    },
+    {
+      "name" : "productCode",
+      "type" : "string"
+    },
+    {
+      "name" : "productName",
+      "type" : "string"
+    },
+    {
+      "name" : "productText",
+      "type" : "string"
+    },
+    {
+      "name" : "wmoCollectiveId",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of text products of a given type for a given issuance location",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "products_type_location",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `locationId`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "products_type_location",
+  "path" : "\/products\/types\/{typeId}\/locations\/{locationId}",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "typeId",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "locationId",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

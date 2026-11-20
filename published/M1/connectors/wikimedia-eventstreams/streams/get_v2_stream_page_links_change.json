@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page-links-change events.\n\n(NOTE: This stream is an alias of mediawiki.page-links-change)\n\nSchema title: mediawiki\/page\/links-change",
+  "format" : "json",
+  "id" : "get_v2_stream_page_links_change",
+  "method" : "GET",
+  "name" : "page-links-change events",
+  "path" : "\/v2\/stream\/page-links-change",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-links-change",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

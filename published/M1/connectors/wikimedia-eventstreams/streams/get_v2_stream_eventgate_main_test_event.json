@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "A test event stream. A new event is posted about once a minute.\n\nSchema title: test\/event",
+  "format" : "json",
+  "id" : "get_v2_stream_eventgate_main_test_event",
+  "method" : "GET",
+  "name" : "eventgate-main.test.event events",
+  "path" : "\/v2\/stream\/eventgate-main.test.event",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/eventgate-main.test.event",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

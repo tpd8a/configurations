@@ -1,0 +1,36 @@
+{
+  "columns" : [
+    {
+      "name" : "definition",
+      "type" : "string"
+    },
+    {
+      "name" : "term",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns glossary terms",
+  "format" : "json",
+  "id" : "glossary",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 3183,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "glossary",
+  "path" : "\/glossary",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "glossary"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

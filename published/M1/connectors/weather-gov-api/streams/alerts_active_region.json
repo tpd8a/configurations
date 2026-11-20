@@ -1,0 +1,36 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns active alerts for the given marine region",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "alerts_active_region",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `region`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "alerts_active_region",
+  "path" : "\/alerts\/active\/region\/{region}",
+  "userParams" : [
+    {
+      "key" : "region",
+      "label" : "Marine region ID",
+      "location" : "path",
+      "options" : [
+        "AL",
+        "AT",
+        "GL",
+        "GM",
+        "PA",
+        "PI"
+      ],
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

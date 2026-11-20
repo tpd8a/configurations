@@ -1,0 +1,40 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page-delete events.\n\n(NOTE: This stream is an alias of mediawiki.page-delete)\n\nSchema title: mediawiki\/page\/delete",
+  "format" : "json",
+  "id" : "page_delete",
+  "method" : "GET",
+  "name" : "page-delete events",
+  "path" : "\/v2\/stream\/page-delete",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-delete",
+    "keysParam" : "since",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ],
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

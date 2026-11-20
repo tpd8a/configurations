@@ -1,0 +1,42 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns metadata about a given radar wind profiler",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "radar_profiler",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "diagnosis" : "404: {",
+    "rows" : 0,
+    "status" : "fail"
+  },
+  "method" : "GET",
+  "name" : "radar_profiler",
+  "path" : "\/radar\/profilers\/{stationId}",
+  "userParams" : [
+    {
+      "key" : "stationId",
+      "label" : "Profiler station ID",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "time",
+      "label" : "Time interval",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "interval",
+      "label" : "Averaging interval",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

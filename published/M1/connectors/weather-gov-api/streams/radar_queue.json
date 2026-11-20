@@ -1,0 +1,88 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns metadata about a given radar queue",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "radar_queue",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `host`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "radar_queue",
+  "path" : "\/radar\/queues\/{host}",
+  "userParams" : [
+    {
+      "key" : "host",
+      "label" : "LDM host",
+      "location" : "path",
+      "options" : [
+        "rds",
+        "tds"
+      ],
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Record limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "arrived",
+      "label" : "Range for arrival time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "created",
+      "label" : "Range for creation time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "published",
+      "label" : "Range for publish time",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "station",
+      "label" : "Station identifier",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Record type",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "feed",
+      "label" : "Originating product feed",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "resolution",
+      "label" : "Resolution version",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

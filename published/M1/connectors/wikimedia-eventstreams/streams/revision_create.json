@@ -1,0 +1,40 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.revision-create events.\n\n(NOTE: This stream is an alias of mediawiki.revision-create)\n\nSchema title: mediawiki\/revision\/create",
+  "format" : "json",
+  "id" : "revision_create",
+  "method" : "GET",
+  "name" : "revision-create events",
+  "path" : "\/v2\/stream\/revision-create",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/revision-create",
+    "keysParam" : "since",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ],
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

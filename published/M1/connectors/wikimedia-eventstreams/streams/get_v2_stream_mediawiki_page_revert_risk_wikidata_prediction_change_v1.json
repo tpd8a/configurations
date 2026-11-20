@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page_revert_risk_wikidata_prediction_change.v1 events.\n\nSchema title: mediawiki\/page\/prediction_classification_change",
+  "format" : "json",
+  "id" : "get_v2_stream_mediawiki_page_revert_risk_wikidata_prediction_change_v1",
+  "method" : "GET",
+  "name" : "mediawiki.page_revert_risk_wikidata_prediction_change.v1 events",
+  "path" : "\/v2\/stream\/mediawiki.page_revert_risk_wikidata_prediction_change.v1",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/mediawiki.page_revert_risk_wikidata_prediction_change.v1",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

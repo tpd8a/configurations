@@ -1,0 +1,71 @@
+{
+  "absolute_geometry_version" : 1,
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_652a9e8fcedc401eac5319558156f6da",
+      "query" : {
+        "name" : "FS.splunk_search_jobs",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.splunk_search_jobs LIMIT 1000"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_e3178378d0644d1382f5b6f85ef93d1c",
+  "inputs" : [
+
+  ],
+  "layout_type" : "absolute",
+  "name" : "btc_kline_test",
+  "provenance" : {
+    "imported_at" : "2026-11-06T17:12:41Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_0eedded30a62423695e855df7ccb571a",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_e9c3180fc35249ae883e0b2df5ba8cfb"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_b329ce40c4af4031848955950ebe4a27",
+          "layout" : {
+            "absolute_h" : 696,
+            "absolute_w" : 1416,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "height" : 696,
+            "panel_width" : 12
+          },
+          "title" : "FS.splunk_search_jobs",
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_652a9e8fcedc401eac5319558156f6da",
+              "id" : "viz_e9c3180fc35249ae883e0b2df5ba8cfb",
+              "layer" : 1,
+              "options" : {
+                "page_size" : "20"
+              },
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "issuanceTime",
+      "type" : "string"
+    },
+    {
+      "name" : "issuingOffice",
+      "type" : "string"
+    },
+    {
+      "name" : "productCode",
+      "type" : "string"
+    },
+    {
+      "name" : "productName",
+      "type" : "string"
+    },
+    {
+      "name" : "wmoCollectiveId",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of text products",
+  "format" : "json",
+  "id" : "products_query",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "rows" : 5000,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "products_query",
+  "path" : "\/products",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "@graph"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "location",
+      "label" : "Location id",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    },
+    {
+      "key" : "end",
+      "label" : "End time",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd"
+    },
+    {
+      "key" : "office",
+      "label" : "Issuing office",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "wmoid",
+      "label" : "WMO id code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "type",
+      "label" : "Product code",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Limit",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "columns" : [
+    {
+      "name" : "@id",
+      "type" : "string"
+    },
+    {
+      "name" : "bearing",
+      "type" : "string"
+    },
+    {
+      "name" : "county",
+      "type" : "string"
+    },
+    {
+      "name" : "distance",
+      "type" : "string"
+    },
+    {
+      "name" : "elevation",
+      "type" : "string"
+    },
+    {
+      "name" : "fireWeatherZone",
+      "type" : "string"
+    },
+    {
+      "name" : "forecast",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry.type",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "provider",
+      "type" : "string"
+    },
+    {
+      "name" : "stationIdentifier",
+      "type" : "string"
+    },
+    {
+      "name" : "subProvider",
+      "type" : "string"
+    },
+    {
+      "name" : "timeZone",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of observation stations for a given point",
+  "format" : "json",
+  "id" : "point_stations",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:43Z",
+    "keyless" : true,
+    "rows" : 70,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "point_stations",
+  "path" : "\/points\/{latitude},{longitude}\/stations",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "id",
+          "geometry"
+        ],
+        "path" : [
+          "features",
+          "[]",
+          "properties"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "@type" : "type"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "latitude",
+      "label" : "Latitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "longitude",
+      "label" : "Longitude",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.recentchange events.\n\n(NOTE: This stream is an alias of mediawiki.recentchange)\n\nSchema title: mediawiki\/recentchange",
+  "format" : "json",
+  "id" : "get_v2_stream_recentchange",
+  "method" : "GET",
+  "name" : "recentchange events",
+  "path" : "\/v2\/stream\/recentchange",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/recentchange",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

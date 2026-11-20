@@ -1,0 +1,32 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "locations",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of valid text product issuance locations",
+  "format" : "json",
+  "id" : "product_locations",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "bigCell",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "product_locations",
+  "path" : "\/products\/locations",
+  "userParams" : [
+
+  ]
+}

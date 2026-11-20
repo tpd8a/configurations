@@ -1,5 +1,19 @@
 [
   {
+    "base_url" : "https:\/\/stream.wikimedia.org",
+    "config_version" : 2,
+    "id" : "1472FB98-D66B-45A3-B05E-B88A9EC03CC5",
+    "name" : "Wikimedia",
+    "options" : {
+      "insecure_ssl" : true,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "specId" : "wikimedia-eventstreams",
+    "sql_alias" : "wikimedia_eventstreams",
+    "type" : "custom"
+  },
+  {
     "base_url" : "http:\/\/pop-os.local:9090",
     "config_version" : 2,
     "enabled" : true,
@@ -13,6 +27,32 @@
     "specId" : "prometheus-api",
     "specVersion" : 1,
     "sql_alias" : "prom",
+    "type" : "custom"
+  },
+  {
+    "base_url" : "file:\/\/localhost",
+    "config_version" : 2,
+    "id" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+    "name" : "Local File",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : false
+    },
+    "type" : "file"
+  },
+  {
+    "base_url" : "https:\/\/api.weather.gov",
+    "config_version" : 2,
+    "id" : "AE093BF5-0285-43ED-8E0F-915B44628B5E",
+    "name" : "weather.gov API",
+    "options" : {
+      "insecure_ssl" : false,
+      "timeout_seconds" : 30,
+      "verify_certificate" : true
+    },
+    "specId" : "weather-gov-api",
+    "sql_alias" : "weather",
     "type" : "custom"
   }
 ]

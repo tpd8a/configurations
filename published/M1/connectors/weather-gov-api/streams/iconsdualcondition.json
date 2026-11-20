@@ -1,0 +1,68 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+
+  ],
+  "description" : "Returns a forecast icon. Icon services in API are deprecated.",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "iconsdualcondition",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `first`, `second`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "iconsDualCondition",
+  "path" : "\/icons\/{set}\/{timeOfDay}\/{first}\/{second}",
+  "userParams" : [
+    {
+      "key" : "set",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "timeOfDay",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "first",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "second",
+      "label" : ".",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "size",
+      "label" : "Font size",
+      "location" : "query",
+      "options" : [
+        "small",
+        "medium",
+        "large"
+      ],
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fontsize",
+      "label" : "Font size",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.revision-create events.\n\nSchema title: mediawiki\/revision\/create",
+  "format" : "json",
+  "id" : "get_v2_stream_mediawiki_revision_create",
+  "method" : "GET",
+  "name" : "mediawiki.revision-create events",
+  "path" : "\/v2\/stream\/mediawiki.revision-create",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/mediawiki.revision-create",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c8d386c69cd54b8ca70f925e01918582",
+      "query" : {
+        "name" : "ds_C977575F",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "tql" : "parsetime _time \"yyyy-MM-dd HH:mm:ss\""
+          }
+        },
+        "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT\n  REGEXP_EXTRACT(_raw, '^\\[([^\\]]+)\\]\\[([^\\]]+)\\](?:\\[([^\\]]+)\\])?\\s*([\\s\\S]*)$',\n                 ARRAY['_time', 'level', 'component', 'message']),\n  _time, level, component, message, _source, _offset, _raw\nFROM server_logs.lines(path := '2026-09\/2026-09-2*log', break := '^\\[', max_events := 10000)"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_fa6fdb446d8048d79311f1cd01d2e475",
+      "provider_ref" : "AA41D3A5-C2DF-4A51-9B7B-C9F2390EC673",
+      "query" : {
+        "name" : "ds_CC939A8E",
+        "query" : {
+          "method" : "GET",
+          "parameters" : {
+            "format" : "txt",
+            "maxRows" : "10000",
+            "path" : "*"
+          }
+        },
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : ""
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_1d176e55a7e146c8b6fa7f089649da75",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "LM Studio",
+  "provenance" : {
+    "imported_at" : "2026-11-02T13:28:12Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_734133e59d6c4d28b826402779d4a948",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_3542e9cf8e504d77a6bd88dfd668f68f"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_eb41ebd8c89744b8823bedec1a64277e",
+          "layout" : {
+            "height" : 240,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_c8d386c69cd54b8ca70f925e01918582",
+              "id" : "viz_3542e9cf8e504d77a6bd88dfd668f68f",
+              "layer" : 1,
+              "options" : {
+                "raw_field" : "message",
+                "stats_mode" : "severity",
+                "time_field" : "_time",
+                "timeline_enabled" : "true"
+              },
+              "type" : "events",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "columns" : [
+    {
+      "name" : "$schema",
+      "type" : "string"
+    },
+    {
+      "name" : "database",
+      "type" : "string"
+    },
+    {
+      "name" : "domain",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "timeFormat" : "custom",
+      "timePattern" : "yyy-MM-ddTHH:mm:ss.SSS",
+      "type" : "date"
+    },
+    {
+      "name" : "meta_id",
+      "type" : "string"
+    },
+    {
+      "name" : "offset",
+      "type" : "integer"
+    },
+    {
+      "name" : "partition",
+      "type" : "boolean"
+    },
+    {
+      "name" : "request_id",
+      "type" : "string"
+    },
+    {
+      "name" : "stream",
+      "type" : "string"
+    },
+    {
+      "name" : "topic",
+      "type" : "string"
+    },
+    {
+      "name" : "uri",
+      "type" : "string"
+    },
+    {
+      "name" : "page_id",
+      "type" : "integer"
+    },
+    {
+      "name" : "page_is_redirect",
+      "type" : "boolean"
+    },
+    {
+      "name" : "page_namespace",
+      "type" : "integer"
+    },
+    {
+      "name" : "page_title",
+      "type" : "string"
+    },
+    {
+      "name" : "performer_user_edit_count",
+      "type" : "integer"
+    },
+    {
+      "name" : "performer_user_groups",
+      "type" : "string"
+    },
+    {
+      "name" : "performer_user_groups_count",
+      "type" : "integer"
+    },
+    {
+      "name" : "performer_user_id",
+      "type" : "integer"
+    },
+    {
+      "name" : "performer_user_is_bot",
+      "type" : "boolean"
+    },
+    {
+      "name" : "performer_user_registration_dt",
+      "type" : "string"
+    },
+    {
+      "name" : "performer_user_text",
+      "type" : "string"
+    },
+    {
+      "name" : "removed_properties_jsonconfig_getdata",
+      "type" : "integer"
+    },
+    {
+      "name" : "rev_id",
+      "type" : "integer"
+    }
+  ],
+  "description" : "mediawiki.page-properties-change events.\n\n(NOTE: This stream is an alias of mediawiki.page-properties-change)\n\nSchema title: mediawiki\/page\/properties-change",
+  "format" : "json",
+  "id" : "properties_change",
+  "method" : "GET",
+  "name" : "page-properties-change events",
+  "path" : "\/v2\/stream\/page-properties-change",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-properties-change",
+    "keysParam" : "since",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ],
+    "subscribeStatus" : {
+      "errorValue" : "error",
+      "event" : "subscribe-status",
+      "failsPath" : "fails",
+      "statusField" : "status"
+    }
+  },
+  "transforms" : [
+    {
+      "flatten" : {
+        "depth" : 1
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "meta_domain" : "domain",
+          "meta_dt" : "timestamp",
+          "meta_offset" : "offset",
+          "meta_partition" : "partition",
+          "meta_request_id" : "request_id",
+          "meta_stream" : "stream",
+          "meta_topic" : "topic",
+          "meta_uri" : "uri"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "removed_properties_jsonconfig_getdata" : "integer"
+        }
+      }
+    }
+  ],
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

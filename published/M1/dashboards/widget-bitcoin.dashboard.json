@@ -2,28 +2,45 @@
   "config_version" : 2,
   "data_sources" : [
     {
-      "id" : "ds_a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "id" : "ds_25cb04a849194d79ab04550d59192f93",
       "query" : {
-        "name" : "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+        "keep_history" : {
+          "mode" : "every",
+          "retention" : "1h"
+        },
+        "live_interval_ms" : 50,
+        "name" : "ds_btcusdt_price",
         "query" : {
           "method" : "GET"
         },
-        "refresh_seconds" : 30,
+        "refresh_seconds" : 0,
         "sql" : {
-          "query" : "SELECT * FROM grafana_api.ds_query(dsUid := 'afylgi69fxs74f', targetsJson := '[{\"expr\": \"rate(node_cpu_seconds_total{mode=\\\"idle\\\"}[1m])\", \"refId\": \"A\", \"datasource\": {\"uid\": \"afylgi69fxs74f\"}, \"range\": true}]', \"from\" := 'now-10m', \"to\" := 'now')"
+          "query" : "SELECT symbol, priceChange, priceChangePercent, close FROM binance_spot.ws_ticker WHERE symbol = 'BTCUSDT'"
         },
         "type" : "ds.sql"
       }
+    },
+    {
+      "id" : "ds_8ac00d436a2c402a8907d90063983667",
+      "query" : {
+        "chain" : {
+          "extend" : "ds_25cb04a849194d79ab04550d59192f93",
+          "query" : ""
+        },
+        "name" : "ds_2D927688",
+        "refresh_seconds" : 0,
+        "type" : "ds.chain"
+      }
     }
   ],
-  "id" : "dash_3c7ee025323a41ffb8e422baaeeb979c",
+  "id" : "dash_3fb94a79b40d4ec88c6205915a0e6414",
   "inputs" : [
 
   ],
   "layout_type" : "bootstrap",
-  "name" : "Grafana Test",
+  "name" : "Widget Bitcoin",
   "provenance" : {
-    "imported_at" : "2026-11-15T08:28:00Z",
+    "imported_at" : "2026-11-11T07:45:30Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -31,10 +48,44 @@
   ],
   "rows" : [
     {
-      "id" : "row_c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3",
+      "id" : "row_1aced39f476d4cfda07d23162d10fc71",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8d0da384de7a43a79512e18b192e29d6"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_5c107e68145d4dd78e36013ebb18ac03",
+          "layout" : {
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_25cb04a849194d79ab04550d59192f93",
+              "id" : "viz_8d0da384de7a43a79512e18b192e29d6",
+              "layer" : 1,
+              "options" : {
+                "delta_field" : "priceChange",
+                "delta_pct_field" : "priceChangePercent",
+                "price_field" : "close"
+              },
+              "type" : "price_tile",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    },
+    {
+      "id" : "row_00185fd235274173abd27e3fa24bdf6a",
       "layout" : {
-        "fill" : true,
-        "fill_min" : 460
+        "fill" : true
       },
       "panels" : [
         {
@@ -42,17 +93,15 @@
             {
               "id" : "col_0",
               "viz_ids" : [
-                "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2"
+                "viz_efccaf8bea61405c9977fdba63c485c2"
               ],
               "width" : 12
             }
           ],
-          "id" : "panel_d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4",
+          "id" : "panel_ffe00804e0a24bec80f7d4effc96ebc2",
           "layout" : {
-            "height" : 680,
             "panel_width" : 12
           },
-          "title" : "Grafana chart (idle CPU per core)",
           "visualizations" : [
             {
               "chart" : {
@@ -77,7 +126,19 @@
                 ],
                 "direction" : "neutral",
                 "fieldOverrides" : {
+                  "priceChange" : {
+                    "dataLinks" : [
 
+                    ],
+                    "fieldId" : "priceChange",
+                    "fillOpacity" : 0.55,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineWidth" : 2.5,
+                    "valueMappings" : [
+
+                    ]
+                  }
                 },
                 "fitMode" : {
                   "fit" : {
@@ -121,25 +182,33 @@
                     "id" : "main",
                     "marks" : [
                       {
-                        "id" : "CCCE0350-F423-450A-BF44-014A1069E542",
-                        "kind" : "area",
-                        "optionsJSON" : "e30="
+                        "id" : "DEC3F594-C0C1-4037-B11B-5DE7899B7B66",
+                        "kind" : "line",
+                        "optionsJSON" : "eyJzZXJpZXNPdmVycmlkZXMiOnsicHJpY2VDaGFuZ2UiOnsiaGlkZGVuIjpmYWxzZSwiZmlsbE9wYWNpdHkiOjAuNTUwMDAwMDAwMDAwMDAwMDQsIm5lZ2F0ZSI6ZmFsc2UsImxpbmVJbnRlcnBvbGF0aW9uIjoic21vb3RoIiwiZXhjbHVkZUZyb21TdGFjayI6ZmFsc2UsImhpZGVGcm9tTGVnZW5kIjpmYWxzZSwibGluZVdpZHRoIjoyLjV9fX0="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "sma",
+                        "id" : "19F013F5-F7E0-4067-8D37-44687ADD72EA",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJkYXNoZWQiOmZhbHNlLCJmaWVsZCI6InNtYSIsImluZGV4IjowfQ=="
+                      },
+                      {
+                        "derivedFromIndicatorId" : "ema",
+                        "id" : "7673B678-4D5D-4E66-94CD-AABC61380896",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : "eyJkYXNoZWQiOmZhbHNlLCJmaWVsZCI6ImVtYSIsImluZGV4IjowfQ=="
                       }
                     ],
-                    "shapeId" : "stacked-area-over-time",
+                    "shapeId" : "line-over-time",
                     "slotBindings" : {
                       "storage" : [
                         "x",
                         [
-                          "Time"
-                        ],
-                        "stack",
-                        [
-                          "cpu"
+                          "arrival_ts"
                         ],
                         "y",
                         [
-                          "Value"
+                          "priceChange"
                         ]
                       ]
                     },
@@ -156,7 +225,6 @@
                 "seriesFields" : [
 
                 ],
-                "seriesLabelTemplate" : "cpu {{cpu}}",
                 "severityCatalog" : {
                   "terms" : [
                     {
@@ -202,30 +270,26 @@
                   ],
                   "enabled" : false,
                   "sharedScales" : true,
-                  "size" : "large"
+                  "size" : "medium"
                 },
-                "version" : 1,
+                "version" : 2,
                 "xAxis" : {
                   "gridLines" : true
                 }
               },
-              "config" : {
-                "title" : "Idle CPU — via engine MCP"
-              },
-              "data_source_ref" : "ds_a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
-              "id" : "viz_b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+              "data_source_ref" : "ds_25cb04a849194d79ab04550d59192f93",
+              "id" : "viz_efccaf8bea61405c9977fdba63c485c2",
               "layer" : 1,
               "options" : {
-                "stackMode" : "stacked",
-                "yAxisUnit" : "percent"
+                "stackMode" : "stacked"
               },
-              "title" : "Idle CPU — via engine MCP",
               "type" : "chart",
               "width" : 12
             }
           ]
         }
-      ]
+      ],
+      "title" : "Row 2"
     }
   ]
 }

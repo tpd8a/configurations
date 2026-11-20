@@ -1,0 +1,56 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of SIGMET\/AIRMETs for the specified ATSU",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "sigmetsbyatsu",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `atsu`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "sigmetsByATSU",
+  "path" : "\/aviation\/sigmets\/{atsu}",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "atsu",
+      "label" : "ATSU identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

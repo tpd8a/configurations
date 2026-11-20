@@ -1,0 +1,63 @@
+{
+  "autoDisabled" : true,
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a list of SIGMET\/AIRMETs for the specified ATSU for the specified date",
+  "disabled" : true,
+  "format" : "json",
+  "id" : "sigmetsbyatsubydate",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:44Z",
+    "diagnosis" : "needs `atsu`",
+    "rows" : 0,
+    "status" : "needs_input"
+  },
+  "method" : "GET",
+  "name" : "sigmetsByATSUByDate",
+  "path" : "\/aviation\/sigmets\/{atsu}\/{date}",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "features"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "atsu",
+      "label" : "ATSU identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "date",
+      "label" : "Date (YYYY-MM-DD format)",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

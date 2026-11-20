@@ -1,0 +1,49 @@
+{
+  "columns" : [
+    {
+      "name" : "@context",
+      "type" : "string"
+    },
+    {
+      "name" : "geometry",
+      "type" : "string"
+    },
+    {
+      "name" : "id",
+      "type" : "string"
+    },
+    {
+      "name" : "properties",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns a specific alert",
+  "format" : "json",
+  "id" : "alerts_single",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:42Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "jsonText"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "alerts_single",
+  "path" : "\/alerts\/{id}",
+  "userParams" : [
+    {
+      "key" : "id",
+      "label" : "Alert identifier",
+      "location" : "path",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

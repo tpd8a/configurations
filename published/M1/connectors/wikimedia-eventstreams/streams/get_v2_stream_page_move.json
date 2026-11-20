@@ -1,0 +1,30 @@
+{
+  "columns" : [
+
+  ],
+  "description" : "mediawiki.page-move events.\n\n(NOTE: This stream is an alias of mediawiki.page-move)\n\nSchema title: mediawiki\/page\/move",
+  "format" : "json",
+  "id" : "get_v2_stream_page_move",
+  "method" : "GET",
+  "name" : "page-move events",
+  "path" : "\/v2\/stream\/page-move",
+  "streaming" : {
+    "endpoint" : "https:\/\/stream.wikimedia.org\/v2\/stream\/page-move",
+    "retention" : {
+      "rows" : 500
+    },
+    "rowKey" : [
+
+    ]
+  },
+  "transport" : "sse",
+  "userParams" : [
+    {
+      "key" : "since",
+      "label" : "If given, this timestamp will be used as the historical starting position in eac",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart"
+    }
+  ]
+}

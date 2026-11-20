@@ -1,0 +1,47 @@
+{
+  "columns" : [
+    {
+      "name" : "areas",
+      "type" : "string"
+    },
+    {
+      "name" : "land",
+      "type" : "integer"
+    },
+    {
+      "name" : "marine",
+      "type" : "integer"
+    },
+    {
+      "name" : "regions",
+      "type" : "string"
+    },
+    {
+      "name" : "total",
+      "type" : "integer"
+    },
+    {
+      "name" : "zones",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns info on the number of active alerts",
+  "format" : "json",
+  "id" : "alerts_active_count",
+  "lastTest" : {
+    "at" : "2026-11-17T21:22:36Z",
+    "keyless" : true,
+    "quality" : [
+      "oneRow",
+      "bigCell"
+    ],
+    "rows" : 1,
+    "status" : "pass"
+  },
+  "method" : "GET",
+  "name" : "alerts_active_count",
+  "path" : "\/alerts\/active\/count",
+  "userParams" : [
+
+  ]
+}
