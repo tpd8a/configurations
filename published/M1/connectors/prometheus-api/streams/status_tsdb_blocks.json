@@ -1,0 +1,46 @@
+{
+  "columns" : [
+    {
+      "name" : "compaction",
+      "type" : "string"
+    },
+    {
+      "name" : "maxTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "minTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "stats",
+      "type" : "string"
+    },
+    {
+      "name" : "ulid",
+      "type" : "string"
+    },
+    {
+      "name" : "version",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "status_tsdb_blocks",
+  "method" : "GET",
+  "name" : "Get TSDB blocks information",
+  "path" : "\/status\/tsdb\/blocks",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "blocks"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

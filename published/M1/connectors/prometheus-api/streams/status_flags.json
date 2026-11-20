@@ -1,0 +1,352 @@
+{
+  "columns" : [
+    {
+      "name" : "agent",
+      "type" : "boolean"
+    },
+    {
+      "name" : "alertmanager.drain-notification-queue-on-shutdown",
+      "type" : "boolean"
+    },
+    {
+      "name" : "alertmanager.notification-batch-size",
+      "type" : "integer"
+    },
+    {
+      "name" : "alertmanager.notification-queue-capacity",
+      "type" : "integer"
+    },
+    {
+      "name" : "auto-gomaxprocs",
+      "type" : "boolean"
+    },
+    {
+      "name" : "auto-gomemlimit",
+      "type" : "boolean"
+    },
+    {
+      "name" : "auto-gomemlimit.ratio",
+      "type" : "number"
+    },
+    {
+      "name" : "config.auto-reload",
+      "type" : "boolean"
+    },
+    {
+      "name" : "config.auto-reload-interval",
+      "type" : "string"
+    },
+    {
+      "name" : "config.file",
+      "type" : "string"
+    },
+    {
+      "name" : "enable-feature",
+      "type" : "string"
+    },
+    {
+      "name" : "log.format",
+      "type" : "string"
+    },
+    {
+      "name" : "log.level",
+      "type" : "string"
+    },
+    {
+      "name" : "query.lookback-delta",
+      "type" : "string"
+    },
+    {
+      "name" : "query.max-concurrency",
+      "type" : "integer"
+    },
+    {
+      "name" : "query.max-samples",
+      "type" : "integer"
+    },
+    {
+      "name" : "query.timeout",
+      "type" : "string"
+    },
+    {
+      "name" : "rules.alert.for-grace-period",
+      "type" : "string"
+    },
+    {
+      "name" : "rules.alert.for-outage-tolerance",
+      "type" : "string"
+    },
+    {
+      "name" : "rules.alert.resend-delay",
+      "type" : "string"
+    },
+    {
+      "name" : "rules.max-concurrent-evals",
+      "type" : "integer"
+    },
+    {
+      "name" : "scrape.adjust-timestamps",
+      "type" : "boolean"
+    },
+    {
+      "name" : "scrape.discovery-reload-interval",
+      "type" : "string"
+    },
+    {
+      "name" : "scrape.timestamp-tolerance",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.checkpoint-batch-size",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.agent.checkpoint-from-in-memory-series",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.agent.no-lockfile",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.agent.path",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.retention.max-time",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.retention.min-time",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.wal-compression",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.agent.wal-compression-type",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.wal-segment-size",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.agent.wal-truncate-frequency",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.remote.flush-deadline",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.remote.read-concurrent-limit",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.remote.read-max-bytes-in-frame",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.remote.read-sample-limit",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.tsdb.allow-overlapping-compaction",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.tsdb.block-reload-interval",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.delay-compact-file.path",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.delayed-compaction.max-percent",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.tsdb.head-chunks-write-queue-size",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.tsdb.max-block-chunk-segment-size",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.max-block-duration",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.min-block-duration",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.no-lockfile",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.tsdb.path",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.retention.size",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.retention.time",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.samples-per-chunk",
+      "type" : "integer"
+    },
+    {
+      "name" : "storage.tsdb.wal-compression",
+      "type" : "boolean"
+    },
+    {
+      "name" : "storage.tsdb.wal-compression-type",
+      "type" : "string"
+    },
+    {
+      "name" : "storage.tsdb.wal-segment-size",
+      "type" : "string"
+    },
+    {
+      "name" : "web.config.file",
+      "type" : "string"
+    },
+    {
+      "name" : "web.console.libraries",
+      "type" : "string"
+    },
+    {
+      "name" : "web.console.templates",
+      "type" : "string"
+    },
+    {
+      "name" : "web.cors.origin",
+      "type" : "string"
+    },
+    {
+      "name" : "web.enable-admin-api",
+      "type" : "boolean"
+    },
+    {
+      "name" : "web.enable-lifecycle",
+      "type" : "boolean"
+    },
+    {
+      "name" : "web.enable-otlp-receiver",
+      "type" : "boolean"
+    },
+    {
+      "name" : "web.enable-remote-write-receiver",
+      "type" : "boolean"
+    },
+    {
+      "name" : "web.external-url",
+      "type" : "string"
+    },
+    {
+      "name" : "web.listen-address",
+      "type" : "string"
+    },
+    {
+      "name" : "web.max-connections",
+      "type" : "integer"
+    },
+    {
+      "name" : "web.max-notifications-subscribers",
+      "type" : "integer"
+    },
+    {
+      "name" : "web.page-title",
+      "type" : "string"
+    },
+    {
+      "name" : "web.read-timeout",
+      "type" : "string"
+    },
+    {
+      "name" : "web.remote-write-receiver.accepted-protobuf-messages",
+      "type" : "string"
+    },
+    {
+      "name" : "web.route-prefix",
+      "type" : "string"
+    },
+    {
+      "name" : "web.search.max-limit",
+      "type" : "integer"
+    },
+    {
+      "name" : "web.user-assets",
+      "type" : "string"
+    },
+    {
+      "name" : "write-documentation",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "status_flags",
+  "method" : "GET",
+  "name" : "Get status flags",
+  "path" : "\/status\/flags",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "agent" : "boolean",
+          "alertmanager.drain-notification-queue-on-shutdown" : "boolean",
+          "alertmanager.notification-batch-size" : "integer",
+          "alertmanager.notification-queue-capacity" : "integer",
+          "auto-gomaxprocs" : "boolean",
+          "auto-gomemlimit" : "boolean",
+          "auto-gomemlimit.ratio" : "number",
+          "config.auto-reload" : "boolean",
+          "query.max-concurrency" : "integer",
+          "query.max-samples" : "integer",
+          "rules.max-concurrent-evals" : "integer",
+          "scrape.adjust-timestamps" : "boolean",
+          "storage.agent.checkpoint-batch-size" : "integer",
+          "storage.agent.checkpoint-from-in-memory-series" : "boolean",
+          "storage.agent.no-lockfile" : "boolean",
+          "storage.agent.wal-compression" : "boolean",
+          "storage.remote.read-concurrent-limit" : "integer",
+          "storage.remote.read-max-bytes-in-frame" : "integer",
+          "storage.remote.read-sample-limit" : "integer",
+          "storage.tsdb.allow-overlapping-compaction" : "boolean",
+          "storage.tsdb.delayed-compaction.max-percent" : "integer",
+          "storage.tsdb.head-chunks-write-queue-size" : "integer",
+          "storage.tsdb.no-lockfile" : "boolean",
+          "storage.tsdb.samples-per-chunk" : "integer",
+          "storage.tsdb.wal-compression" : "boolean",
+          "web.enable-admin-api" : "boolean",
+          "web.enable-lifecycle" : "boolean",
+          "web.enable-otlp-receiver" : "boolean",
+          "web.enable-remote-write-receiver" : "boolean",
+          "web.max-connections" : "integer",
+          "web.max-notifications-subscribers" : "integer",
+          "web.search.max-limit" : "integer",
+          "write-documentation" : "boolean"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

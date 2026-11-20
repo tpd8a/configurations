@@ -1,0 +1,87 @@
+{
+  "columns" : [
+    {
+      "name" : "admin",
+      "type" : "boolean"
+    },
+    {
+      "name" : "exclude_alerts",
+      "type" : "boolean"
+    },
+    {
+      "name" : "label_values_match",
+      "type" : "boolean"
+    },
+    {
+      "name" : "lifecycle",
+      "type" : "boolean"
+    },
+    {
+      "name" : "openapi_3.1",
+      "type" : "boolean"
+    },
+    {
+      "name" : "openapi_3.2",
+      "type" : "boolean"
+    },
+    {
+      "name" : "otlp_write_receiver",
+      "type" : "boolean"
+    },
+    {
+      "name" : "query_stats",
+      "type" : "boolean"
+    },
+    {
+      "name" : "query_warnings",
+      "type" : "boolean"
+    },
+    {
+      "name" : "remote_write_receiver",
+      "type" : "boolean"
+    },
+    {
+      "name" : "search",
+      "type" : "boolean"
+    },
+    {
+      "name" : "search_fuzz_alg_jarowinkler",
+      "type" : "boolean"
+    },
+    {
+      "name" : "search_fuzz_alg_subsequence",
+      "type" : "boolean"
+    },
+    {
+      "name" : "time_range_labels",
+      "type" : "boolean"
+    },
+    {
+      "name" : "time_range_series",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features",
+  "method" : "GET",
+  "name" : "Get features",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "api"
+        ]
+      }
+    },
+    {
+      "flatten" : {
+        "depth" : 1
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

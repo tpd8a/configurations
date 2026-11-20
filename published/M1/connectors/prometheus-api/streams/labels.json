@@ -1,0 +1,73 @@
+{
+  "cache" : {
+    "scope" : "perFullURL",
+    "storage" : "memory",
+    "ttl" : 300
+  },
+  "columns" : [
+    {
+      "name" : "labels",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "labels",
+  "method" : "GET",
+  "name" : "Get label names",
+  "path" : "\/labels",
+  "transforms" : [
+    {
+      "descend" : {
+        "mergeSiblings" : [
+          "timings"
+        ],
+        "path" : [
+          "data"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "value" : "labels"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End timestamp for label names query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "limit",
+      "label" : "Maximum number of label names to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match[]",
+      "label" : "Series selector argument.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for label names query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

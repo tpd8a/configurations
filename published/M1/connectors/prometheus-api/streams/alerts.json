@@ -1,0 +1,25 @@
+{
+  "columns" : [
+    {
+      "name" : "alerts",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "alerts",
+  "method" : "GET",
+  "name" : "Get active alerts",
+  "path" : "\/alerts",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

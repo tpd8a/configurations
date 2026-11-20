@@ -1,0 +1,134 @@
+{
+  "columns" : [
+    {
+      "name" : "__name__",
+      "type" : "string"
+    },
+    {
+      "name" : "instance",
+      "type" : "string"
+    },
+    {
+      "name" : "job",
+      "type" : "string"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "date"
+    },
+    {
+      "name" : "value",
+      "type" : "number"
+    }
+  ],
+  "format" : "json",
+  "id" : "range",
+  "method" : "GET",
+  "name" : "Evaluate a range query",
+  "path" : "\/query_range",
+  "transforms" : [
+    {
+      "descend" : {
+        "as" : [
+          "timestamp",
+          "value"
+        ],
+        "mergeSiblings" : [
+          "metric"
+        ],
+        "path" : [
+          "data",
+          "result",
+          "[]",
+          "values"
+        ]
+      }
+    },
+    {
+      "rename" : {
+        "fields" : {
+          "metric.__name__" : "__name__",
+          "metric.instance" : "instance",
+          "metric.job" : "job"
+        }
+      }
+    },
+    {
+      "coerceTypes" : {
+        "fields" : {
+          "__name__" : "string",
+          "instance" : "string",
+          "job" : "string",
+          "value" : "number"
+        }
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "The end time of the query.",
+      "location" : "query",
+      "required" : true,
+      "role" : "timeEnd",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "limit",
+      "label" : "The maximum number of metrics to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "lookback_delta",
+      "label" : "Override the lookback period for this query. Optional.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "query",
+      "label" : "The query to execute.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "The start time of the query.",
+      "location" : "query",
+      "required" : true,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "stats",
+      "label" : "When provided, include query statistics in the response. The special value 'all'",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "step",
+      "label" : "The step size of the query.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "timeout",
+      "label" : "Evaluation timeout. Optional. Defaults to and is capped by the value of the -que",
+      "location" : "query",
+      "required" : false,
+      "role" : "value",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "config_version" : 2,
+  "description" : "example of simple prometheus syntax, with evaluated time",
+  "id" : "fedsearch_1dceea19e139475a88aafd2a05570e83",
+  "name" : "node_load15_lasthour_5m",
+  "sql" : "SELECT * FROM prom.range where end = 'now' AND query='node_load15' AND  start='-1h' AND step='5m'"
+}

@@ -1,0 +1,63 @@
+{
+  "columns" : [
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "source",
+      "type" : "string"
+    },
+    {
+      "name" : "value",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "status_tsdb",
+  "method" : "GET",
+  "name" : "Get TSDB status",
+  "path" : "\/status\/tsdb",
+  "transforms" : [
+    {
+      "stack" : {
+        "arms" : [
+          {
+            "path" : [
+              "data",
+              "labelValueCountByLabelName"
+            ]
+          },
+          {
+            "path" : [
+              "data",
+              "memoryInBytesByLabelName"
+            ]
+          },
+          {
+            "path" : [
+              "data",
+              "seriesCountByLabelValuePair"
+            ]
+          },
+          {
+            "path" : [
+              "data",
+              "seriesCountByMetricName"
+            ]
+          }
+        ],
+        "sourceAs" : "source"
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "The maximum number of items to return per category.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

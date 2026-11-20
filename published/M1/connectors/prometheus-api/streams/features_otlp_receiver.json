@@ -1,0 +1,30 @@
+{
+  "columns" : [
+    {
+      "name" : "delta_conversion",
+      "type" : "boolean"
+    },
+    {
+      "name" : "native_delta_ingestion",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_otlp_receiver",
+  "method" : "GET",
+  "name" : "data.otlp_receiver",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "otlp_receiver"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

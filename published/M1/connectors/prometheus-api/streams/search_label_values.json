@@ -1,0 +1,119 @@
+{
+  "columns" : [
+    {
+      "name" : "value",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "search_label_values",
+  "method" : "GET",
+  "name" : "Search label values",
+  "path" : "\/search\/label_values",
+  "transforms" : [
+    {
+      "jsonl" : {
+        "field" : "results"
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "batch_size",
+      "label" : "Preferred number of results per NDJSON batch.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "case_sensitive",
+      "label" : "Whether matching is case-sensitive.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "end",
+      "label" : "End timestamp for label value search.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "fuzz_alg",
+      "label" : "Fuzzy algorithm. Supported values are subsequence (default) and jarowinkler.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "fuzz_threshold",
+      "label" : "Fuzzy threshold in the range 0-100. A value of 0 is the lowest fuzzy threshold.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "include_score",
+      "label" : "Include the relevance score in each result.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "label",
+      "label" : "Label name whose values should be searched.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "limit",
+      "label" : "Maximum number of label values to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match[]",
+      "label" : "Series selector argument used to scope label value discovery.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "search[]",
+      "label" : "One or more search terms matched against label values (OR logic).",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sort_by",
+      "label" : "Sort mode. Supported values are alpha and score.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "sort_dir",
+      "label" : "Sort direction. Only valid with sort_by=alpha. Supported values are asc and dsc.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for label value search.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

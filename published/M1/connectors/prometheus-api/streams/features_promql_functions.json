@@ -1,0 +1,378 @@
+{
+  "columns" : [
+    {
+      "name" : "abs",
+      "type" : "boolean"
+    },
+    {
+      "name" : "absent",
+      "type" : "boolean"
+    },
+    {
+      "name" : "absent_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "acos",
+      "type" : "boolean"
+    },
+    {
+      "name" : "acosh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "asin",
+      "type" : "boolean"
+    },
+    {
+      "name" : "asinh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "atan",
+      "type" : "boolean"
+    },
+    {
+      "name" : "atanh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "avg_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ceil",
+      "type" : "boolean"
+    },
+    {
+      "name" : "changes",
+      "type" : "boolean"
+    },
+    {
+      "name" : "clamp",
+      "type" : "boolean"
+    },
+    {
+      "name" : "clamp_max",
+      "type" : "boolean"
+    },
+    {
+      "name" : "clamp_min",
+      "type" : "boolean"
+    },
+    {
+      "name" : "cos",
+      "type" : "boolean"
+    },
+    {
+      "name" : "cosh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "count_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "day_of_month",
+      "type" : "boolean"
+    },
+    {
+      "name" : "day_of_week",
+      "type" : "boolean"
+    },
+    {
+      "name" : "day_of_year",
+      "type" : "boolean"
+    },
+    {
+      "name" : "days_in_month",
+      "type" : "boolean"
+    },
+    {
+      "name" : "deg",
+      "type" : "boolean"
+    },
+    {
+      "name" : "delta",
+      "type" : "boolean"
+    },
+    {
+      "name" : "deriv",
+      "type" : "boolean"
+    },
+    {
+      "name" : "double_exponential_smoothing",
+      "type" : "boolean"
+    },
+    {
+      "name" : "end",
+      "type" : "boolean"
+    },
+    {
+      "name" : "exp",
+      "type" : "boolean"
+    },
+    {
+      "name" : "first_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "floor",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_avg",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_count",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_fraction",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_quantile",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_quantiles",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_stddev",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_stdvar",
+      "type" : "boolean"
+    },
+    {
+      "name" : "histogram_sum",
+      "type" : "boolean"
+    },
+    {
+      "name" : "hour",
+      "type" : "boolean"
+    },
+    {
+      "name" : "idelta",
+      "type" : "boolean"
+    },
+    {
+      "name" : "increase",
+      "type" : "boolean"
+    },
+    {
+      "name" : "info",
+      "type" : "boolean"
+    },
+    {
+      "name" : "irate",
+      "type" : "boolean"
+    },
+    {
+      "name" : "label_join",
+      "type" : "boolean"
+    },
+    {
+      "name" : "label_replace",
+      "type" : "boolean"
+    },
+    {
+      "name" : "last_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ln",
+      "type" : "boolean"
+    },
+    {
+      "name" : "log10",
+      "type" : "boolean"
+    },
+    {
+      "name" : "log2",
+      "type" : "boolean"
+    },
+    {
+      "name" : "mad_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "max_of",
+      "type" : "boolean"
+    },
+    {
+      "name" : "max_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "min_of",
+      "type" : "boolean"
+    },
+    {
+      "name" : "min_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "minute",
+      "type" : "boolean"
+    },
+    {
+      "name" : "month",
+      "type" : "boolean"
+    },
+    {
+      "name" : "pi",
+      "type" : "boolean"
+    },
+    {
+      "name" : "predict_linear",
+      "type" : "boolean"
+    },
+    {
+      "name" : "present_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "quantile_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "rad",
+      "type" : "boolean"
+    },
+    {
+      "name" : "range",
+      "type" : "boolean"
+    },
+    {
+      "name" : "rate",
+      "type" : "boolean"
+    },
+    {
+      "name" : "resets",
+      "type" : "boolean"
+    },
+    {
+      "name" : "round",
+      "type" : "boolean"
+    },
+    {
+      "name" : "scalar",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sgn",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sin",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sinh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sort",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sort_by_label",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sort_by_label_desc",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sort_desc",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sqrt",
+      "type" : "boolean"
+    },
+    {
+      "name" : "start",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stddev_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stdvar_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "step",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sum_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "tan",
+      "type" : "boolean"
+    },
+    {
+      "name" : "tanh",
+      "type" : "boolean"
+    },
+    {
+      "name" : "time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "timestamp",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ts_of_first_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ts_of_last_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ts_of_max_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ts_of_min_over_time",
+      "type" : "boolean"
+    },
+    {
+      "name" : "vector",
+      "type" : "boolean"
+    },
+    {
+      "name" : "year",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_promql_functions",
+  "method" : "GET",
+  "name" : "data.promql_functions",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "promql_functions"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

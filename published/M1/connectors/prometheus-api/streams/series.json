@@ -1,0 +1,66 @@
+{
+  "columns" : [
+    {
+      "name" : "__name__",
+      "type" : "string"
+    },
+    {
+      "name" : "instance",
+      "type" : "string"
+    },
+    {
+      "name" : "job",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "series",
+  "method" : "GET",
+  "name" : "Find series by label matchers",
+  "path" : "\/series",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "End timestamp for series query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeEnd",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    },
+    {
+      "key" : "limit",
+      "label" : "Maximum number of series to return.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "match[]",
+      "label" : "Series selector argument.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "start",
+      "label" : "Start timestamp for series query.",
+      "location" : "query",
+      "required" : false,
+      "role" : "timeStart",
+      "time" : {
+        "format" : "epoch_seconds"
+      }
+    }
+  ]
+}

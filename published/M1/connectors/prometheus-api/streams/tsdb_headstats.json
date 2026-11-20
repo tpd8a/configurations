@@ -1,0 +1,48 @@
+{
+  "columns" : [
+    {
+      "name" : "chunkCount",
+      "type" : "integer"
+    },
+    {
+      "name" : "maxTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "minTime",
+      "type" : "integer"
+    },
+    {
+      "name" : "numLabelPairs",
+      "type" : "integer"
+    },
+    {
+      "name" : "numSeries",
+      "type" : "integer"
+    }
+  ],
+  "format" : "json",
+  "id" : "tsdb_headstats",
+  "method" : "GET",
+  "name" : "data.headStats",
+  "path" : "\/status\/tsdb",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "headStats"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "limit",
+      "label" : "The maximum number of items to return per category.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

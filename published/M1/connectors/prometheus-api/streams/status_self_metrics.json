@@ -1,0 +1,44 @@
+{
+  "columns" : [
+    {
+      "name" : "help",
+      "type" : "string"
+    },
+    {
+      "name" : "metric",
+      "type" : "string"
+    },
+    {
+      "name" : "name",
+      "type" : "string"
+    },
+    {
+      "name" : "type",
+      "type" : "string"
+    }
+  ],
+  "description" : "Returns Prometheus' own instrumentation metrics from its internal client registry, as structured JSON. Supports optional regex filtering via the metric_name_pattern parameter.",
+  "format" : "json",
+  "id" : "status_self_metrics",
+  "method" : "GET",
+  "name" : "Get Prometheus self-instrumentation metrics",
+  "path" : "\/status\/self_metrics",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "metric_name_pattern",
+      "label" : "Regular expression filter for metric names (fully anchored, like PromQL label ma",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

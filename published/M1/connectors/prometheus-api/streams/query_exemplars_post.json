@@ -1,0 +1,32 @@
+{
+  "bodyTemplate" : "{\n  \"end\": \"{{config.end}}\",\n  \"query\": \"{{config.query}}\",\n  \"start\": \"{{config.start}}\"\n}",
+  "columns" : [
+
+  ],
+  "disabled" : true,
+  "format" : "json",
+  "id" : "query_exemplars_post",
+  "method" : "POST",
+  "name" : "Query exemplars",
+  "path" : "\/query_exemplars",
+  "userParams" : [
+    {
+      "key" : "end",
+      "label" : "Form field: The end time of the query.",
+      "location" : "body",
+      "required" : false
+    },
+    {
+      "key" : "query",
+      "label" : "Form field: The query to execute.",
+      "location" : "body",
+      "required" : true
+    },
+    {
+      "key" : "start",
+      "label" : "Form field: The start time of the query.",
+      "location" : "body",
+      "required" : false
+    }
+  ]
+}

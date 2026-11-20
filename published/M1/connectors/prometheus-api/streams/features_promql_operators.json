@@ -1,0 +1,162 @@
+{
+  "columns" : [
+    {
+      "name" : "!=",
+      "type" : "boolean"
+    },
+    {
+      "name" : "!~",
+      "type" : "boolean"
+    },
+    {
+      "name" : "%",
+      "type" : "boolean"
+    },
+    {
+      "name" : "*",
+      "type" : "boolean"
+    },
+    {
+      "name" : "+",
+      "type" : "boolean"
+    },
+    {
+      "name" : "-",
+      "type" : "boolean"
+    },
+    {
+      "name" : "\/",
+      "type" : "boolean"
+    },
+    {
+      "name" : "<",
+      "type" : "boolean"
+    },
+    {
+      "name" : "<\/",
+      "type" : "boolean"
+    },
+    {
+      "name" : "<=",
+      "type" : "boolean"
+    },
+    {
+      "name" : "==",
+      "type" : "boolean"
+    },
+    {
+      "name" : "=~",
+      "type" : "boolean"
+    },
+    {
+      "name" : ">",
+      "type" : "boolean"
+    },
+    {
+      "name" : ">\/",
+      "type" : "boolean"
+    },
+    {
+      "name" : ">=",
+      "type" : "boolean"
+    },
+    {
+      "name" : "@",
+      "type" : "boolean"
+    },
+    {
+      "name" : "^",
+      "type" : "boolean"
+    },
+    {
+      "name" : "and",
+      "type" : "boolean"
+    },
+    {
+      "name" : "atan2",
+      "type" : "boolean"
+    },
+    {
+      "name" : "avg",
+      "type" : "boolean"
+    },
+    {
+      "name" : "bottomk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "count",
+      "type" : "boolean"
+    },
+    {
+      "name" : "count_values",
+      "type" : "boolean"
+    },
+    {
+      "name" : "group",
+      "type" : "boolean"
+    },
+    {
+      "name" : "limit_ratio",
+      "type" : "boolean"
+    },
+    {
+      "name" : "limitk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "max",
+      "type" : "boolean"
+    },
+    {
+      "name" : "min",
+      "type" : "boolean"
+    },
+    {
+      "name" : "or",
+      "type" : "boolean"
+    },
+    {
+      "name" : "quantile",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stddev",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stdvar",
+      "type" : "boolean"
+    },
+    {
+      "name" : "sum",
+      "type" : "boolean"
+    },
+    {
+      "name" : "topk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "unless",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_promql_operators",
+  "method" : "GET",
+  "name" : "data.promql_operators",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "promql_operators"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "columns" : [
+    {
+      "name" : "scrapePools",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "scrape_pools",
+  "method" : "GET",
+  "name" : "Get scrape pools",
+  "path" : "\/scrape_pools",
+  "transforms" : [
+    {
+      "descend" : {
+        "as" : [
+          "scrapePools"
+        ],
+        "path" : [
+          "data",
+          "scrapePools"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

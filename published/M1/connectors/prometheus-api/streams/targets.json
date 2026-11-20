@@ -1,0 +1,140 @@
+{
+  "columns" : [
+    {
+      "name" : "discoveredLabels___address__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___always_scrape_classic_histograms__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___convert_classic_histograms_to_nhcb__",
+      "type" : "boolean"
+    },
+    {
+      "name" : "discoveredLabels___metrics_path__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___scheme__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___scrape_interval__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___scrape_native_histograms__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels___scrape_timeout__",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels_app",
+      "type" : "string"
+    },
+    {
+      "name" : "discoveredLabels_job",
+      "type" : "string"
+    },
+    {
+      "name" : "globalUrl",
+      "type" : "string"
+    },
+    {
+      "name" : "health",
+      "type" : "string"
+    },
+    {
+      "name" : "key",
+      "type" : "string"
+    },
+    {
+      "name" : "labels_app",
+      "type" : "string"
+    },
+    {
+      "name" : "labels_instance",
+      "type" : "string"
+    },
+    {
+      "name" : "labels_job",
+      "type" : "string"
+    },
+    {
+      "name" : "lastError",
+      "type" : "string"
+    },
+    {
+      "name" : "lastScrape",
+      "type" : "date"
+    },
+    {
+      "name" : "lastScrapeDuration",
+      "type" : "number"
+    },
+    {
+      "name" : "node",
+      "type" : "boolean"
+    },
+    {
+      "name" : "prometheus",
+      "type" : "boolean"
+    },
+    {
+      "name" : "scrapeInterval",
+      "type" : "string"
+    },
+    {
+      "name" : "scrapePool",
+      "type" : "string"
+    },
+    {
+      "name" : "scrapeTimeout",
+      "type" : "string"
+    },
+    {
+      "name" : "scrapeUrl",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "targets",
+  "method" : "GET",
+  "name" : "Get targets",
+  "path" : "\/targets",
+  "transforms" : [
+    {
+      "descend" : {
+        "keyAs" : "key",
+        "path" : [
+          "data"
+        ]
+      }
+    },
+    {
+      "flatten" : {
+        "depth" : 1
+      }
+    }
+  ],
+  "userParams" : [
+    {
+      "key" : "scrapePool",
+      "label" : "Filter targets by scrape pool name.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    },
+    {
+      "key" : "state",
+      "label" : "Filter by state: active, dropped, or any.",
+      "location" : "query",
+      "required" : false,
+      "role" : "value"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "columns" : [
+    {
+      "name" : "concurrent_rule_eval",
+      "type" : "boolean"
+    },
+    {
+      "name" : "keep_firing_for",
+      "type" : "boolean"
+    },
+    {
+      "name" : "query_offset",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_rules",
+  "method" : "GET",
+  "name" : "data.rules",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "rules"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "columns" : [
+    {
+      "name" : "ui_v2",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ui_v3",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_ui",
+  "method" : "GET",
+  "name" : "data.ui",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "ui"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

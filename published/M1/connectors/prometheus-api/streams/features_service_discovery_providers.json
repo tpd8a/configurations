@@ -1,0 +1,166 @@
+{
+  "columns" : [
+    {
+      "name" : "aws",
+      "type" : "boolean"
+    },
+    {
+      "name" : "azure",
+      "type" : "boolean"
+    },
+    {
+      "name" : "consul",
+      "type" : "boolean"
+    },
+    {
+      "name" : "digitalocean",
+      "type" : "boolean"
+    },
+    {
+      "name" : "dns",
+      "type" : "boolean"
+    },
+    {
+      "name" : "docker",
+      "type" : "boolean"
+    },
+    {
+      "name" : "dockerswarm",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ec2",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ecs",
+      "type" : "boolean"
+    },
+    {
+      "name" : "elasticache",
+      "type" : "boolean"
+    },
+    {
+      "name" : "eureka",
+      "type" : "boolean"
+    },
+    {
+      "name" : "file",
+      "type" : "boolean"
+    },
+    {
+      "name" : "gce",
+      "type" : "boolean"
+    },
+    {
+      "name" : "hetzner",
+      "type" : "boolean"
+    },
+    {
+      "name" : "http",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ionos",
+      "type" : "boolean"
+    },
+    {
+      "name" : "kubernetes",
+      "type" : "boolean"
+    },
+    {
+      "name" : "kuma",
+      "type" : "boolean"
+    },
+    {
+      "name" : "lightsail",
+      "type" : "boolean"
+    },
+    {
+      "name" : "linode",
+      "type" : "boolean"
+    },
+    {
+      "name" : "marathon",
+      "type" : "boolean"
+    },
+    {
+      "name" : "msk",
+      "type" : "boolean"
+    },
+    {
+      "name" : "nerve",
+      "type" : "boolean"
+    },
+    {
+      "name" : "nomad",
+      "type" : "boolean"
+    },
+    {
+      "name" : "openstack",
+      "type" : "boolean"
+    },
+    {
+      "name" : "outscale",
+      "type" : "boolean"
+    },
+    {
+      "name" : "ovhcloud",
+      "type" : "boolean"
+    },
+    {
+      "name" : "puppetdb",
+      "type" : "boolean"
+    },
+    {
+      "name" : "rds",
+      "type" : "boolean"
+    },
+    {
+      "name" : "scaleway",
+      "type" : "boolean"
+    },
+    {
+      "name" : "serverset",
+      "type" : "boolean"
+    },
+    {
+      "name" : "stackit",
+      "type" : "boolean"
+    },
+    {
+      "name" : "static",
+      "type" : "boolean"
+    },
+    {
+      "name" : "triton",
+      "type" : "boolean"
+    },
+    {
+      "name" : "uyuni",
+      "type" : "boolean"
+    },
+    {
+      "name" : "vultr",
+      "type" : "boolean"
+    }
+  ],
+  "format" : "json",
+  "id" : "features_service_discovery_providers",
+  "method" : "GET",
+  "name" : "data.service_discovery_providers",
+  "path" : "\/features",
+  "transforms" : [
+    {
+      "descend" : {
+        "path" : [
+          "data",
+          "service_discovery_providers"
+        ]
+      }
+    }
+  ],
+  "userParams" : [
+
+  ]
+}

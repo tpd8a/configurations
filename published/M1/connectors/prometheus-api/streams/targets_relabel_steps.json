@@ -1,0 +1,26 @@
+{
+  "columns" : [
+
+  ],
+  "format" : "json",
+  "id" : "targets_relabel_steps",
+  "method" : "GET",
+  "name" : "Get targets relabel steps",
+  "path" : "\/targets\/relabel_steps",
+  "userParams" : [
+    {
+      "key" : "labels",
+      "label" : "JSON-encoded labels to apply relabel rules to.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    },
+    {
+      "key" : "scrapePool",
+      "label" : "Name of the scrape pool.",
+      "location" : "query",
+      "required" : true,
+      "role" : "value"
+    }
+  ]
+}

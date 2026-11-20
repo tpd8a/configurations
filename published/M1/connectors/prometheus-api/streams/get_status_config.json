@@ -1,0 +1,20 @@
+{
+  "columns" : [
+    {
+      "name" : "data",
+      "type" : "string"
+    },
+    {
+      "name" : "status",
+      "type" : "string"
+    }
+  ],
+  "format" : "json",
+  "id" : "get_status_config",
+  "method" : "GET",
+  "name" : "Get status config",
+  "path" : "\/status\/config",
+  "userParams" : [
+
+  ]
+}
