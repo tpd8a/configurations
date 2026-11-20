@@ -1,0 +1,376 @@
+{
+  "absolute_geometry_version" : 1,
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_ffceb0c0b1d4403295fa98601baaf5c1",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select __name__ as name, value from prom.range  WHERE query = 'node_load1' AND earliest='$timerange.earliest$' AND latest='now' AND step='5m'"
+        },
+        "time_mode" : {
+          "earliest" : "$timerange.earliest$",
+          "latest" : "$timerange.latest$",
+          "mode" : "fixed"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_97b2ca79397442929eb3911432c5e8ce",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.node_load15_now"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_fee55e19899547f7baa7f4dcd387c05a",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.prom_search_labels_like_name"
+        },
+        "type" : "ds.sql"
+      }
+    },
+    {
+      "id" : "ds_9b05a5e6c93e41b19cb37476b2714254",
+      "query" : {
+        "name" : "New datasource",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT * FROM FS.node_load15_lasthour_5m"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Live, runnable federated-SQL examples over the Prometheus connector (node_load). Derived tables, multi-series wide JOIN, long format, instant. Time bounds are a fixed example window — swap for your own epoch-seconds range.",
+  "id" : "dash_1b370f1d3f3b473f9bff65881b618e4b",
+  "inputs" : [
+    {
+      "config" : {
+        "default" : "-6h",
+        "display_location" : "top",
+        "label" : "Time Range",
+        "location" : {
+          "global" : {
+
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "time"
+      },
+      "id" : "input_5e90f2fe464341f3b6b0fffbc75d0086",
+      "token" : "timerange"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Prometheus FedSQL Help",
+  "provenance" : {
+    "imported_at" : "2026-10-31T11:37:05Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa100"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa900",
+          "layout" : {
+            "absolute_h" : 300,
+            "absolute_w" : 460,
+            "absolute_x" : 0,
+            "absolute_y" : 0,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AAAAAAAA-0000-0000-0000-000000000000",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    }
+                  }
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "version" : 2
+              },
+              "data_source_ref" : "ds_ffceb0c0b1d4403295fa98601baaf5c1",
+              "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa100",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa101"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa901",
+          "layout" : {
+            "absolute_h" : 300,
+            "absolute_w" : 460,
+            "absolute_x" : 480,
+            "absolute_y" : 0,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AAAAAAAA-0000-0000-0000-000000000000",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    }
+                  }
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "version" : 2
+              },
+              "data_source_ref" : "ds_97b2ca79397442929eb3911432c5e8ce",
+              "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa101",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa102"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa902",
+          "layout" : {
+            "absolute_h" : 300,
+            "absolute_w" : 460,
+            "absolute_x" : 0,
+            "absolute_y" : 320,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AAAAAAAA-0000-0000-0000-000000000000",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    }
+                  }
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "version" : 2
+              },
+              "data_source_ref" : "ds_fee55e19899547f7baa7f4dcd387c05a",
+              "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa102",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa103"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa903",
+          "layout" : {
+            "absolute_h" : 300,
+            "absolute_w" : 460,
+            "absolute_x" : 480,
+            "absolute_y" : 320,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AAAAAAAA-0000-0000-0000-000000000000",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    }
+                  }
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "version" : 2
+              },
+              "data_source_ref" : "ds_9b05a5e6c93e41b19cb37476b2714254",
+              "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa103",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        },
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa104"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa904",
+          "layout" : {
+            "absolute_h" : 260,
+            "absolute_w" : 940,
+            "absolute_x" : 0,
+            "absolute_y" : 640,
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "AAAAAAAA-0000-0000-0000-000000000000",
+                        "kind" : "table",
+                        "optionsJSON" : "e30="
+                      }
+                    ],
+                    "shapeId" : "table",
+                    "slotBindings" : {
+                      "storage" : [
+
+                      ]
+                    }
+                  }
+                ],
+                "slotBindings" : {
+                  "storage" : [
+
+                  ]
+                },
+                "version" : 2
+              },
+              "id" : "viz_aaaaaaaaaaaaaaaaaaaaaaaaaaaaa104",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "none"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "FedSQL Examples"
+    }
+  ]
+}
