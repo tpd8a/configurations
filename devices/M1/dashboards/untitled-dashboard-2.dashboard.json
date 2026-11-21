@@ -1,0 +1,62 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_f802b16bcf65493586fa3ea9729bc852",
+      "query" : {
+        "name" : "ds_f802b16b",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from FS.node_load15_lasthour_5m"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_9db7223f1e604bc8abbadf29c58cda90",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Untitled Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-21T19:02:10Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_d8ecb56dc1d54f619e59e7c70b2c739e",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_10aed4ec37714c75ad1fb781fe796f85"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_72bb491c224e4ffb9b59731c2fcd0c2b",
+          "layout" : {
+            "height" : 360,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_f802b16bcf65493586fa3ea9729bc852",
+              "id" : "viz_10aed4ec37714c75ad1fb781fe796f85",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}
