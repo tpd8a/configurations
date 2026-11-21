@@ -40,7 +40,7 @@
   "layout_type" : "bootstrap",
   "name" : "Widget Bitcoin",
   "provenance" : {
-    "imported_at" : "2026-11-11T07:45:30Z",
+    "imported_at" : "2026-11-21T15:38:15Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -70,6 +70,7 @@
               "id" : "viz_8d0da384de7a43a79512e18b192e29d6",
               "layer" : 1,
               "options" : {
+                "content_alignment" : "center",
                 "delta_field" : "priceChange",
                 "delta_pct_field" : "priceChangePercent",
                 "price_field" : "close"
