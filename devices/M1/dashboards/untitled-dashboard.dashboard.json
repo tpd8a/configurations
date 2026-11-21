@@ -1,0 +1,62 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_6945432d794f4bfd9d4ee3d979ead1db",
+      "query" : {
+        "name" : "ds_F1A6852D",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select * from yahoo_finance.chart where symbol='AAPL'"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_e5464ee3f8bb4bd8a3637c863c9b8be9",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Untitled Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-21T17:11:45Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_44eba3efda2b4efca8490d71592089cb",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_4556f0f9bb664ab79c238e307e12726b"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_bdeb435213164ba5907a570056ba27a3",
+          "layout" : {
+            "height" : 520,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_6945432d794f4bfd9d4ee3d979ead1db",
+              "id" : "viz_4556f0f9bb664ab79c238e307e12726b",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}
