@@ -3,7 +3,7 @@
   "deviceId" : "M1",
   "displayName" : "M1",
   "groups" : [
-
+    "finance"
   ],
   "kind" : "mac",
   "layout" : 2,
