@@ -8,6 +8,7 @@
       "template" : ""
     }
   ],
+  "enabled" : false,
   "id" : "job_4bad207cd1b8",
   "name" : "Yahoo AAPL",
   "schedule" : "every 1h",
