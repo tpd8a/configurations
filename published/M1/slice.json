@@ -1,7 +1,7 @@
 {
   "deviceId" : "M1",
   "groups" : [
-
+    "finance"
   ],
   "schemaVersion" : 1
 }
