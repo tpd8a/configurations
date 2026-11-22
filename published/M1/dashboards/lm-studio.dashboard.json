@@ -13,7 +13,7 @@
         },
         "refresh_seconds" : 60,
         "sql" : {
-          "query" : "SELECT\n  REGEXP_EXTRACT(_raw, '^\\[([^\\]]+)\\]\\[([^\\]]+)\\](?:\\[([^\\]]+)\\])?\\s*([\\s\\S]*)$',\n                 ARRAY['_time', 'level', 'component', 'message']),\n  _time, level, component, message, _source, _offset, _raw\nFROM server_logs.lines(path := '2026-09\/2026-09-2*log', break := '^\\[', max_events := 10000)"
+          "query" : "SELECT\n  REGEXP_EXTRACT(_raw, '^\\[([^\\]]+)\\]\\[([^\\]]+)\\](?:\\[([^\\]]+)\\])?\\s*([\\s\\S]*)$',\n                 ARRAY['_time', 'level', 'component', 'message']),\n  _time, level, component, message, _source, _offset, _raw\nFROM server_logs.lines(path := '2026-11\/2026-11-*log', break := '^\\[', max_events := 10000)"
         },
         "type" : "ds.sql"
       }
@@ -46,7 +46,7 @@
   "layout_type" : "bootstrap",
   "name" : "LM Studio",
   "provenance" : {
-    "imported_at" : "2026-11-02T13:28:12Z",
+    "imported_at" : "2026-11-22T08:49:27Z",
     "source" : "local"
   },
   "provider_refs" : [
