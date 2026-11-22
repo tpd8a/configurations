@@ -46,7 +46,7 @@
   "layout_type" : "bootstrap",
   "name" : "LM Studio",
   "provenance" : {
-    "imported_at" : "2026-11-22T08:49:27Z",
+    "imported_at" : "2026-11-22T08:56:56Z",
     "source" : "local"
   },
   "provider_refs" : [
@@ -56,7 +56,8 @@
     {
       "id" : "row_734133e59d6c4d28b826402779d4a948",
       "layout" : {
-        "fill" : true
+        "fill" : true,
+        "fill_min" : 660
       },
       "panels" : [
         {
