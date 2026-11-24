@@ -34,7 +34,7 @@
           }
         ],
         "name" : "Odd minute",
-        "refresh_seconds" : 0,
+        "refresh_seconds" : 30,
         "sql" : {
           "query" : "SELECT CAST(strftime('%M','now') AS INTEGER) % 2 AS odd_minute, strftime('%H:%M:%S','now') AS utc_time, COUNT(*) AS perf_rows FROM construct_perf"
         },
@@ -50,7 +50,7 @@
   "layout_type" : "bootstrap",
   "name" : "Webhook Test",
   "provenance" : {
-    "imported_at" : "2026-11-24T13:24:35Z",
+    "imported_at" : "2026-11-24T14:00:32Z",
     "source" : "local"
   },
   "provider_refs" : [
