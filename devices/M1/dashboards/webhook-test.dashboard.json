@@ -1,0 +1,91 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_72eb2cde1aef4ab196a9bb33066ae437",
+      "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "destination" : "test-hook",
+                "kind" : "webhook"
+              },
+              {
+                "kind" : "notification"
+              }
+            ],
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "odd_minute",
+              "value" : {
+                "number" : 0
+              }
+            },
+            "id" : "7F15D607-6CCA-4EF7-BE85-80802AF9B9F0",
+            "message" : "Odd minute at {{value}}",
+            "name" : "Odd minute webhook",
+            "runInBackground" : true,
+            "severity" : "Notice",
+            "showOn" : [
+              "viz_30201614f3b7413cac76d6ad520e6f98"
+            ]
+          }
+        ],
+        "name" : "Odd minute",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "SELECT CAST(strftime('%M','now') AS INTEGER) % 2 AS odd_minute, strftime('%H:%M:%S','now') AS utc_time, COUNT(*) AS perf_rows FROM construct_perf"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "description" : "Fires an alert every other minute to test the test-hook webhook (no inputs).",
+  "id" : "dash_d23f7fa2dbda4faeb521d84d3ddc6f24",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Webhook Test",
+  "provenance" : {
+    "imported_at" : "2026-11-24T13:24:35Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_01977c0ff07b4e4c9496dc365f444295",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_30201614f3b7413cac76d6ad520e6f98"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_006857aba23b42fa85508432adfb80c4",
+          "layout" : {
+            "panel_width" : 6
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_72eb2cde1aef4ab196a9bb33066ae437",
+              "id" : "viz_30201614f3b7413cac76d6ad520e6f98",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}
