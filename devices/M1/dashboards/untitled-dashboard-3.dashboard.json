@@ -26,7 +26,6 @@
             },
             "id" : "C5A6A4E5-2DC8-4B39-94AE-BD8DF7F0BD8E",
             "name" : "TestM1",
-            "runInBackground" : true,
             "severity" : "Action"
           }
         ],
@@ -60,16 +59,12 @@
         "search_when_changed" : true,
         "type" : "text"
       },
-      "id" : "input_f0e4771fb218470c9bd760128bfababf",
+      "id" : "input_bcd6a282c36843dea2a4cb872efe9cb2",
       "token" : "token"
     }
   ],
   "layout_type" : "absolute",
   "name" : "Untitled Dashboard",
-  "provenance" : {
-    "imported_at" : "2026-11-24T09:08:38Z",
-    "source" : "local"
-  },
   "provider_refs" : [
 
   ],
