@@ -1,0 +1,84 @@
+{
+  "absolute_geometry_version" : 1,
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_20f903de4405475a9ab990c76fdd3cc0",
+      "query" : {
+        "name" : "ds_20f903de",
+        "refresh_seconds" : 0,
+        "sql" : {
+          "query" : "select '$token$' as max"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_6a2f70da24b248dbadcfe1cf43166bda",
+  "inputs" : [
+    {
+      "config" : {
+        "display_location" : "top",
+        "label" : "Enter Number",
+        "location" : {
+          "absolute" : {
+            "anchor" : "topLeft",
+            "h" : 72,
+            "w" : 216,
+            "x" : 240,
+            "y" : 48
+          }
+        },
+        "search_when_changed" : true,
+        "type" : "text"
+      },
+      "id" : "input_706044d08af8415d931575aee53602f3",
+      "token" : "token"
+    }
+  ],
+  "layout_type" : "absolute",
+  "name" : "Untitled Dashboard",
+  "provenance" : {
+    "imported_at" : "2026-11-24T09:04:59Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_571bafcbe5884df08fb3aeb9bd9042cd",
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_d1b3e2d042cf44cbad53bc986e197041"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_18718836049c400eab181ffc71a1472a",
+          "layout" : {
+            "absolute_h" : 216,
+            "absolute_w" : 696,
+            "absolute_x" : 48,
+            "absolute_y" : 144,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "data_source_ref" : "ds_20f903de4405475a9ab990c76fdd3cc0",
+              "id" : "viz_d1b3e2d042cf44cbad53bc986e197041",
+              "layer" : 1,
+              "type" : "table",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Row 1"
+    }
+  ]
+}
