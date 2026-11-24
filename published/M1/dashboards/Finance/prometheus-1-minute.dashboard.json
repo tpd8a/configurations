@@ -1,0 +1,200 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c41e9cd97f8b46009bf0d96f6f3295d8",
+      "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "destination" : "test-hook",
+                "kind" : "webhook"
+              },
+              {
+                "kind" : "sound",
+                "name" : "Glass"
+              },
+              {
+                "kind" : "notification"
+              }
+            ],
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "value",
+              "value" : {
+                "number" : 0
+              }
+            },
+            "id" : "97AB9859-63A4-4C6C-B64D-B70CE8CEDB5B",
+            "name" : "Prom",
+            "severity" : "Notice",
+            "showOn" : [
+              "viz_8da246966659400db988abcfe95adf57"
+            ]
+          }
+        ],
+        "name" : "ds_c41e9cd9",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT * FROM prom.range where end = 'now' AND query='node_load1' AND  start='-1h' AND step='1m'"
+        },
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_2cada85b315d450c8fe841774a3e0ed5",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Prometheus 1 Minute",
+  "provenance" : {
+    "imported_at" : "2026-11-24T08:24:34Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7d792d9f367e403ba2309c2c80f420a9",
+      "layout" : {
+        "fill" : true
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8da246966659400db988abcfe95adf57"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_cf38b69378634ae2a1ed0927a9851a3f",
+          "layout" : {
+            "height" : 260,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "fieldOverrides" : {
+                  "value" : {
+                    "dataLinks" : [
+
+                    ],
+                    "decimals" : 2,
+                    "fieldId" : "value",
+                    "fillOpacity" : 0.45,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "solid",
+                    "lineWidth" : 2.5,
+                    "unit" : "percent",
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "CAEEF1B4-5CFE-4315-8F57-D7E1B600D11F",
+                        "kind" : "line",
+                        "optionsJSON" : {
+                          "field" : "",
+                          "fill" : {
+                            "palette" : {
+
+                            }
+                          },
+                          "fillOpacity" : 0,
+                          "seriesField" : "__name__",
+                          "seriesOverrides" : {
+                            "node_load1" : {
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            },
+                            "node_load15" : {
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            },
+                            "value" : {
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            }
+                          },
+                          "showPoints" : false
+                        }
+                      }
+                    ],
+                    "shapeId" : "line",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "timestamp"
+                        ],
+                        "y",
+                        [
+                          "value"
+                        ],
+                        "group",
+                        [
+                          "__name__"
+                        ]
+                      ]
+                    }
+                  }
+                ],
+                "version" : 2
+              },
+              "data_source_ref" : "ds_c41e9cd97f8b46009bf0d96f6f3295d8",
+              "id" : "viz_8da246966659400db988abcfe95adf57",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Prometheus 1 minute"
+    }
+  ]
+}
