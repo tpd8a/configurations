@@ -5,10 +5,38 @@
     {
       "id" : "ds_20f903de4405475a9ab990c76fdd3cc0",
       "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "kind" : "notification"
+              },
+              {
+                "destination" : "test-hook",
+                "kind" : "webhook"
+              }
+            ],
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "max",
+              "value" : {
+                "number" : 99
+              }
+            },
+            "id" : "C5A6A4E5-2DC8-4B39-94AE-BD8DF7F0BD8E",
+            "name" : "TestM1",
+            "runInBackground" : true,
+            "severity" : "Action"
+          }
+        ],
         "name" : "ds_20f903de",
+        "query" : {
+          "method" : "GET"
+        },
         "refresh_seconds" : 0,
         "sql" : {
-          "query" : "select '$token$' as max"
+          "query" : "select '$token$' as max, * from prom.instant where query='node_load1'"
         },
         "type" : "ds.sql"
       }
@@ -32,14 +60,14 @@
         "search_when_changed" : true,
         "type" : "text"
       },
-      "id" : "input_706044d08af8415d931575aee53602f3",
+      "id" : "input_f0e4771fb218470c9bd760128bfababf",
       "token" : "token"
     }
   ],
   "layout_type" : "absolute",
   "name" : "Untitled Dashboard",
   "provenance" : {
-    "imported_at" : "2026-11-24T09:04:59Z",
+    "imported_at" : "2026-11-24T09:08:38Z",
     "source" : "local"
   },
   "provider_refs" : [
