@@ -25,6 +25,7 @@
             },
             "id" : "35EDCA81-77E4-48B4-96A5-B94EDFFFBB26",
             "name" : "New alert",
+            "renotifyMinutes" : 1,
             "runInBackground" : true,
             "severity" : "Notice"
           }
@@ -65,7 +66,7 @@
   "layout_type" : "bootstrap",
   "name" : "Widget Bitcoin",
   "provenance" : {
-    "imported_at" : "2026-11-24T14:08:14Z",
+    "imported_at" : "2026-11-21T15:38:15Z",
     "source" : "local"
   },
   "provider_refs" : [
