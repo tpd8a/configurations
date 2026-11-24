@@ -4,6 +4,31 @@
     {
       "id" : "ds_25cb04a849194d79ab04550d59192f93",
       "query" : {
+        "alerts" : [
+          {
+            "actions" : [
+              {
+                "kind" : "notification"
+              },
+              {
+                "destination" : "test-hook",
+                "kind" : "webhook"
+              }
+            ],
+            "condition" : {
+              "kind" : "compare",
+              "op" : "gt",
+              "series" : "close",
+              "value" : {
+                "number" : 0
+              }
+            },
+            "id" : "35EDCA81-77E4-48B4-96A5-B94EDFFFBB26",
+            "name" : "New alert",
+            "runInBackground" : true,
+            "severity" : "Notice"
+          }
+        ],
         "keep_history" : {
           "mode" : "every",
           "retention" : "1h"
@@ -40,7 +65,7 @@
   "layout_type" : "bootstrap",
   "name" : "Widget Bitcoin",
   "provenance" : {
-    "imported_at" : "2026-11-21T15:38:15Z",
+    "imported_at" : "2026-11-24T14:08:14Z",
     "source" : "local"
   },
   "provider_refs" : [
