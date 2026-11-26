@@ -4,35 +4,6 @@
     {
       "id" : "ds_72eb2cde1aef4ab196a9bb33066ae437",
       "query" : {
-        "alerts" : [
-          {
-            "actions" : [
-              {
-                "destination" : "test-hook",
-                "kind" : "webhook"
-              },
-              {
-                "kind" : "notification"
-              }
-            ],
-            "condition" : {
-              "kind" : "compare",
-              "op" : "gt",
-              "series" : "odd_minute",
-              "value" : {
-                "number" : 0
-              }
-            },
-            "id" : "7F15D607-6CCA-4EF7-BE85-80802AF9B9F0",
-            "message" : "Odd minute at {{value}}",
-            "name" : "Odd minute webhook",
-            "runInBackground" : true,
-            "severity" : "Notice",
-            "showOn" : [
-              "viz_30201614f3b7413cac76d6ad520e6f98"
-            ]
-          }
-        ],
         "name" : "Odd minute",
         "refresh_seconds" : 30,
         "sql" : {
@@ -79,6 +50,16 @@
               "data_source_ref" : "ds_72eb2cde1aef4ab196a9bb33066ae437",
               "id" : "viz_30201614f3b7413cac76d6ad520e6f98",
               "layer" : 1,
+              "options" : {
+                "arrays" : "sparkline",
+                "booleans" : "yes_no",
+                "decimals" : "2",
+                "fixed_header" : "true",
+                "no_value" : "-",
+                "striped_rows" : "true",
+                "time_format" : "iso8601",
+                "wrap_cells" : "true"
+              },
               "type" : "table",
               "width" : 12
             }

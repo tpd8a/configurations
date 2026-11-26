@@ -5,30 +5,6 @@
     {
       "id" : "ds_20f903de4405475a9ab990c76fdd3cc0",
       "query" : {
-        "alerts" : [
-          {
-            "actions" : [
-              {
-                "kind" : "notification"
-              },
-              {
-                "destination" : "test-hook",
-                "kind" : "webhook"
-              }
-            ],
-            "condition" : {
-              "kind" : "compare",
-              "op" : "gt",
-              "series" : "max",
-              "value" : {
-                "number" : 99
-              }
-            },
-            "id" : "C5A6A4E5-2DC8-4B39-94AE-BD8DF7F0BD8E",
-            "name" : "TestM1",
-            "severity" : "Action"
-          }
-        ],
         "name" : "ds_20f903de",
         "query" : {
           "method" : "GET"
@@ -95,6 +71,16 @@
               "data_source_ref" : "ds_20f903de4405475a9ab990c76fdd3cc0",
               "id" : "viz_d1b3e2d042cf44cbad53bc986e197041",
               "layer" : 1,
+              "options" : {
+                "arrays" : "sparkline",
+                "booleans" : "yes_no",
+                "decimals" : "2",
+                "fixed_header" : "true",
+                "no_value" : "-",
+                "striped_rows" : "true",
+                "time_format" : "iso8601",
+                "wrap_cells" : "true"
+              },
               "type" : "table",
               "width" : 12
             }
