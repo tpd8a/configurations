@@ -4,32 +4,6 @@
     {
       "id" : "ds_25cb04a849194d79ab04550d59192f93",
       "query" : {
-        "alerts" : [
-          {
-            "actions" : [
-              {
-                "kind" : "notification"
-              },
-              {
-                "destination" : "test-hook",
-                "kind" : "webhook"
-              }
-            ],
-            "condition" : {
-              "kind" : "compare",
-              "op" : "gt",
-              "series" : "close",
-              "value" : {
-                "number" : 0
-              }
-            },
-            "id" : "35EDCA81-77E4-48B4-96A5-B94EDFFFBB26",
-            "name" : "New alert",
-            "renotifyMinutes" : 1,
-            "runInBackground" : true,
-            "severity" : "Notice"
-          }
-        ],
         "keep_history" : {
           "mode" : "every",
           "retention" : "1h"
