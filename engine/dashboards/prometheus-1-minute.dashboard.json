@@ -1,0 +1,278 @@
+{
+  "config_version" : 2,
+  "data_sources" : [
+    {
+      "id" : "ds_c41e9cd97f8b46009bf0d96f6f3295d8",
+      "query" : {
+        "name" : "ds_c41e9cd9",
+        "query" : {
+          "method" : "GET"
+        },
+        "refresh_seconds" : 60,
+        "sql" : {
+          "query" : "SELECT * FROM prom.range where end = 'now' AND query='node_load1' AND  start='-1h' AND step='1s'"
+        },
+        "steps" : [
+          {
+            "alias" : "sma",
+            "args" : {
+              "period" : "60",
+              "source" : "value"
+            },
+            "id" : "st_sma",
+            "library" : "sma"
+          }
+        ],
+        "type" : "ds.sql"
+      }
+    }
+  ],
+  "id" : "dash_2cada85b315d450c8fe841774a3e0ed5",
+  "inputs" : [
+
+  ],
+  "layout_type" : "bootstrap",
+  "name" : "Prometheus 1 Minute",
+  "provenance" : {
+    "imported_at" : "2026-11-28T08:35:53Z",
+    "source" : "local"
+  },
+  "provider_refs" : [
+
+  ],
+  "rows" : [
+    {
+      "id" : "row_7d792d9f367e403ba2309c2c80f420a9",
+      "layout" : {
+        "fill" : true,
+        "fill_min" : 600
+      },
+      "panels" : [
+        {
+          "columns" : [
+            {
+              "id" : "col_0",
+              "viz_ids" : [
+                "viz_8da246966659400db988abcfe95adf57"
+              ],
+              "width" : 12
+            }
+          ],
+          "id" : "panel_cf38b69378634ae2a1ed0927a9851a3f",
+          "layout" : {
+            "height" : 260,
+            "panel_width" : 12
+          },
+          "visualizations" : [
+            {
+              "chart" : {
+                "fieldOverrides" : {
+                  "node_load1" : {
+                    "color" : "#7CB342black",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "node_load1",
+                    "hideFromLegend" : false,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "sma" : {
+                    "axisPosition" : "right",
+                    "color" : "#1E88E5",
+                    "dataLinks" : [
+
+                    ],
+                    "fieldId" : "sma",
+                    "fillOpacity" : 0,
+                    "hideFromLegend" : false,
+                    "lineWidth" : 3.5,
+                    "valueMappings" : [
+
+                    ]
+                  },
+                  "value" : {
+                    "color" : "#1E88E5",
+                    "dataLinks" : [
+
+                    ],
+                    "decimals" : 2,
+                    "fieldId" : "value",
+                    "fillOpacity" : 0.45,
+                    "hideFromLegend" : false,
+                    "interpolation" : "smooth",
+                    "lineStyle" : "solid",
+                    "lineWidth" : 2.5,
+                    "unit" : "percent",
+                    "valueMappings" : [
+
+                    ]
+                  }
+                },
+                "panes" : [
+                  {
+                    "id" : "main",
+                    "marks" : [
+                      {
+                        "id" : "CAEEF1B4-5CFE-4315-8F57-D7E1B600D11F",
+                        "kind" : "line",
+                        "optionsJSON" : {
+                          "field" : "",
+                          "fill" : {
+                            "fade" : {
+
+                            }
+                          },
+                          "fillOpacity" : 0,
+                          "seriesField" : "__name__",
+                          "seriesOverrides" : {
+                            "node_load1" : {
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#7CB342black"
+                                }
+                              },
+                              "excludeFromStack" : false,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "negate" : false
+                            },
+                            "node_load15" : {
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            },
+                            "sma" : {
+                              "axis" : "right",
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#1E88E5"
+                                }
+                              },
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineWidth" : 3.5,
+                              "negate" : false
+                            },
+                            "value" : {
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#1E88E5"
+                                }
+                              },
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            }
+                          },
+                          "showPoints" : false
+                        }
+                      },
+                      {
+                        "id" : "BC24C4FF-11D9-42E8-9271-81DD59719998",
+                        "kind" : "indicator_line",
+                        "optionsJSON" : {
+                          "dashed" : false,
+                          "field" : "sma",
+                          "index" : 0,
+                          "seriesOverrides" : {
+                            "node_load1" : {
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#7CB342black"
+                                }
+                              },
+                              "excludeFromStack" : false,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "negate" : false
+                            },
+                            "sma" : {
+                              "axis" : "right",
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#1E88E5"
+                                }
+                              },
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineWidth" : 3.5,
+                              "negate" : false
+                            },
+                            "value" : {
+                              "colour" : {
+                                "hex" : {
+                                  "_0" : "#1E88E5"
+                                }
+                              },
+                              "decimals" : 2,
+                              "excludeFromStack" : false,
+                              "fillOpacity" : 0.45,
+                              "hidden" : false,
+                              "hideFromLegend" : false,
+                              "lineInterpolation" : "smooth",
+                              "lineStyle" : "solid",
+                              "lineWidth" : 2.5,
+                              "negate" : false,
+                              "unit" : "percent"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "shapeId" : "line",
+                    "slotBindings" : {
+                      "storage" : [
+                        "x",
+                        [
+                          "timestamp"
+                        ],
+                        "y",
+                        [
+                          "value"
+                        ],
+                        "group",
+                        [
+                          "__name__"
+                        ]
+                      ]
+                    }
+                  }
+                ],
+                "version" : 2
+              },
+              "data_source_ref" : "ds_c41e9cd97f8b46009bf0d96f6f3295d8",
+              "id" : "viz_8da246966659400db988abcfe95adf57",
+              "layer" : 1,
+              "options" : {
+                "stackMode" : "stacked"
+              },
+              "type" : "chart",
+              "width" : 12
+            }
+          ]
+        }
+      ],
+      "title" : "Prometheus 1 minute"
+    }
+  ]
+}
